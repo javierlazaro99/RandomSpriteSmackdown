@@ -29,14 +29,14 @@ public class VentanaPrincipal extends JFrame{
 		
 		//Contenedores
 		
-		JLabel fondo = new JLabel(new ImageIcon("src\\Fondo.gif"));
+		//JLabel fondo = new JLabel(new ImageIcon("src\\Fondo.gif"));
 		JPanel  paneliz = new JPanel();
 		//Panel  botones principales
 			JPanel panelinterior = new JPanel();
-			JButton botonHistoria = new JButton(new ImageIcon(""));
-			JButton botonPractica = new JButton();
-			JButton boton1VS1 = new JButton();
-			JButton botonAyuda = new JButton();
+			JButton botonHistoria = new JButton(new ImageIcon("src\\Historia.gif"));
+			JButton botonPractica = new JButton(new ImageIcon("src\\Practica.gif"));
+			JButton boton1VS1 = new JButton(new ImageIcon("src\\1VS1.gif"));
+			JButton botonAyuda = new JButton(new ImageIcon("src\\Ayuda.PNG"));
 		JPanel panelde = new JPanel();//Panel de titulo
 			JLabel labelTitulo = new JLabel();
 		//Modificaciones
@@ -50,15 +50,19 @@ public class VentanaPrincipal extends JFrame{
 			botonAyuda.setOpaque(false);
 			botonHistoria.setOpaque(false);
 			botonPractica.setOpaque(false);
-			fondo.setOpaque(false);
+			botonHistoria.setSize(100, 100);
+			botonPractica.setSize(100, 100);
+			botonAyuda.setSize(100, 100);
+			boton1VS1.setSize(100, 100);
+			//fondo.setOpaque(false);
 			Dimension fondosize =getSize();
-			fondo.setSize(fondosize);
+			//fondo.setSize(fondosize);
 			
 			
 		//Añadir los contenedores
-		add(fondo);
-		fondo.add(paneliz);
-		fondo.add(panelde);
+		//add(fondo);
+		add(paneliz);
+		add(panelde);
 		
 		
 		paneliz.add(panelinterior,BorderLayout.CENTER);
