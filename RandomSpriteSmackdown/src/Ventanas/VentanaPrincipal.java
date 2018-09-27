@@ -29,9 +29,9 @@ public class VentanaPrincipal extends JFrame{
 		
 		//Contenedores
 		
-		FondoSwing panel = new FondoSwing();
+		JLabel fondo = new JLabel(new ImageIcon("src\\Fondo.gif"));
 		JPanel  paneliz = new JPanel();
-		//Panel de botones principales
+		//Panel  botones principales
 			JPanel panelinterior = new JPanel();
 			JButton botonHistoria = new JButton(new ImageIcon(""));
 			JButton botonPractica = new JButton();
@@ -50,13 +50,15 @@ public class VentanaPrincipal extends JFrame{
 			botonAyuda.setOpaque(false);
 			botonHistoria.setOpaque(false);
 			botonPractica.setOpaque(false);
+			fondo.setOpaque(false);
+			Dimension fondosize =getSize();
+			fondo.setSize(fondosize);
 			
-			panel.Imagen("src\\Fondo.gif");
 			
 		//Añadir los contenedores
-		add(panel);
-		panel.add(paneliz);
-		panel.add(panelde);
+		add(fondo);
+		fondo.add(paneliz);
+		fondo.add(panelde);
 		
 		
 		paneliz.add(panelinterior,BorderLayout.CENTER);
