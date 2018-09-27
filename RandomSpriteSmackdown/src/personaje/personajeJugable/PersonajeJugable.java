@@ -67,6 +67,18 @@ public class PersonajeJugable extends Personaje {
 		}
 		return lVelocidad;
 	}
+	
+	public void SubirNivel(String statASubir) {
+		if(this.getPuntosMejora() > 0) {
+			if(statASubir.equals("fuerza")) {
+				this.setFuerza(this.getFuerza() + 1);
+			}else if (statASubir.equals("vida")) {
+				this.setVida(this.getVida() + 1);
+			}else {
+				this.setVelocidad(this.getVelocidad() + 1);
+			}
+		}	
+	}
 
 	@Override
 	public void DarGolpe(Personaje enemigo) {
