@@ -12,6 +12,7 @@ public class PersonajeJugable extends Personaje {
 	private String nombre;
 	private Point posicion;
 	private int puntosMejora;
+	private JLabel lPersonaje;
 	private JLabel lFuerza;
 	private JLabel lVida;
 	private JLabel lVelocidad;
@@ -47,6 +48,13 @@ public class PersonajeJugable extends Personaje {
 		this.puntosMejora = puntosMejora;
 	}
 	
+	public JLabel getlPersonaje() {
+		if(lPersonaje == null) {
+			lPersonaje = new JLabel();
+		}
+		return lPersonaje;
+	}
+
 	public JLabel getlFuerza() {
 		if(lFuerza == null) {
 			lFuerza = new JLabel();

@@ -9,6 +9,7 @@ import personaje.Personaje;
 public class Enemigo extends Personaje {
 	
 	private Point posicion;
+	private int dificultad;
 
 	public Enemigo(int fuerza, int vida, int velocidad) {
 		super(fuerza, vida, velocidad);
