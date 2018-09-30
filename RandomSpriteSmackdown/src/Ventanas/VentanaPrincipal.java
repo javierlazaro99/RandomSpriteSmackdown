@@ -48,7 +48,7 @@ public class VentanaPrincipal extends JFrame{
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLayout(new FlowLayout());
 		//Contenedores
-		JPanelBackground sticman = new JPanelBackground("src/Stickman1.gif");
+		JPanelBackground sticman = new JPanelBackground("src/Stickman2.gif");
 		JPanelBackground fondo = new JPanelBackground("src/Fondo.gif");//Fondo
 		JLabelGraficoAjustado titulo = new JLabelGraficoAjustado("", 650, 137);
 		JPanel paneliz= new  JPanel();
@@ -64,7 +64,7 @@ public class VentanaPrincipal extends JFrame{
 		this.setLayout(new BorderLayout());
 		paneliz.setLayout(new GridLayout(0,1,0,2));
 		fondo.setLayout(new BoxLayout(fondo,BoxLayout.X_AXIS));
-		
+		panelde.setLayout(new BorderLayout());
 		//Añadir imagen
 		titulo.setImagen("src/Titulo.PNG");
 		//Opaques
@@ -88,6 +88,8 @@ public class VentanaPrincipal extends JFrame{
 		botonPractica.setContentAreaFilled(false);
 		boton1VS1.setContentAreaFilled(false);
 		botonAyuda.setContentAreaFilled(false);
+		//Cambios de tamaño
+		sticman.setMaximumSize(new Dimension(600, 600));;
 		
 		//Meter contenedores
 		this.add(fondo, BorderLayout.CENTER);
