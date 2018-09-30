@@ -69,8 +69,9 @@ public class VentanaPrincipal extends JFrame{
 		this.setLayout(new BorderLayout());
 		panelde.setOpaque(false);
 		paneliz.setOpaque(false);
+		paneliz.setLayout(new GridLayout(0,1));
 		panelinterior.setOpaque(false);
-		panelinterior.setLayout(new BoxLayout(panelinterior, BoxLayout.Y_AXIS));
+		
 		titulo.setOpaque(false);
 		titulo.setBorder(null);
 		fondo.setLayout(new BoxLayout(fondo,BoxLayout.X_AXIS));
@@ -101,12 +102,12 @@ public class VentanaPrincipal extends JFrame{
 		fondo.add(paneliz);
 		fondo.add(panelde);
 		panelde.add(titulo,BorderLayout.NORTH);
-		paneliz.add(panelinterior,BorderLayout.CENTER);
+		paneliz.add(panelinterior);
 		
-		panelinterior.add(botonHistoria);
-		panelinterior.add(botonPractica);
-		panelinterior.add(boton1VS1);
-		panelinterior.add(botonAyuda);
+		paneliz.add(botonHistoria);
+		paneliz.add(botonPractica);
+		paneliz.add(boton1VS1);
+		paneliz.add(botonAyuda);
 		
 	}
 	
