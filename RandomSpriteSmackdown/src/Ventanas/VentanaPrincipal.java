@@ -49,7 +49,7 @@ public class VentanaPrincipal extends JFrame{
 		
 		
 		
-		JLabelGraficoAjustado titulo = new JLabelGraficoAjustado("", 750, 137);
+		JLabelGraficoAjustado titulo = new JLabelGraficoAjustado("", 650, 137);
 		JPanel paneliz= new  JPanel();
 		JPanel panelde = new JPanel();
 		JPanel panelinterior = new JPanel();
@@ -75,7 +75,7 @@ public class VentanaPrincipal extends JFrame{
 		titulo.setOpaque(false);
 		titulo.setBorder(null);
 		fondo.setLayout(new BoxLayout(fondo,BoxLayout.X_AXIS));
-		botonHistoria.setSize(200,200);	
+		
 		botonHistoria.setOpaque(false);
 		botonHistoria.setContentAreaFilled(false);
 		botonHistoria.setBorder(null);
