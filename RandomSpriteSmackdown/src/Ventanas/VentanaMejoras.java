@@ -25,7 +25,7 @@ public class VentanaMejoras extends JFrame{
 		setSize(500, 400);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		
+		//hbchhcfvihv
 		JPanel pIzquierda = new JPanel(new BorderLayout());
 			JLabel lTitulo = new JLabel("Mejoras");
 			JLabelGraficoAjustado lgaPersonaje = new JLabelGraficoAjustado("", 200, 200);
