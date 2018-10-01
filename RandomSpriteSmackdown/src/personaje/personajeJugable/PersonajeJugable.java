@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 
 import personaje.Personaje;
 
@@ -13,9 +14,9 @@ public class PersonajeJugable extends Personaje {
 	private Point posicion;
 	private int puntosMejora;
 	private JLabel lPersonaje;
-	private JLabel lFuerza;
-	private JLabel lVida;
-	private JLabel lVelocidad;
+	private JProgressBar pbFuerza;
+	private JProgressBar pbVida;
+	private JProgressBar pbVelocidad;
 
 	public PersonajeJugable(String nombre,Point posicion, int fuerza, int vida, int velocidad) {
 		super(fuerza, vida, velocidad);
@@ -51,40 +52,47 @@ public class PersonajeJugable extends Personaje {
 	public JLabel getlPersonaje() {
 		if(lPersonaje == null) {
 			lPersonaje = new JLabel();
+			
 		}
 		return lPersonaje;
 	}
 
-	public JLabel getlFuerza() {
-		if(lFuerza == null) {
-			lFuerza = new JLabel();
+	public JProgressBar getPbFuerza() {
+		if(pbFuerza == null) {
+			pbFuerza = new JProgressBar(0, 100);
+			pbFuerza.setValue(this.getFuerza());
 		}
-		return lFuerza;
+		return pbFuerza;
 	}
 
-	public JLabel getlVida() {
-		if(lVida == null) {
-			lVida = new JLabel();
+	public JProgressBar getPbVida() {
+		if(pbVida == null) {
+			pbVida = new JProgressBar(0, 100);
+			pbVida.setValue(this.getVida());
 		}
-		return lVida;
-	}
-
-	public JLabel getlVelocidad() {
-		if(lVelocidad == null) {
-			lVelocidad = new JLabel();
-		}
-		return lVelocidad;
+		return pbVida;
 	}
 	
+
+	public JProgressBar getPbVelocidad() {
+		if(pbVelocidad == null) {
+			pbVelocidad = new JProgressBar(0, 100);
+			pbVelocidad.setValue(this.getVelocidad());
+		}
+		return pbVelocidad;
+	}
+
 	public void SubirNivel(String statASubir) {
 		if(this.getPuntosMejora() > 0) {
 			if(statASubir.equals("fuerza")) {
-				this.setFuerza(this.getFuerza() + 1);
+				this.setFuerza(this.getFuerza() + 10);
 			}else if (statASubir.equals("vida")) {
-				this.setVida(this.getVida() + 1);
+				this.setVida(this.getVida() + 10);
 			}else {
-				this.setVelocidad(this.getVelocidad() + 1);
+				this.setVelocidad(this.getVelocidad() + 10);
 			}
+			
+			this.setPuntosMejora(getPuntosMejora() - 1);
 		}	
 	}
 

@@ -41,6 +41,7 @@ public class VentanaStage extends JFrame {
 		JProgressBar jpbVida1 = new JProgressBar();
 		JProgressBar jpbVida2 = new JProgressBar();
 		JLabel lTiempo = new JLabel("60");
+		JLabel lStage = new JLabel("Stage 1");
 		
 		lTiempo.setFont(new Font("", Font.PLAIN, 40));
 		
@@ -72,6 +73,8 @@ public class VentanaStage extends JFrame {
 		
 		pNorte.add(pNs);
 		pNorte.add(pNi);
+		
+		pNs.add(lStage);
 		
 		pNi.add(pN1); 
 		pNi.add(pN2); 
