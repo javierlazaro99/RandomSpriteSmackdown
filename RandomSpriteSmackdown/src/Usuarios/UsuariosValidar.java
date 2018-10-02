@@ -72,7 +72,7 @@ public class UsuariosValidar {
 					String[] usuarioleido= division[0].split(":");
 					
 					datos.add(usuarioleido[1]);
-					//Falta lo de los esapcios
+					//Falta lo de los espacios
 				}
 				if(validacion(datos, usuarioTexto, passwordTexto)) {
 					br.close();
@@ -100,4 +100,11 @@ public class UsuariosValidar {
 		}
 		
 	}
+	//Falta por hacer 
+	public void guardar() {
+		 
+	 }
+	 public void cargar() {
+		 
+	 }
 }
