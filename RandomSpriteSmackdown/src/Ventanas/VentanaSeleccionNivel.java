@@ -33,7 +33,7 @@ public class VentanaSeleccionNivel extends JFrame{
 		JPanel pInferior = new JPanel(new FlowLayout(FlowLayout.LEFT));
 			JPanel pHome = new JPanel();
 				JButton bHome = new JButton("Home");
-		
+		//
 		JPanel pPrincipal = new JPanel(new GridLayout(2, 4));
 			JPanel pN1 = new JPanel();
 				JButton bN1 = new JButton("Nivel 1");
