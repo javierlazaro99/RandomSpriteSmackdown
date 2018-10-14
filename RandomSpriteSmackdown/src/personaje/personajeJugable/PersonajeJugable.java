@@ -83,12 +83,12 @@ public class PersonajeJugable extends Personaje {
 	}
 
 	public void SubirNivel(String statASubir) {
-		if(this.getPuntosMejora() > 0) {
+		if(this.getPuntosMejora() > 0 && statASubir.equals("fuerza") || statASubir.equals("vida") || statASubir.equals("velocidad")) {
 			if(statASubir.equals("fuerza")) {
 				this.setFuerza(this.getFuerza() + 10);
-			}else if (statASubir.equals("vida")) {
+			}if (statASubir.equals("vida")) {
 				this.setVida(this.getVida() + 10);
-			}else {
+			}if (statASubir.equals("velocidad")){
 				this.setVelocidad(this.getVelocidad() + 10);
 			}
 			

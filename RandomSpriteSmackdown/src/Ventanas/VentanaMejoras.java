@@ -115,7 +115,7 @@ public class VentanaMejoras extends JFrame{
 	
 	public static void main(String[] args) {
 		
-		PersonajeJugable pPrincip = new PersonajeJugable("", new Point(0, 0), 1, 1, 1);
+		PersonajeJugable pPrincip = new PersonajeJugable("", new Point(0, 0), 10, 10, 10);
 		pPrincip.setPuntosMejora(10);
 		VentanaMejoras vm = new VentanaMejoras(pPrincip);
 		
