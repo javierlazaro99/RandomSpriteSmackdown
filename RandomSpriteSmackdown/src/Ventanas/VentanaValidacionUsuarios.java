@@ -1,16 +1,21 @@
 package Ventanas;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class VentanaValidacionUsuarios extends JFrame{
+import Usuarios.UsuariosValidar;
 
-	public VentanaValidacionUsuarios() {
+public class VentanaValidacionUsuarios extends JFrame{
+	UsuariosValidar usuario;
+	public VentanaValidacionUsuarios(int codigo) {
 		// TODO Auto-generated constructor stub
 		//Ventana 
 		setTitle("Usuarios");
@@ -35,6 +40,39 @@ public class VentanaValidacionUsuarios extends JFrame{
 		add(confirmar);
 		//Eventos
 		
+		confirmar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				boolean estado ;
+				if(codigo == 0) {//Login
+					 estado =usuario.leer(nombre, password);
+					if(estado==true) {
+						//Ventana general
+						VentanaPrincipal ventana = new VentanaPrincipal();
+						ventana.setVisible(true);
+					}else {
+						JOptionPane.showMessageDialog(null, "Datos erroneos");
+					}
+				}else {
+						estado =usuario.leer(nombre, password);
+					if(estado==true) {
+						JOptionPane.showMessageDialog(null,"Ya existe un usuario con ese nombre");
+						nombre.setText("");
+						password.setText("");
+					}else {
+						VentanaPrincipal ventana = new VentanaPrincipal();
+						ventana.setVisible(true);
+					}
+				}
+				
+			}
+		});
 		
+	}
+	public static void main(String[] args) {
+		VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(1);
+		ventana.setVisible(true);
 	}
 }

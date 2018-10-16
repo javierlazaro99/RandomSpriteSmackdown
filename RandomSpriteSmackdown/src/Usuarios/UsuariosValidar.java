@@ -58,7 +58,7 @@ public class UsuariosValidar {
 		}
 		
 	}
-	public boolean leer(UsuariosValidar usuario,JTextField usuarioTexto,JPasswordField passwordTexto) {
+	public boolean leer(JTextField usuarioTexto,JPasswordField passwordTexto) {
 		
 		try {
 			File fi = new File(path);
@@ -77,6 +77,8 @@ public class UsuariosValidar {
 				if(validacion(datos, usuarioTexto, passwordTexto)) {
 					br.close();
 					return true;
+				}else {
+					datos.removeAll(datos);
 				}
 				
 				
@@ -101,10 +103,10 @@ public class UsuariosValidar {
 		
 	}
 	//Falta por hacer 
-	public void guardar() {
+	public void guardarDatos() {
 		 
 	 }
-	 public void cargar() {
+	 public void cargarDatos() {
 		 
 	 }
 }

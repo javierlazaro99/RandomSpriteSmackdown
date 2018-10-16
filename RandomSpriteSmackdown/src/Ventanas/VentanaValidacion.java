@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import Personalizados.JLabelGraficoAjustado;
 
 public class VentanaValidacion extends JFrame {
-	
+	int codigo;
 	public VentanaValidacion() {
 		// TODO Auto-generated constructor stub
 		
@@ -37,6 +37,7 @@ public class VentanaValidacion extends JFrame {
 		panelcentral.setLayout(new GridLayout(0, 1));
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		//Meter en contenedores
+		
 		add(panel,BorderLayout.CENTER);
 		panel.add(panelcentral);
 		add(titulo,BorderLayout.NORTH);
@@ -51,7 +52,9 @@ public class VentanaValidacion extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+				VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(0);
+				ventana.setVisible(true);
+				VentanaValidacion.this.dispose();
 			}
 		});
 		
@@ -60,6 +63,9 @@ public class VentanaValidacion extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(1);
+				ventana.setVisible(true);
+				VentanaValidacion.this.dispose();
 				
 			}
 		});
