@@ -11,7 +11,6 @@ import personaje.Personaje;
 public class PersonajeJugable extends Personaje {
 	
 	private String nombre;
-	private Point posicion;
 	private int puntosMejora;
 	private JLabel lPersonaje;
 	private JProgressBar pbFuerza;
@@ -19,9 +18,8 @@ public class PersonajeJugable extends Personaje {
 	private JProgressBar pbVelocidad;
 
 	public PersonajeJugable(String nombre,Point posicion, int fuerza, int vida, int velocidad) {
-		super(fuerza, vida, velocidad);
+		super(posicion, fuerza, vida, velocidad);
 		this.nombre = nombre;
-		this.posicion = posicion;
 		this.puntosMejora = 0;
 	}
 
@@ -31,14 +29,6 @@ public class PersonajeJugable extends Personaje {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-	
-	public Point getPosicion() {
-		return posicion;
-	}
-
-	public void setPosicion(Point posicion) {
-		this.posicion = posicion;
 	}
 
 	public int getPuntosMejora() {
@@ -60,7 +50,7 @@ public class PersonajeJugable extends Personaje {
 	public JProgressBar getPbFuerza() {
 		if(pbFuerza == null) {
 			pbFuerza = new JProgressBar(0, 100);
-			pbFuerza.setValue(this.getFuerza());
+			pbFuerza.setValue((int) this.getFuerza());
 		}
 		return pbFuerza;
 	}
@@ -68,7 +58,7 @@ public class PersonajeJugable extends Personaje {
 	public JProgressBar getPbVida() {
 		if(pbVida == null) {
 			pbVida = new JProgressBar(0, 100);
-			pbVida.setValue(this.getVida());
+			pbVida.setValue((int) this.getVida());
 		}
 		return pbVida;
 	}
@@ -77,13 +67,13 @@ public class PersonajeJugable extends Personaje {
 	public JProgressBar getPbVelocidad() {
 		if(pbVelocidad == null) {
 			pbVelocidad = new JProgressBar(0, 100);
-			pbVelocidad.setValue(this.getVelocidad());
+			pbVelocidad.setValue((int) this.getVelocidad());
 		}
 		return pbVelocidad;
 	}
 
 	public void SubirNivel(String statASubir) {
-		if(this.getPuntosMejora() > 0 && statASubir.equals("fuerza") || statASubir.equals("vida") || statASubir.equals("velocidad")) {
+		if(this.getPuntosMejora() > 0 && (statASubir.equals("fuerza") || statASubir.equals("vida") || statASubir.equals("velocidad"))) {
 			if(statASubir.equals("fuerza")) {
 				this.setFuerza(this.getFuerza() + 10);
 			}if (statASubir.equals("vida")) {
@@ -98,16 +88,11 @@ public class PersonajeJugable extends Personaje {
 
 	@Override
 	public void DarGolpe(Personaje enemigo) {
-		
+		double distancia = Math.sqrt(Math.pow(enemigo.getPosicion().getX() - this.getPosicion().getX(), 2));
+		if(distancia < 5) {
+			//Se ejecuta el pegado
+			enemigo.setVida(enemigo.getVida() - 0.1 * this.getFuerza());
+			enemigo.Rebotar(this);
+		}
 	}
-
-	@Override
-	public void Moverse(JFrame stage, int movX, int movY) {
-		posicion.setLocation(posicion.getX() + movX, posicion.getY() + movY);
-		
-	}
-	
-	
-	
-
 }

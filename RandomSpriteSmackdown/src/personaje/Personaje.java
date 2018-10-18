@@ -1,40 +1,52 @@
 package personaje;
 
+import java.awt.Point;
+
 import javax.swing.JFrame;
 
 public abstract class Personaje {
 	
-	private int fuerza;
-	private int vida;
-	private int velocidad;
+	private Point posicion;
+	private double fuerza;
+	private double vida;
+	private double velocidad;
 	
-	public Personaje(int fuerza, int vida, int velocidad) {
+	public Personaje(Point posicion, double fuerza, double vida, double velocidad) {
+		this.posicion = posicion;
 		this.fuerza = fuerza;
 		this.vida = vida;
 		this.velocidad = velocidad;
 	}
 
-	public int getFuerza() {
+	public Point getPosicion() {
+		return posicion;
+	}
+	
+	public void setPosicion(Point posicion) {
+		this.posicion = posicion;
+	}
+
+	public double getFuerza() {
 		return fuerza;
 	}
 
-	public void setFuerza(int fuerza) {
+	public void setFuerza(double fuerza) {
 		this.fuerza = fuerza;
 	}
 
-	public int getVida() {
+	public double getVida() {
 		return vida;
 	}
 
-	public void setVida(int vida) {
+	public void setVida(double vida) {
 		this.vida = vida;
 	}
 
-	public int getVelocidad() {
+	public double getVelocidad() {
 		return velocidad;
 	}
 
-	public void setVelocidad(int velocidad) {
+	public void setVelocidad(double velocidad) {
 		this.velocidad = velocidad;
 	}
 
@@ -49,5 +61,17 @@ public abstract class Personaje {
 	 */
 	public abstract void DarGolpe(Personaje enemigo);
 	
-	public abstract void Moverse(JFrame stage, int movX, int movY);
+	public void Moverse(JFrame stage, double movX, double movY) {
+		posicion.setLocation(posicion.getX() + movX * getVelocidad(), posicion.getY() + movY * getVelocidad());
+	}
+	
+	public void Rebotar(Personaje golpeador) {
+		double pos = this.getPosicion().getX();
+		
+		if(golpeador.getPosicion().getX() <= this.getPosicion().getX()) { //El golpeado está a la derecha
+			posicion.setLocation(pos + pos/2, getPosicion().getY());
+		}else if (golpeador.getPosicion().getX() >= this.getPosicion().getX()) {
+			posicion.setLocation(pos -  pos/2, getPosicion().getY());
+		}
+	}
 }
