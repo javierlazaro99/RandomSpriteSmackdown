@@ -74,7 +74,7 @@ public class VentanaMejoras extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pPrincipal.SubirNivel("fuerza");
-				pPrincipal.getPbFuerza().setValue(pPrincipal.getFuerza());
+				pPrincipal.getPbFuerza().setValue((int) pPrincipal.getFuerza());
 				
 				lPuntosMejora.setText("Puntos mejora: " + pPrincipal.getPuntosMejora());
 				
@@ -87,7 +87,7 @@ public class VentanaMejoras extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pPrincipal.SubirNivel("vida");
-				pPrincipal.getPbVida().setValue(pPrincipal.getVida());
+				pPrincipal.getPbVida().setValue((int) pPrincipal.getVida());
 				
 				lPuntosMejora.setText("Puntos mejora: " + pPrincipal.getPuntosMejora());
 				
@@ -100,7 +100,7 @@ public class VentanaMejoras extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pPrincipal.SubirNivel("velocidad");
-				pPrincipal.getPbVelocidad().setValue(pPrincipal.getVelocidad());
+				pPrincipal.getPbVelocidad().setValue((int) pPrincipal.getVelocidad());
 				
 				lPuntosMejora.setText("Puntos mejora: " + pPrincipal.getPuntosMejora());
 				
