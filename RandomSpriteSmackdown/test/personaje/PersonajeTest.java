@@ -10,8 +10,8 @@ import org.junit.Test;
 
 public class PersonajeTest {
 	
-	Personaje p1;
-	Personaje p2;
+	private Personaje p1;
+	private Personaje p2;
 
 	@Before
 	public void setUp() throws Exception {
@@ -47,6 +47,7 @@ public class PersonajeTest {
 	
 	@Test 
 	public void RebotarTest1() {
+		//Prueba para comprobar si se hace bien el rebote hacia la izquierda
 		p1.setPosicion(new Point(50, 0));
 		p2.setPosicion(new Point(60, 0));
 		
@@ -59,6 +60,7 @@ public class PersonajeTest {
 	
 	@Test 
 	public void RebotarTest2() {
+		//Prueba para comprobar si se hace bien el rebote hacia la derecha
 		p1.setPosicion(new Point(50, 0));
 		p2.setPosicion(new Point(50, 0));
 		

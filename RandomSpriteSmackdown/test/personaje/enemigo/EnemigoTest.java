@@ -12,8 +12,8 @@ import personaje.personajeJugable.PersonajeJugable;
 
 public class EnemigoTest {
 	
-	PersonajeJugable pj1;
-	Enemigo enem;
+	private PersonajeJugable pj1;
+	private Enemigo enem;
 
 	@Before
 	public void setUp() throws Exception {
@@ -27,6 +27,7 @@ public class EnemigoTest {
 
 	@Test
 	public void IAMovimientoTest1() {
+		//Prueba de IA perseguir hascia la izquerda
 		pj1.Moverse(null, 1, 0);
 		enem.IAMovimiento(pj1);
 		assertEquals(new Point(90, 0), enem.getPosicion());
@@ -35,6 +36,7 @@ public class EnemigoTest {
 
 	@Test
 	public void IAMovimientoTest2() {
+		//Prubeba de IA perseguir hacia la derecha
 		pj1.Moverse(null, 20, 0);
 		enem.IAMovimiento(pj1);
 		assertEquals(new Point(110, 0), enem.getPosicion());
@@ -42,6 +44,7 @@ public class EnemigoTest {
 	
 	@Test
 	public void IAMovimientoTest3() {
+		//Prueba IA movimiento si el jugador está pegado a la IA
 		pj1.Moverse(null, 10, 0);
 		enem.IAMovimiento(pj1);
 		assertEquals(new Point(100, 0), enem.getPosicion());
