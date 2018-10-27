@@ -6,13 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
+import Personalizados.JLabelGraficoAjustado;
 import personaje.Personaje;
 
 public class PersonajeJugable extends Personaje {
 	
 	private String nombre;
 	private int puntosMejora;
-	private JLabel lPersonaje;
+	private JLabelGraficoAjustado lPersonaje;
 	private JProgressBar pbFuerza;
 	private JProgressBar pbVida;
 	private JProgressBar pbVelocidad;
@@ -39,10 +40,9 @@ public class PersonajeJugable extends Personaje {
 		this.puntosMejora = puntosMejora;
 	}
 	
-	public JLabel getlPersonaje() {
+	public JLabelGraficoAjustado getlPersonaje() {
 		if(lPersonaje == null) {
-			lPersonaje = new JLabel();
-			
+			lPersonaje = new JLabelGraficoAjustado(this.toString(), 50, 100);
 		}
 		return lPersonaje;
 	}
