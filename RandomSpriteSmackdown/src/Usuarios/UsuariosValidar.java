@@ -58,7 +58,7 @@ public class UsuariosValidar {
 		}
 		
 	}
-	public boolean leer(JTextField usuarioTexto,JPasswordField passwordTexto) {
+	public UsuariosValidar leer(JTextField usuarioTexto,JPasswordField passwordTexto) {
 		
 		try {
 			File fi = new File(path);
@@ -75,8 +75,9 @@ public class UsuariosValidar {
 					//Falta lo de los espacios
 				}
 				if(validacion(datos, usuarioTexto, passwordTexto)) {
+					UsuariosValidar usuario = new UsuariosValidar(usuarioTexto.getText(), passwordTexto.getText());
 					br.close();
-					return true;
+					return usuario;
 				}else {
 					datos.removeAll(datos);
 				}
@@ -91,7 +92,7 @@ public class UsuariosValidar {
 			e.printStackTrace();
 		}
 		JOptionPane.showMessageDialog(null, "No has introducido los datos correctamente o el usuario no existe");	
-		return false;
+		return null;
 		
 	}
 	public boolean validacion(ArrayList<String> datos,JTextField usuarioTexto,JPasswordField passwordTexto) {

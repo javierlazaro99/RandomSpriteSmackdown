@@ -39,8 +39,8 @@ public class VentanaValidacion extends JFrame {
 		//Meter en contenedores
 		
 		add(panel,BorderLayout.CENTER);
-		panel.add(panelcentral);
 		add(titulo,BorderLayout.NORTH);
+		panel.add(panelcentral);
 		panelcentral.add(login);
 		panelcentral.add(register);
 		panelcentral.add(exit);

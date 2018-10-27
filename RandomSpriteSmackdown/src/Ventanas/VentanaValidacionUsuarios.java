@@ -3,8 +3,14 @@ package Ventanas;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Properties;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -15,7 +21,9 @@ import Usuarios.UsuariosValidar;
 
 public class VentanaValidacionUsuarios extends JFrame{
 	UsuariosValidar usuario;
+	Properties propiedades;
 	public VentanaValidacionUsuarios(int codigo) {
+		propiedades = new Properties();
 		// TODO Auto-generated constructor stub
 		//Ventana 
 		setTitle("Usuarios");
@@ -31,12 +39,13 @@ public class VentanaValidacionUsuarios extends JFrame{
 		JLabel passwordtexto = new JLabel("Password");
 		JPasswordField password = new JPasswordField();
 		JButton confirmar = new JButton("Aceptar");
-		
+		JCheckBox ultimoUsuario = new JCheckBox("Quiere que se guarde su usuario para la proxima vez");
 		//Modificaciones
 		add(logintexto);
 		add(nombre);
 		add(passwordtexto);
 		add(password);
+		add(ultimoUsuario);
 		add(confirmar);
 		//Eventos
 		
@@ -45,30 +54,53 @@ public class VentanaValidacionUsuarios extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				boolean estado ;
+				UsuariosValidar estado ;
 				if(codigo == 0) {//Login
 					 estado =usuario.leer(nombre, password);
-					if(estado==true) {
+					if(estado==null) {
+						JOptionPane.showMessageDialog(null, "Datos erroneos");
+					}else {
+						
 						//Ventana general
 						VentanaPrincipal ventana = new VentanaPrincipal();
 						ventana.setVisible(true);
-					}else {
-						JOptionPane.showMessageDialog(null, "Datos erroneos");
 					}
 				}else {
 						estado =usuario.leer(nombre, password);
-					if(estado==true) {
+					if(estado==null) {
+						VentanaPrincipal ventana = new VentanaPrincipal();
+						ventana.setVisible(true);
+						
+					}else {
 						JOptionPane.showMessageDialog(null,"Ya existe un usuario con ese nombre");
 						nombre.setText("");
 						password.setText("");
-					}else {
-						VentanaPrincipal ventana = new VentanaPrincipal();
-						ventana.setVisible(true);
 					}
 				}
 				
 			}
 		});
+		ultimoUsuario.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				propiedades.setProperty("Nombre", usuario.getNombre());
+				OutputStream fichero;
+				try {
+					fichero = new FileOutputStream("src/");
+					propiedades.storeToXML(fichero,"Usuario guardado" );
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+				
+				
+			}
+		});
+		
 		
 	}
 	public static void main(String[] args) {
