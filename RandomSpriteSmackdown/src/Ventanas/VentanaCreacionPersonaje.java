@@ -11,6 +11,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -146,6 +148,8 @@ public class VentanaCreacionPersonaje extends JFrame {
 				VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(personajeCreado);
 				ventana.setVisible(true);
 				VentanaCreacionPersonaje.this.dispose();
+				Logger logger= VentanaValidacionUsuarios.getLogger();
+				logger.log(Level.INFO, "Personaje principal creado");
 			}
 		});
 		

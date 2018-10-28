@@ -84,6 +84,8 @@ public class UsuariosValidar {
 				
 				
 			}
+			JOptionPane.showMessageDialog(null, "No has introducido los datos correctamente o el usuario no existe");	
+		return null;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -91,8 +93,8 @@ public class UsuariosValidar {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		JOptionPane.showMessageDialog(null, "No has introducido los datos correctamente o el usuario no existe");	
 		return null;
+		
 		
 	}
 	public boolean validacion(ArrayList<String> datos,JTextField usuarioTexto,JPasswordField passwordTexto) {

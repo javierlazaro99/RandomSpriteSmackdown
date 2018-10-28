@@ -1,6 +1,6 @@
 package Ventanas;
 
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -10,6 +10,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Properties;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -21,11 +24,33 @@ import javax.swing.JTextField;
 
 import Usuarios.UsuariosValidar;
 
+
 public class VentanaValidacionUsuarios extends JFrame{
-	UsuariosValidar usuario;
-	Properties propiedades;
+	private UsuariosValidar usuario;
+	private static Properties propiedades;
+	private static Logger logger = Logger.getLogger("Loggerjuego");
+	static {
+			 try {
+			
+			FileHandler h = new FileHandler(
+					 "JUEGO.log.xml", true );
+			logger.addHandler( h);
+			 logger.setLevel(Level.FINEST);
+			 h.setLevel(Level.FINEST);
+			 } catch (SecurityException | IOException e) {
+			 logger.log( Level.SEVERE, "Error en creación fichero log" );
+			 }
+		}
+	
+	public static Logger getLogger() {
+		return logger;
+	}
+	
 	public VentanaValidacionUsuarios(int codigo) {
+		//LOGGER
+		
 		propiedades = new Properties();
+		
 		InputStream dato;
 		
 			
@@ -71,12 +96,17 @@ public class VentanaValidacionUsuarios extends JFrame{
 						//Ventana general
 						VentanaPrincipal ventana = new VentanaPrincipal(0,null);//Aqui habria que leer los datos para conseguir el personaje
 						ventana.setVisible(true);
+						logger.log(Level.INFO, "Usuario:"+estado.getNombre()+" Se ha loggueado");
 					}
 				}else {
-						estado =usuario.leer(nombre, password);
+					estado =usuario.leer(nombre, password);
 					if(estado==null) {
-						VentanaPrincipal ventana = new VentanaPrincipal(1,null);
-						ventana.setVisible(true);
+					usuario.setNombre(logintexto.getText());
+					usuario.setPassword(password.getText());
+					usuario.guardar(usuario);
+					VentanaPrincipal ventana = new VentanaPrincipal(1,null);
+					ventana.setVisible(true);
+					logger.log(Level.INFO,"Usuario:"+usuario.getNombre()+" Se ha registrado");
 						
 					}else {
 						JOptionPane.showMessageDialog(null,"Ya existe un usuario con ese nombre");
