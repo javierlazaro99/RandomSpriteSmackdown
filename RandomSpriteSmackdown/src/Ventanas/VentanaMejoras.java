@@ -109,6 +109,16 @@ public class VentanaMejoras extends JFrame{
 			}
 		});
 		
+		bHome.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(pPrincipal);
+				ventana.setVisible(true);
+				VentanaMejoras.this.dispose();
+				
+			}
+		});
 		
 		
 	}

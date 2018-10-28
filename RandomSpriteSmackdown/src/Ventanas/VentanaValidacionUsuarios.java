@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Properties;
 
@@ -24,6 +26,11 @@ public class VentanaValidacionUsuarios extends JFrame{
 	Properties propiedades;
 	public VentanaValidacionUsuarios(int codigo) {
 		propiedades = new Properties();
+		InputStream dato;
+		
+			
+		
+	
 		// TODO Auto-generated constructor stub
 		//Ventana 
 		setTitle("Usuarios");
@@ -62,13 +69,13 @@ public class VentanaValidacionUsuarios extends JFrame{
 					}else {
 						
 						//Ventana general
-						VentanaPrincipal ventana = new VentanaPrincipal();
+						VentanaPrincipal ventana = new VentanaPrincipal(0,null);//Aqui habria que leer los datos para conseguir el personaje
 						ventana.setVisible(true);
 					}
 				}else {
 						estado =usuario.leer(nombre, password);
 					if(estado==null) {
-						VentanaPrincipal ventana = new VentanaPrincipal();
+						VentanaPrincipal ventana = new VentanaPrincipal(1,null);
 						ventana.setVisible(true);
 						
 					}else {
@@ -87,7 +94,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 				propiedades.setProperty("Nombre", usuario.getNombre());
 				OutputStream fichero;
 				try {
-					fichero = new FileOutputStream("src/");
+					fichero = new FileOutputStream("Usuarioultimo");
 					propiedades.storeToXML(fichero,"Usuario guardado" );
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block

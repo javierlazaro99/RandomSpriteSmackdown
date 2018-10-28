@@ -26,6 +26,7 @@ import Personalizados.Fondo;
 import Personalizados.FondoSwing;
 import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
+import personaje.personajeJugable.PersonajeJugable;
 
 
 
@@ -38,7 +39,7 @@ public class VentanaPrincipal extends JFrame{
 	JButton botonAyuda;
 	
 	boolean sigue = true;
-	public VentanaPrincipal() {
+	public VentanaPrincipal(int codigo,PersonajeJugable pPrincipal) {
 		// TODO Auto-generated constructor stub
 		//Settings
 		setTitle("RandomSprite Smackdown");
@@ -112,7 +113,15 @@ public class VentanaPrincipal extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				if(codigo==0) {
+					VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(pPrincipal);
+					ventana.setVisible(true);
+					VentanaPrincipal.this.dispose();
+				}else {
+					VentanaCreacionPersonaje ventana = new VentanaCreacionPersonaje();
+					ventana.setVisible(true);
+					VentanaPrincipal.this.dispose();
+				}
 				
 			}
 		});
@@ -148,7 +157,7 @@ public class VentanaPrincipal extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		VentanaPrincipal ventana = new VentanaPrincipal();
+		VentanaPrincipal ventana = new VentanaPrincipal(0,null);
 		ventana.setVisible(true);
 	}
 }

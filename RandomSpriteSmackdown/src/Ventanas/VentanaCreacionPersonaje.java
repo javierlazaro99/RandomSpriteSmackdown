@@ -143,6 +143,9 @@ public class VentanaCreacionPersonaje extends JFrame {
 				personajeSeleccionado.setNombre(tfNombre.getText());
 				personajeCreado = personajeSeleccionado;
 				setVisible(false);
+				VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(personajeCreado);
+				ventana.setVisible(true);
+				VentanaCreacionPersonaje.this.dispose();
 			}
 		});
 		

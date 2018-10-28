@@ -10,13 +10,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Personalizados.JPanelBackground;
+import personaje.personajeJugable.PersonajeJugable;
 
 public class VentanaSeleccionNivel extends JFrame{
 	
-	public VentanaSeleccionNivel() {
+	public VentanaSeleccionNivel(PersonajeJugable pJPrincipal) {
 		
 		setSize(600, 500);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -30,10 +32,11 @@ public class VentanaSeleccionNivel extends JFrame{
 				JLabel lTitulo = new JLabel("Selecciona un nivel para comenzar");
 				lTitulo.setFont(new Font("", Font.BOLD, 30));
 		
-		JPanel pInferior = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JPanel pInferior = new JPanel(new GridLayout(0,2));
 			JPanel pHome = new JPanel();
 				JButton bHome = new JButton("Home");
-		//
+			JPanel pMejoras = new JPanel();
+				JButton bMejoras = new JButton("Mejoras");
 		JPanel pPrincipal = new JPanel(new GridLayout(2, 4));
 			JPanel pN1 = new JPanel();
 				JButton bN1 = new JButton("Nivel 1");
@@ -68,7 +71,8 @@ public class VentanaSeleccionNivel extends JFrame{
 		
 		pInferior.add(pHome);
 		pHome.add(bHome);
-		
+		pInferior.add(pMejoras);
+		pMejoras.add(bMejoras);
 		bN1.addActionListener(new ActionListener() {
 			
 			@Override
@@ -86,10 +90,30 @@ public class VentanaSeleccionNivel extends JFrame{
 				
 			}
 		});
+		bHome.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaPrincipal ventana = new VentanaPrincipal(1,pJPrincipal);
+				ventana.setVisible(true);
+				VentanaSeleccionNivel.this.dispose();
+				
+			}
+		});
+		bMejoras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaMejoras ventana= new VentanaMejoras( pJPrincipal);
+				ventana.setVisible(true);
+				VentanaSeleccionNivel.this.dispose();
+				
+			}
+		});
 	}
 	
 	public static void main(String[] args) {
-		VentanaSeleccionNivel vsn = new VentanaSeleccionNivel();
+		VentanaSeleccionNivel vsn = new VentanaSeleccionNivel(null);
 		vsn.setVisible(true);
 	}
 
