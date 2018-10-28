@@ -4,6 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -13,15 +19,27 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Personalizados.JLabelGraficoAjustado;
+import control.ControlHistoria;
+import personaje.Personaje;
 import personaje.personajeJugable.PersonajeJugable;
 
 public class VentanaCreacionPersonaje extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
-	private ArrayList<PersonajeJugable> listaPersonajes = new ArrayList<>();
+	private ArrayList<PersonajeJugable> listaPersonajes = new ArrayList<PersonajeJugable>();
+	private PersonajeJugable personajeSeleccionado;
 	private PersonajeJugable personajeCreado;
 	
+	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10);
+	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20);
+	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5);
+	
+	
 	public VentanaCreacionPersonaje() {
+		
+		listaPersonajes.add(personajeRegular); listaPersonajes.add(personajeRápido); listaPersonajes.add(personajeLento);
+		personajeSeleccionado = listaPersonajes.get(0);
+		personajeCreado = null;
 		
 		setSize(700, 600);
 		setLocationRelativeTo(null);
@@ -34,7 +52,6 @@ public class VentanaCreacionPersonaje extends JFrame {
 			JPanel pPrincipal = new JPanel(new GridLayout(1, 2));
 				JPanel pIzquierda = new JPanel(new BorderLayout());
 					JPanel pSprite = new JPanel(new BorderLayout());
-						JLabelGraficoAjustado lPersonaje = new JLabelGraficoAjustado("Personaje 1", 50, 100);
 					JPanel pCambioSprite = new JPanel(new FlowLayout(FlowLayout.CENTER));
 						JButton bAtras = new JButton("Previous");
 						JButton bAlante = new JButton("Next");
@@ -60,7 +77,7 @@ public class VentanaCreacionPersonaje extends JFrame {
 		pFondo.add(pPrincipal, BorderLayout.CENTER);
 			pPrincipal.add(pIzquierda);
 				pIzquierda.add(pSprite, BorderLayout.CENTER);
-					pSprite.add(lPersonaje, BorderLayout.CENTER);
+					pSprite.add(personajeSeleccionado.getlPersonaje(), BorderLayout.CENTER);
 				pIzquierda.add(pCambioSprite, BorderLayout.SOUTH);
 					pCambioSprite.add(bAtras);
 					pCambioSprite.add(bAlante);
@@ -72,24 +89,111 @@ public class VentanaCreacionPersonaje extends JFrame {
 					pEstadisticas.add(lEstadisticas);
 					pEstadisticas.add(pFuerza);
 						pFuerza.add(new JLabel("Fuerza"));
-						//Añadir las barras de progreso de cada personaje
+						pFuerza.add(personajeSeleccionado.getPbFuerza());
 					pEstadisticas.add(pVida);
 						pVida.add(new JLabel("Vida"));
-					
+						pVida.add(personajeSeleccionado.getPbVida());
 					pEstadisticas.add(pVelocidad);
 						pVelocidad.add(new JLabel("Velociad"));
+						pVelocidad.add(personajeSeleccionado.getPbVelocidad());
 						
 				pDerecha.add(pConfirmar, BorderLayout.SOUTH);
 					pConfirmar.add(bConfirmar);
 		pFondo.add(pSalida, BorderLayout.SOUTH);
 			pSalida.add(bSalir);	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////
+		///////////Listerens///////////////////////////////////////////////////////////////////////
+			
+		bAlante.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				cambiarSiguiente();
+				pSprite.removeAll();
+				pSprite.add(personajeSeleccionado.getlPersonaje());
 				
+				pFuerza.remove(1);
+				pFuerza.add(personajeSeleccionado.getPbFuerza());
+				pVida.remove(1);
+				pVida.add(personajeSeleccionado.getPbVida());
+				pVelocidad.remove(1);
+				pVelocidad.add(personajeSeleccionado.getPbVelocidad());
+				repaint();
+				revalidate();
+			}
+		});
+		
+		bAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cambiarAnterior();
+				pSprite.removeAll();
+				pSprite.add(personajeSeleccionado.getlPersonaje());
+				repaint();
+				revalidate();
+			}
+		});
+		
+		bConfirmar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				personajeSeleccionado.setNombre(tfNombre.getText());
+				personajeCreado = personajeSeleccionado;
+				setVisible(false);
+			}
+		});
+		
+		bSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				
+			}
+		});
+			
+	}
+	
+	/**
+	 * Método para escoger el siguiente personaje seleccionable de la lista de personajes que se 
+	 * le muestran al jugador
+	 */
+	private void cambiarSiguiente() {
+		PersonajeJugable personajeParaCambiar;
+		if(listaPersonajes.indexOf(personajeSeleccionado) != listaPersonajes.size() - 1) {
+			personajeParaCambiar = listaPersonajes.get(listaPersonajes.indexOf(personajeSeleccionado) + 1);
+		}else {
+			personajeParaCambiar = listaPersonajes.get(0);
+		}
+		personajeSeleccionado = personajeParaCambiar;
+	}
+	
+	/**
+	 * Método para escoger el anterior personaje seleccionable de la lista de personajes que se 
+	 * le muestran al jugador
+	 */
+	private void cambiarAnterior() {
+		PersonajeJugable personajeParaCambiar;
+		if(listaPersonajes.indexOf(personajeSeleccionado) != 0) {
+			personajeParaCambiar = listaPersonajes.get(listaPersonajes.indexOf(personajeSeleccionado) - 1);
+		}else {
+			personajeParaCambiar = listaPersonajes.get(listaPersonajes.size() - 1);
+		}
+		personajeSeleccionado = personajeParaCambiar;
+	}
+	
+	public PersonajeJugable devolverCreado() {
+		return personajeCreado;
 	}
 	
 	
+	
 	public static void main(String[] args) {
-		VentanaCreacionPersonaje vcp = new VentanaCreacionPersonaje();
-		vcp.setVisible(true);
+		ControlHistoria ch = new ControlHistoria();
+		ch.Historia();
 	}
 	
 	
