@@ -19,6 +19,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -26,6 +27,8 @@ import Usuarios.UsuariosValidar;
 
 
 public class VentanaValidacionUsuarios extends JFrame{
+	
+	private static final long serialVersionUID = 1L;
 	private UsuariosValidar usuario;
 	private static Properties propiedades;
 	private static Logger logger = Logger.getLogger("Loggerjuego");
@@ -56,39 +59,64 @@ public class VentanaValidacionUsuarios extends JFrame{
 			
 		
 	
-		// TODO Auto-generated constructor stub
 		//Ventana 
-		setTitle("Usuarios");
+		setTitle("Registro de inicio");
 		setSize(400, 600);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setLayout(new GridLayout(0, 1));
+		setLayout(new BorderLayout());
+		
+		//Creación de paneles
+		JPanel pPrincipal = new JPanel(new GridLayout(5, 1));
+			JPanel pRelleno1 = new JPanel();
+			JPanel pRelleno2 = new JPanel();
+			JPanel pNickContra = new JPanel(new GridLayout(2, 1));
+				JPanel pPrincipalNick = new JPanel();
+				JPanel pPrincipalContraseña = new JPanel();
+			JPanel pRelleno3 = new JPanel();
+			JPanel pRelleno4 = new JPanel();
+		JPanel pInferior = new JPanel(new GridLayout(2, 1));
+			JPanel pInferiorUltimoUser = new JPanel();
+			JPanel pInferiorAceptar = new JPanel();
 		
 		//Creacion de contenedores
-		JLabel logintexto= new JLabel("Nombre");
-		JTextField nombre = new JTextField();
-		JLabel passwordtexto = new JLabel("Password");
-		JPasswordField password = new JPasswordField();
-		JButton confirmar = new JButton("Aceptar");
-		JCheckBox ultimoUsuario = new JCheckBox("Quiere que se guarde su usuario para la proxima vez");
+			//Guille tío se ponen letras delante de los componentes para organizarte!!!! NULO
+		JLabel lLogintexto= new JLabel("Nombre");
+		JTextField tfNombre = new JTextField(10);
+		JLabel lPasswordtexto = new JLabel("Password");
+		JPasswordField tfPassword = new JPasswordField(10);
+		JButton bConfirmar = new JButton("Aceptar");
+		JCheckBox cbUltimoUsuario = new JCheckBox("Quiere que se guarde su usuario para la proxima vez");
+		
+		
 		//Modificaciones
-		add(logintexto);
-		add(nombre);
-		add(passwordtexto);
-		add(password);
-		add(ultimoUsuario);
-		add(confirmar);
+		add(pPrincipal, BorderLayout.CENTER);
+			pPrincipal.add(pRelleno1);
+			pPrincipal.add(pNickContra);
+				pNickContra.add(pPrincipalNick);
+					pPrincipalNick.add(lLogintexto); pPrincipalNick.add(tfNombre);
+				pNickContra.add(pPrincipalContraseña);
+					pPrincipalContraseña.add(lPasswordtexto); pPrincipalContraseña.add(tfPassword);
+			pPrincipal.add(pRelleno2);
+			pPrincipal.add(pRelleno3);
+			pPrincipal.add(pRelleno4);
+		
+		add(pInferior, BorderLayout.SOUTH);
+			pInferior.add(pInferiorUltimoUser);
+				pInferiorUltimoUser.add(cbUltimoUsuario);
+			pInferior.add(pInferiorAceptar);
+				pInferiorAceptar.add(bConfirmar);
 		//Eventos
 		
-		confirmar.addActionListener(new ActionListener() {
+		bConfirmar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				UsuariosValidar estado ;
 				if(codigo == 0) {//Login
-					 estado =usuario.leer(nombre, password);
+					 estado =usuario.leer(tfNombre, tfPassword);
 					if(estado==null) {
 						JOptionPane.showMessageDialog(null, "Datos erroneos");
 					}else {
@@ -99,10 +127,10 @@ public class VentanaValidacionUsuarios extends JFrame{
 						logger.log(Level.INFO, "Usuario:"+estado.getNombre()+" Se ha loggueado");
 					}
 				}else {
-					estado =usuario.leer(nombre, password);
+					estado =usuario.leer(tfNombre, tfPassword);
 					if(estado==null) {
-					usuario.setNombre(logintexto.getText());
-					usuario.setPassword(password.getText());
+					usuario.setNombre(lLogintexto.getText());
+					usuario.setPassword(String.valueOf(tfPassword.getPassword()));
 					usuario.guardar(usuario);
 					VentanaPrincipal ventana = new VentanaPrincipal(1,null);
 					ventana.setVisible(true);
@@ -110,14 +138,14 @@ public class VentanaValidacionUsuarios extends JFrame{
 						
 					}else {
 						JOptionPane.showMessageDialog(null,"Ya existe un usuario con ese nombre");
-						nombre.setText("");
-						password.setText("");
+						tfNombre.setText("");
+						tfPassword.setText("");
 					}
 				}
 				
 			}
 		});
-		ultimoUsuario.addActionListener(new ActionListener() {
+		cbUltimoUsuario.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -141,7 +169,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 		
 	}
 	public static void main(String[] args) {
-		VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(1);
+		VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(0);
 		ventana.setVisible(true);
 	}
 }
