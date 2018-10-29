@@ -94,7 +94,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaPrincipal ventana = new VentanaPrincipal(1,pJPrincipal);
+				VentanaPrincipal ventana = new VentanaPrincipal(0,pJPrincipal);
 				ventana.setVisible(true);
 				VentanaSeleccionNivel.this.dispose();
 				
