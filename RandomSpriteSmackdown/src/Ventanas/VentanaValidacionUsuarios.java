@@ -3,12 +3,22 @@ package Ventanas;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -31,7 +41,13 @@ public class VentanaValidacionUsuarios extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private UsuariosValidar usuario;
 	private static Properties propiedades;
+	private static Connection con;
+	private static Statement s;
+	private static ResultSet rs;
 	private static Logger logger = Logger.getLogger("Loggerjuego");
+	private boolean cbActivado;
+	private JTextField tfNombre;
+	private JCheckBox cbUltimoUsuario;
 	static {
 			 try {
 			
@@ -50,15 +66,6 @@ public class VentanaValidacionUsuarios extends JFrame{
 	}
 	
 	public VentanaValidacionUsuarios(int codigo) {
-		//LOGGER
-		
-		propiedades = new Properties();
-		
-		InputStream dato;
-		
-			
-		
-	
 		//Ventana 
 		setTitle("Registro de inicio");
 		setSize(400, 600);
@@ -83,11 +90,11 @@ public class VentanaValidacionUsuarios extends JFrame{
 		//Creacion de contenedores
 			//Guille tío se ponen letras delante de los componentes para organizarte!!!! NULO
 		JLabel lLogintexto= new JLabel("Nombre");
-		JTextField tfNombre = new JTextField(10);
+		tfNombre = new JTextField(10);
 		JLabel lPasswordtexto = new JLabel("Password");
 		JPasswordField tfPassword = new JPasswordField(10);
 		JButton bConfirmar = new JButton("Aceptar");
-		JCheckBox cbUltimoUsuario = new JCheckBox("Quiere que se guarde su usuario para la proxima vez");
+		cbUltimoUsuario = new JCheckBox("Quiere que se guarde su usuario para la proxima vez");
 		
 		
 		//Modificaciones
@@ -107,8 +114,11 @@ public class VentanaValidacionUsuarios extends JFrame{
 				pInferiorUltimoUser.add(cbUltimoUsuario);
 			pInferior.add(pInferiorAceptar);
 				pInferiorAceptar.add(bConfirmar);
-		//Eventos
 		
+		//Carga de properties
+		cargarProperties();
+					
+		//Eventos
 		bConfirmar.addActionListener(new ActionListener() {
 			
 			@Override
@@ -149,27 +159,73 @@ public class VentanaValidacionUsuarios extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				propiedades.setProperty("Nombre", usuario.getNombre());
-				OutputStream fichero;
-				try {
-					fichero = new FileOutputStream("Usuarioultimo");
-					propiedades.storeToXML(fichero,"Usuario guardado" );
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} 
-				
+			}
+		});
+		
+		//Las Propiedades deberían guardarse cuando se de a aceptar, pero por ahora así que está roto el botón
+		addWindowListener(new WindowAdapter() {
+			
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				if(cbUltimoUsuario.isSelected()) {
+					propiedades.setProperty("Nick", tfNombre.getText());
+					propiedades.setProperty("cbGuardarUsuario", "ON");
+					guardarProperties();
+					logger.log(Level.INFO, "Guardadas nuevas propiedades");
+				}
 				
 			}
 		});
 		
-		
 	}
+	
+	private void guardarProperties() {
+		try {
+			propiedades.storeToXML( new PrintStream( "propiedadesInicioSesion.xml" ), "Propiedades de inicio sesion" );
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void cargarProperties() {
+		propiedades = new Properties();
+		try {
+			propiedades.loadFromXML( new FileInputStream( "propiedadesInicioSesion.xml" ) );
+			logger.log(Level.INFO, "Archivo Properties Cargado");
+			try {
+				tfNombre.setText(propiedades.getProperty("Nick"));
+				if(propiedades.getProperty("cbGuardarUsuario").equals("ON")) {
+					cbUltimoUsuario.setSelected(true);
+				}
+			} catch (Exception e) {
+				
+			}
+		} catch (Exception e) {
+			logger.log(Level.INFO, "No existe archivo properties");
+		} //No hay fichero Properties
+	}
+	
 	public static void main(String[] args) {
 		VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(0);
 		ventana.setVisible(true);
+		
+		//Creación de la tabla Usuario en nuestra BD
+		//Si la tabla ya se ha creado no hace nada, trabaja con la existente
+		String comando = "";
+		try {
+			Class.forName("org.sqlite.JDBC");
+			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
+			s = con.createStatement();
+			try {
+				comando = "create table Usuario(nick STRING, password STRING)";
+				logger.log(Level.INFO, comando);
+				s.executeUpdate(comando);
+			} catch (SQLException e) {
+				logger.log(Level.INFO, "Tabla ya existente");
+			}
+		}	catch (SQLException|ClassNotFoundException e) {
+			logger.log(Level.SEVERE, "Error en la clase, último comando: " + comando);
+			e.printStackTrace();
+		}
 	}
 }
