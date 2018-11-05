@@ -41,7 +41,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private UsuariosValidar usuario;
 	private static Properties propiedades;
-	private static Connection con;
+	private static Connection con=null;
 	private static Statement s;
 	private static ResultSet rs;
 	private static Logger logger = Logger.getLogger("Loggerjuego");
@@ -88,7 +88,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 			JPanel pInferiorAceptar = new JPanel();
 		
 		//Creacion de contenedores
-			//Guille tío se ponen letras delante de los componentes para organizarte!!!! NULO
+			
 		JLabel lLogintexto= new JLabel("Nombre");
 		tfNombre = new JTextField(10);
 		JLabel lPasswordtexto = new JLabel("Password");
