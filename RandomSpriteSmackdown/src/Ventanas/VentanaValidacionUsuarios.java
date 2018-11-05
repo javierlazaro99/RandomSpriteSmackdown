@@ -152,7 +152,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 						tfPassword.setText("");
 					}
 				}
-				
+				VentanaValidacionUsuarios.this.dispose();
 			}
 		});
 		cbUltimoUsuario.addActionListener(new ActionListener() {
