@@ -39,7 +39,7 @@ import Usuarios.UsuariosValidar;
 public class VentanaValidacionUsuarios extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
-	private UsuariosValidar usuario;
+	private UsuariosValidar usuario = new UsuariosValidar("", "");
 	private static Properties propiedades;
 	private static Connection con=null;
 	private static Statement s;

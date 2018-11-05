@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>Propiedades de inicio sesion</comment>
-<entry key="Nick"/>
-<entry key="cbGuararUsuario">ON</entry>
+<entry key="Nick">ff</entry>
 <entry key="cbGuardarUsuario">ON</entry>
+<entry key="cbGuararUsuario">ON</entry>
 </properties>
