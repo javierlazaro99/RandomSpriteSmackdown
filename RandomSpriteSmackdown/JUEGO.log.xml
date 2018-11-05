@@ -1,132 +1,9 @@
 <?xml version="1.0" encoding="windows-1252" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
 <record>
-  <date>2018-10-29T11:23:38</date>
-  <millis>1540808618470</millis>
-  <sequence>0</sequence>
-  <logger>Loggerjuego</logger>
-  <level>INFO</level>
-  <class>Ventanas.VentanaCreacionPersonaje$3</class>
-  <method>actionPerformed</method>
-  <thread>14</thread>
-  <message>Personaje principal creado</message>
-</record>
-<record>
-  <date>2018-10-29T11:24:15</date>
-  <millis>1540808655708</millis>
-  <sequence>1</sequence>
-  <logger>Loggerjuego</logger>
-  <level>INFO</level>
-  <class>Ventanas.VentanaCreacionPersonaje$3</class>
-  <method>actionPerformed</method>
-  <thread>14</thread>
-  <message>Personaje principal creado</message>
-</record>
-<record>
-  <date>2018-10-29T11:24:39</date>
-  <millis>1540808679406</millis>
-  <sequence>2</sequence>
-  <logger>Loggerjuego</logger>
-  <level>INFO</level>
-  <class>Ventanas.VentanaCreacionPersonaje$3</class>
-  <method>actionPerformed</method>
-  <thread>14</thread>
-  <message>Personaje principal creado</message>
-</record>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2018-10-29T11:27:54</date>
-  <millis>1540808874988</millis>
-  <sequence>0</sequence>
-  <logger>Loggerjuego</logger>
-  <level>INFO</level>
-  <class>Ventanas.VentanaCreacionPersonaje$3</class>
-  <method>actionPerformed</method>
-  <thread>17</thread>
-  <message>Personaje principal creado</message>
-</record>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2018-10-30T17:57:54</date>
-  <millis>1540918674638</millis>
+  <date>2018-11-05T11:18:48</date>
+  <millis>1541413128906</millis>
   <sequence>0</sequence>
   <logger>Loggerjuego</logger>
   <level>INFO</level>
@@ -136,34 +13,8 @@
   <message>No existe archivo properties</message>
 </record>
 <record>
-  <date>2018-10-30T17:57:55</date>
-  <millis>1540918675395</millis>
-  <sequence>1</sequence>
-  <logger>Loggerjuego</logger>
-  <level>INFO</level>
-  <class>Ventanas.VentanaValidacionUsuarios</class>
-  <method>main</method>
-  <thread>1</thread>
-  <message>create table Usuario(nick STRING, password STRING)</message>
-</record>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2018-10-30T17:58:39</date>
-  <millis>1540918719994</millis>
-  <sequence>0</sequence>
-  <logger>Loggerjuego</logger>
-  <level>INFO</level>
-  <class>Ventanas.VentanaValidacionUsuarios</class>
-  <method>cargarProperties</method>
-  <thread>1</thread>
-  <message>No existe archivo properties</message>
-</record>
-<record>
-  <date>2018-10-30T17:58:40</date>
-  <millis>1540918720558</millis>
+  <date>2018-11-05T11:18:49</date>
+  <millis>1541413129846</millis>
   <sequence>1</sequence>
   <logger>Loggerjuego</logger>
   <level>INFO</level>
@@ -173,8 +24,8 @@
   <message>create table Usuario(nick STRING, password STRING)</message>
 </record>
 <record>
-  <date>2018-10-30T17:58:40</date>
-  <millis>1540918720561</millis>
+  <date>2018-11-05T11:18:49</date>
+  <millis>1541413129851</millis>
   <sequence>2</sequence>
   <logger>Loggerjuego</logger>
   <level>INFO</level>
@@ -184,6 +35,8 @@
   <message>Tabla ya existente</message>
 </record>
 </log>
+<<<<<<< HEAD
+=======
 <?xml version="1.0" encoding="windows-1252" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
@@ -662,6 +515,7 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
+<<<<<<< HEAD
 <?xml version="1.0" encoding="windows-1252" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
@@ -679,4 +533,42 @@
   <method>cargarProperties</method>
   <thread>16</thread>
   <message>Archivo Properties Cargado</message>
+=======
+>>>>>>> branch 'master' of https://github.com/javierlazaro99/RandomSpriteSmackdown.git
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-05T11:20:44</date>
+  <millis>1541413244308</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>1</thread>
+  <message>No existe archivo properties</message>
+</record>
+<record>
+  <date>2018-11-05T11:20:45</date>
+  <millis>1541413245037</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>create table Usuario(nick STRING, password STRING)</message>
+</record>
+<record>
+  <date>2018-11-05T11:20:45</date>
+  <millis>1541413245045</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Tabla ya existente</message>
+>>>>>>> branch 'master' of https://github.com/javierlazaro99/RandomSpriteSmackdown.git
 </record>
