@@ -59,8 +59,8 @@ public class VentanaPrincipal extends JFrame{
 		JButton botonPractica = new JButton(new ImageIcon("src/Practica1.gif"));
 		JButton boton1VS1= new JButton(new ImageIcon("src/1VS11.gif"));
 		JButton botonAyuda = new JButton(new ImageIcon("src/Ayuda1.gif"));
-		JButton B =  new  JButton();
-		B.add(new JLabelGraficoAjustado("src/Titulo.PNG", B.getSize().width, B.getSize().height));
+		
+		
 		//Modificaciones
 		//LAYAOUT
 		this.setLayout(new BorderLayout());

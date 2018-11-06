@@ -139,7 +139,8 @@ public class VentanaValidacionUsuarios extends JFrame{
 				}else {
 					estado =usuario.leer(tfNombre, tfPassword);
 					if(estado==null) {
-					usuario.setNombre(lLogintexto.getText());
+						System.out.println( "A ver: " + lLogintexto.getText());
+					usuario.setNombre(tfNombre.getText());
 					usuario.setPassword(String.valueOf(tfPassword.getPassword()));
 					usuario.guardar(usuario);
 					VentanaPrincipal ventana = new VentanaPrincipal(1,null);

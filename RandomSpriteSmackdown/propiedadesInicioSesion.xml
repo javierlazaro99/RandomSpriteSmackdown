@@ -3,6 +3,6 @@
 <properties>
 <comment>Propiedades de inicio sesion</comment>
 <entry key="Nick">ff</entry>
-<entry key="cbGuardarUsuario">ON</entry>
 <entry key="cbGuararUsuario">ON</entry>
+<entry key="cbGuardarUsuario">ON</entry>
 </properties>

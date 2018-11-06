@@ -57,7 +57,8 @@ public class UsuariosValidar {
 		try {
 			con= DriverManager.getConnection( "jdbc:sqlite:randomspritesmackdown.db") ;
 			s=con.createStatement();
-			String query= "INSERT INTO USUARIO VALUES("+usuario.getNombre()+","+usuario.getPassword()+")";
+			String query= "INSERT INTO USUARIO VALUES('"+usuario.getNombre()+"','"+usuario.getPassword()+"')";
+			System.out.println( query );
 			s.executeUpdate(query);
 			logger.log(Level.INFO, "Usuario guardado correctamente en la BD");
 		} catch (SQLException e) {
