@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -19,6 +21,7 @@ import personaje.personajeJugable.PersonajeJugable;
 public class VentanaSeleccionOponente extends JFrame{
 	private ArrayList<PersonajeJugable> listaPersonajes = new ArrayList<PersonajeJugable>();
 	private PersonajeJugable personajeSeleccionado;
+	private PersonajeJugable personajeSeleccionado1;
 	private PersonajeJugable personajeCreado;
 	
 	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10);
@@ -28,7 +31,8 @@ public class VentanaSeleccionOponente extends JFrame{
 	public VentanaSeleccionOponente(PersonajeJugable personajePersonalizado) {
 		// TODO Auto-generated constructor stub
 		listaPersonajes.add(personajeRegular); listaPersonajes.add(personajeRápido); listaPersonajes.add(personajeLento);listaPersonajes.add(personajePersonalizado);
-		personajeSeleccionado = listaPersonajes.get(0);
+		personajeSeleccionado = listaPersonajes.get(1);
+		personajeSeleccionado1 = listaPersonajes.get(0);
 		personajeCreado = null;
 		
 		setTitle("Seleccion de Srickmans");
@@ -44,8 +48,9 @@ public class VentanaSeleccionOponente extends JFrame{
 		JPanel panelCentral = new JPanel();
 		panelCentral.setLayout(new FlowLayout());
 				JPanel panelIzquierdo = new JPanel();
-				panelIzquierdo.setLayout(new FlowLayout());
+					//panelIzquierdo.setLayout(new GridLayout(1,1));
 					JPanel panelIzInterior = new JPanel();	
+						panelIzInterior.setLayout(new BorderLayout());
 						JPanel panelInteriorCentral = new JPanel();
 							JLabelGraficoAjustado labelImage = new JLabelGraficoAjustado("",300 , 400);
 						JPanel panelInteriorInferior = new JPanel();
@@ -61,15 +66,16 @@ public class VentanaSeleccionOponente extends JFrame{
 				JPanel panelDerecho = new JPanel();
 				panelDerecho.setLayout(new FlowLayout());
 					JPanel panelIzInterior1 = new JPanel();	
+						panelIzInterior1.setLayout(new BorderLayout());
 						JPanel panelInteriorCentral1 = new JPanel();
-						JLabelGraficoAjustado labelImage1 = new JLabelGraficoAjustado("",300 , 400);
+							JLabelGraficoAjustado labelImage1 = new JLabelGraficoAjustado("",300 , 400);
 						JPanel panelInteriorInferior1 = new JPanel();
 						panelInteriorInferior1.setLayout(new GridLayout(0, 2));
 							JButton atras1 = new JButton("Previous");
 							JButton siguiente1 = new JButton("Next");
 					JPanel panelDerInterior1 = new JPanel();
 						JPanel pEstadisticas1 = new JPanel(new GridLayout(4, 1));
-						JLabel lEstadisticas1 = new JLabel("Estadísticas");
+							JLabel lEstadisticas1 = new JLabel("Estadísticas");
 						JPanel pFuerza1 = new JPanel(new FlowLayout());
 						JPanel pVida1 = new JPanel(new FlowLayout());
 						JPanel pVelocidad1 = new JPanel(new FlowLayout());
@@ -87,25 +93,162 @@ public class VentanaSeleccionOponente extends JFrame{
 		add(panelCentral,BorderLayout.CENTER);
 			panelCentral.add(panelIzquierdo);
 				panelIzquierdo.add(panelIzInterior);
-					panelIzInterior.add(panelInteriorCentral);
+					panelIzInterior.add(panelInteriorCentral,BorderLayout.CENTER);
 						panelInteriorCentral.add(labelImage);
-					panelIzInterior.add(panelInteriorInferior);
+					panelIzInterior.add(panelInteriorInferior,BorderLayout.SOUTH);
 						panelInteriorInferior.add(atras);
 						panelInteriorInferior.add(siguiente);
+				panelIzquierdo.add(panelDerInterior);
 					panelDerInterior.add(pEstadisticas);
 						pEstadisticas.add(lEstadisticas);
-					panelDerInterior.add(pVida);
+					pEstadisticas.add(pVida);
 						pVida.add(new JLabel("Vida"));	
 						pVida.add(personajeSeleccionado.getPbVida());
-					panelDerInterior.add(pFuerza);
+					pEstadisticas.add(pFuerza);
 						pFuerza.add(new JLabel("Fuerza"));
 						pFuerza.add(personajeSeleccionado.getPbFuerza());
-					panelDerInterior.add(pVelocidad);
+					pEstadisticas.add(pVelocidad);
 						pVelocidad.add(new JLabel("Velocidad"));
 						pVelocidad.add(personajeSeleccionado.getPbVelocidad());
-					
-						
+			panelCentral.add(panelDerecho);
+				panelDerecho.add(panelIzInterior1);
+					panelIzInterior1.add(panelInteriorCentral1,BorderLayout.CENTER);
+						panelInteriorCentral1.add(labelImage1);
+					panelIzInterior1.add(panelInteriorInferior1,BorderLayout.SOUTH);
+						panelInteriorInferior1.add(atras1);
+						panelInteriorInferior1.add(siguiente1);
+				panelDerecho.add(panelDerInterior1);
+					panelDerInterior1.add(pEstadisticas1);
+						pEstadisticas1.add(lEstadisticas1);
+					pEstadisticas1.add(pVida1);
+							pVida1.add(new JLabel("Vida"));
+							pVida1.add(personajeSeleccionado1.getPbVida());
+							pEstadisticas1.add(pFuerza1);
+								pFuerza1.add(new JLabel("Fuerza"));
+								pFuerza1.add(personajeSeleccionado1.getPbFuerza());
+							pEstadisticas1.add(pVelocidad1);
+								pVelocidad1.add(new JLabel("Velocidad"));
+								pVelocidad1.add(personajeSeleccionado1.getPbVelocidad());
+	add(panelInferior,BorderLayout.SOUTH);	
+		panelInferior.add(panelIzInferior);
+				panelIzInferior.add(bAtras);
+			panelInferior.add(panelDerInferior);
+				panelDerInferior.add(bConfirmar);
+	//Listeners
+		atras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				cambiarAnterior(personajeSeleccionado);
+				labelImage.removeAll();
+				labelImage.add(personajeSeleccionado.getlPersonaje());
+				repaint();
+				cambioDeJprogresBar(personajeSeleccionado, pFuerza, pVida, pVelocidad);
+			}
+		});
+		siguiente.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				cambiarSiguiente(personajeSeleccionado);
+				labelImage.removeAll();
+				labelImage.add(personajeSeleccionado.getlPersonaje());
+				
+				
+				repaint();
+				cambioDeJprogresBar(personajeSeleccionado, pFuerza, pVida, pVelocidad);
+			}
+		});	
+		atras1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				cambiarAnterior(personajeSeleccionado1);
+				labelImage1.removeAll();
+				labelImage1.add(personajeSeleccionado1.getlPersonaje());
+				
+				repaint();
+				cambioDeJprogresBar(personajeSeleccionado1, pFuerza1, pVida1, pVelocidad1);
+				
+			}
+		});
+		siguiente1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				cambiarSiguiente(personajeSeleccionado1);
+				labelImage.removeAll();
+				labelImage.add(personajeSeleccionado1.getlPersonaje());
+				
+				repaint();
+				cambioDeJprogresBar(personajeSeleccionado1, pFuerza1, pVida1, pVelocidad1);
+				
+			}
+		});
+		bAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaPrincipal ventana = new VentanaPrincipal(0, personajePersonalizado);
+				ventana.setVisible(true);
+				VentanaSeleccionOponente.this.dispose();
+			}
+		});
+		bConfirmar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 	}
+	/**
+	 * Método para escoger el siguiente personaje seleccionable de la lista de personajes que se 
+	 * le muestran al jugador
+	 */
+	private void cambiarSiguiente(PersonajeJugable personajeSeleccionado ) {
+		PersonajeJugable personajeParaCambiar;
+		if(listaPersonajes.indexOf(personajeSeleccionado) != listaPersonajes.size() - 1) {
+			personajeParaCambiar = listaPersonajes.get(listaPersonajes.indexOf(personajeSeleccionado) + 1);
+		}else {
+			personajeParaCambiar = listaPersonajes.get(0);
+		}
+		personajeSeleccionado = personajeParaCambiar;
+	}
+	
+	/**
+	 * Método para escoger el anterior personaje seleccionable de la lista de personajes que se 
+	 * le muestran al jugador
+	 */
+	private void cambiarAnterior(PersonajeJugable personajeSeleccionado ) {
+		PersonajeJugable personajeParaCambiar;
+		if(listaPersonajes.indexOf(personajeSeleccionado) != 0) {
+			personajeParaCambiar = listaPersonajes.get(listaPersonajes.indexOf(personajeSeleccionado) - 1);
+		}else {
+			personajeParaCambiar = listaPersonajes.get(listaPersonajes.size() - 1);
+		}
+		personajeSeleccionado = personajeParaCambiar;
+	}
+	private void cambioDeJprogresBar(PersonajeJugable personajeSeleccionado,JPanel pFuerza,JPanel pVida,JPanel pVelocidad ) {
+		pFuerza.remove(1);
+		pFuerza.add(personajeSeleccionado.getPbFuerza());
+		pVida.remove(1);
+		pVida.add(personajeSeleccionado.getPbVida());
+		pVelocidad.remove(1);
+		pVelocidad.add(personajeSeleccionado.getPbVelocidad());
+		revalidate();
+	}
+	public PersonajeJugable devolverCreado() {
+		return personajeCreado;
+	}
+	
 	public static void main(String[] args) {
 		VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(null);
 		ventana.setVisible(true);
