@@ -15,10 +15,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Personalizados.JLabelGraficoAjustado;
+import Usuarios.UsuariosValidar;
 import control.ControlHistoria;
 import personaje.personajeJugable.PersonajeJugable;
 	
 public class VentanaSeleccionOponente extends JFrame{
+	private ArrayList<PersonajeJugable> listaPersonajes1 = new ArrayList<PersonajeJugable>();
 	private ArrayList<PersonajeJugable> listaPersonajes = new ArrayList<PersonajeJugable>();
 	private PersonajeJugable personajeSeleccionado;
 	private PersonajeJugable personajeSeleccionado1;
@@ -27,12 +29,15 @@ public class VentanaSeleccionOponente extends JFrame{
 	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10);
 	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20);
 	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5);
-	
-	public VentanaSeleccionOponente(PersonajeJugable personajePersonalizado) {
+	private PersonajeJugable personajeRegular1 = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10);
+	private PersonajeJugable personajeRápido1 = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20);
+	private PersonajeJugable personajeLento1 = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5);
+	public VentanaSeleccionOponente(int codigo, UsuariosValidar user, PersonajeJugable pPrincipal, int nivelesCompletados, int victorias1v1) {
 		// TODO Auto-generated constructor stub
-		listaPersonajes.add(personajeRegular); listaPersonajes.add(personajeRápido); listaPersonajes.add(personajeLento);listaPersonajes.add(personajePersonalizado);
-		personajeSeleccionado = listaPersonajes.get(1);
-		personajeSeleccionado1 = listaPersonajes.get(0);
+		listaPersonajes.add(personajeRegular); listaPersonajes.add(personajeRápido); listaPersonajes.add(personajeLento);listaPersonajes.add(pPrincipal);
+		personajeSeleccionado = listaPersonajes.get(0);
+		listaPersonajes1.add(personajeRegular1); listaPersonajes1.add(personajeRápido1); listaPersonajes1.add(personajeLento1);
+		personajeSeleccionado1 = listaPersonajes1.get(0);
 		personajeCreado = null;
 		
 		setTitle("Seleccion de Srickmans");
@@ -143,8 +148,9 @@ public class VentanaSeleccionOponente extends JFrame{
 				cambiarAnterior(personajeSeleccionado);
 				labelImage.removeAll();
 				labelImage.add(personajeSeleccionado.getlPersonaje());
-				repaint();
 				cambioDeJprogresBar(personajeSeleccionado, pFuerza, pVida, pVelocidad);
+				repaint();
+				
 			}
 		});
 		siguiente.addActionListener(new ActionListener() {
@@ -156,9 +162,9 @@ public class VentanaSeleccionOponente extends JFrame{
 				labelImage.removeAll();
 				labelImage.add(personajeSeleccionado.getlPersonaje());
 				
-				
-				repaint();
 				cambioDeJprogresBar(personajeSeleccionado, pFuerza, pVida, pVelocidad);
+				repaint();
+				
 			}
 		});	
 		atras1.addActionListener(new ActionListener() {
@@ -169,9 +175,9 @@ public class VentanaSeleccionOponente extends JFrame{
 				cambiarAnterior(personajeSeleccionado1);
 				labelImage1.removeAll();
 				labelImage1.add(personajeSeleccionado1.getlPersonaje());
-				
-				repaint();
 				cambioDeJprogresBar(personajeSeleccionado1, pFuerza1, pVida1, pVelocidad1);
+				repaint();
+				
 				
 			}
 		});
@@ -183,9 +189,9 @@ public class VentanaSeleccionOponente extends JFrame{
 				cambiarSiguiente(personajeSeleccionado1);
 				labelImage.removeAll();
 				labelImage.add(personajeSeleccionado1.getlPersonaje());
-				
-				repaint();
 				cambioDeJprogresBar(personajeSeleccionado1, pFuerza1, pVida1, pVelocidad1);
+				repaint();
+				
 				
 			}
 		});
@@ -194,7 +200,7 @@ public class VentanaSeleccionOponente extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaPrincipal ventana = new VentanaPrincipal(0, personajePersonalizado);
+				VentanaPrincipal ventana = new VentanaPrincipal(codigo,user,pPrincipal,nivelesCompletados,victorias1v1);
 				ventana.setVisible(true);
 				VentanaSeleccionOponente.this.dispose();
 			}
