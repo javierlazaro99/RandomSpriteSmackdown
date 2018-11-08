@@ -19,6 +19,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -34,6 +35,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Usuarios.UsuariosValidar;
+import personaje.personajeJugable.PersonajeJugable;
 
 
 public class VentanaValidacionUsuarios extends JFrame{
@@ -44,7 +46,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 	private static Connection con=null;
 	private static Statement s;
 	private static ResultSet rs;
-	private static Logger logger = Logger.getLogger("Loggerjuego");
+	public static Logger logger = Logger.getLogger("Loggerjuego");
 	private boolean cbActivado;
 	private JTextField tfNombre;
 	private JCheckBox cbUltimoUsuario;
@@ -132,7 +134,18 @@ public class VentanaValidacionUsuarios extends JFrame{
 					}else {
 						
 						//Ventana general
-						VentanaPrincipal ventana = new VentanaPrincipal(0,null);//Aqui habria que leer los datos para conseguir el personaje
+						//Parte de BD para conseguir el personaje y los datos de la partida
+						ArrayList<Object> listaObjetos = new ArrayList<Object>();
+						cargarPartidaDesdeBD(estado, listaObjetos);
+						
+						//Esto probablemente sea mejor hacerlo con un for, por si queremos ampliar, pero por ahora vale
+						int nivelesCompletados = (int) listaObjetos.get(0);
+						int victorias1v1 = (int) listaObjetos.get(1);
+						int puntosMejora = (int)listaObjetos.get(2);
+						PersonajeJugable pj = (PersonajeJugable) listaObjetos.get(3);
+						pj.setPuntosMejora(puntosMejora);
+						
+						VentanaPrincipal ventana = new VentanaPrincipal(0, estado, pj, nivelesCompletados, victorias1v1);
 						ventana.setVisible(true);
 						logger.log(Level.INFO, "Usuario:"+estado.getNombre()+" Se ha loggueado");
 					}
@@ -143,7 +156,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 					usuario.setNombre(tfNombre.getText());
 					usuario.setPassword(String.valueOf(tfPassword.getPassword()));
 					usuario.guardar(usuario);
-					VentanaPrincipal ventana = new VentanaPrincipal(1,null);
+					VentanaPrincipal ventana = new VentanaPrincipal(1,estado, null, 0, 0);
 					ventana.setVisible(true);
 					logger.log(Level.INFO,"Usuario:"+usuario.getNombre()+" Se ha registrado");
 						
@@ -206,6 +219,60 @@ public class VentanaValidacionUsuarios extends JFrame{
 		} //No hay fichero Properties
 	}
 	
+	private ArrayList<Object> cargarPartidaDesdeBD(UsuariosValidar user , ArrayList<Object> listaRespuestas) {
+		String query = "";
+		int codPartida = 0;
+		int nivelesCompletados = 0;
+		int victorias1v1 = 0;
+		String nombrePersonaje = "";
+		int fuerza = 0;
+		int vida = 0;
+		int velocidad = 0;
+		int puntosMejora = 0;
+		PersonajeJugable personaje;
+		try {
+			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
+			s = con.createStatement();
+			try {//Parte de obtención de datos de Partida
+				query = "SELECT * FROM Partida WHERE nick=" + "'" + user.getNombre() + "'";
+				ResultSet rs = s.executeQuery(query);
+				while(rs.next()) {
+					codPartida = rs.getInt("cod_partida");
+					nivelesCompletados = rs.getInt("niveles_comp");
+					victorias1v1 = rs.getInt("victorias1v1");
+				}
+				
+				listaRespuestas.add(nivelesCompletados);
+				listaRespuestas.add(victorias1v1);
+			} catch (SQLException e) {
+				logger.log(Level.SEVERE, "Error de ejecución en: " + query);
+			}
+			
+			try {//Parte de objetnción de datos de Personaje
+				query = "SELECT * FROM Personaje WHERE cod_partida=" + "'" + codPartida + "'";
+				ResultSet rs = s.executeQuery(query);
+				while(rs.next()) {
+					nombrePersonaje = rs.getString("nom_personaje");
+					fuerza = rs.getInt("fuerza");
+					vida = rs.getInt("vida");
+					velocidad = rs.getInt("velocidad");
+					puntosMejora = rs.getInt("puntos_mejora");
+				}
+				
+				listaRespuestas.add(puntosMejora);
+				personaje = new PersonajeJugable(nombrePersonaje, new Point(0, 0), fuerza, vida, velocidad);
+				listaRespuestas.add(personaje);
+
+			} catch (SQLException e) {
+				logger.log(Level.SEVERE, "Error de ejecución en: " + query);
+			}
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE, "Error al conectarse con la BD");
+		}
+		
+		return listaRespuestas;
+	}
+	
 	public static void main(String[] args) {
 		VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(0);
 		ventana.setVisible(true);
@@ -218,11 +285,35 @@ public class VentanaValidacionUsuarios extends JFrame{
 			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
 			s = con.createStatement();
 			try {
-				comando = "create table Usuario(nick STRING, password STRING)";
+				comando = "create table Usuario(nick STRING PRIMARY KEY NOT NULL, password STRING)";
 				logger.log(Level.INFO, comando);
 				s.executeUpdate(comando);
 			} catch (SQLException e) {
-				logger.log(Level.INFO, "Tabla ya existente");
+				logger.log(Level.INFO, "Tabla T1 ya existente");
+			}
+			try {
+				comando = "create table Partida("
+						+ "cod_partida NUMERIC PRIMARY KEY NOT NULL,"
+						+ "niveles_comp NUMERIC CHECK(niveles_comp >= 0),"
+						+ "victorias1v1 NUMERIC,"
+						+ "nick STRING REFERENCES Usuario(nick))";
+				logger.log(Level.INFO, comando);
+				s.executeUpdate(comando);
+			} catch (SQLException e) {
+				logger.log(Level.INFO, "Tabla T2 ya existente");
+			}
+			try {
+				comando = "create table Personaje("
+						+ "nom_personaje STRING,"
+						+ "fuerza NUMERIC,"
+						+ "vida NUMERIC,"
+						+ "velocidad NUMERIC,"
+						+ "puntos_mejora NUMERIC,"
+						+ "cod_partida NUMERIC REFERENCES Partida(cod_partida))";
+				logger.log(Level.INFO, comando);
+				s.executeUpdate(comando);
+			} catch (SQLException e) {
+				logger.log(Level.INFO, "Tabla T3 ya existente");
 			}
 		}	catch (SQLException|ClassNotFoundException e) {
 			logger.log(Level.SEVERE, "Error en la clase, último comando: " + comando);

@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Personalizados.JLabelGraficoAjustado;
+import Usuarios.UsuariosValidar;
 import control.ControlHistoria;
 import personaje.Personaje;
 import personaje.personajeJugable.PersonajeJugable;
@@ -37,7 +38,7 @@ public class VentanaCreacionPersonaje extends JFrame {
 	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5);
 	
 	
-	public VentanaCreacionPersonaje() {
+	public VentanaCreacionPersonaje(UsuariosValidar user, ControlHistoria ch, int victorias1v1) {
 		
 		listaPersonajes.add(personajeRegular); listaPersonajes.add(personajeRápido); listaPersonajes.add(personajeLento);
 		personajeSeleccionado = listaPersonajes.get(0);
@@ -143,9 +144,9 @@ public class VentanaCreacionPersonaje extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				personajeSeleccionado.setNombre(tfNombre.getText());
-				personajeCreado = personajeSeleccionado;
+				ch.setPersonajePrincipal(personajeCreado);
 				setVisible(false);
-				VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(personajeCreado);
+				VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(user, ch, victorias1v1);
 				ventana.setVisible(true);
 				VentanaCreacionPersonaje.this.dispose();
 				Logger logger= VentanaValidacionUsuarios.getLogger();
@@ -196,13 +197,4 @@ public class VentanaCreacionPersonaje extends JFrame {
 		return personajeCreado;
 	}
 	
-	
-	
-	public static void main(String[] args) {
-		ControlHistoria ch = new ControlHistoria();
-		ch.Historia();
-	}
-	
-	
-
 }

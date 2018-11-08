@@ -14,13 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 import Personalizados.JLabelGraficoAjustado;
+import Usuarios.UsuariosValidar;
+import control.ControlHistoria;
 import personaje.personajeJugable.PersonajeJugable;
 
 public class VentanaMejoras extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 
-	public VentanaMejoras(PersonajeJugable pPrincipal) {
+	public VentanaMejoras(UsuariosValidar user, ControlHistoria ch, int victorias1v1) {
 		
 		setSize(500, 400);
 		setLocationRelativeTo(null);
@@ -31,7 +33,7 @@ public class VentanaMejoras extends JFrame{
 			JLabelGraficoAjustado lgaPersonaje = new JLabelGraficoAjustado("", 200, 200);
 			JButton bHome = new JButton("Home");
 		JPanel pDerecha = new JPanel(new BorderLayout());
-			JLabel lPuntosMejora = new JLabel("Puntos de mejora: " + pPrincipal.getPuntosMejora());
+			JLabel lPuntosMejora = new JLabel("Puntos de mejora: " + ch.getPersonajePrincipal().getPuntosMejora());
 			JPanel pMejoras = new JPanel(new GridLayout(4, 1));
 				JLabel lMejoras = new JLabel("Comprar mejoras");
 				JPanel pFuerza = new JPanel(new FlowLayout());
@@ -58,25 +60,25 @@ public class VentanaMejoras extends JFrame{
 		pMejoras.add(pVelocidad);
 		
 		pFuerza.add(new JLabel("Fuerza"));
-		pFuerza.add(pPrincipal.getPbFuerza());
+		pFuerza.add(ch.getPersonajePrincipal().getPbFuerza());
 		pFuerza.add(bSubirFuerza);
 		
 		pVida.add(new JLabel("Vida"));
-		pVida.add(pPrincipal.getPbVida());
+		pVida.add(ch.getPersonajePrincipal().getPbVida());
 		pVida.add(bSubirVida);
 		
 		pVelocidad.add(new JLabel("Velocidad"));
-		pVelocidad.add(pPrincipal.getPbVelocidad());
+		pVelocidad.add(ch.getPersonajePrincipal().getPbVelocidad());
 		pVelocidad.add(bSubirVelocidad);
 		
 		bSubirFuerza.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				pPrincipal.SubirNivel("fuerza");
-				pPrincipal.getPbFuerza().setValue((int) pPrincipal.getFuerza());
+				ch.getPersonajePrincipal().SubirNivel("fuerza");
+				ch.getPersonajePrincipal().getPbFuerza().setValue((int) ch.getPersonajePrincipal().getFuerza());
 				
-				lPuntosMejora.setText("Puntos mejora: " + pPrincipal.getPuntosMejora());
+				lPuntosMejora.setText("Puntos mejora: " + ch.getPersonajePrincipal().getPuntosMejora());
 				
 				getContentPane().revalidate();
 			}
@@ -86,10 +88,10 @@ public class VentanaMejoras extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				pPrincipal.SubirNivel("vida");
-				pPrincipal.getPbVida().setValue((int) pPrincipal.getVida());
+				ch.getPersonajePrincipal().SubirNivel("vida");
+				ch.getPersonajePrincipal().getPbVida().setValue((int) ch.getPersonajePrincipal().getVida());
 				
-				lPuntosMejora.setText("Puntos mejora: " + pPrincipal.getPuntosMejora());
+				lPuntosMejora.setText("Puntos mejora: " + ch.getPersonajePrincipal().getPuntosMejora());
 				
 				getContentPane().revalidate();
 			}
@@ -99,10 +101,10 @@ public class VentanaMejoras extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				pPrincipal.SubirNivel("velocidad");
-				pPrincipal.getPbVelocidad().setValue((int) pPrincipal.getVelocidad());
+				ch.getPersonajePrincipal().SubirNivel("velocidad");
+				ch.getPersonajePrincipal().getPbVelocidad().setValue((int) ch.getPersonajePrincipal().getVelocidad());
 				
-				lPuntosMejora.setText("Puntos mejora: " + pPrincipal.getPuntosMejora());
+				lPuntosMejora.setText("Puntos mejora: " + ch.getPersonajePrincipal().getPuntosMejora());
 				
 				getContentPane().revalidate();
 				
@@ -113,23 +115,13 @@ public class VentanaMejoras extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(pPrincipal);
+				VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(user, ch, victorias1v1);
 				ventana.setVisible(true);
 				VentanaMejoras.this.dispose();
 				
 			}
-		});
+		});	
 		
-		
-	}
-	
-	public static void main(String[] args) {
-		
-		PersonajeJugable pPrincip = new PersonajeJugable("", new Point(0, 0), 10, 10, 10);
-		pPrincip.setPuntosMejora(10);
-		VentanaMejoras vm = new VentanaMejoras(pPrincip);
-		
-		vm.setVisible(true);
 	}
 
 }

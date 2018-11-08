@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.LineNumberInputStream;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,11 +15,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Personalizados.JPanelBackground;
+import Usuarios.UsuariosValidar;
+import control.ControlHistoria;
+import control.Nivel;
 import personaje.personajeJugable.PersonajeJugable;
 
 public class VentanaSeleccionNivel extends JFrame{
 	
-	public VentanaSeleccionNivel(PersonajeJugable pJPrincipal) {
+	private static final long serialVersionUID = 1L;
+
+	public VentanaSeleccionNivel(UsuariosValidar user, ControlHistoria ch, int victorias1v1) {
+		
+		Nivel.generarListaNiveles(ch.getPersonajePrincipal()); //Del control de la historia se coje el personaje y se genera la lista de niveles 
 		
 		setSize(600, 500);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -77,7 +85,9 @@ public class VentanaSeleccionNivel extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//Crear el stage 
+				Nivel nivel1 = Nivel.listaNiveles.get(0);
+				VentanaStage stage1 = nivel1.getStage();
+				stage1.setVisible(true);
 				
 			}
 		});
@@ -94,7 +104,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaPrincipal ventana = new VentanaPrincipal(0,pJPrincipal);
+				VentanaPrincipal ventana = new VentanaPrincipal(0,user, ch.getPersonajePrincipal(), ch.getNivelesCompletados(), victorias1v1);
 				ventana.setVisible(true);
 				VentanaSeleccionNivel.this.dispose();
 				
@@ -104,17 +114,11 @@ public class VentanaSeleccionNivel extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaMejoras ventana= new VentanaMejoras( pJPrincipal);
+				VentanaMejoras ventana= new VentanaMejoras(user, ch, victorias1v1);
 				ventana.setVisible(true);
 				VentanaSeleccionNivel.this.dispose();
 				
 			}
 		});
 	}
-	
-	public static void main(String[] args) {
-		VentanaSeleccionNivel vsn = new VentanaSeleccionNivel(null);
-		vsn.setVisible(true);
-	}
-
 }

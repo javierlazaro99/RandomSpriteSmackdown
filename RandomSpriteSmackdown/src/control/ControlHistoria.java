@@ -8,48 +8,29 @@ import personaje.personajeJugable.PersonajeJugable;
 public class ControlHistoria {
 	
 	private PersonajeJugable personajePrincipal;
-	private ArrayList<Nivel> listaNiveles;
-	public boolean personajeCreado;
+	private int nivelesCompletados;
 	
-	public ControlHistoria() {
-		personajePrincipal = null;
-		listaNiveles = new ArrayList<Nivel>();
-		personajeCreado = false;
-	}
-	
-	public void Historia() {
-		if(personajePrincipal == null) {
-			VentanaCreacionPersonaje vcp = new VentanaCreacionPersonaje();
-			vcp.setVisible(true);
-			
-			while(vcp.devolverCreado() == null) {
-				try {
-					if(vcp.isVisible()) {
-						Thread.sleep(200);
-					}else {
-						break;
-					}
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			
-			personajePrincipal = vcp.devolverCreado();
-			System.out.println(personajePrincipal + personajePrincipal.getNombre());
-			vcp.dispose();
-			
-		}
-		
-		
+	public ControlHistoria(PersonajeJugable pj, int nivelesComp) {
+		personajePrincipal = pj;
+		nivelesCompletados = nivelesComp;
 	}
 
-	public boolean isPersonajeCreado() {
-		return personajeCreado;
+	public PersonajeJugable getPersonajePrincipal() {
+		return personajePrincipal;
 	}
 
-	public void setPersonajeCreado(boolean personajeCreado) {
-		this.personajeCreado = personajeCreado;
+	public void setPersonajePrincipal(PersonajeJugable personajePrincipal) {
+		this.personajePrincipal = personajePrincipal;
 	}
+
+	public int getNivelesCompletados() {
+		return nivelesCompletados;
+	}
+
+	public void setNivelesCompletados(int nivelesCompletados) {
+		this.nivelesCompletados = nivelesCompletados;
+	}
+
 	
 	
 	
