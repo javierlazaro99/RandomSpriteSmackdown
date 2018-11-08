@@ -21,7 +21,7 @@ public class PersonajeJugable extends Personaje {
 	public PersonajeJugable(String nombre,Point posicion, int fuerza, int vida, int velocidad) {
 		super(posicion, fuerza, vida, velocidad);
 		this.nombre = nombre;
-		this.puntosMejora = 0;
+		this.puntosMejora = puntosMejora;
 	}
 
 	public String getNombre() {

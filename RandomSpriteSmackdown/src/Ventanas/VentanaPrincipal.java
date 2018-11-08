@@ -17,6 +17,13 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -26,12 +33,19 @@ import Personalizados.Fondo;
 import Personalizados.FondoSwing;
 import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
+import Usuarios.UsuariosValidar;
+import control.ControlHistoria;
 import personaje.personajeJugable.PersonajeJugable;
 
 
 
 
 public class VentanaPrincipal extends JFrame{
+	
+	private static final long serialVersionUID = 1L;
+	private static Connection con=null;
+	private static Statement s;
+	private static ResultSet rs;
 	JPanel panel;
 	JButton botonHoistoria;
 	JButton botonPractica;
@@ -39,7 +53,7 @@ public class VentanaPrincipal extends JFrame{
 	JButton botonAyuda;
 	
 	boolean sigue = true;
-	public VentanaPrincipal(int codigo,PersonajeJugable pPrincipal) {
+	public VentanaPrincipal(int codigo, UsuariosValidar user, PersonajeJugable pPrincipal, int nivelesCompletados, int victorias1v1) {
 		// TODO Auto-generated constructor stub
 		//Settings
 		setTitle("RandomSprite Smackdown");
@@ -54,11 +68,13 @@ public class VentanaPrincipal extends JFrame{
 		JLabelGraficoAjustado titulo = new JLabelGraficoAjustado("", 650, 137);
 		JPanel paneliz= new  JPanel();
 		JPanel panelde = new JPanel();
+		JPanel panelinf = new JPanel(); //Añadido de Javi
 		JPanel panelinterior = new JPanel();
 		JButton botonHistoria= new JButton(new ImageIcon("src/Historia1.gif"));
 		JButton botonPractica = new JButton(new ImageIcon("src/Practica1.gif"));
 		JButton boton1VS1= new JButton(new ImageIcon("src/1VS11.gif"));
 		JButton botonAyuda = new JButton(new ImageIcon("src/Ayuda1.gif"));
+		JButton bSalir = new JButton("GUARDAR Y SALIR");
 		JButton B =  new  JButton();
 		B.add(new JLabelGraficoAjustado("src/Titulo.PNG", B.getSize().width, B.getSize().height));
 		//Modificaciones
@@ -73,6 +89,7 @@ public class VentanaPrincipal extends JFrame{
 		titulo.setOpaque(false);
 		panelde.setOpaque(false);
 		paneliz.setOpaque(false);
+		panelinf.setOpaque(false); // Añadido de Javi
 		botonHistoria.setOpaque(false);
 		botonPractica.setOpaque(false);
 		botonAyuda.setOpaque(false);
@@ -100,6 +117,8 @@ public class VentanaPrincipal extends JFrame{
 		fondo.add(panelde);
 		panelde.add(titulo,BorderLayout.NORTH);
 		panelde.add(sticman,BorderLayout.CENTER);
+		panelde.add(panelinf, BorderLayout.SOUTH);// Añadido de Javi
+		panelinf.add(bSalir); // Añadido de Javi
 		paneliz.add(panelinterior);
 		paneliz.add(botonHistoria);
 		paneliz.add(botonPractica);
@@ -113,12 +132,15 @@ public class VentanaPrincipal extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//Creamos el control de la historia nada más dar al botón
+				//Así guardamos el personaje y los niveles completados en una única variable
+				ControlHistoria ch = new ControlHistoria(pPrincipal, nivelesCompletados); 
 				if(codigo==0) {
-					VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(pPrincipal);
+					VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(user, ch, victorias1v1);
 					ventana.setVisible(true);
 					VentanaPrincipal.this.dispose();
 				}else {
-					VentanaCreacionPersonaje ventana = new VentanaCreacionPersonaje();
+					VentanaCreacionPersonaje ventana = new VentanaCreacionPersonaje(user, ch, victorias1v1);
 					ventana.setVisible(true);
 					VentanaPrincipal.this.dispose();
 				}
@@ -152,12 +174,51 @@ public class VentanaPrincipal extends JFrame{
 				
 			}
 		});
-		
-		
-	}
-	
-	public static void main(String[] args) {
-		VentanaPrincipal ventana = new VentanaPrincipal(0,null);
-		ventana.setVisible(true);
+		//Boton Salir
+		bSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Parte en la que se guarda la partida hasta el momento en la BD
+				String query = "";
+				try {
+					con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
+					s = con.createStatement();
+					try {
+						query = "SELECT * FROM Partida WHERE NICK='" + user.getNombre() + "'";
+						ResultSet rs = s.executeQuery(query);
+						VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
+						if(rs.wasNull()) { //Si el result set es null significa que el usuario no tiene una partida creada
+							//Le creamos una partida al jugador
+							query = "SELECT MAX(cod_partida) FROM Partida"; // query para saber el valor del mayor indice existente
+							ResultSet rs2 = s.executeQuery(query);
+							VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
+							if(rs2.wasNull()) { //Metemos el valor 1 en el codigo
+								query = "INSERT INTO Partida(cod_partida, niveles_comp, victorias1v1, nick)"
+										+ "VALUES(1, 0, 0," + user.getNombre() + ")";
+								s.executeUpdate(query);
+								VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
+							}else {
+								int codigo = rs2.getInt("cod_partida");
+								codigo += 1; // El codigo que le toca será el siguiente al máximo
+								query = "INSERT INTO Partida(cod_partida, niveles_comp, victorias1v1, nick)"
+										+ "VALUES(" + codigo + ", 0, 0," + user.getNombre() + ")";
+								s.executeUpdate(query);
+								VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
+							}
+						}else { //El usuario ya existe así que sólo hay que actualizar su información
+							query = "UPDATE Partida SET niveles_comp=" +  ""
+									+ "VALUES(" + codigo + ", 0, 0," + user.getNombre() + ")";
+						}
+								
+					} catch (SQLException e2) {
+						VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " fallido");
+					}
+				} catch (SQLException e1) {
+					VentanaValidacionUsuarios.logger.log(Level.SEVERE, "Error al conectarse a la BD");
+					
+				}
+			}
+		});	
 	}
 }

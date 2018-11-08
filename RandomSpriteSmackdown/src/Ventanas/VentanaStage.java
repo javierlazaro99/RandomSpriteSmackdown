@@ -15,12 +15,13 @@ import javax.swing.JProgressBar;
 
 import Personalizados.FondoSwing;
 import Personalizados.JPanelBackground;
+import personaje.Personaje;
 
 public class VentanaStage extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 
-	public VentanaStage() {
+	public VentanaStage(Personaje p1, Personaje p2) {
 		
 		setSize(1920, 1080);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -87,11 +88,6 @@ public class VentanaStage extends JFrame {
 		
 		
 		
-	}
-	
-	public static void main(String[] args) {
-		VentanaStage vs = new VentanaStage();
-		vs.setVisible(true);
 	}
 
 }

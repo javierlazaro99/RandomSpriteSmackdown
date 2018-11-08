@@ -572,3 +572,788 @@
   <message>Tabla ya existente</message>
 >>>>>>> branch 'master' of https://github.com/javierlazaro99/RandomSpriteSmackdown.git
 </record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-05T11:45:23</date>
+  <millis>1541414723904</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>1</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-05T11:45:24</date>
+  <millis>1541414724676</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>create table Usuario(nick STRING, password STRING)</message>
+</record>
+<record>
+  <date>2018-11-05T11:45:24</date>
+  <millis>1541414724680</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Tabla ya existente</message>
+</record>
+<record>
+  <date>2018-11-05T11:45:30</date>
+  <millis>1541414730286</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>15</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-05T11:46:50</date>
+  <millis>1541414810483</millis>
+  <sequence>4</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$3</class>
+  <method>windowClosing</method>
+  <thread>15</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-05T11:47:13</date>
+  <millis>1541414833114</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-05T11:47:18</date>
+  <millis>1541414838968</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>15</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-05T11:47:18</date>
+  <millis>1541414838984</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>guardar</method>
+  <thread>15</thread>
+  <message>Error usuario no se ha guardado</message>
+</record>
+<record>
+  <date>2018-11-05T11:47:19</date>
+  <millis>1541414839133</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>15</thread>
+  <message>Usuario:Nombre Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-05T11:47:31</date>
+  <millis>1541414851702</millis>
+  <sequence>4</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>15</thread>
+  <message>Personaje principal creado</message>
+</record>
+<record>
+  <date>2018-11-05T11:48:16</date>
+  <millis>1541414896432</millis>
+  <sequence>5</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$3</class>
+  <method>windowClosing</method>
+  <thread>15</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-05T11:48:22</date>
+  <millis>1541414902349</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-05T11:48:26</date>
+  <millis>1541414906711</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>15</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-05T11:48:29</date>
+  <millis>1541414909540</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$3</class>
+  <method>windowClosing</method>
+  <thread>15</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-05T11:48:35</date>
+  <millis>1541414915802</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-05T11:48:41</date>
+  <millis>1541414921282</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>15</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-05T11:48:41</date>
+  <millis>1541414921298</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>guardar</method>
+  <thread>15</thread>
+  <message>Error usuario no se ha guardado</message>
+</record>
+<record>
+  <date>2018-11-05T11:48:41</date>
+  <millis>1541414921414</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>15</thread>
+  <message>Usuario:Nombre Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-05T11:48:45</date>
+  <millis>1541414925332</millis>
+  <sequence>4</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$3</class>
+  <method>windowClosing</method>
+  <thread>15</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-05T11:48:50</date>
+  <millis>1541414930965</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-05T11:48:55</date>
+  <millis>1541414935063</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>15</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-05T11:49:05</date>
+  <millis>1541414945900</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$3</class>
+  <method>windowClosing</method>
+  <thread>15</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-05T11:49:10</date>
+  <millis>1541414950757</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-05T11:49:20</date>
+  <millis>1541414960125</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>15</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-05T11:49:20</date>
+  <millis>1541414960134</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>guardar</method>
+  <thread>15</thread>
+  <message>Error usuario no se ha guardado</message>
+</record>
+<record>
+  <date>2018-11-05T11:49:20</date>
+  <millis>1541414960242</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>15</thread>
+  <message>Usuario:Nombre Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-05T11:49:24</date>
+  <millis>1541414964089</millis>
+  <sequence>4</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$3</class>
+  <method>windowClosing</method>
+  <thread>15</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-05T11:49:28</date>
+  <millis>1541414968091</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-05T11:49:32</date>
+  <millis>1541414972453</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>15</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-05T11:49:44</date>
+  <millis>1541414984453</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$3</class>
+  <method>windowClosing</method>
+  <thread>15</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-05T11:50:46</date>
+  <millis>1541415046243</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-05T11:50:52</date>
+  <millis>1541415052050</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>15</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-05T11:50:52</date>
+  <millis>1541415052060</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>guardar</method>
+  <thread>15</thread>
+  <message>Error usuario no se ha guardado</message>
+</record>
+<record>
+  <date>2018-11-05T11:50:52</date>
+  <millis>1541415052165</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>15</thread>
+  <message>Usuario:Nombre Se ha registrado</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-06T08:38:09</date>
+  <millis>1541489889768</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>1</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-06T08:38:10</date>
+  <millis>1541489890572</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>create table Usuario(nick STRING, password STRING)</message>
+</record>
+<record>
+  <date>2018-11-06T08:38:10</date>
+  <millis>1541489890577</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Tabla ya existente</message>
+</record>
+<record>
+  <date>2018-11-06T08:38:21</date>
+  <millis>1541489901649</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>15</thread>
+  <message>Usuario no existia</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-06T08:38:26</date>
+  <millis>1541489906074</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>1</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-06T08:38:26</date>
+  <millis>1541489906817</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>create table Usuario(nick STRING, password STRING)</message>
+</record>
+<record>
+  <date>2018-11-06T08:38:26</date>
+  <millis>1541489906831</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Tabla ya existente</message>
+</record>
+<record>
+  <date>2018-11-06T08:38:32</date>
+  <millis>1541489912204</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>15</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-06T08:38:34</date>
+  <millis>1541489914443</millis>
+  <sequence>4</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$3</class>
+  <method>windowClosing</method>
+  <thread>15</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-06T08:38:36</date>
+  <millis>1541489916384</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>1</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-06T08:38:36</date>
+  <millis>1541489916936</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>create table Usuario(nick STRING, password STRING)</message>
+</record>
+<record>
+  <date>2018-11-06T08:38:36</date>
+  <millis>1541489916941</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Tabla ya existente</message>
+</record>
+<record>
+  <date>2018-11-06T08:38:39</date>
+  <millis>1541489919801</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$3</class>
+  <method>windowClosing</method>
+  <thread>15</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-06T08:40:01</date>
+  <millis>1541490001801</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>1</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-06T08:40:02</date>
+  <millis>1541490002500</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>create table Usuario(nick STRING, password STRING)</message>
+</record>
+<record>
+  <date>2018-11-06T08:40:02</date>
+  <millis>1541490002508</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Tabla ya existente</message>
+</record>
+<record>
+  <date>2018-11-06T08:40:03</date>
+  <millis>1541490003484</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$3</class>
+  <method>windowClosing</method>
+  <thread>15</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-06T08:40:05</date>
+  <millis>1541490005311</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>1</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-06T08:40:06</date>
+  <millis>1541490006103</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>create table Usuario(nick STRING, password STRING)</message>
+</record>
+<record>
+  <date>2018-11-06T08:40:06</date>
+  <millis>1541490006113</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Tabla ya existente</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-08T15:16:52</date>
+  <millis>1541686612174</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-08T15:17:07</date>
+  <millis>1541686627469</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>15</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-08T15:17:07</date>
+  <millis>1541686627483</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>guardar</method>
+  <thread>15</thread>
+  <message>Error usuario no se ha guardado</message>
+</record>
+<record>
+  <date>2018-11-08T15:17:07</date>
+  <millis>1541686627665</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>15</thread>
+  <message>Usuario:Nombre Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-08T15:19:01</date>
+  <millis>1541686741001</millis>
+  <sequence>4</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>15</thread>
+  <message>Personaje principal creado</message>
+</record>
+<record>
+  <date>2018-11-08T15:20:24</date>
+  <millis>1541686824758</millis>
+  <sequence>5</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$3</class>
+  <method>windowClosing</method>
+  <thread>15</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-08T18:16:32</date>
+  <millis>1541697392760</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-08T18:16:37</date>
+  <millis>1541697397249</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>15</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-08T18:16:37</date>
+  <millis>1541697397263</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>guardar</method>
+  <thread>15</thread>
+  <message>Error usuario no se ha guardado</message>
+</record>
+<record>
+  <date>2018-11-08T18:16:37</date>
+  <millis>1541697397416</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>15</thread>
+  <message>Usuario:Nombre Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-08T18:16:47</date>
+  <millis>1541697407727</millis>
+  <sequence>4</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>15</thread>
+  <message>Personaje principal creado</message>
+</record>
+<record>
+  <date>2018-11-08T18:16:59</date>
+  <millis>1541697419672</millis>
+  <sequence>5</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$3</class>
+  <method>windowClosing</method>
+  <thread>15</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
