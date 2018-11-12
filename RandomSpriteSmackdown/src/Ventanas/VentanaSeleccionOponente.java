@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 
 import Personalizados.JLabelGraficoAjustado;
 import Usuarios.UsuariosValidar;
@@ -34,6 +35,10 @@ public class VentanaSeleccionOponente extends JFrame {
 	private Enemigo EnemigoRegular = new Enemigo(new Point(0,0),10, 10, 10, 1);
 	private Enemigo EnemigoRapido = new Enemigo(new Point(0,0),5, 5, 20, 1);
 	private Enemigo EnemigoLento = new Enemigo(new Point(0,0),15, 10, 5, 1);
+	
+	private JProgressBar jProgress1= new JProgressBar(0,100);
+	private JProgressBar jProgress2= new JProgressBar(0,100);
+	private JProgressBar jProgress3= new JProgressBar(0,100);
 
 	public VentanaSeleccionOponente(int codigo, UsuariosValidar user, PersonajeJugable pPrincipal,
 			int nivelesCompletados, int victorias1v1) {
@@ -135,13 +140,16 @@ public class VentanaSeleccionOponente extends JFrame {
 		pEstadisticas1.add(lEstadisticas1);
 		pEstadisticas1.add(pVida1);
 		pVida1.add(new JLabel("Vida"));
-		pVida1.add(enemigo.getPbVida());
+		pVida1.add(jProgress1);
+			jProgress1.setValue((int) enemigo.getVida());
 		pEstadisticas1.add(pFuerza1);
 		pFuerza1.add(new JLabel("Fuerza"));
-		pFuerza1.add(enemigo.getPbFuerza());
+		pFuerza1.add(jProgress2);
+			jProgress2.setValue((int) enemigo.getFuerza());
 		pEstadisticas1.add(pVelocidad1);
 		pVelocidad1.add(new JLabel("Velocidad"));
-		pVelocidad1.add(enemigo.getPbVelocidad());
+		pVelocidad1.add(jProgress3);
+			jProgress3.setValue((int) enemigo.getVelocidad());
 		add(panelInferior, BorderLayout.SOUTH);
 		panelInferior.add(panelIzInferior);
 		panelIzInferior.add(bAtras);
@@ -180,12 +188,16 @@ public class VentanaSeleccionOponente extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				cambiarAnterior(enemigo);
-				labelImage1.removeAll();
-				labelImage1.add(enemigo.getlPersonaje());
-				cambioDeJprogresBar(enemigo, pFuerza1, pVida1, pVelocidad1);
+				if(listaEnemigo.indexOf(enemigo)!= 0) {
+					enemigo=listaEnemigo.get(listaEnemigo.indexOf(enemigo)-1);
+				}else {
+					enemigo= listaEnemigo.get(listaEnemigo.size()-1);
+				}
+				jProgress1.setValue((int) enemigo.getVida());
+				jProgress2.setValue((int) enemigo.getFuerza());
+				jProgress3.setValue((int) enemigo.getVelocidad());
+				revalidate();
 				repaint();
-
 			}
 		});
 		siguiente1.addActionListener(new ActionListener() {
@@ -193,10 +205,15 @@ public class VentanaSeleccionOponente extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				cambiarSiguiente(enemigo);
-				labelImage.removeAll();
-				labelImage.add(enemigo.getlPersonaje());
-				cambioDeJprogresBar(enemigo, pFuerza1, pVida1, pVelocidad1);
+				if(listaEnemigo.indexOf(enemigo)!= listaEnemigo.size()-1) {
+					enemigo=listaEnemigo.get(listaEnemigo.indexOf(enemigo)+1);
+				}else {
+					enemigo= listaEnemigo.get(0);
+				}
+				jProgress1.setValue((int) enemigo.getVida());
+				jProgress2.setValue((int) enemigo.getFuerza());
+				jProgress3.setValue((int) enemigo.getVelocidad());
+				revalidate();
 				repaint();
 
 			}
