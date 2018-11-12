@@ -207,6 +207,7 @@ public class VentanaPrincipal extends JFrame{
 								VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
 							}
 						}else { //El usuario ya existe así que sólo hay que actualizar su información
+							int codigo = rs.getInt("cod_partida");
 							query = "UPDATE Partida SET niveles_comp=" +  ""
 									+ "VALUES(" + codigo + ", 0, 0," + user.getNombre() + ")";
 						}
