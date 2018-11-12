@@ -285,7 +285,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
 			s = con.createStatement();
 			try {
-				comando = "create table Usuario(nick STRING PRIMARY KEY NOT NULL, password STRING)";
+				comando = "create table Usuario(nick STRING, password STRING)";
 				logger.log(Level.INFO, comando);
 				s.executeUpdate(comando);
 			} catch (SQLException e) {
@@ -309,7 +309,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 						+ "vida NUMERIC,"
 						+ "velocidad NUMERIC,"
 						+ "puntos_mejora NUMERIC,"
-						+ "cod_partida NUMERIC REFERENCES Partida(cod_partida))";
+						+ "cod_partida NUMERIC REFERENCES Partida(cod_partida) ON DELETE CASCADE)";
 				logger.log(Level.INFO, comando);
 				s.executeUpdate(comando);
 			} catch (SQLException e) {

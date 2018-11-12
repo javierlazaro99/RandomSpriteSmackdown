@@ -1797,3 +1797,173 @@
   <message>Guardadas nuevas propiedades</message>
 </record>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-12T16:26:59</date>
+  <millis>1542036419176</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>No existe archivo properties</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-12T18:40:56</date>
+  <millis>1542044456325</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>No existe archivo properties</message>
+</record>
+<record>
+  <date>2018-11-12T18:41:02</date>
+  <millis>1542044462044</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-12T18:41:02</date>
+  <millis>1542044462052</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>guardar</method>
+  <thread>16</thread>
+  <message>Error usuario no se ha guardado</message>
+</record>
+<record>
+  <date>2018-11-12T18:41:02</date>
+  <millis>1542044462254</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-12T18:41:33</date>
+  <millis>1542044493539</millis>
+  <sequence>4</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal creado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-12T18:47:55</date>
+  <millis>1542044875143</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>No existe archivo properties</message>
+</record>
+<record>
+  <date>2018-11-12T18:48:03</date>
+  <millis>1542044883046</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-12T18:48:03</date>
+  <millis>1542044883061</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>guardar</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-12T18:48:03</date>
+  <millis>1542044883165</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha registrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-12T18:49:03</date>
+  <millis>1542044943867</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>No existe archivo properties</message>
+</record>
+<record>
+  <date>2018-11-12T18:49:09</date>
+  <millis>1542044949317</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-11-12T18:49:09</date>
+  <millis>1542044949320</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarPartidaDesdeBD</method>
+  <thread>16</thread>
+  <message>Error de ejecución en: SELECT * FROM Partida WHERE nick='javi'</message>
+</record>
+<record>
+  <date>2018-11-12T18:49:09</date>
+  <millis>1542044949322</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarPartidaDesdeBD</method>
+  <thread>16</thread>
+  <message>Error de ejecución en: SELECT * FROM Personaje WHERE cod_partida='0'</message>
+</record>
+</log>
