@@ -2,12 +2,6 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>Propiedades de inicio sesion</comment>
-<<<<<<< HEAD
-<entry key="Nick">javi</entry>
-<entry key="cbGuardarUsuario">ON</entry>
-=======
-<entry key="Nick">ff</entry>
->>>>>>> branch 'master' of https://github.com/javierlazaro99/RandomSpriteSmackdown.git
-<entry key="cbGuararUsuario">ON</entry>
+<entry key="Nick">juan</entry>
 <entry key="cbGuardarUsuario">ON</entry>
 </properties>

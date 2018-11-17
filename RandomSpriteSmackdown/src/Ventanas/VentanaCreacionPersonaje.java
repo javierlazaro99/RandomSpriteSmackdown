@@ -134,6 +134,12 @@ public class VentanaCreacionPersonaje extends JFrame {
 				cambiarAnterior();
 				pSprite.removeAll();
 				pSprite.add(personajeSeleccionado.getlPersonaje());
+				pFuerza.remove(1);
+				pFuerza.add(personajeSeleccionado.getPbFuerza());
+				pVida.remove(1);
+				pVida.add(personajeSeleccionado.getPbVida());
+				pVelocidad.remove(1);
+				pVelocidad.add(personajeSeleccionado.getPbVelocidad());
 				repaint();
 				revalidate();
 			}
@@ -144,13 +150,14 @@ public class VentanaCreacionPersonaje extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				personajeSeleccionado.setNombre(tfNombre.getText());
-				ch.setPersonajePrincipal(personajeCreado);
+				ch.setPersonajePrincipal(personajeSeleccionado);
 				setVisible(false);
 				VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(user, ch, victorias1v1);
 				ventana.setVisible(true);
 				VentanaCreacionPersonaje.this.dispose();
 				Logger logger= VentanaValidacionUsuarios.getLogger();
-				logger.log(Level.INFO, "Personaje principal creado");
+				logger.log(Level.INFO, "Personaje principal " +  personajeSeleccionado.getNombre() + "," + personajeSeleccionado.getFuerza() 
+				+ "," + personajeSeleccionado.getVida() + "," + personajeSeleccionado.getVelocidad() + " creado");
 			}
 		});
 		

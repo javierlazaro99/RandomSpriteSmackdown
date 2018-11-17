@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
+import control.BaseDeDatos;
 
 public class VentanaValidacion extends JFrame {
 	int codigo;
@@ -108,5 +109,7 @@ public class VentanaValidacion extends JFrame {
 	public static void main(String[] args) {
 		VentanaValidacion ventana = new VentanaValidacion();
 		ventana.setVisible(true);
+		
+		BaseDeDatos.crearBD();
 	}
 }

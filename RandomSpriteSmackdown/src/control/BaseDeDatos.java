@@ -1,10 +1,12 @@
 package control;
 
+import java.awt.Point;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,6 +15,7 @@ import javax.swing.JTextField;
 
 import Usuarios.UsuariosValidar;
 import Ventanas.VentanaValidacionUsuarios;
+import personaje.personajeJugable.PersonajeJugable;
 
 public class BaseDeDatos {
 	
@@ -118,8 +121,10 @@ public class BaseDeDatos {
 			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
 			s = con.createStatement();
 			try {
+				System.out.println(user.getNombre());
 				query = "SELECT * FROM Partida WHERE NICK='" + user.getNombre() + "'";
 				ResultSet rs = s.executeQuery(query);
+				System.out.println(rs.toString());
 				VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
 				if(rs.wasNull()) { //Si el result set es null significa que el usuario no tiene una partida creada
 					//Le creamos una partida al jugador
@@ -132,7 +137,9 @@ public class BaseDeDatos {
 						s.executeUpdate(query);
 						VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
 					}else {
+						System.out.println("hola");
 						int codigo = rs2.getInt("cod_partida");
+						System.out.println("adios");
 						codigo += 1; // El codigo que le toca será el siguiente al máximo
 						query = "INSERT INTO Partida(cod_partida, niveles_comp, victorias1v1, nick)"
 								+ "VALUES(" + codigo + ", 0, 0," + user.getNombre() + ")";
@@ -151,5 +158,60 @@ public class BaseDeDatos {
 		} catch (SQLException e1) {
 			VentanaValidacionUsuarios.logger.log(Level.SEVERE, "Error al conectarse a la BD");
 		}
+	}
+	
+	public static ArrayList<Object> cargarPartidaBD(UsuariosValidar user , ArrayList<Object> listaRespuestas) {
+		String query = "";
+		int codPartida = 0;
+		int nivelesCompletados = 0;
+		int victorias1v1 = 0;
+		String nombrePersonaje = "";
+		int fuerza = 0;
+		int vida = 0;
+		int velocidad = 0;
+		int puntosMejora = 0;
+		PersonajeJugable personaje;
+		try {
+			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
+			s = con.createStatement();
+			try {//Parte de obtención de datos de Partida
+				query = "SELECT * FROM Partida WHERE nick=" + "'" + user.getNombre() + "'";
+				ResultSet rs = s.executeQuery(query);
+				logger.log(Level.INFO, "Ejecutado correctamente: " + query);
+				while(rs.next()) {
+					codPartida = rs.getInt("cod_partida");
+					nivelesCompletados = rs.getInt("niveles_comp");
+					victorias1v1 = rs.getInt("victorias1v1");
+				}
+				
+				listaRespuestas.add(nivelesCompletados);
+				listaRespuestas.add(victorias1v1);
+			} catch (SQLException e) {
+				logger.log(Level.SEVERE, "Error de ejecución en: " + query);
+			}
+			
+			try {//Parte de obtención de datos de Personaje
+				query = "SELECT * FROM Personaje WHERE cod_partida=" + "'" + codPartida + "'";
+				ResultSet rs = s.executeQuery(query);
+				while(rs.next()) {
+					nombrePersonaje = rs.getString("nom_personaje");
+					fuerza = rs.getInt("fuerza");
+					vida = rs.getInt("vida");
+					velocidad = rs.getInt("velocidad");
+					puntosMejora = rs.getInt("puntos_mejora");
+				}
+				
+				listaRespuestas.add(puntosMejora);
+				personaje = new PersonajeJugable(nombrePersonaje, new Point(0, 0), fuerza, vida, velocidad);
+				listaRespuestas.add(personaje);
+
+			} catch (SQLException e) {
+				logger.log(Level.SEVERE, "Error de ejecución en: " + query);
+			}
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE, "Error al conectarse con la BD");
+		}
+		
+		return listaRespuestas;	
 	}
 }

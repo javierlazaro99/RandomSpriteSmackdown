@@ -35,6 +35,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Usuarios.UsuariosValidar;
+import control.BaseDeDatos;
 import personaje.personajeJugable.PersonajeJugable;
 
 
@@ -118,7 +119,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 				pInferiorAceptar.add(bConfirmar);
 		
 		//Carga de properties
-		cargarProperties();
+		cargarProperties(codigo);
 					
 		//Eventos
 		bConfirmar.addActionListener(new ActionListener() {
@@ -136,16 +137,25 @@ public class VentanaValidacionUsuarios extends JFrame{
 						//Ventana general
 						//Parte de BD para conseguir el personaje y los datos de la partida
 						ArrayList<Object> listaObjetos = new ArrayList<Object>();
-						cargarPartidaDesdeBD(estado, listaObjetos);
+						BaseDeDatos.cargarPartidaBD(estado, listaObjetos);
+						
+						for (Object object : listaObjetos) {
+							System.out.println(object);
+						}
 						
 						//Esto probablemente sea mejor hacerlo con un for, por si queremos ampliar, pero por ahora vale
 						int nivelesCompletados = (int) listaObjetos.get(0);
 						int victorias1v1 = (int) listaObjetos.get(1);
 						int puntosMejora = (int)listaObjetos.get(2);
 						PersonajeJugable pj = (PersonajeJugable) listaObjetos.get(3);
+						System.out.println(pj.getNombre());
+						System.out.println(pj.getFuerza());
+						System.out.println(pj.getVida());
+						System.out.println(pj.getVelocidad());
 						pj.setPuntosMejora(puntosMejora);
 						
-						VentanaPrincipal ventana = new VentanaPrincipal(0, estado, pj, nivelesCompletados, victorias1v1);
+						System.out.println(estado.getNombre());
+						VentanaPrincipal ventana = new VentanaPrincipal(0, usuario, pj, nivelesCompletados, victorias1v1);
 						ventana.setVisible(true);
 						logger.log(Level.INFO, "Usuario:"+estado.getNombre()+" Se ha loggueado");
 					}
@@ -156,43 +166,34 @@ public class VentanaValidacionUsuarios extends JFrame{
 					usuario.setNombre(tfNombre.getText());
 					usuario.setPassword(String.valueOf(tfPassword.getPassword()));
 					usuario.guardar(usuario);
-					VentanaPrincipal ventana = new VentanaPrincipal(1,estado, null, 0, 0);
+					VentanaPrincipal ventana = new VentanaPrincipal(1,usuario, null, 0, 0);
 					ventana.setVisible(true);
-					logger.log(Level.INFO,"Usuario:"+usuario.getNombre()+" Se ha registrado");
-						
+					logger.log(Level.INFO,"Usuario:"+ usuario.getNombre()+" Se ha registrado");
+					
+					System.out.println(usuario.getNombre());
 					}else {
 						JOptionPane.showMessageDialog(null,"Ya existe un usuario con ese nombre");
 						tfNombre.setText("");
 						tfPassword.setText("");
 					}
 				}
-				VentanaValidacionUsuarios.this.dispose();
-			}
-		});
-		cbUltimoUsuario.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		
-		//Las Propiedades deberían guardarse cuando se de a aceptar, pero por ahora así que está roto el botón
-		addWindowListener(new WindowAdapter() {
-			
-			@Override
-			public void windowClosing(WindowEvent arg0) {
-				if(cbUltimoUsuario.isSelected()) {
+				
+				//Creamos las Properties
+				if(cbUltimoUsuario.isSelected() && codigo == 0) {
 					propiedades.setProperty("Nick", tfNombre.getText());
 					propiedades.setProperty("cbGuardarUsuario", "ON");
 					guardarProperties();
 					logger.log(Level.INFO, "Guardadas nuevas propiedades");
 				}
 				
+				VentanaValidacionUsuarios.this.dispose();
 			}
 		});
-		
 	}
 	
+	/**
+	 * Metodo para guardar las properties de la clase en un archivo .xml
+	 */
 	private void guardarProperties() {
 		try {
 			propiedades.storeToXML( new PrintStream( "propiedadesInicioSesion.xml" ), "Propiedades de inicio sesion" );
@@ -201,123 +202,129 @@ public class VentanaValidacionUsuarios extends JFrame{
 		}
 	}
 	
-	private void cargarProperties() {
-		propiedades = new Properties();
-		try {
-			propiedades.loadFromXML( new FileInputStream( "propiedadesInicioSesion.xml" ) );
-			logger.log(Level.INFO, "Archivo Properties Cargado");
+	/**
+	 * Metodo para cargar las properties desde archivo
+	 * @param codigo codigo de la ventana (login o register) Si es de login (0) se cargaran las properties, si no, no
+	 */
+	private void cargarProperties(int codigo) {
+		if(codigo == 0) {//Si la ventana no es de login no cargamos properties
+			propiedades = new Properties();
 			try {
-				tfNombre.setText(propiedades.getProperty("Nick"));
-				if(propiedades.getProperty("cbGuardarUsuario").equals("ON")) {
-					cbUltimoUsuario.setSelected(true);
+				propiedades.loadFromXML( new FileInputStream( "propiedadesInicioSesion.xml" ) );
+				logger.log(Level.INFO, "Archivo Properties Cargado");
+				try {
+					tfNombre.setText(propiedades.getProperty("Nick"));
+					if(propiedades.getProperty("cbGuardarUsuario").equals("ON")) {
+						cbUltimoUsuario.setSelected(true);
+					}
+				} catch (Exception e) {
+					
 				}
 			} catch (Exception e) {
-				
-			}
-		} catch (Exception e) {
-			logger.log(Level.INFO, "No existe archivo properties");
-		} //No hay fichero Properties
-	}
-	
-	private ArrayList<Object> cargarPartidaDesdeBD(UsuariosValidar user , ArrayList<Object> listaRespuestas) {
-		String query = "";
-		int codPartida = 0;
-		int nivelesCompletados = 0;
-		int victorias1v1 = 0;
-		String nombrePersonaje = "";
-		int fuerza = 0;
-		int vida = 0;
-		int velocidad = 0;
-		int puntosMejora = 0;
-		PersonajeJugable personaje;
-		try {
-			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
-			s = con.createStatement();
-			try {//Parte de obtención de datos de Partida
-				query = "SELECT * FROM Partida WHERE nick=" + "'" + user.getNombre() + "'";
-				ResultSet rs = s.executeQuery(query);
-				while(rs.next()) {
-					codPartida = rs.getInt("cod_partida");
-					nivelesCompletados = rs.getInt("niveles_comp");
-					victorias1v1 = rs.getInt("victorias1v1");
-				}
-				
-				listaRespuestas.add(nivelesCompletados);
-				listaRespuestas.add(victorias1v1);
-			} catch (SQLException e) {
-				logger.log(Level.SEVERE, "Error de ejecución en: " + query);
-			}
-			
-			try {//Parte de objetnción de datos de Personaje
-				query = "SELECT * FROM Personaje WHERE cod_partida=" + "'" + codPartida + "'";
-				ResultSet rs = s.executeQuery(query);
-				while(rs.next()) {
-					nombrePersonaje = rs.getString("nom_personaje");
-					fuerza = rs.getInt("fuerza");
-					vida = rs.getInt("vida");
-					velocidad = rs.getInt("velocidad");
-					puntosMejora = rs.getInt("puntos_mejora");
-				}
-				
-				listaRespuestas.add(puntosMejora);
-				personaje = new PersonajeJugable(nombrePersonaje, new Point(0, 0), fuerza, vida, velocidad);
-				listaRespuestas.add(personaje);
-
-			} catch (SQLException e) {
-				logger.log(Level.SEVERE, "Error de ejecución en: " + query);
-			}
-		} catch (SQLException e) {
-			logger.log(Level.SEVERE, "Error al conectarse con la BD");
+				logger.log(Level.INFO, "No existe archivo properties");
+			} //No hay fichero Properties
 		}
-		
-		return listaRespuestas;
 	}
 	
-	public static void main(String[] args) {
-		VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(0);
-		ventana.setVisible(true);
+//	private ArrayList<Object> cargarPartidaDesdeBD(UsuariosValidar user , ArrayList<Object> listaRespuestas) {
+//		String query = "";
+//		int codPartida = 0;
+//		int nivelesCompletados = 0;
+//		int victorias1v1 = 0;
+//		String nombrePersonaje = "";
+//		int fuerza = 0;
+//		int vida = 0;
+//		int velocidad = 0;
+//		int puntosMejora = 0;
+//		PersonajeJugable personaje;
+//		try {
+//			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
+//			s = con.createStatement();
+//			try {//Parte de obtención de datos de Partida
+//				query = "SELECT * FROM Partida WHERE nick=" + "'" + user.getNombre() + "'";
+//				ResultSet rs = s.executeQuery(query);
+//				while(rs.next()) {
+//					codPartida = rs.getInt("cod_partida");
+//					nivelesCompletados = rs.getInt("niveles_comp");
+//					victorias1v1 = rs.getInt("victorias1v1");
+//				}
+//				
+//				listaRespuestas.add(nivelesCompletados);
+//				listaRespuestas.add(victorias1v1);
+//			} catch (SQLException e) {
+//				logger.log(Level.SEVERE, "Error de ejecución en: " + query);
+//			}
+//			
+//			try {//Parte de obtención de datos de Personaje
+//				query = "SELECT * FROM Personaje WHERE cod_partida=" + "'" + codPartida + "'";
+//				ResultSet rs = s.executeQuery(query);
+//				while(rs.next()) {
+//					nombrePersonaje = rs.getString("nom_personaje");
+//					fuerza = rs.getInt("fuerza");
+//					vida = rs.getInt("vida");
+//					velocidad = rs.getInt("velocidad");
+//					puntosMejora = rs.getInt("puntos_mejora");
+//				}
+//				
+//				listaRespuestas.add(puntosMejora);
+//				personaje = new PersonajeJugable(nombrePersonaje, new Point(0, 0), fuerza, vida, velocidad);
+//				listaRespuestas.add(personaje);
+//
+//			} catch (SQLException e) {
+//				logger.log(Level.SEVERE, "Error de ejecución en: " + query);
+//			}
+//		} catch (SQLException e) {
+//			logger.log(Level.SEVERE, "Error al conectarse con la BD");
+//		}
+//		
+//		return listaRespuestas;
+//	}
+	
+//	public static void main(String[] args) {
+//		VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(0);
+//		ventana.setVisible(true);
 		
 		//Creación de la tabla Usuario en nuestra BD
 		//Si la tabla ya se ha creado no hace nada, trabaja con la existente
-		String comando = "";
-		try {
-			Class.forName("org.sqlite.JDBC");
-			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
-			s = con.createStatement();
-			try {
-				comando = "create table Usuario(nick STRING, password STRING)";
-				logger.log(Level.INFO, comando);
-				s.executeUpdate(comando);
-			} catch (SQLException e) {
-				logger.log(Level.INFO, "Tabla T1 ya existente");
-			}
-			try {
-				comando = "create table Partida("
-						+ "cod_partida NUMERIC PRIMARY KEY NOT NULL,"
-						+ "niveles_comp NUMERIC CHECK(niveles_comp >= 0),"
-						+ "victorias1v1 NUMERIC,"
-						+ "nick STRING REFERENCES Usuario(nick))";
-				logger.log(Level.INFO, comando);
-				s.executeUpdate(comando);
-			} catch (SQLException e) {
-				logger.log(Level.INFO, "Tabla T2 ya existente");
-			}
-			try {
-				comando = "create table Personaje("
-						+ "nom_personaje STRING,"
-						+ "fuerza NUMERIC,"
-						+ "vida NUMERIC,"
-						+ "velocidad NUMERIC,"
-						+ "puntos_mejora NUMERIC,"
-						+ "cod_partida NUMERIC REFERENCES Partida(cod_partida) ON DELETE CASCADE)";
-				logger.log(Level.INFO, comando);
-				s.executeUpdate(comando);
-			} catch (SQLException e) {
-				logger.log(Level.INFO, "Tabla T3 ya existente");
-			}
-		}	catch (SQLException|ClassNotFoundException e) {
-			logger.log(Level.SEVERE, "Error en la clase, último comando: " + comando);
-			e.printStackTrace();
-		}
-	}
+//		String comando = "";
+//		try {
+//			Class.forName("org.sqlite.JDBC");
+//			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
+//			s = con.createStatement();
+//			try {
+//				comando = "create table Usuario(nick STRING, password STRING)";
+//				logger.log(Level.INFO, comando);
+//				s.executeUpdate(comando);
+//			} catch (SQLException e) {
+//				logger.log(Level.INFO, "Tabla T1 ya existente");
+//			}
+//			try {
+//				comando = "create table Partida("
+//						+ "cod_partida NUMERIC PRIMARY KEY NOT NULL,"
+//						+ "niveles_comp NUMERIC CHECK(niveles_comp >= 0),"
+//						+ "victorias1v1 NUMERIC,"
+//						+ "nick STRING REFERENCES Usuario(nick))";
+//				logger.log(Level.INFO, comando);
+//				s.executeUpdate(comando);
+//			} catch (SQLException e) {
+//				logger.log(Level.INFO, "Tabla T2 ya existente");
+//			}
+//			try {
+//				comando = "create table Personaje("
+//						+ "nom_personaje STRING,"
+//						+ "fuerza NUMERIC,"
+//						+ "vida NUMERIC,"
+//						+ "velocidad NUMERIC,"
+//						+ "puntos_mejora NUMERIC,"
+//						+ "cod_partida NUMERIC REFERENCES Partida(cod_partida) ON DELETE CASCADE)";
+//				logger.log(Level.INFO, comando);
+//				s.executeUpdate(comando);
+//			} catch (SQLException e) {
+//				logger.log(Level.INFO, "Tabla T3 ya existente");
+//			}
+//		}	catch (SQLException|ClassNotFoundException e) {
+//			logger.log(Level.SEVERE, "Error en la clase, último comando: " + comando);
+//			e.printStackTrace();
+//		}
+//	}
 }

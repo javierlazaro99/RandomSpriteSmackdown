@@ -59,6 +59,8 @@ public class VentanaMejoras extends JFrame{
 		pMejoras.add(pVida);
 		pMejoras.add(pVelocidad);
 		
+		System.out.println(ch.getPersonajePrincipal().getPbFuerza());
+		
 		pFuerza.add(new JLabel("Fuerza"));
 		pFuerza.add(ch.getPersonajePrincipal().getPbFuerza());
 		pFuerza.add(bSubirFuerza);
