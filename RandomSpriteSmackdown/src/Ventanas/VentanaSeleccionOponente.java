@@ -40,8 +40,7 @@ public class VentanaSeleccionOponente extends JFrame {
 	private JProgressBar jProgress2= new JProgressBar(0,100);
 	private JProgressBar jProgress3= new JProgressBar(0,100);
 
-	public VentanaSeleccionOponente(int codigo, UsuariosValidar user, PersonajeJugable pPrincipal,
-			int nivelesCompletados, int victorias1v1) {
+	public VentanaSeleccionOponente(int codigo, UsuariosValidar user, PersonajeJugable pPrincipal) {
 		// TODO Auto-generated constructor stub
 		listaPersonajes.add(personajeRegular);
 		listaPersonajes.add(personajeRápido);

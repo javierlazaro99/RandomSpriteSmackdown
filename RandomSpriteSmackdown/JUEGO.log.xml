@@ -4531,3 +4531,51 @@
   <thread>19</thread>
   <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='javi'</message>
 </record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T13:34:12</date>
+  <millis>1542544452059</millis>
+  <sequence>0</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>17</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-11-18T13:34:28</date>
+  <millis>1542544468373</millis>
+  <sequence>1</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>leer</method>
+  <thread>17</thread>
+  <message>Usuario cargado erroneamente</message>
+</record>
+<record>
+  <date>2018-11-18T13:34:28</date>
+  <millis>1542544468375</millis>
+  <sequence>2</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>Usuarios.UsuariosValidar</class>
+  <method>guardar</method>
+  <thread>17</thread>
+  <message>Error usuario no se ha guardado</message>
+</record>
+<record>
+  <date>2018-11-18T13:34:28</date>
+  <millis>1542544468427</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>17</thread>
+  <message>Usuario:guiller Se ha registrado</message>
+</record>
+</log>

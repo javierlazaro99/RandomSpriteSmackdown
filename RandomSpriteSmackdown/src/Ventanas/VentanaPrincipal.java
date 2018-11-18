@@ -141,7 +141,7 @@ public class VentanaPrincipal extends JFrame{
 					ventana.setVisible(true);
 					VentanaPrincipal.this.dispose();
 				}else {
-					VentanaCreacionPersonaje ventana = new VentanaCreacionPersonaje(user, ch, victorias1v1);
+					VentanaCreacionPersonaje ventana = new VentanaCreacionPersonaje(codigo,user,pPrincipal,ch,victorias1v1,nivelesCompletados);
 					ventana.setVisible(true);
 					VentanaPrincipal.this.dispose();
 				}
@@ -154,7 +154,9 @@ public class VentanaPrincipal extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+				VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(codigo, user, pPrincipal);
+				ventana.setVisible(true);
+				VentanaPrincipal.this.dispose();
 			}
 		});
 		//Boton 1VS1 
@@ -171,7 +173,7 @@ public class VentanaPrincipal extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
 				
 			}
 		});

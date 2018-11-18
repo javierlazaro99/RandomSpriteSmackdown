@@ -14,26 +14,29 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 import Personalizados.FondoSwing;
+import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
 import personaje.Personaje;
+import personaje.personajeJugable.PersonajeJugable;
 
 public class VentanaStage extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 
-	public VentanaStage(Personaje p1, Personaje p2) {
+	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel) {
 		
 		setSize(1920, 1080);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
-		JPanelBackground jpBackground = new JPanelBackground("src/Stage1.gif");
+		JPanelBackground jpBackground = new JPanelBackground(SpriteStage(nivel));
 		JPanel pNorte = new JPanel(new GridLayout(2, 1));
 			JPanel pNs = new JPanel();
 			JPanel pNi = new JPanel(new GridLayout(1, 3));
 			JPanel pN1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
 			JPanel pN2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
 			JPanel pN3 = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		
+		JPanel pCentral = new JPanel();
+		JLabelGraficoAjustado iProta=p1.getlPersonaje();
 		this.setLayout(new BorderLayout());
 		this.add(jpBackground, BorderLayout.CENTER);
 		
@@ -41,6 +44,8 @@ public class VentanaStage extends JFrame {
 		
 		JProgressBar jpbVida1 = new JProgressBar();
 		JProgressBar jpbVida2 = new JProgressBar();
+			jpbVida1.setValue((int)p1.getVida());
+			jpbVida1.setValue((int)p2.getVida());
 		JLabel lTiempo = new JLabel("60");
 		JLabel lStage = new JLabel("Stage 1");
 		
@@ -65,13 +70,16 @@ public class VentanaStage extends JFrame {
 		
 		jpBackground.setLayout(new BorderLayout());
 		jpBackground.add(pNorte, BorderLayout.NORTH);
+		jpBackground.add(pCentral,BorderLayout.CENTER);
 		pNorte.setOpaque(false);
+		pCentral.setOpaque(false);
 		pNs.setOpaque(false);
 		pNi.setOpaque(false);
 		pN1.setOpaque(false);
 		pN2.setOpaque(false);
 		pN3.setOpaque(false);
-		
+		iProta.setOpaque(false);
+		pCentral.add(iProta);
 		pNorte.add(pNs);
 		pNorte.add(pNi);
 		
@@ -89,5 +97,29 @@ public class VentanaStage extends JFrame {
 		
 		
 	}
-
+	public String SpriteStage(int nivel) {
+		String snivel= "src/Stage";
+		String snivelfinal = ".gif";
+		String global = snivel+nivel+snivelfinal;
+		switch(nivel) {
+		case 1:
+			return global;
+		case 2:
+			return global;
+		case 3:
+			return global;
+		case 4:
+			return global;
+		case 5:
+			return global;
+		case 6:
+			return global;
+		case 7:
+			return global;
+		case 8: 
+			return global;
+		default:
+			return "src/Stage1.gif";
+		}
+	}
 }

@@ -39,7 +39,7 @@ public class VentanaCreacionPersonaje extends JFrame {
 	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5);
 	
 	
-	public VentanaCreacionPersonaje(UsuariosValidar user, ControlHistoria ch, int victorias1v1) {
+	public VentanaCreacionPersonaje(int codigo,UsuariosValidar user,PersonajeJugable pPrincipal1, ControlHistoria ch, int victorias1v1,int nivelesCompletados) {
 		
 		listaPersonajes.add(personajeRegular); listaPersonajes.add(personajeRápido); listaPersonajes.add(personajeLento);
 		personajeSeleccionado = listaPersonajes.get(0);
@@ -168,7 +168,8 @@ public class VentanaCreacionPersonaje extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				
+				VentanaPrincipal ventana = new VentanaPrincipal(codigo, user, pPrincipal1, nivelesCompletados, victorias1v1);
+				ventana.setVisible(true);
 			}
 		});
 			
