@@ -184,7 +184,7 @@ public class BaseDeDatos {
 				query = "SELECT * FROM Partida WHERE nick=" + "'" + user.getNombre() + "'";
 				ResultSet rs = s.executeQuery(query);
 				logger.log(Level.INFO, "Ejecutado correctamente: " + query);
-				while(rs.next()) {
+				if(rs.next()) {
 					codPartida = rs.getInt("cod_partida");
 					nivelesCompletados = rs.getInt("niveles_comp");
 					victorias1v1 = rs.getInt("victorias1v1");
@@ -199,7 +199,7 @@ public class BaseDeDatos {
 			try {//Parte de obtención de datos de Personaje
 				query = "SELECT * FROM Personaje WHERE cod_partida=" + "'" + codPartida + "'";
 				ResultSet rs = s.executeQuery(query);
-				while(rs.next()) {
+				if(rs.next()) {
 					nombrePersonaje = rs.getString("nom_personaje");
 					fuerza = rs.getInt("fuerza");
 					vida = rs.getInt("vida");
@@ -241,9 +241,20 @@ public class BaseDeDatos {
 				s.executeUpdate(query);
 				VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
 				
+				// Una vez creada la partida hacemos el insert del personaje
+				
+				query = "INSERT INTO Personaje VALUES('" + ch.getPersonajePrincipal().getNombre() + "'," 
+						+ ch.getPersonajePrincipal().getFuerza() + "," + ch.getPersonajePrincipal().getVida() 
+						+  "," + ch.getPersonajePrincipal().getVelocidad() + "," + ch.getPersonajePrincipal().getPuntosMejora()
+						+ "," + codigo + ")";
+				s.executeUpdate(query);
+				VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
+				
 			} catch (SQLException e) {
 				logger.log(Level.SEVERE, "Error de ejecución en: " + query);
 			}
+			
+			
 		}catch (SQLException e) {
 			logger.log(Level.SEVERE, "Error al conectarse con la BD");
 		}

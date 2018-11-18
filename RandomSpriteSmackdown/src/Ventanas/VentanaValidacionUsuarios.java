@@ -139,22 +139,14 @@ public class VentanaValidacionUsuarios extends JFrame{
 						ArrayList<Object> listaObjetos = new ArrayList<Object>();
 						BaseDeDatos.cargarPartidaBD(estado, listaObjetos);
 						
-						for (Object object : listaObjetos) {
-							System.out.println(object);
-						}
 						
 						//Esto probablemente sea mejor hacerlo con un for, por si queremos ampliar, pero por ahora vale
 						int nivelesCompletados = (int) listaObjetos.get(0);
 						int victorias1v1 = (int) listaObjetos.get(1);
 						int puntosMejora = (int)listaObjetos.get(2);
 						PersonajeJugable pj = (PersonajeJugable) listaObjetos.get(3);
-						System.out.println(pj.getNombre());
-						System.out.println(pj.getFuerza());
-						System.out.println(pj.getVida());
-						System.out.println(pj.getVelocidad());
 						pj.setPuntosMejora(puntosMejora);
 						
-						System.out.println(estado.getNombre());
 						VentanaPrincipal ventana = new VentanaPrincipal(0, usuario, pj, nivelesCompletados, victorias1v1);
 						ventana.setVisible(true);
 						logger.log(Level.INFO, "Usuario:"+estado.getNombre()+" Se ha loggueado");
