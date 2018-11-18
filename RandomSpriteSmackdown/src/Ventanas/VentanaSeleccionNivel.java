@@ -96,7 +96,72 @@ public class VentanaSeleccionNivel extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//Crear el stage
+				Nivel nivel2 = Nivel.listaNiveles.get(1);
+				VentanaStage stage2 = nivel2.getStage();
+				stage2.setVisible(true);
+				
+				
+			}
+		
+		});
+		bN3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Nivel nivel3 = Nivel.listaNiveles.get(2);
+				VentanaStage stage3 = nivel3.getStage();
+				stage3.setVisible(true);
+				
+				
+			}
+		});
+		bN4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Nivel nivel4 = Nivel.listaNiveles.get(3);
+				VentanaStage stage4 = nivel4.getStage();
+				stage4.setVisible(true);
+				
+			}
+		});
+		bN5.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Nivel nivel5 = Nivel.listaNiveles.get(4);
+				VentanaStage stage5 = nivel5.getStage();
+				stage5.setVisible(true);
+				
+			}
+		});
+		bN6.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Nivel nivel6 = Nivel.listaNiveles.get(5);
+				VentanaStage stage6 = nivel6.getStage();
+				stage6.setVisible(true);
+				
+			}
+		});
+		bN7.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Nivel nivel7= Nivel.listaNiveles.get(6);
+				VentanaStage stage7 = nivel7.getStage();
+				stage7.setVisible(true);
+				
+			}
+		});
+		bN8.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Nivel nivel8 = Nivel.listaNiveles.get(7);
+				VentanaStage stage8 = nivel8.getStage();
+				stage8.setVisible(true);
 				
 			}
 		});
