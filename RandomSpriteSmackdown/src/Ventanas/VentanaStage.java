@@ -16,6 +16,7 @@ import javax.swing.JProgressBar;
 import Personalizados.FondoSwing;
 import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
+import control.BaseDeDatos;
 import personaje.Personaje;
 import personaje.personajeJugable.PersonajeJugable;
 
@@ -47,7 +48,7 @@ public class VentanaStage extends JFrame {
 			jpbVida1.setValue((int)p1.getVida());
 			jpbVida1.setValue((int)p2.getVida());
 		JLabel lTiempo = new JLabel("60");
-		JLabel lStage = new JLabel("Stage 1");
+		JLabel lStage = new JLabel("Stage "+nivel);
 		
 		lTiempo.setFont(new Font("", Font.PLAIN, 40));
 		
@@ -122,4 +123,10 @@ public class VentanaStage extends JFrame {
 			return "src/Stage1.gif";
 		}
 	}
+	public static void main(String[] args) {
+		VentanaStage ventana = new VentanaStage(null, null, 3);
+		ventana.setVisible(true);
+		
+		
+}
 }
