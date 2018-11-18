@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 
 import Personalizados.JLabelGraficoAjustado;
 import Usuarios.UsuariosValidar;
+import control.BaseDeDatos;
 import control.ControlHistoria;
 import personaje.Personaje;
 import personaje.personajeJugable.PersonajeJugable;
@@ -153,6 +154,7 @@ public class VentanaCreacionPersonaje extends JFrame {
 				ch.setPersonajePrincipal(personajeSeleccionado);
 				setVisible(false);
 				VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(user, ch, victorias1v1);
+				BaseDeDatos.guardarPartidaBD2(user, ch);
 				ventana.setVisible(true);
 				VentanaCreacionPersonaje.this.dispose();
 				Logger logger= VentanaValidacionUsuarios.getLogger();

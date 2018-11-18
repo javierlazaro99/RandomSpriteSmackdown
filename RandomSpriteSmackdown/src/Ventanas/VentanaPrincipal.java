@@ -181,7 +181,7 @@ public class VentanaPrincipal extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				BaseDeDatos.guardarPartidaBD(user);
+//				BaseDeDatos.guardarPartidaBD(user);
 				
 //				// Parte en la que se guarda la partida hasta el momento en la BD
 //				String query = "";

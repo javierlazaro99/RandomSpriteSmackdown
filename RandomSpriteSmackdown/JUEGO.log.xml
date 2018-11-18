@@ -3418,3 +3418,765 @@
   <thread>19</thread>
   <message>Comando: SELECT * FROM Partida WHERE NICK='b' ejecutado correctamente</message>
 </record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T10:33:03</date>
+  <millis>1542533583942</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T10:33:03</date>
+  <millis>1542533583973</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T10:33:04</date>
+  <millis>1542533584186</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:joe Se ha registrado</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T10:34:14</date>
+  <millis>1542533654657</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T10:34:14</date>
+  <millis>1542533654684</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T10:34:14</date>
+  <millis>1542533654875</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:joey Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-18T10:34:21</date>
+  <millis>1542533661537</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD</method>
+  <thread>16</thread>
+  <message>Comando: SELECT * FROM Partida WHERE NICK='joey' ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-11-18T10:34:21</date>
+  <millis>1542533661538</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD</method>
+  <thread>16</thread>
+  <message>Comando: SELECT * FROM Partida WHERE NICK='joey' fallido</message>
+</record>
+<record>
+  <date>2018-11-18T10:34:21</date>
+  <millis>1542533661579</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal joe,10.0,10.0,10.0 creado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T10:37:10</date>
+  <millis>1542533830084</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T10:37:10</date>
+  <millis>1542533830118</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T10:37:10</date>
+  <millis>1542533830325</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:jane Se ha registrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T10:37:51</date>
+  <millis>1542533871816</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T10:37:51</date>
+  <millis>1542533871844</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T10:37:52</date>
+  <millis>1542533872051</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>19</thread>
+  <message>Usuario:juanma Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-18T10:38:36</date>
+  <millis>1542533916213</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD</method>
+  <thread>19</thread>
+  <message>Comando: SELECT * FROM Partida WHERE NICK='juanma' ejecutado correctamente</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T10:46:03</date>
+  <millis>1542534363511</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T10:46:03</date>
+  <millis>1542534363515</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T10:46:03</date>
+  <millis>1542534363608</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>19</thread>
+  <message>Usuario:j Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-18T10:46:29</date>
+  <millis>1542534389779</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>19</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T10:49:09</date>
+  <millis>1542534549482</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T10:49:09</date>
+  <millis>1542534549514</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T10:49:09</date>
+  <millis>1542534549746</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>19</thread>
+  <message>Usuario:bb Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-18T10:49:21</date>
+  <millis>1542534561415</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>19</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-11-18T10:49:28</date>
+  <millis>1542534568909</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>19</thread>
+  <message>Error de ejecución en: SELECT MAX(cod_partida) FROM Partida</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T10:52:03</date>
+  <millis>1542534723696</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T10:52:03</date>
+  <millis>1542534723725</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T10:52:03</date>
+  <millis>1542534723966</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>19</thread>
+  <message>Usuario:aa Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-18T10:52:15</date>
+  <millis>1542534735893</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>19</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T10:54:34</date>
+  <millis>1542534874319</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T10:54:34</date>
+  <millis>1542534874348</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T10:54:34</date>
+  <millis>1542534874563</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>19</thread>
+  <message>Usuario:cc Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-18T10:54:49</date>
+  <millis>1542534889936</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD</method>
+  <thread>19</thread>
+  <message>Comando: SELECT * FROM Partida WHERE NICK='cc' ejecutado correctamente</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T10:59:46</date>
+  <millis>1542535186696</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T10:59:46</date>
+  <millis>1542535186731</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T10:59:46</date>
+  <millis>1542535186950</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>19</thread>
+  <message>Usuario:gg Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-18T11:00:04</date>
+  <millis>1542535204655</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>19</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-11-18T11:01:00</date>
+  <millis>1542535260779</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>19</thread>
+  <message>Error de ejecución en: INSERT INTO Partida(cod_partida, niveles_comp, victorias1v1, nick)VALUES(01,0, 0,gg)</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T11:02:10</date>
+  <millis>1542535330531</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T11:02:10</date>
+  <millis>1542535330572</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T11:02:10</date>
+  <millis>1542535330816</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>19</thread>
+  <message>Usuario:hh Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-18T11:02:27</date>
+  <millis>1542535347232</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>19</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T11:04:12</date>
+  <millis>1542535452730</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T11:04:12</date>
+  <millis>1542535452754</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>19</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T11:04:12</date>
+  <millis>1542535452981</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>19</thread>
+  <message>Usuario:jiji Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-18T11:04:25</date>
+  <millis>1542535465292</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>19</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-11-18T11:04:29</date>
+  <millis>1542535469178</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>19</thread>
+  <message>Comando: INSERT INTO Partida VALUES(01,0, 0,'jiji') ejecutado correctamente</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T11:06:18</date>
+  <millis>1542535578270</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T11:06:18</date>
+  <millis>1542535578303</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T11:06:18</date>
+  <millis>1542535578561</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:kk Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-18T11:06:24</date>
+  <millis>1542535584620</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-11-18T11:06:24</date>
+  <millis>1542535584649</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(11,0, 0,'kk') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-11-18T11:06:24</date>
+  <millis>1542535584687</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal hue,10.0,10.0,10.0 creado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T11:07:14</date>
+  <millis>1542535634774</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T11:07:14</date>
+  <millis>1542535634805</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T11:07:15</date>
+  <millis>1542535635000</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:isaac Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-18T11:07:20</date>
+  <millis>1542535640785</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-11-18T11:07:20</date>
+  <millis>1542535640818</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(111,0, 0,'isaac') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-11-18T11:07:20</date>
+  <millis>1542535640860</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal isy,10.0,10.0,10.0 creado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-18T11:08:42</date>
+  <millis>1542535722113</millis>
+  <sequence>3</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-11-18T11:08:42</date>
+  <millis>1542535722143</millis>
+  <sequence>4</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-11-18T11:08:42</date>
+  <millis>1542535722339</millis>
+  <sequence>5</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha registrado</message>
+</record>
+<record>
+  <date>2018-11-18T11:08:47</date>
+  <millis>1542535727646</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-11-18T11:08:47</date>
+  <millis>1542535727676</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(1,0, 0,'javi') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-11-18T11:08:47</date>
+  <millis>1542535727714</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal javi,10.0,10.0,10.0 creado</message>
+</record>
+</log>

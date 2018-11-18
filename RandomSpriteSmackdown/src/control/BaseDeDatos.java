@@ -114,9 +114,11 @@ public class BaseDeDatos {
 		return null;
 	}
 	
-	public static void guardarPartidaBD(UsuariosValidar user) {
+	//Este método por ahora no funciona, mirar abajo el otro método
+	public static void guardarPartidaBD(UsuariosValidar user, ControlHistoria ch) {
 		// Parte en la que se guarda la partida hasta el momento en la BD
 		String query = "";
+		int codigo = 0;
 		try {
 			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
 			s = con.createStatement();
@@ -126,32 +128,36 @@ public class BaseDeDatos {
 				ResultSet rs = s.executeQuery(query);
 				System.out.println(rs.toString());
 				VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
-				if(rs.wasNull()) { //Si el result set es null significa que el usuario no tiene una partida creada
+				
+				if(rs.next()) {
+					codigo = rs.getInt(1);
+					System.out.println(codigo);
+				}
+				
+				if(codigo == 0) { // si el result set devuelve 0 en un int significa que ha sido null el valor, por tanto no hay tupla creada
 					//Le creamos una partida al jugador
 					query = "SELECT MAX(cod_partida) FROM Partida"; // query para saber el valor del mayor indice existente
 					ResultSet rs2 = s.executeQuery(query);
 					VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
-					if(rs2.wasNull()) { //Metemos el valor 1 en el codigo
+					int maxCod = rs2.getInt("cod_partida");
+		
+					if(maxCod == 0) { //Primera partida metida en la base de datos
 						query = "INSERT INTO Partida(cod_partida, niveles_comp, victorias1v1, nick)"
 								+ "VALUES(1, 0, 0," + user.getNombre() + ")";
 						s.executeUpdate(query);
 						VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
-					}else {
-						System.out.println("hola");
-						int codigo = rs2.getInt("cod_partida");
-						System.out.println("adios");
-						codigo += 1; // El codigo que le toca será el siguiente al máximo
+					}else { //Partida cualquiera en BD
 						query = "INSERT INTO Partida(cod_partida, niveles_comp, victorias1v1, nick)"
-								+ "VALUES(" + codigo + ", 0, 0," + user.getNombre() + ")";
+								+ "VALUES("+ maxCod + 1 + "," + ch.getNivelesCompletados() + ", 0," + user.getNombre() + ")";
 						s.executeUpdate(query);
 						VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
 					}
-				}else { //El usuario ya existe así que sólo hay que actualizar su información
-					int codigo = rs.getInt("cod_partida");
+				}else { // El código no es 0 por lo que tiene una partida ya guardada
 					query = "UPDATE Partida SET niveles_comp=" +  ""
 							+ "VALUES(" + codigo + ", 0, 0," + user.getNombre() + ")";
-				}
-						
+					s.executeUpdate(query);
+					VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
+				}		
 			} catch (SQLException e2) {
 				VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " fallido");
 			}
@@ -214,4 +220,33 @@ public class BaseDeDatos {
 		
 		return listaRespuestas;	
 	}
+	
+	public static void guardarPartidaBD2(UsuariosValidar user, ControlHistoria ch) {
+		String query = "";
+		int maxCod = 0;
+		try {
+			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
+			s = con.createStatement();
+			try {
+				query = "SELECT MAX(cod_partida) FROM Partida"; // query para saber el valor del mayor indice existente
+				ResultSet rs = s.executeQuery(query);
+				if(rs.next()) { // Recogemos el resultado
+					maxCod = rs.getInt(1);
+				}
+				VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
+			
+				// Una vez sabemos el maximo valor en la tabla hacemos el insert
+				int codigo = maxCod + 1;
+				query = "INSERT INTO Partida VALUES("+ codigo + "," + ch.getNivelesCompletados() + ", 0,'" + user.getNombre() + "')";
+				s.executeUpdate(query);
+				VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
+				
+			} catch (SQLException e) {
+				logger.log(Level.SEVERE, "Error de ejecución en: " + query);
+			}
+		}catch (SQLException e) {
+			logger.log(Level.SEVERE, "Error al conectarse con la BD");
+		}
+	}
+	
 }
