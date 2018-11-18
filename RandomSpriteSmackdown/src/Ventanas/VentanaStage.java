@@ -123,10 +123,7 @@ public class VentanaStage extends JFrame {
 			return "src/Stage1.gif";
 		}
 	}
-	public static void main(String[] args) {
-		VentanaStage ventana = new VentanaStage(null, null, 3);
-		ventana.setVisible(true);
-		
+	
 		
 }
 }
