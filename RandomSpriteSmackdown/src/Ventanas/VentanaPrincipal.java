@@ -154,7 +154,7 @@ public class VentanaPrincipal extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(codigo, user, pPrincipal);
+				VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(codigo, user, pPrincipal,nivelesCompletados,victorias1v1);
 				ventana.setVisible(true);
 				VentanaPrincipal.this.dispose();
 			}
