@@ -44,11 +44,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private UsuariosValidar usuario = new UsuariosValidar("", "");  
 	private static Properties propiedades;
-	private static Connection con=null;
-	private static Statement s;
-	private static ResultSet rs;
 	public static Logger logger = Logger.getLogger("Loggerjuego");
-	private boolean cbActivado;
 	private JTextField tfNombre;
 	private JCheckBox cbUltimoUsuario;
 	static {
@@ -119,6 +115,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 				pInferiorAceptar.add(bConfirmar);
 		
 		//Carga de properties
+		propiedades = new Properties();
 		cargarProperties(codigo);
 					
 		//Eventos
@@ -171,7 +168,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 				}
 				
 				//Creamos las Properties
-				if(cbUltimoUsuario.isSelected() && codigo == 0) {
+				if(cbUltimoUsuario.isSelected()) {
 					propiedades.setProperty("Nick", tfNombre.getText());
 					propiedades.setProperty("cbGuardarUsuario", "ON");
 					guardarProperties();
@@ -200,7 +197,6 @@ public class VentanaValidacionUsuarios extends JFrame{
 	 */
 	private void cargarProperties(int codigo) {
 		if(codigo == 0) {//Si la ventana no es de login no cargamos properties
-			propiedades = new Properties();
 			try {
 				propiedades.loadFromXML( new FileInputStream( "propiedadesInicioSesion.xml" ) );
 				logger.log(Level.INFO, "Archivo Properties Cargado");

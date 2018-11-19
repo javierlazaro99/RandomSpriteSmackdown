@@ -154,7 +154,7 @@ public class VentanaPrincipal extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(codigo, user, pPrincipal);
+				VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(codigo, user, pPrincipal, nivelesCompletados, victorias1v1);
 				ventana.setVisible(true);
 				VentanaPrincipal.this.dispose();
 			}
@@ -182,50 +182,21 @@ public class VentanaPrincipal extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ControlHistoria ch = new ControlHistoria(pPrincipal, nivelesCompletados);
+				BaseDeDatos.guardarPartidaBD2(user, ch);
 				
-//				BaseDeDatos.guardarPartidaBD(user);
-				
-//				// Parte en la que se guarda la partida hasta el momento en la BD
-//				String query = "";
-//				try {
-//					con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
-//					s = con.createStatement();
-//					try {
-//						query = "SELECT * FROM Partida WHERE NICK='" + user.getNombre() + "'";
-//						ResultSet rs = s.executeQuery(query);
-//						VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
-//						if(rs.wasNull()) { //Si el result set es null significa que el usuario no tiene una partida creada
-//							//Le creamos una partida al jugador
-//							query = "SELECT MAX(cod_partida) FROM Partida"; // query para saber el valor del mayor indice existente
-//							ResultSet rs2 = s.executeQuery(query);
-//							VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
-//							if(rs2.wasNull()) { //Metemos el valor 1 en el codigo
-//								query = "INSERT INTO Partida(cod_partida, niveles_comp, victorias1v1, nick)"
-//										+ "VALUES(1, 0, 0," + user.getNombre() + ")";
-//								s.executeUpdate(query);
-//								VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
-//							}else {
-//								int codigo = rs2.getInt("cod_partida");
-//								codigo += 1; // El codigo que le toca será el siguiente al máximo
-//								query = "INSERT INTO Partida(cod_partida, niveles_comp, victorias1v1, nick)"
-//										+ "VALUES(" + codigo + ", 0, 0," + user.getNombre() + ")";
-//								s.executeUpdate(query);
-//								VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
-//							}
-//						}else { //El usuario ya existe así que sólo hay que actualizar su información
-//							int codigo = rs.getInt("cod_partida");
-//							query = "UPDATE Partida SET niveles_comp=" +  ""
-//									+ "VALUES(" + codigo + ", 0, 0," + user.getNombre() + ")";
-//						}
-//								
-//					} catch (SQLException e2) {
-//						VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " fallido");
-//					}
-//				} catch (SQLException e1) {
-//					VentanaValidacionUsuarios.logger.log(Level.SEVERE, "Error al conectarse a la BD");
-//					
-//				}
+				BaseDeDatos.cerrarBD();
+				dispose();
 			}
-		});	
+		});
+		
+		addWindowListener(new WindowAdapter() {
+			
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				BaseDeDatos.cerrarBD();
+				
+			}
+		});
 	}
 }

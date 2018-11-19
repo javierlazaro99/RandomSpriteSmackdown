@@ -110,6 +110,7 @@ public class VentanaValidacion extends JFrame {
 		VentanaValidacion ventana = new VentanaValidacion();
 		ventana.setVisible(true);
 		
+		BaseDeDatos.crearConexion();
 		BaseDeDatos.crearBD();
 	}
 }
