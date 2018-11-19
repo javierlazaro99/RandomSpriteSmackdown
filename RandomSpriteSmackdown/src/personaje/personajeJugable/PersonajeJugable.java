@@ -43,7 +43,7 @@ public class PersonajeJugable extends Personaje {
 	public JLabelGraficoAjustado getlPersonaje() {
 		if(lPersonaje == null) {
 			//lPersonaje = new JLabelGraficoAjustado(this.toString(), 50, 100);
-			lPersonaje = new JLabelGraficoAjustado(, 50, 100);
+			lPersonaje = new JLabelGraficoAjustado("", 50, 100);
 		}
 		return lPersonaje;
 	}

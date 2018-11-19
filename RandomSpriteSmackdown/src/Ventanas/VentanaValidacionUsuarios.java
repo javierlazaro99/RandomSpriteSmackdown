@@ -213,7 +213,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 					
 				}
 			} catch (Exception e) {
-				logger.log(Level.INFO, "No existe archivo properties");
+				logger.log(Level.SEVERE, "No existe archivo properties");
 			} //No hay fichero Properties
 		}
 	}

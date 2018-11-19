@@ -260,4 +260,13 @@ public class BaseDeDatos {
 		}
 	}
 	
+	public static void cerrarBD() {
+		try {
+			if(s!= null) s.close();
+			if(con!= null) con.close();
+		}catch(SQLException e) {
+			logger.log(Level.INFO, "Error al cerrar la conexion con BD");
+		}
+	}
+	
 }

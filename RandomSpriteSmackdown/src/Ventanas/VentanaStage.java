@@ -122,8 +122,6 @@ public class VentanaStage extends JFrame {
 		default:
 			return "src/Stage1.gif";
 		}
-	}
-	
-		
+	}		
 }
-}
+
