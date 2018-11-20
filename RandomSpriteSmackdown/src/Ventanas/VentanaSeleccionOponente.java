@@ -160,10 +160,11 @@ public class VentanaSeleccionOponente extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				cambiarAnterior(personajeSeleccionado);
-				labelImage.removeAll();
-				labelImage.add(personajeSeleccionado.getlPersonaje());
-				cambioDeJprogresBar(personajeSeleccionado, pFuerza, pVida, pVelocidad);
+				personajeSeleccionado  = cambiarAnterior(personajeSeleccionado);
+				panelInteriorCentral.removeAll();
+				panelInteriorCentral.add(personajeSeleccionado.getlPersonaje());
+//				cambioDeJprogresBar(personajeSeleccionado, pFuerza, pVida, pVelocidad);
+				revalidate();
 				repaint();
 
 			}
@@ -173,11 +174,23 @@ public class VentanaSeleccionOponente extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				cambiarSiguiente(personajeSeleccionado);
+				personajeSeleccionado = cambiarSiguiente(personajeSeleccionado);
 				labelImage.removeAll();
 				labelImage.add(personajeSeleccionado.getlPersonaje());
-
-				cambioDeJprogresBar(personajeSeleccionado, pFuerza, pVida, pVelocidad);
+				
+				pFuerza.removeAll();
+				pFuerza.add(personajeSeleccionado.getPbFuerza());
+				pVelocidad.removeAll();
+				pVelocidad.add(personajeSeleccionado.getPbVelocidad());
+				pVida.removeAll();
+				pVida.add(personajeSeleccionado.getPbVida());
+				
+				jProgress1.setValue((int) enemigo.getVida());
+				jProgress2.setValue((int) enemigo.getFuerza());
+				jProgress3.setValue((int) enemigo.getVelocidad());
+				
+//				cambioDeJprogresBar(personajeSeleccionado, pFuerza, pVida, pVelocidad);
+				revalidate();
 				repaint();
 
 			}
@@ -209,6 +222,7 @@ public class VentanaSeleccionOponente extends JFrame {
 				}else {
 					enemigo= listaEnemigo.get(0);
 				}
+				
 				jProgress1.setValue((int) enemigo.getVida());
 				jProgress2.setValue((int) enemigo.getFuerza());
 				jProgress3.setValue((int) enemigo.getVelocidad());
@@ -244,28 +258,28 @@ public class VentanaSeleccionOponente extends JFrame {
 	 * Método para escoger el siguiente personaje seleccionable de la lista de
 	 * personajes que se le muestran al jugador
 	 */
-	private void cambiarSiguiente(PersonajeJugable personajeSeleccionado) {
+	private PersonajeJugable cambiarSiguiente(PersonajeJugable personajeSeleccionado) {
 		PersonajeJugable personajeParaCambiar;
 		if (listaPersonajes.indexOf(personajeSeleccionado) != listaPersonajes.size() - 1) {
 			personajeParaCambiar = listaPersonajes.get(listaPersonajes.indexOf(personajeSeleccionado) + 1);
 		} else {
 			personajeParaCambiar = listaPersonajes.get(0);
 		}
-		personajeSeleccionado = personajeParaCambiar;
+		return personajeParaCambiar;
 	}
 
 	/**
 	 * Método para escoger el anterior personaje seleccionable de la lista de
 	 * personajes que se le muestran al jugador
 	 */
-	private void cambiarAnterior(PersonajeJugable personajeSeleccionado) {
+	private PersonajeJugable cambiarAnterior(PersonajeJugable personajeSeleccionado) {
 		PersonajeJugable personajeParaCambiar;
 		if (listaPersonajes.indexOf(personajeSeleccionado) != 0) {
 			personajeParaCambiar = listaPersonajes.get(listaPersonajes.indexOf(personajeSeleccionado) - 1);
 		} else {
 			personajeParaCambiar = listaPersonajes.get(listaPersonajes.size() - 1);
 		}
-		personajeSeleccionado = personajeParaCambiar;
+		return personajeParaCambiar;
 	}
 
 	private void cambioDeJprogresBar(PersonajeJugable personajeSeleccionado, JPanel pFuerza, JPanel pVida,
