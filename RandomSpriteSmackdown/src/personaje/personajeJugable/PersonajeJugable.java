@@ -47,6 +47,14 @@ public class PersonajeJugable extends Personaje {
 		}
 		return lPersonaje;
 	}
+	
+	public void setlPersonaje(String path, int width, int height) {
+		this.lPersonaje = new JLabelGraficoAjustado(path, width, height);
+	}
+	
+	public void setPath(String path) {
+		this.path = path;
+	}
 
 	public JProgressBar getPbFuerza() {
 		if(pbFuerza == null) {

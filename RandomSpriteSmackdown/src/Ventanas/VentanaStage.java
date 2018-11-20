@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -19,6 +20,7 @@ import javax.swing.JProgressBar;
 import Personalizados.FondoSwing;
 import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
+import control.Animaciones;
 import control.BaseDeDatos;
 import personaje.Personaje;
 import personaje.enemigo.Enemigo;
@@ -27,8 +29,19 @@ import personaje.personajeJugable.PersonajeJugable;
 public class VentanaStage extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
+	
+	private ArrayList<String> listaPaths = new ArrayList<String>();
 
 	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel) {
+		listaPaths.add("png/Run (1).png");
+		listaPaths.add("png/Run (2).png");
+		listaPaths.add("png/Run (3).png");
+		listaPaths.add("png/Run (4).png");
+		listaPaths.add("png/Run (5).png");
+		listaPaths.add("png/Run (6).png");
+		listaPaths.add("png/Run (7).png");
+		listaPaths.add("png/Run (8).png");
+		listaPaths.add("png/Idle (1).png");
 		
 		setSize(1920, 1080);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -110,6 +123,9 @@ public class VentanaStage extends JFrame {
 		
 		addKeyListener(new KeyListener() {
 			
+			Animaciones a = new Animaciones(listaPaths, iProta);
+			
+			
 			@Override
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
@@ -118,17 +134,18 @@ public class VentanaStage extends JFrame {
 			
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode() == e.VK_D) {
-					p1.Moverse(10, 0);
+				if(e.getKeyCode() == KeyEvent.VK_D) {
+					p1.Moverse(5, 0);
+					new Thread(a).start();
 					iProta.setLocation(new Point(p1.getPosicion().x, p1.getPosicion().y));
-				}if(e.getKeyCode() == e.VK_A) {
-					p1.Moverse(-10, 0);
+					revalidate();
+				}if(e.getKeyCode() == KeyEvent.VK_A) {
+					p1.Moverse(-1, 0);
 					iProta.setLocation(new Point(p1.getPosicion().x, p1.getPosicion().y));
 				}
 				
