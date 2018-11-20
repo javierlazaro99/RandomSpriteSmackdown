@@ -45,7 +45,7 @@ public class VentanaSeleccionOponente extends JFrame {
 		listaPersonajes.add(personajeRegular);
 		listaPersonajes.add(personajeRápido);
 		listaPersonajes.add(personajeLento);
-		listaPersonajes.add(pPrincipal);
+//		listaPersonajes.add(pPrincipal);
 		personajeSeleccionado = listaPersonajes.get(0);
 		listaEnemigo.add(EnemigoRegular);
 		listaEnemigo.add(EnemigoRapido);
@@ -161,9 +161,15 @@ public class VentanaSeleccionOponente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				personajeSeleccionado  = cambiarAnterior(personajeSeleccionado);
-				panelInteriorCentral.removeAll();
-				panelInteriorCentral.add(personajeSeleccionado.getlPersonaje());
-//				cambioDeJprogresBar(personajeSeleccionado, pFuerza, pVida, pVelocidad);
+				labelImage.removeAll();
+				labelImage.add(personajeSeleccionado.getlPersonaje());
+
+				pFuerza.remove(1);
+				pFuerza.add(personajeSeleccionado.getPbFuerza());
+				pVelocidad.remove(1);
+				pVelocidad.add(personajeSeleccionado.getPbVelocidad());
+				pVida.remove(1);
+				pVida.add(personajeSeleccionado.getPbVida());
 				revalidate();
 				repaint();
 
@@ -178,18 +184,13 @@ public class VentanaSeleccionOponente extends JFrame {
 				labelImage.removeAll();
 				labelImage.add(personajeSeleccionado.getlPersonaje());
 				
-				pFuerza.removeAll();
+				pFuerza.remove(1);
 				pFuerza.add(personajeSeleccionado.getPbFuerza());
-				pVelocidad.removeAll();
+				pVelocidad.remove(1);
 				pVelocidad.add(personajeSeleccionado.getPbVelocidad());
-				pVida.removeAll();
+				pVida.remove(1);
 				pVida.add(personajeSeleccionado.getPbVida());
 				
-				jProgress1.setValue((int) enemigo.getVida());
-				jProgress2.setValue((int) enemigo.getFuerza());
-				jProgress3.setValue((int) enemigo.getVelocidad());
-				
-//				cambioDeJprogresBar(personajeSeleccionado, pFuerza, pVida, pVelocidad);
 				revalidate();
 				repaint();
 
