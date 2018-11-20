@@ -16,7 +16,7 @@ public class PersonajeJugableTest {
 
 	@Before
 	public void setUp() throws Exception {
-		pj = new PersonajeJugable("personaje", new Point(0, 0), 10, 10, 10);
+		pj = new PersonajeJugable("personaje", new Point(0, 0), 10, 10, 10, "");
 	}
 
 	@After
@@ -59,20 +59,20 @@ public class PersonajeJugableTest {
 	@Test
 	public void DarGolpeTestEnemigo() {
 		Enemigo enem = new Enemigo(new Point(20, 0), 10, 10, 10, 1);
-		pj.Moverse(null, 1, 0);
+		pj.Moverse(1, 0);
 		pj.DarGolpe(enem);
 		assertEquals(10, enem.getVida(), 0.01);
 		
-		pj.Moverse(null, 1, 0);
+		pj.Moverse(1, 0);
 		pj.DarGolpe(enem);
 		assertEquals(9, enem.getVida(), 0.01);
 	}
 	
 	@Test
 	public void DarGolpeTestJugador() {
-		PersonajeJugable pj2 = new PersonajeJugable("Guille", new Point(20, 0), 20, 20, 10);
-		pj.Moverse(null, 1, 0);
-		pj2.Moverse(null, -1, 0);
+		PersonajeJugable pj2 = new PersonajeJugable("Guille", new Point(20, 0), 20, 20, 10, "");
+		pj.Moverse(1, 0);
+		pj2.Moverse(-1, 0);
 		
 		pj.DarGolpe(pj2);
 		pj2.DarGolpe(pj);

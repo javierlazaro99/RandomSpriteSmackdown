@@ -38,10 +38,10 @@ public class PersonajeTest {
 
 	@Test
 	public void MoverseTest() {
-		p1.Moverse(null, 1, 0);
+		p1.Moverse(1, 0);
 		assertEquals(new Point(10, 0), p1.getPosicion());
 		
-		p1.Moverse(null, 0, 0.5);
+		p1.Moverse(0, 0.5);
 		assertEquals(new Point(10, 5), p1.getPosicion());	
 	}
 	

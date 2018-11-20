@@ -17,8 +17,6 @@ public class Nivel {
 	
 	public Nivel(PersonajeJugable pj, Enemigo enem, int numNiv) {
 		stage = new VentanaStage(pj, enem,numNiv);
-		
-			
 	}
 	
 	public static void generarListaNiveles(PersonajeJugable pj) {

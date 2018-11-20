@@ -1,6 +1,7 @@
 package Ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -11,6 +12,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
+import java.util.WeakHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,9 +36,9 @@ public class VentanaCreacionPersonaje extends JFrame {
 	private PersonajeJugable personajeSeleccionado;
 	private PersonajeJugable personajeCreado;
 	
-	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10);
-	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20);
-	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5);
+	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Melee (8).png");
+	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20, "png/Run (2).png");
+	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5, "png/Jump (1).png");
 	
 	
 	public VentanaCreacionPersonaje(int codigo,UsuariosValidar user,PersonajeJugable pPrincipal1, ControlHistoria ch, int victorias1v1,int nivelesCompletados) {
@@ -44,6 +46,8 @@ public class VentanaCreacionPersonaje extends JFrame {
 		listaPersonajes.add(personajeRegular); listaPersonajes.add(personajeRápido); listaPersonajes.add(personajeLento);
 		personajeSeleccionado = listaPersonajes.get(0);
 		personajeCreado = null;
+		
+		
 		
 		setSize(700, 600);
 		setLocationRelativeTo(null);
@@ -73,15 +77,20 @@ public class VentanaCreacionPersonaje extends JFrame {
 			JPanel pSalida = new JPanel(new FlowLayout(FlowLayout.LEFT));
 				JButton bSalir = new JButton("Salir");
 		
+		//Coge las simensiones de la ventana y calcula el tamaño del label		
+		Dimension d = getSize();
+		int width = (int) (d.getWidth()*0.5);
+		int height = (int) (d.getHeight()*0.5);		
 		
 		this.add(pFondo);
+		
 		
 		pFondo.add(pTitulo, BorderLayout.NORTH);
 			pTitulo.add(lTitulo);
 		pFondo.add(pPrincipal, BorderLayout.CENTER);
 			pPrincipal.add(pIzquierda);
 				pIzquierda.add(pSprite, BorderLayout.CENTER);
-					pSprite.add(personajeSeleccionado.getlPersonaje(), BorderLayout.CENTER);
+					pSprite.add(personajeSeleccionado.getlPersonaje(width, height), BorderLayout.CENTER);
 				pIzquierda.add(pCambioSprite, BorderLayout.SOUTH);
 					pCambioSprite.add(bAtras);
 					pCambioSprite.add(bAlante);
@@ -115,7 +124,7 @@ public class VentanaCreacionPersonaje extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				cambiarSiguiente();
 				pSprite.removeAll();
-				pSprite.add(personajeSeleccionado.getlPersonaje());
+				pSprite.add(personajeSeleccionado.getlPersonaje(width, height));
 				
 				pFuerza.remove(1);
 				pFuerza.add(personajeSeleccionado.getPbFuerza());
@@ -132,9 +141,10 @@ public class VentanaCreacionPersonaje extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				cambiarAnterior();
 				pSprite.removeAll();
-				pSprite.add(personajeSeleccionado.getlPersonaje());
+				pSprite.add(personajeSeleccionado.getlPersonaje(width, height));
 				pFuerza.remove(1);
 				pFuerza.add(personajeSeleccionado.getPbFuerza());
 				pVida.remove(1);
@@ -205,6 +215,11 @@ public class VentanaCreacionPersonaje extends JFrame {
 	
 	public PersonajeJugable devolverCreado() {
 		return personajeCreado;
+	}
+	
+	public static void main(String[] args) {
+		VentanaCreacionPersonaje vc = new VentanaCreacionPersonaje(0, null, null, null, 0, 0);
+		vc.setVisible(true);
 	}
 	
 }

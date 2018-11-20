@@ -61,7 +61,7 @@ public abstract class Personaje {
 	 */
 	public abstract void DarGolpe(Personaje enemigo);
 	
-	public void Moverse(JFrame stage, double movX, double movY) {
+	public void Moverse(double movX, double movY) {
 		posicion.setLocation(posicion.getX() + movX * getVelocidad(), posicion.getY() + movY * getVelocidad());
 	}
 	

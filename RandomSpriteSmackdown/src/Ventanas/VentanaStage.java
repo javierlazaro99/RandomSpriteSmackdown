@@ -6,6 +6,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -18,6 +21,7 @@ import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
 import control.BaseDeDatos;
 import personaje.Personaje;
+import personaje.enemigo.Enemigo;
 import personaje.personajeJugable.PersonajeJugable;
 
 public class VentanaStage extends JFrame {
@@ -29,6 +33,14 @@ public class VentanaStage extends JFrame {
 		setSize(1920, 1080);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
+		Dimension d = getSize();
+		int width = (int) (d.getWidth()*0.2);
+		int height = (int) (d.getHeight()*0.25);	
+		
+		p1.setPosicion(new Point(0, (int) (d.getHeight()*0.5)));
+		//p1 = new PersonajeJugable(null, new Point(0, (int) (d.getHeight()*0.5)), 10, 10, 10, "png/Melee (8).png");
+		p2 = new Enemigo(null, 10, 10, 10, 1);
+		
 		JPanelBackground jpBackground = new JPanelBackground(SpriteStage(nivel));
 		JPanel pNorte = new JPanel(new GridLayout(2, 1));
 			JPanel pNs = new JPanel();
@@ -37,7 +49,8 @@ public class VentanaStage extends JFrame {
 			JPanel pN2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
 			JPanel pN3 = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JPanel pCentral = new JPanel();
-		JLabelGraficoAjustado iProta=p1.getlPersonaje();
+		pCentral.setLayout(null);
+		JLabelGraficoAjustado iProta=p1.getlPersonaje(width, height);
 		this.setLayout(new BorderLayout());
 		this.add(jpBackground, BorderLayout.CENTER);
 		
@@ -81,6 +94,7 @@ public class VentanaStage extends JFrame {
 		pN3.setOpaque(false);
 		iProta.setOpaque(false);
 		pCentral.add(iProta);
+		iProta.setLocation(p1.getPosicion().x, p1.getPosicion().y);
 		pNorte.add(pNs);
 		pNorte.add(pNi);
 		
@@ -94,7 +108,32 @@ public class VentanaStage extends JFrame {
 		pN2.add(lTiempo);
 		pN3.add(jpbVida2);
 		
-		
+		addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == e.VK_D) {
+					p1.Moverse(10, 0);
+					iProta.setLocation(new Point(p1.getPosicion().x, p1.getPosicion().y));
+				}if(e.getKeyCode() == e.VK_A) {
+					p1.Moverse(-10, 0);
+					iProta.setLocation(new Point(p1.getPosicion().x, p1.getPosicion().y));
+				}
+				
+			}
+		});
 		
 		
 	}
@@ -122,6 +161,11 @@ public class VentanaStage extends JFrame {
 		default:
 			return "src/Stage1.gif";
 		}
-	}		
+	}
+	
+	public static void main(String[] args) {
+		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Melee (8).png"), null, 1);
+		vs.setVisible(true);
+	}
 }
 

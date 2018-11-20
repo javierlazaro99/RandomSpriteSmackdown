@@ -158,7 +158,7 @@ public class BaseDeDatos {
 			}
 			
 			listaRespuestas.add(puntosMejora);
-			personaje = new PersonajeJugable(nombrePersonaje, new Point(0, 0), fuerza, vida, velocidad);
+			personaje = new PersonajeJugable(nombrePersonaje, new Point(0, 0), fuerza, vida, velocidad, "");
 			listaRespuestas.add(personaje);
 
 		} catch (SQLException e) {

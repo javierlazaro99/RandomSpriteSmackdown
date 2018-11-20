@@ -29,9 +29,9 @@ public class VentanaSeleccionOponente extends JFrame {
 	private Enemigo enemigo;
 	private PersonajeJugable personajeCreado;
 
-	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10);
-	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20);
-	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5);
+	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "");
+	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20, "");
+	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5, "");
 	private Enemigo EnemigoRegular = new Enemigo(new Point(0,0),10, 10, 10, 1);
 	private Enemigo EnemigoRapido = new Enemigo(new Point(0,0),5, 5, 20, 1);
 	private Enemigo EnemigoLento = new Enemigo(new Point(0,0),15, 10, 5, 1);
@@ -159,7 +159,6 @@ public class VentanaSeleccionOponente extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				personajeSeleccionado  = cambiarAnterior(personajeSeleccionado);
 				labelImage.removeAll();
 				labelImage.add(personajeSeleccionado.getlPersonaje());
@@ -179,10 +178,9 @@ public class VentanaSeleccionOponente extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				personajeSeleccionado = cambiarSiguiente(personajeSeleccionado);
 				labelImage.removeAll();
-				labelImage.add(personajeSeleccionado.getlPersonaje());
+				labelImage.add(personajeSeleccionado.getlPersonaje(200, 200));
 				
 				pFuerza.remove(1);
 				pFuerza.add(personajeSeleccionado.getPbFuerza());
