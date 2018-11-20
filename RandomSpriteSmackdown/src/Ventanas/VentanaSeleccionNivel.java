@@ -1,4 +1,4 @@
-package ventanas;
+package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -14,11 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Personalizados.JPanelBackground;
+import Usuarios.UsuariosValidar;
 import control.ControlHistoria;
 import control.Nivel;
 import personaje.personajeJugable.PersonajeJugable;
-import personalizados.JPanelBackground;
-import usuarios.UsuariosValidar;
 
 public class VentanaSeleccionNivel extends JFrame{
 	

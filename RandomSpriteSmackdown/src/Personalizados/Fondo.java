@@ -1,4 +1,4 @@
-package personalizados;
+package Personalizados;
 
 import java.awt.Dimension;
 import java.awt.Graphics;

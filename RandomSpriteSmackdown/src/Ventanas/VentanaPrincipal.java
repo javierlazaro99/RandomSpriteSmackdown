@@ -1,4 +1,4 @@
-package ventanas;
+package Ventanas;
 
 
 
@@ -28,14 +28,14 @@ import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import Personalizados.Fondo;
+import Personalizados.FondoSwing;
+import Personalizados.JLabelGraficoAjustado;
+import Personalizados.JPanelBackground;
+import Usuarios.UsuariosValidar;
 import control.BaseDeDatos;
 import control.ControlHistoria;
 import personaje.personajeJugable.PersonajeJugable;
-import personalizados.Fondo;
-import personalizados.FondoSwing;
-import personalizados.JLabelGraficoAjustado;
-import personalizados.JPanelBackground;
-import usuarios.UsuariosValidar;
 
 
 

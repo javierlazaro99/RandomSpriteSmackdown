@@ -1,4 +1,4 @@
-package ventanas;
+package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -13,10 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
+import Personalizados.JLabelGraficoAjustado;
+import Usuarios.UsuariosValidar;
 import control.ControlHistoria;
 import personaje.personajeJugable.PersonajeJugable;
-import personalizados.JLabelGraficoAjustado;
-import usuarios.UsuariosValidar;
 
 public class VentanaMejoras extends JFrame{
 	

@@ -1,4 +1,4 @@
-package ventanas;
+package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -13,9 +13,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Personalizados.JLabelGraficoAjustado;
+import Personalizados.JPanelBackground;
 import control.BaseDeDatos;
-import personalizados.JLabelGraficoAjustado;
-import personalizados.JPanelBackground;
 
 public class VentanaValidacion extends JFrame {
 	int codigo;

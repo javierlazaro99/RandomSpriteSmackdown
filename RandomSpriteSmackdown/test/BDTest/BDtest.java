@@ -12,10 +12,10 @@ import java.sql.Statement;
 import org.junit.Before;
 import org.junit.Test;
 
+import Usuarios.UsuariosValidar;
 import control.BaseDeDatos;
 import control.ControlHistoria;
 import personaje.personajeJugable.PersonajeJugable;
-import usuarios.UsuariosValidar;
 
 public class BDtest {
 	Connection con=null;

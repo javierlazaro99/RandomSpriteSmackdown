@@ -1,4 +1,4 @@
-package ventanas;
+package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -13,12 +13,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
+import Personalizados.FondoSwing;
+import Personalizados.JLabelGraficoAjustado;
+import Personalizados.JPanelBackground;
 import control.BaseDeDatos;
 import personaje.Personaje;
 import personaje.personajeJugable.PersonajeJugable;
-import personalizados.FondoSwing;
-import personalizados.JLabelGraficoAjustado;
-import personalizados.JPanelBackground;
 
 public class VentanaStage extends JFrame {
 	

@@ -1,4 +1,4 @@
-package ventanas;
+package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -20,12 +20,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Personalizados.JLabelGraficoAjustado;
+import Usuarios.UsuariosValidar;
 import control.BaseDeDatos;
 import control.ControlHistoria;
 import personaje.Personaje;
 import personaje.personajeJugable.PersonajeJugable;
-import personalizados.JLabelGraficoAjustado;
-import usuarios.UsuariosValidar;
 
 public class VentanaCreacionPersonaje extends JFrame {
 	

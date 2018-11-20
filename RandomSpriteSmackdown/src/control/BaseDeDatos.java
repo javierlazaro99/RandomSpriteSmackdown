@@ -13,9 +13,9 @@ import java.util.logging.Logger;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import Usuarios.UsuariosValidar;
+import Ventanas.VentanaValidacionUsuarios;
 import personaje.personajeJugable.PersonajeJugable;
-import usuarios.UsuariosValidar;
-import ventanas.VentanaValidacionUsuarios;
 
 public class BaseDeDatos {
 	

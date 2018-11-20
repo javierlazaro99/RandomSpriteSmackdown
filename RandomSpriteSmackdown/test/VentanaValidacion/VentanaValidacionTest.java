@@ -17,7 +17,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import ventanas.VentanaValidacion;
+import Ventanas.VentanaValidacion;
 
 public class VentanaValidacionTest {
 	VentanaValidacion ventana;
