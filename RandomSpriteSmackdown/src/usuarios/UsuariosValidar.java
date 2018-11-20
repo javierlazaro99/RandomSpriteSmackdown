@@ -1,4 +1,4 @@
-package Usuarios;
+package usuarios;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -20,8 +20,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import Ventanas.VentanaValidacionUsuarios;
 import control.BaseDeDatos;
+import ventanas.VentanaValidacionUsuarios;
 
 public class UsuariosValidar {
 	private String nombre;

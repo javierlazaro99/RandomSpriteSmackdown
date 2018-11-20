@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
-import Personalizados.JLabelGraficoAjustado;
 import personaje.Personaje;
+import personalizados.JLabelGraficoAjustado;
 
 public class PersonajeJugable extends Personaje {
 	

@@ -1,4 +1,4 @@
-package Personalizados;
+package personalizados;
 
 import java.awt.Graphics;
 import java.awt.Image;

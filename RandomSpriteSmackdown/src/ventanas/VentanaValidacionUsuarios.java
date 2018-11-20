@@ -1,4 +1,4 @@
-package Ventanas;
+package ventanas;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -34,9 +34,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import Usuarios.UsuariosValidar;
 import control.BaseDeDatos;
 import personaje.personajeJugable.PersonajeJugable;
+import usuarios.UsuariosValidar;
 
 
 public class VentanaValidacionUsuarios extends JFrame{

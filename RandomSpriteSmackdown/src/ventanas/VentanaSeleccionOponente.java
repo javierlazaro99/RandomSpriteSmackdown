@@ -1,4 +1,4 @@
-package Ventanas;
+package ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -15,12 +15,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
-import Personalizados.JLabelGraficoAjustado;
-import Usuarios.UsuariosValidar;
 import control.ControlHistoria;
 import control.Nivel;
 import personaje.enemigo.Enemigo;
 import personaje.personajeJugable.PersonajeJugable;
+import personalizados.JLabelGraficoAjustado;
+import usuarios.UsuariosValidar;
 
 public class VentanaSeleccionOponente extends JFrame {
 	private ArrayList<Enemigo> listaEnemigo = new ArrayList<Enemigo>();

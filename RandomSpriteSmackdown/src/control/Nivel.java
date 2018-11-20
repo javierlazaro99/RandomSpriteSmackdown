@@ -4,10 +4,10 @@ import java.awt.Point;
 import java.lang.reflect.GenericArrayType;
 import java.util.ArrayList;
 
-import Ventanas.VentanaStage;
 import personaje.Personaje;
 import personaje.enemigo.Enemigo;
 import personaje.personajeJugable.PersonajeJugable;
+import ventanas.VentanaStage;
 
 public class Nivel {
 	
