@@ -32,6 +32,8 @@ public class VentanaStage extends JFrame {
 	
 	private ArrayList<String> listaPathsAndar = new ArrayList<String>();
 	private ArrayList<String> listaPathsJump = new ArrayList<>();
+	private ArrayList<String> listaPathsPegar = new ArrayList<>();
+	private ArrayList<String> listaPathsAndarAlReves = new ArrayList<String>();
 
 	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel) {
 		listaPathsAndar.add("png/Run (1).png");
@@ -55,6 +57,26 @@ public class VentanaStage extends JFrame {
 		listaPathsJump.add("png/Jump (9).png");
 		listaPathsJump.add("png/Jump (10).png");
 		listaPathsJump.add("png/Idle (1).png");
+		
+		listaPathsPegar.add("png/Melee (1).png");
+		listaPathsPegar.add("png/Melee (2).png");
+		listaPathsPegar.add("png/Melee (3).png");
+		listaPathsPegar.add("png/Melee (4).png");
+		listaPathsPegar.add("png/Melee (5).png");
+		listaPathsPegar.add("png/Melee (6).png");
+		listaPathsPegar.add("png/Melee (7).png");
+		listaPathsPegar.add("png/Melee (8).png");
+		listaPathsPegar.add("png/Idle (1).png");
+		
+		listaPathsAndarAlReves.add("png/RunInverso (1)");
+		listaPathsAndarAlReves.add("png/RunInverso (2)");
+		listaPathsAndarAlReves.add("png/RunInverso (3)");
+		listaPathsAndarAlReves.add("png/RunInverso (4)");
+		listaPathsAndarAlReves.add("png/RunInverso (5)");
+		listaPathsAndarAlReves.add("png/RunInverso (6)");
+		listaPathsAndarAlReves.add("png/RunInverso (7)");
+		listaPathsAndarAlReves.add("png/RunInverso (8)");
+		listaPathsAndarAlReves.add("png/Idle (1).png");
 		setSize(1920, 1080);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
@@ -153,21 +175,38 @@ public class VentanaStage extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode() == KeyEvent.VK_D) {
 					//p1.Moverse(5, 0);
+					a.setCodigoMovimiento(0);
 					a.setListaPaths(listaPathsAndar);
+					if(Thread.activeCount() >=3){
 					new Thread(a).start();
-					
+					}
 					//iProta.setLocation(new Point(p1.getPosicion().x, p1.getPosicion().y));
 					revalidate();
 				}if(e.getKeyCode() == KeyEvent.VK_A) {
-					p1.Moverse(-1, 0);
-					iProta.setLocation(new Point(p1.getPosicion().x, p1.getPosicion().y));
+					a.setCodigoMovimiento(1);
+					a.setListaPaths(listaPathsAndarAlReves);
+					if(Thread.activeCount() >=3){
+						new Thread(a).start();
+						}
+					
 				}
 				if(e.getKeyCode() == KeyEvent.VK_W) {
-					a.setCodigoMovimiento(1);
+					a.setCodigoMovimiento(2);
 					a.setListaPaths(listaPathsJump);
 					System.out.println(Thread.activeCount());
-					if(Thread.activeCount()<=3) {//Esto esta mal pero luego lo discutimos
-						new Thread(a).start();
+					//Esto esta mal pero luego lo discutimos
+					if(Thread.activeCount() <=3) {
+					new Thread(a).start();
+					}
+					
+					revalidate();
+				}
+				if(e.getKeyCode()== KeyEvent.VK_SPACE) {
+					a.setListaPaths(listaPathsPegar);
+					a.setCodigoMovimiento(3);
+					System.out.println("Codigo="+a.getCodigoMovimiento());
+					if(Thread.activeCount() <=3){
+					new Thread(a).start();
 					}
 					revalidate();
 				}
