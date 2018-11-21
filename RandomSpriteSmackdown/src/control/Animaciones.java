@@ -48,18 +48,20 @@ public class Animaciones implements Runnable {
 			}
 		}
 		if(codigoMovimiento==1) {
-			p.Moverse(-1, 0);
+			p.Moverse(-5, 0);
 			
 			for (String path : listaPaths) {
 				lAnim.setImagen(path);
+				
 			
 				try {
-					Thread.sleep(12);
+					Thread.sleep(10);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			lAnim.setLocation(new Point(p.getPosicion().x, p.getPosicion().y));
+			System.out.println(path);
 		}
+			lAnim.setLocation(new Point(p.getPosicion().x, p.getPosicion().y));
 		}
 		if(codigoMovimiento==2) {
 			

@@ -68,15 +68,15 @@ public class VentanaStage extends JFrame {
 		listaPathsPegar.add("png/Melee (8).png");
 		listaPathsPegar.add("png/Idle (1).png");
 		
-		listaPathsAndarAlReves.add("png/RunInverso (1)");
-		listaPathsAndarAlReves.add("png/RunInverso (2)");
-		listaPathsAndarAlReves.add("png/RunInverso (3)");
-		listaPathsAndarAlReves.add("png/RunInverso (4)");
-		listaPathsAndarAlReves.add("png/RunInverso (5)");
-		listaPathsAndarAlReves.add("png/RunInverso (6)");
-		listaPathsAndarAlReves.add("png/RunInverso (7)");
-		listaPathsAndarAlReves.add("png/RunInverso (8)");
-		listaPathsAndarAlReves.add("png/Idle (1).png");
+		listaPathsAndarAlReves.add("png/RunInverso (1).png");
+		listaPathsAndarAlReves.add("png/RunInverso (2).png");
+		listaPathsAndarAlReves.add("png/RunInverso (3).png");
+		listaPathsAndarAlReves.add("png/RunInverso (4).png");
+		listaPathsAndarAlReves.add("png/RunInverso (5).png");
+		listaPathsAndarAlReves.add("png/RunInverso (6).png");
+		listaPathsAndarAlReves.add("png/RunInverso (7).png");
+		listaPathsAndarAlReves.add("png/RunInverso (8).png");
+		listaPathsAndarAlReves.add("png/IdleInverso (1).png");
 		setSize(1920, 1080);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
@@ -177,15 +177,16 @@ public class VentanaStage extends JFrame {
 					//p1.Moverse(5, 0);
 					a.setCodigoMovimiento(0);
 					a.setListaPaths(listaPathsAndar);
-					if(Thread.activeCount() >=3){
+					if(Thread.activeCount() <=4){
 					new Thread(a).start();
 					}
 					//iProta.setLocation(new Point(p1.getPosicion().x, p1.getPosicion().y));
 					revalidate();
-				}if(e.getKeyCode() == KeyEvent.VK_A) {
+				}
+				if(e.getKeyCode() == KeyEvent.VK_A) {
 					a.setCodigoMovimiento(1);
 					a.setListaPaths(listaPathsAndarAlReves);
-					if(Thread.activeCount() >=3){
+					if(Thread.activeCount() <=3){
 						new Thread(a).start();
 						}
 					
