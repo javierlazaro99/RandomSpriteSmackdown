@@ -35,9 +35,9 @@ public class Enemigo extends Personaje {
 		Point pos = p.getPosicion();
 		//Hay que comprobar si el jugador está a la derecha del enemigo o a la izquierda
 		if (getPosicion().getX() > pos.getX()) {
-			this.Moverse(null, -1, 0);
+			this.Moverse( -1, 0);
 		}else if (getPosicion().getX() < pos.getX()){
-			this.Moverse(null, 1, 0);
+			this.Moverse( 1, 0);
 		}
 		
 		
