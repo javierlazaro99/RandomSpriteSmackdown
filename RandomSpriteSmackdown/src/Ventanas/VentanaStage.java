@@ -159,7 +159,7 @@ public class VentanaStage extends JFrame {
 					//iProta.setLocation(new Point(p1.getPosicion().x, p1.getPosicion().y));
 					revalidate();
 				}if(e.getKeyCode() == KeyEvent.VK_A) {
-					p1.Moverse(-1, 0);
+					p1.Moverse(-10, 0);
 					iProta.setLocation(new Point(p1.getPosicion().x, p1.getPosicion().y));
 				}
 				if(e.getKeyCode() == KeyEvent.VK_W) {

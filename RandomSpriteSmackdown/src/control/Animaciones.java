@@ -30,12 +30,11 @@ public class Animaciones implements Runnable {
 	public void run() {
 		if(codigoMovimiento==0) {
 			p.Moverse(10, 0);
-			
-			
+				
 			
 			for (String path : listaPaths) {
 				lAnim.setImagen(path);
-			
+
 				try {
 					Thread.sleep(12);
 				} catch (InterruptedException e) {
