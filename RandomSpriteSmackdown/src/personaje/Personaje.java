@@ -4,12 +4,15 @@ import java.awt.Point;
 
 import javax.swing.JFrame;
 
+import Personalizados.JLabelGraficoAjustado;
+
 public abstract class Personaje {
 	
 	private Point posicion;
 	private double fuerza;
 	private double vida;
 	private double velocidad;
+	private JLabelGraficoAjustado lPersonaje;
 	
 	public Personaje(Point posicion, double fuerza, double vida, double velocidad) {
 		this.posicion = posicion;
@@ -48,6 +51,18 @@ public abstract class Personaje {
 
 	public void setVelocidad(double velocidad) {
 		this.velocidad = velocidad;
+	}
+	
+	public void crearlPersonaje(String path, int width, int height) {
+		this.lPersonaje = new JLabelGraficoAjustado(path, width, height);
+	}
+
+	public JLabelGraficoAjustado getlPersonaje() {
+		return this.lPersonaje;
+	}
+	
+	public void setlPersonaje(String path) {
+		this.lPersonaje.setImagen(path);
 	}
 
 	@Override
