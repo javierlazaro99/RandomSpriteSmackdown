@@ -13,7 +13,10 @@ public class Animaciones implements Runnable {
 	private JLabelGraficoAjustado lAnim;
 	private int codigoMovimiento=0;
 	// codigo Movimiento
-	//Salto=1
+	//Moverse para delante 0 
+	//Moverse para atras 1
+	//Salto=2
+	//Pegar=3
 	public Animaciones(ArrayList<String> listaPaths, JLabelGraficoAjustado lAnim,int codigoMovimiento,PersonajeJugable p) {
 		this.listaPaths = listaPaths;
 		this.lAnim = lAnim;
@@ -44,6 +47,22 @@ public class Animaciones implements Runnable {
 			}
 		}
 		if(codigoMovimiento==1) {
+			p.Moverse(-5, 0);
+			
+			for (String path : listaPaths) {
+				lAnim.setImagen(path);
+				
+			
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			System.out.println(path);
+		}
+			lAnim.setLocation(new Point(p.getPosicion().x, p.getPosicion().y));
+		}
+		if(codigoMovimiento==2) {
 			
 			try {
 				p.Moverse(0, -15);
@@ -63,6 +82,20 @@ public class Animaciones implements Runnable {
 				e.printStackTrace();
 			}
 			
+		}
+		if(codigoMovimiento==3) {
+				
+				try {
+					for (String path : listaPaths) {
+						lAnim.setImagen(path);
+						
+						Thread.sleep(25);
+					}
+	
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		}
 		
 	}
