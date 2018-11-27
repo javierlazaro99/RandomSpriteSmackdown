@@ -32,14 +32,14 @@ public class Animaciones implements Runnable {
 	@Override
 	public void run() {
 		if(codigoMovimiento==0) {
-<<<<<<< HEAD
+
 			p.Moverse(1, 0);
 			
 			
-=======
+
 			p.Moverse(10, 0);
 				
->>>>>>> branch 'master' of https://github.com/javierlazaro99/RandomSpriteSmackdown.git
+
 			
 			for (String path : listaPaths) {
 				lAnim.setImagen(path);
