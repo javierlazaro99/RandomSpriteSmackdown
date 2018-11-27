@@ -31,7 +31,7 @@ public class ControlEstados implements Runnable{
 			long diferenciaTimers = 0;
 			long timerEstado = 0;
 			
-			while(!APulsado && !DPulsado && !WPulsado) {
+			while(!APulsado && !DPulsado && !WPulsado) { //Estado parado
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
 				if(diferenciaTimers <= 1000) {
