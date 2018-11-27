@@ -150,6 +150,7 @@ public class JLabelGraficoAjustado extends JLabel {
 				iniY = (getHeight() - alt) / 2;
 			}
 			// Rotación
+			
 			g2.rotate( radsRotacion, getWidth()/2, getHeight()/2 );  // Incorporar al gráfico la rotación definida
 			// Transparencia
 			g2.setComposite(AlphaComposite.getInstance( AlphaComposite.SRC_OVER, opacidad ) ); // Incorporar la transparencia definida

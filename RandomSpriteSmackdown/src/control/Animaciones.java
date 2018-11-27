@@ -32,7 +32,7 @@ public class Animaciones implements Runnable {
 	@Override
 	public void run() {
 		if(codigoMovimiento==0) {
-			p.Moverse(10, 0);
+			p.Moverse(1, 0);
 			
 			
 			
