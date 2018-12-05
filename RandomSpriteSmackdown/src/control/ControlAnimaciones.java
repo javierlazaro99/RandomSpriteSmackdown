@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import Ventanas.VentanaStage;
 import personaje.Personaje;
 
 public class ControlAnimaciones {
@@ -11,15 +12,16 @@ public class ControlAnimaciones {
 	ArrayList<Integer> tiempos;
 
 	
-	public String AnimacionParado(long milis, Personaje personaje, JFrame stage) {
+	public int AnimacionParado(long milis, Personaje personaje, VentanaStage stage) {
 		ArrayList<ElementoAnimacion> animParado = ElementoAnimacion.animParado;
 		
 		for (ElementoAnimacion elementoAnimacion : animParado) {
 			if(milis <= elementoAnimacion.getTiempos()) {
-				return elementoAnimacion.getLabel();
+				stage.getiProta().setImagen(elementoAnimacion.getLabel());
+				return 1;
 			}
 		}
-		return "";
+		return 0;
 	}
 	
 	public void AnimacionMoverse(long milis, Personaje personaje) {
@@ -42,14 +44,15 @@ public class ControlAnimaciones {
 		}
 	}
 	
-	public String AnimacionSaltando(long milis, Personaje personaje, JFrame stage) {
+	public int AnimacionSaltando(long milis, Personaje personaje, VentanaStage stage) {
 		ArrayList<ElementoAnimacion> animSaltando = ElementoAnimacion.animSaltando;
 		
 		for (ElementoAnimacion elementoAnimacion : animSaltando) {
 			if(milis <= elementoAnimacion.getTiempos()) {
-				return elementoAnimacion.getLabel();
+				stage.getiProta().setImagen(elementoAnimacion.getLabel());
+				return 1;
 			}
 		}
-		return "";
+		return 0;
 	}
 }

@@ -6,6 +6,7 @@ import java.sql.Time;
 import javax.swing.JFrame;
 
 import Personalizados.JLabelGraficoAjustado;
+import Ventanas.VentanaStage;
 import personaje.Personaje;
 import personaje.personajeJugable.PersonajeJugable;
 
@@ -18,10 +19,10 @@ public class ControlEstados implements Runnable{
 	private Personaje pSecundario;
 	private boolean StageCerrado;
 	private ControlAnimaciones controlAnimacion= new ControlAnimaciones();
-	private JFrame stage;
+	private VentanaStage stage;
 	
 	
-	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario, JFrame stage) {//Personaje de la izquierda y de la derecha
+	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario, VentanaStage stage) {//Personaje de la izquierda y de la derecha
 		this.pPrincipal=pPrincipal;
 		this.pSecundario=pSecundario;
 		this.stage = stage;
@@ -72,9 +73,7 @@ public class ControlEstados implements Runnable{
 			}
 			controlAnimacion.AnimacionParado(diferenciaTimers, pPrincipal, stage);//sprites
 		}else {
-			//pPrincipal.getlPersonaje().setFlip(false, true);
-			String s = controlAnimacion.AnimacionParado(diferenciaTimers, pPrincipal, stage);
-			//System.out.println(s);
+			controlAnimacion.AnimacionParado(diferenciaTimers, pPrincipal, stage);
 		}
 	}
 	
@@ -87,16 +86,25 @@ public class ControlEstados implements Runnable{
 	}
 	
 	private void EstadoSalto(long diferenciaTimers) {
-		String s;
 		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())>0) {
 			if(pPrincipal.getlPersonaje().isVertFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setVertFlip(false);
 			}
-			s = controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage);//sprites
+			controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage);//sprites
 		}else {
-			s = controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage);
-			System.out.println(s);
+			controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage);
 		}
+		
+		//Parte de movimiento del personaje
+		if(diferenciaTimers <= 500) {
+			pPrincipal.Moverse(0, -1);
+			stage.getiProta().setLocation(pPrincipal.getPosicion());
+		}else {
+			pPrincipal.Moverse(0, 1);
+			stage.getiProta().setLocation(pPrincipal.getPosicion());
+		}
+		stage.repaint();
+		stage.revalidate();
 	}
 	
 	

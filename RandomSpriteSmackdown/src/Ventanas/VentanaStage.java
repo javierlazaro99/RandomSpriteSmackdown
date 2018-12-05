@@ -35,7 +35,7 @@ import personaje.personajeJugable.PersonajeJugable;
 public class VentanaStage extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
-	
+	private JLabelGraficoAjustado iProta = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
 	
 
 	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel) {
@@ -57,7 +57,6 @@ public class VentanaStage extends JFrame {
 		int height = (int) (d.getHeight()*0.25);	
 		
 		p1.setPosicion(new Point(0, (int) (d.getHeight()*0.5)));
-		//p1 = new PersonajeJugable(null, new Point(0, (int) (d.getHeight()*0.5)), 10, 10, 10, "png/Melee (8).png");
 		p2 = new Enemigo(null, 10, 10, 10, 1);
 		
 		JPanelBackground jpBackground = new JPanelBackground(SpriteStage(nivel));
@@ -69,7 +68,7 @@ public class VentanaStage extends JFrame {
 			JPanel pN3 = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JPanel pCentral = new JPanel();
 		pCentral.setLayout(null);
-		JLabelGraficoAjustado iProta=p1.getlPersonaje(width, height);
+		
 		this.setLayout(new BorderLayout());
 		this.add(jpBackground, BorderLayout.CENTER);
 		
@@ -97,9 +96,6 @@ public class VentanaStage extends JFrame {
 		jpbVida1.setForeground(Color.RED);
 		jpbVida2.setForeground(Color.RED);
 		
-//		pNorte.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-//		pN1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		
 		
 		jpBackground.setLayout(new BorderLayout());
 		jpBackground.add(pNorte, BorderLayout.NORTH);
@@ -114,6 +110,7 @@ public class VentanaStage extends JFrame {
 		iProta.setOpaque(false);
 		pCentral.add(iProta);
 		iProta.setLocation(p1.getPosicion().x, p1.getPosicion().y);
+		iProta.setSize(new Dimension(width, height));
 		pNorte.add(pNs);
 		pNorte.add(pNi);
 		
@@ -145,7 +142,6 @@ public class VentanaStage extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode() == KeyEvent.VK_W) {
 					controlEstados.setWPulsado(true);
-					System.out.println(controlEstados.isWPulsado());
 				}
 			}
 		});
@@ -185,6 +181,16 @@ public class VentanaStage extends JFrame {
 		}
 	}
 	
+	
+
+	public JLabelGraficoAjustado getiProta() {
+		return iProta;
+	}
+
+	public void setiProta(JLabelGraficoAjustado iProta) {
+		this.iProta = iProta;
+	}
+
 	public static void main(String[] args) {
 		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png"), new Enemigo(new Point(100, 0), 10, 10, 10, 1) ,1);
 		vs.setVisible(true);
