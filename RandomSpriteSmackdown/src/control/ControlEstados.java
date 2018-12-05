@@ -16,9 +16,12 @@ public class ControlEstados implements Runnable{
 	private Personaje pSecundario;
 	private boolean StageCerrado;
 	private ControlAnimaciones controlAnimacion= new ControlAnimaciones();
+	
 	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario) {//Personaje de la izquierda y de la derecha
 		this.pPrincipal=pPrincipal;
 		this.pSecundario=pSecundario;
+		
+		
 		
 	}
 	
@@ -56,7 +59,7 @@ public class ControlEstados implements Runnable{
 
 	private void EstadoParado(long diferenciaTimers) { //Puede haber parado mirando a derecha o izquierda pero eso lo voy a arreglar de otra forma
 		
-		if(pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX()>0) {//Comprobacion de direccion de vista
+		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())>0) {//Comprobacion de direccion de vista
 			
 			if(pPrincipal.getlPersonaje().isVertFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setVertFlip(false);
@@ -88,7 +91,7 @@ public class ControlEstados implements Runnable{
 			while(!APulsado && !DPulsado && !WPulsado) { //Estado parado
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
-				if(diferenciaTimers <= 1000) {//Posible cambio
+				if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimParado()) {//Posible cambio
 					EstadoParado(diferenciaTimers);
 				}else {
 					diferenciaTimers = 0;
@@ -140,9 +143,6 @@ public class ControlEstados implements Runnable{
 					e.printStackTrace();
 				}
 			}
-		}
-		
+		}	
 	}
-	
-
 }

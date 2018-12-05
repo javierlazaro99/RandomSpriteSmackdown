@@ -22,6 +22,8 @@ import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
 import control.Animaciones;
 import control.BaseDeDatos;
+import control.ControlAnimaciones;
+import control.ControlEstados;
 import personaje.Personaje;
 import personaje.enemigo.Enemigo;
 import personaje.personajeJugable.PersonajeJugable;
@@ -36,49 +38,12 @@ public class VentanaStage extends JFrame {
 	private ArrayList<String> listaPathsAndarAlReves = new ArrayList<String>();
 
 	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel) {
-		listaPathsAndar.add("png/Run (1).png");
-		listaPathsAndar.add("png/Run (2).png");
-		listaPathsAndar.add("png/Run (3).png");
-		listaPathsAndar.add("png/Run (4).png");
-		listaPathsAndar.add("png/Run (5).png");
-		listaPathsAndar.add("png/Run (6).png");
-		listaPathsAndar.add("png/Run (7).png");
-		listaPathsAndar.add("png/Run (8).png");
-		listaPathsAndar.add("png/Idle (1).png");
-		
-		listaPathsJump.add("png/Jump (1).png");
-		listaPathsJump.add("png/Jump (2).png");
-		listaPathsJump.add("png/Jump (3).png");
-		listaPathsJump.add("png/Jump (4).png");
-		listaPathsJump.add("png/Jump (5).png");
-		listaPathsJump.add("png/Jump (6).png");
-		listaPathsJump.add("png/Jump (7).png");
-		listaPathsJump.add("png/Jump (8).png");
-		listaPathsJump.add("png/Jump (9).png");
-		listaPathsJump.add("png/Jump (10).png");
-		listaPathsJump.add("png/Idle (1).png");
-		
-		listaPathsPegar.add("png/Melee (1).png");
-		listaPathsPegar.add("png/Melee (2).png");
-		listaPathsPegar.add("png/Melee (3).png");
-		listaPathsPegar.add("png/Melee (4).png");
-		listaPathsPegar.add("png/Melee (5).png");
-		listaPathsPegar.add("png/Melee (6).png");
-		listaPathsPegar.add("png/Melee (7).png");
-		listaPathsPegar.add("png/Melee (8).png");
-		listaPathsPegar.add("png/Idle (1).png");
-		
-		listaPathsAndarAlReves.add("png/RunInverso (1).png");
-		listaPathsAndarAlReves.add("png/RunInverso (2).png");
-		listaPathsAndarAlReves.add("png/RunInverso (3).png");
-		listaPathsAndarAlReves.add("png/RunInverso (4).png");
-		listaPathsAndarAlReves.add("png/RunInverso (5).png");
-		listaPathsAndarAlReves.add("png/RunInverso (6).png");
-		listaPathsAndarAlReves.add("png/RunInverso (7).png");
-		listaPathsAndarAlReves.add("png/RunInverso (8).png");
-		listaPathsAndarAlReves.add("png/IdleInverso (1).png");
 		setSize(1920, 1080);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		
+		ControlEstados controlEstados = new ControlEstados(p1, p2);
+		Thread t = new Thread(controlEstados);
+		t.start();
 		
 		Dimension d = getSize();
 		int width = (int) (d.getWidth()*0.2);
@@ -157,13 +122,9 @@ public class VentanaStage extends JFrame {
 		
 		addKeyListener(new KeyListener() {
 			
-			Animaciones a = new Animaciones(listaPathsAndar, iProta,0,p1);
-			
-			
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
 			
 			@Override
@@ -173,52 +134,11 @@ public class VentanaStage extends JFrame {
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode() == KeyEvent.VK_D) {
-					//p1.Moverse(5, 0);
-					a.setCodigoMovimiento(0);
-					a.setListaPaths(listaPathsAndar);
-					if(Thread.activeCount() <=4){
-					new Thread(a).start();
-					}
-					//iProta.setLocation(new Point(p1.getPosicion().x, p1.getPosicion().y));
-					revalidate();
-				}if(e.getKeyCode() == KeyEvent.VK_A) {
-					p1.Moverse(-10, 0);
-					iProta.setLocation(new Point(p1.getPosicion().x, p1.getPosicion().y));
-				}
-				if(e.getKeyCode() == KeyEvent.VK_A) {
-					a.setCodigoMovimiento(1);
-					a.setListaPaths(listaPathsAndarAlReves);
-					if(Thread.activeCount() <=3){
-						new Thread(a).start();
-						}
-					
-				}
-				if(e.getKeyCode() == KeyEvent.VK_W) {
-					a.setCodigoMovimiento(2);
-					a.setListaPaths(listaPathsJump);
-					System.out.println(Thread.activeCount());
-					//Esto esta mal pero luego lo discutimos
-					if(Thread.activeCount() <=3) {
-					new Thread(a).start();
-					}
-					
-					revalidate();
-				}
-				if(e.getKeyCode()== KeyEvent.VK_SPACE) {
-					a.setListaPaths(listaPathsPegar);
-					a.setCodigoMovimiento(3);
-					System.out.println("Codigo="+a.getCodigoMovimiento());
-					if(Thread.activeCount() <=3){
-					new Thread(a).start();
-					}
-					revalidate();
-				}
+			
 			}
 		});
-		
-		
 	}
+			
 	public String SpriteStage(int nivel) {
 		String snivel= "src/Stage";
 		String snivelfinal = ".gif";
