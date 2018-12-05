@@ -53,10 +53,10 @@ public abstract class Personaje {
 		this.velocidad = velocidad;
 	}
 	
-	public void crearlPersonaje(String path, int width, int height) {
-		this.lPersonaje = new JLabelGraficoAjustado(path, width, height);
+	public void crearlPersonaje(int width, int height) {
+		this.lPersonaje = new JLabelGraficoAjustado("", width, height);
 	}
-
+	
 	public JLabelGraficoAjustado getlPersonaje() {
 		return this.lPersonaje;
 	}

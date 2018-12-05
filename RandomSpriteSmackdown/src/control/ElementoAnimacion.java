@@ -7,7 +7,7 @@ public class ElementoAnimacion {
 	private long tiempos;
 	
 	
-	static ArrayList<ElementoAnimacion> animParado;
+	public static ArrayList<ElementoAnimacion> animParado = new ArrayList<ElementoAnimacion>();
 	static long tiempoAnimParado;
 	
 	
@@ -48,6 +48,6 @@ public class ElementoAnimacion {
 	}
 	
 	public static long getTiempoAnimParado() {
-		return animParado.get(animParado.size()).tiempos;
+		return animParado.get(animParado.size() -1).tiempos;
 	}
 }

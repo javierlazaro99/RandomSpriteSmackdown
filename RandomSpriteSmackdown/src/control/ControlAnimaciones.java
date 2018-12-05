@@ -2,6 +2,8 @@ package control;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import personaje.Personaje;
 
 public class ControlAnimaciones {
@@ -9,16 +11,15 @@ public class ControlAnimaciones {
 	ArrayList<Integer> tiempos;
 
 	
-	public int AnimacionParado(long milis, Personaje personaje) {
+	public String AnimacionParado(long milis, Personaje personaje, JFrame stage) {
 		ArrayList<ElementoAnimacion> animParado = ElementoAnimacion.animParado;
 		
 		for (ElementoAnimacion elementoAnimacion : animParado) {
 			if(milis <= elementoAnimacion.getTiempos()) {
-				personaje.setlPersonaje(elementoAnimacion.getLabel());
-				return 1;
+				return elementoAnimacion.getLabel();
 			}
 		}
-		return 0;
+		return "";
 	}
 	
 	public void AnimacionMoverse(long milis, Personaje personaje) {

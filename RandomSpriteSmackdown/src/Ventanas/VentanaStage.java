@@ -9,6 +9,8 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -24,6 +26,7 @@ import control.Animaciones;
 import control.BaseDeDatos;
 import control.ControlAnimaciones;
 import control.ControlEstados;
+import control.ElementoAnimacion;
 import personaje.Personaje;
 import personaje.enemigo.Enemigo;
 import personaje.personajeJugable.PersonajeJugable;
@@ -32,17 +35,30 @@ public class VentanaStage extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private ArrayList<String> listaPathsAndar = new ArrayList<String>();
-	private ArrayList<String> listaPathsJump = new ArrayList<>();
-	private ArrayList<String> listaPathsPegar = new ArrayList<>();
-	private ArrayList<String> listaPathsAndarAlReves = new ArrayList<String>();
+	
 
 	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel) {
+		
+		ElementoAnimacion.CrearAnimParado();
+		p1.crearlPersonaje(50, 50);
+		p1.setlPersonaje("png/Idle (1).png");
+		
+		p1.setlPersonaje("png/Idle (1).png");
+		for (ElementoAnimacion elementoAnimacion : ElementoAnimacion.animParado) {
+			System.out.println(elementoAnimacion.getLabel());
+			System.out.println(elementoAnimacion.getTiempos());
+			
+			p1.setlPersonaje(elementoAnimacion.getLabel());
+			repaint();
+			revalidate();
+		}
+		
 		setSize(1920, 1080);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
-		ControlEstados controlEstados = new ControlEstados(p1, p2);
+		ControlEstados controlEstados = new ControlEstados(p1, p2, this);
 		Thread t = new Thread(controlEstados);
+		controlEstados.setStageCerrado(false);
 		t.start();
 		
 		Dimension d = getSize();
@@ -137,6 +153,51 @@ public class VentanaStage extends JFrame {
 			
 			}
 		});
+		
+		addWindowListener(new WindowListener() {
+			
+			@Override
+			public void windowOpened(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowIconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowClosing(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowClosed(WindowEvent e) {
+				controlEstados.setStageCerrado(true);
+				
+			}
+			
+			@Override
+			public void windowActivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 			
 	public String SpriteStage(int nivel) {
@@ -166,7 +227,7 @@ public class VentanaStage extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Melee (8).png"), null, 1);
+		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png"), new Enemigo(new Point(100, 0), 10, 10, 10, 1) ,1);
 		vs.setVisible(true);
 	}
 }

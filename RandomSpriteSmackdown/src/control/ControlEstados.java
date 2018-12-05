@@ -3,6 +3,8 @@ package control;
 import java.awt.Point;
 import java.sql.Time;
 
+import javax.swing.JFrame;
+
 import Personalizados.JLabelGraficoAjustado;
 import personaje.Personaje;
 import personaje.personajeJugable.PersonajeJugable;
@@ -16,13 +18,17 @@ public class ControlEstados implements Runnable{
 	private Personaje pSecundario;
 	private boolean StageCerrado;
 	private ControlAnimaciones controlAnimacion= new ControlAnimaciones();
+	private JFrame stage;
 	
-	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario) {//Personaje de la izquierda y de la derecha
+	
+	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario, JFrame stage) {//Personaje de la izquierda y de la derecha
 		this.pPrincipal=pPrincipal;
 		this.pSecundario=pSecundario;
+		this.stage = stage;
 		
-		
-		
+		this.APulsado = false;
+		this.DPulsado = false;
+		this.WPulsado = false;
 	}
 	
 	public boolean isAPulsado() {
@@ -64,10 +70,11 @@ public class ControlEstados implements Runnable{
 			if(pPrincipal.getlPersonaje().isVertFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setVertFlip(false);
 			}
-			controlAnimacion.AnimacionParado(diferenciaTimers, pPrincipal);//sprites
+			controlAnimacion.AnimacionParado(diferenciaTimers, pPrincipal, stage);//sprites
 		}else {
-			pPrincipal.getlPersonaje().setFlip(false, true);
-			controlAnimacion.AnimacionParado(diferenciaTimers, pPrincipal);
+			//pPrincipal.getlPersonaje().setFlip(false, true);
+			String s = controlAnimacion.AnimacionParado(diferenciaTimers, pPrincipal, stage);
+			System.out.println(s);
 		}
 	}
 	
@@ -83,12 +90,12 @@ public class ControlEstados implements Runnable{
 	@Override
 	public void run() {
 		
-		while (StageCerrado = false) {
+		while (!StageCerrado) {
 			long timerJuego = System.currentTimeMillis();
 			long diferenciaTimers = 0;
 			long timerEstado = 0;
 			
-			while(!APulsado && !DPulsado && !WPulsado) { //Estado parado
+			while(!APulsado && !DPulsado && !WPulsado && !StageCerrado) { //Estado parado
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
 				if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimParado()) {//Posible cambio
@@ -108,7 +115,7 @@ public class ControlEstados implements Runnable{
 			diferenciaTimers = 0; //Reset de la diferencia al saltar a otro estado
 			timerJuego = System.currentTimeMillis(); //Volvemos a calcular el tiempo del juego para el siguiente estado
 			
-			while(APulsado && !DPulsado && !WPulsado) {//Moverse hacia la derecha
+			while(APulsado && !DPulsado && !WPulsado && !StageCerrado) {//Moverse hacia la derecha
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
 				if(diferenciaTimers <= 1000) {//Posible cambio
@@ -127,7 +134,7 @@ public class ControlEstados implements Runnable{
 			diferenciaTimers = 0;
 			timerJuego = System.currentTimeMillis();
 			
-			while(!APulsado && DPulsado && !WPulsado) {
+			while(!APulsado && DPulsado && !WPulsado && !StageCerrado) {
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
 				if(diferenciaTimers <= 1000) {
