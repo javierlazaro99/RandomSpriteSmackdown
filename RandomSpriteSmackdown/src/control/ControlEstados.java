@@ -74,7 +74,7 @@ public class ControlEstados implements Runnable{
 		}else {
 			//pPrincipal.getlPersonaje().setFlip(false, true);
 			String s = controlAnimacion.AnimacionParado(diferenciaTimers, pPrincipal, stage);
-			System.out.println(s);
+			//System.out.println(s);
 		}
 	}
 	
@@ -86,6 +86,19 @@ public class ControlEstados implements Runnable{
 		
 	}
 	
+	private void EstadoSalto(long diferenciaTimers) {
+		String s;
+		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())>0) {
+			if(pPrincipal.getlPersonaje().isVertFlip()==true) {//comprobacion de adonde mira
+				pPrincipal.getlPersonaje().setVertFlip(false);
+			}
+			s = controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage);//sprites
+		}else {
+			s = controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage);
+			System.out.println(s);
+		}
+	}
+	
 	
 	@Override
 	public void run() {
@@ -94,7 +107,7 @@ public class ControlEstados implements Runnable{
 			long timerJuego = System.currentTimeMillis();
 			long diferenciaTimers = 0;
 			long timerEstado = 0;
-			
+			//Estado moverse parado
 			while(!APulsado && !DPulsado && !WPulsado && !StageCerrado) { //Estado parado
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
@@ -114,7 +127,7 @@ public class ControlEstados implements Runnable{
 			}
 			diferenciaTimers = 0; //Reset de la diferencia al saltar a otro estado
 			timerJuego = System.currentTimeMillis(); //Volvemos a calcular el tiempo del juego para el siguiente estado
-			
+			//Estado moverse derecha
 			while(APulsado && !DPulsado && !WPulsado && !StageCerrado) {//Moverse hacia la derecha
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
@@ -133,7 +146,7 @@ public class ControlEstados implements Runnable{
 			}
 			diferenciaTimers = 0;
 			timerJuego = System.currentTimeMillis();
-			
+			//Estado moverse izquierda
 			while(!APulsado && DPulsado && !WPulsado && !StageCerrado) {
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
@@ -150,6 +163,33 @@ public class ControlEstados implements Runnable{
 					e.printStackTrace();
 				}
 			}
+			
+			diferenciaTimers = 0;
+			timerJuego = System.currentTimeMillis();
+			//Esatdo saltando básico
+			while(!APulsado && !DPulsado && WPulsado && !StageCerrado) {
+				boolean saltando = true;
+				
+				while(saltando) {
+					timerEstado = System.currentTimeMillis();
+					diferenciaTimers = timerEstado - timerJuego;
+					
+					if(diferenciaTimers <= 1000) {
+						EstadoSalto(diferenciaTimers);
+					}else {
+						diferenciaTimers = 0;
+						saltando = false; //Acaba el salto y puede volver a comprobar si w está pulsado
+						timerJuego = System.currentTimeMillis();
+					}
+					
+					try {
+						Thread.sleep(16); //Mas o menos 60 veces por segundo hará el bucle
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			}	
 		}	
 	}
 }

@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
@@ -40,18 +41,8 @@ public class VentanaStage extends JFrame {
 	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel) {
 		
 		ElementoAnimacion.CrearAnimParado();
+		ElementoAnimacion.CrearAnimSaltando();
 		p1.crearlPersonaje(50, 50);
-		p1.setlPersonaje("png/Idle (1).png");
-		
-		p1.setlPersonaje("png/Idle (1).png");
-		for (ElementoAnimacion elementoAnimacion : ElementoAnimacion.animParado) {
-			System.out.println(elementoAnimacion.getLabel());
-			System.out.println(elementoAnimacion.getTiempos());
-			
-			p1.setlPersonaje(elementoAnimacion.getLabel());
-			repaint();
-			revalidate();
-		}
 		
 		setSize(1920, 1080);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -145,56 +136,24 @@ public class VentanaStage extends JFrame {
 			
 			@Override
 			public void keyReleased(KeyEvent e) {
-				
+				if(e.getKeyCode() == KeyEvent.VK_W) {
+					controlEstados.setWPulsado(false);
+				}
 			}
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-			
+				if(e.getKeyCode() == KeyEvent.VK_W) {
+					controlEstados.setWPulsado(true);
+					System.out.println(controlEstados.isWPulsado());
+				}
 			}
 		});
 		
-		addWindowListener(new WindowListener() {
-			
-			@Override
-			public void windowOpened(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowIconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowDeiconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowDeactivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowClosing(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
+		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				controlEstados.setStageCerrado(true);
-				
-			}
-			
-			@Override
-			public void windowActivated(WindowEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 		});

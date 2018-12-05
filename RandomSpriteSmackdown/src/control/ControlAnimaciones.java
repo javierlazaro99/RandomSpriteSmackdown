@@ -39,6 +39,17 @@ public class ControlAnimaciones {
 			personaje.setlPersonaje("png/Run (7).png");
 		}if(milis > tiempos.get(6) && milis <= tiempos.get(7)){
 			personaje.setlPersonaje("png/Run (8).png");	
+		}
 	}
-}
+	
+	public String AnimacionSaltando(long milis, Personaje personaje, JFrame stage) {
+		ArrayList<ElementoAnimacion> animSaltando = ElementoAnimacion.animSaltando;
+		
+		for (ElementoAnimacion elementoAnimacion : animSaltando) {
+			if(milis <= elementoAnimacion.getTiempos()) {
+				return elementoAnimacion.getLabel();
+			}
+		}
+		return "";
+	}
 }
