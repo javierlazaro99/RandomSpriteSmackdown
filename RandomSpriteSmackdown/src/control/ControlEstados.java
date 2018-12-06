@@ -94,17 +94,6 @@ public class ControlEstados implements Runnable{
 		}else {
 			controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage);
 		}
-		
-		//Parte de movimiento del personaje
-		if(diferenciaTimers <= 500) {
-			pPrincipal.Moverse(0, -1);
-			stage.getiProta().setLocation(pPrincipal.getPosicion());
-		}else {
-			pPrincipal.Moverse(0, 1);
-			stage.getiProta().setLocation(pPrincipal.getPosicion());
-		}
-		stage.repaint();
-		stage.revalidate();
 	}
 	
 	
@@ -178,15 +167,41 @@ public class ControlEstados implements Runnable{
 			while(!APulsado && !DPulsado && WPulsado && !StageCerrado) {
 				boolean saltando = true;
 				
+				int alturaBase = (int) pPrincipal.getPosicion().getY();
+				int alturaMaxima = alturaBase - 100;
+				int alturaObjetivo = alturaMaxima;
+				
 				while(saltando) {
 					timerEstado = System.currentTimeMillis();
 					diferenciaTimers = timerEstado - timerJuego;
+					
+					//Movimiento del salto(Se podría meter en un método)
+					int miposicion = (int) pPrincipal.getPosicion().getY();
+					
+					if(miposicion > alturaObjetivo) {
+						pPrincipal.Moverse(0, -1);
+						miposicion = (int) pPrincipal.getPosicion().getY();
+						stage.getiProta().setLocation(pPrincipal.getPosicion());
+					}if(miposicion == alturaObjetivo) {
+						alturaObjetivo = alturaBase;	
+					}if(miposicion < alturaObjetivo) {
+						pPrincipal.Moverse(0, 1);
+						miposicion = (int) pPrincipal.getPosicion().getY();
+						stage.getiProta().setLocation(pPrincipal.getPosicion());	
+						
+						if(miposicion == alturaBase) {
+							saltando = false; //Acaba el salto y puede volver a comprobar si w está pulsado
+						}
+					}
+					
+					stage.repaint();
+					stage.revalidate();
+					
 					
 					if(diferenciaTimers <= 1000) {
 						EstadoSalto(diferenciaTimers);
 					}else {
 						diferenciaTimers = 0;
-						saltando = false; //Acaba el salto y puede volver a comprobar si w está pulsado
 						timerJuego = System.currentTimeMillis();
 					}
 					
