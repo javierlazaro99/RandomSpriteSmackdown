@@ -87,8 +87,8 @@ public class ElementoAnimacion {
 		animGolpear.add(new ElementoAnimacion("png/Melee (5).png", 500));
 		animGolpear.add(new ElementoAnimacion("png/Melee (6).png", 600));
 		animGolpear.add(new ElementoAnimacion("png/Melee (7).png", 700));
-		
 		animGolpear.add(new ElementoAnimacion("png/Melee (8).png", 800));
+		
 		return animGolpear;
 	}
 	
@@ -100,10 +100,10 @@ public class ElementoAnimacion {
 		return animParado.get(animSaltando.size() -1).tiempos;
 	}
 	public static long getTiempoAnimMoverse() {
-		return animMoverse.get(animMoverse.size()-1).tiempos;
+		return animMoverse.get(animMoverse.size() -1).tiempos;
 	}
 	public static long getTiempoAnimGolpear() {
-		return animGolpear.get(animGolpear.size()-1).tiempos;
+		return animGolpear.get(animGolpear.size() -1).tiempos;
 	}
 	
 }

@@ -60,10 +60,10 @@ public class ControlAnimaciones {
 
 	public int AnimacionMoverseDerecha(long milis,Personaje personaje,VentanaStage stage) {
 		ArrayList<ElementoAnimacion>animMoverse = ElementoAnimacion.animMoverse;
-		for(ElementoAnimacion elementoAnimacion:animMoverse) {
-			if(milis <=elementoAnimacion.getTiempos()) {
+		
+		for(ElementoAnimacion elementoAnimacion: animMoverse) {
+			if(milis <= elementoAnimacion.getTiempos()) {
 				stage.getiProta().setImagen(elementoAnimacion.getLabel());
-				personaje.Moverse(1,0);
 				return 1;
 			}
 		}
@@ -72,12 +72,11 @@ public class ControlAnimaciones {
 		
 	}
 
-	public int AnimacionMoverseIzquierda(long milis,Personaje personaje,VentanaStage stage) {
+	public int AnimacionMoverseIzquierda(long milis,Personaje personaje, VentanaStage stage) {
 		ArrayList<ElementoAnimacion>animMoverse = ElementoAnimacion.animMoverse;
 		for(ElementoAnimacion elementoAnimacion:animMoverse) {
 			if(milis <=elementoAnimacion.getTiempos()) {
 				stage.getiProta().setImagen(elementoAnimacion.getLabel());
-				personaje.Moverse(-1,0);
 				return 1;
 			}
 		}

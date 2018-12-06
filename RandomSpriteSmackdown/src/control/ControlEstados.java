@@ -91,73 +91,74 @@ public class ControlEstados implements Runnable{
 	}
 	
 	private void EstadoMoverseDerecha(long diferenciaTimers) {
-		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<=0) {//Comprobacion de direccion de vista
-			
-			if(pPrincipal.getlPersonaje().isVertFlip()==true) {//comprobacion de adonde mira
-				pPrincipal.getlPersonaje().setVertFlip(false);
-			}
-			controlAnimacion.AnimacionMoverseDerecha(diferenciaTimers, pPrincipal,stage);
-		}else {
-			if(pPrincipal.getlPersonaje().isVertFlip()==false) {//comprobacion de adonde mira
-				pPrincipal.getlPersonaje().setVertFlip(true);
-			}
-			controlAnimacion.AnimacionMoverseDerecha(diferenciaTimers, pPrincipal, stage);
-			}
+		stage.getiProta().setHorFlip(false);
+		controlAnimacion.AnimacionMoverseDerecha(diferenciaTimers, pPrincipal, stage);
+		
+//		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<=0) {//Comprobacion de direccion de vista
+//			
+//			if(pPrincipal.getlPersonaje().isVertFlip()==true) {//comprobacion de adonde mira
+//				pPrincipal.getlPersonaje().setVertFlip(false);
+//			}
+//			controlAnimacion.AnimacionMoverseDerecha(diferenciaTimers, pPrincipal,stage);
+//		}else {
+//			if(pPrincipal.getlPersonaje().isVertFlip()==false) {//comprobacion de adonde mira
+//				pPrincipal.getlPersonaje().setVertFlip(true);
+//			}
+//			controlAnimacion.AnimacionMoverseDerecha(diferenciaTimers, pPrincipal, stage);
+//			}
 	}
 	
 	private void EstadoMoverseIzquierda(long diferenciaTimers) {
-if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<=0) {//Comprobacion de direccion de vista
-			
-			if(pPrincipal.getlPersonaje().isVertFlip()==true) {//comprobacion de adonde mira
-				pPrincipal.getlPersonaje().setVertFlip(false);
-			}
-			controlAnimacion.AnimacionMoverseIzquierda(diferenciaTimers, pPrincipal,stage);
-		}else {
-			if(pPrincipal.getlPersonaje().isVertFlip()==false) {//comprobacion de adonde mira
-				pPrincipal.getlPersonaje().setVertFlip(true);
-			}
-			controlAnimacion.AnimacionMoverseIzquierda(diferenciaTimers, pPrincipal, stage);
-			}
+		stage.getiProta().setHorFlip(true);
+		controlAnimacion.AnimacionMoverseIzquierda(diferenciaTimers, pPrincipal, stage);
+		
+//		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<=0) {//Comprobacion de direccion de vista
+//			
+//			if(pPrincipal.getlPersonaje().isVertFlip()==true) {//comprobacion de adonde mira
+//				pPrincipal.getlPersonaje().setVertFlip(false);
+//			}
+//			controlAnimacion.AnimacionMoverseIzquierda(diferenciaTimers, pPrincipal,stage);
+//		}else {
+//			if(pPrincipal.getlPersonaje().isVertFlip()==false) {//comprobacion de adonde mira
+//				pPrincipal.getlPersonaje().setVertFlip(true);
+//			}
+//			controlAnimacion.AnimacionMoverseIzquierda(diferenciaTimers, pPrincipal, stage);
+//			}
 	}
 	
 	private void EstadoSalto(long diferenciaTimers) {
 		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<0) {
-			if(pPrincipal.getlPersonaje().isVertFlip()==true) {//comprobacion de adonde mira
-				pPrincipal.getlPersonaje().setVertFlip(false);
+			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira
+				pPrincipal.getlPersonaje().setHorFlip(false);
 			}
 			controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage);//sprites
 		}else {
-			if(pPrincipal.getlPersonaje().isVertFlip()==false) {//comprobacion de adonde mira
-				pPrincipal.getlPersonaje().setVertFlip(true);
+			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
+				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
 			controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage);
 		}
 	}
 	
 	private void EstadoSaltoDerecha(long diferenciaTimers) {
-		if(stage.getiProta().isVertFlip()==true) {
-			stage.getiProta().setVertFlip(false);
-		}
-		
+		stage.getiProta().setHorFlip(false);
 		controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage);
 	}
 	
 	private void EstadoSaltoIzquierda(long diferenciaTimers) {
-		if(stage.getiProta().isVertFlip()==false) {
-			stage.getiProta().setVertFlip(true);
-		}
+		stage.getiProta().setHorFlip(true);
 		controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage);
 	}
 	
 	private void EstadoGolpear(long diferenciaTimers) {
 		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<0) {
-			if(pPrincipal.getlPersonaje().isVertFlip()==true) {//comprobacion de adonde mira
-				pPrincipal.getlPersonaje().setVertFlip(false);
+			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira
+				pPrincipal.getlPersonaje().setHorFlip(false);
 			}
 			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario);//sprites
 		}else {
-			if(pPrincipal.getlPersonaje().isVertFlip()==false) {//comprobacion de adonde mira
-				pPrincipal.getlPersonaje().setVertFlip(true);
+			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
+				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
 			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario);
 		}
@@ -196,13 +197,17 @@ if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<=0) {//Com
 			diferenciaTimers = 0; //Reset de la diferencia al saltar a otro estado
 			timerJuego = System.currentTimeMillis(); //Volvemos a calcular el tiempo del juego para el siguiente estado
 			//Estado moverse derecha
-			while(APulsado && !DPulsado && !WPulsado && !StageCerrado && !SpacePulsado) {//Moverse hacia la derecha
+			while(!APulsado && DPulsado && !WPulsado && !StageCerrado && !SpacePulsado) {//Moverse hacia la derecha
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
 				
+				pPrincipal.Moverse(1,0);
+				stage.getiProta().setLocation(pPrincipal.getPosicion());
+				
 				stage.repaint();
 				stage.revalidate();
-				if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimMoverse()) {//Posible cambio
+				
+				if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimParado()) {//Posible cambio
 					EstadoMoverseDerecha(diferenciaTimers);
 				}else {
 					diferenciaTimers = 0;
@@ -218,14 +223,17 @@ if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<=0) {//Com
 			diferenciaTimers = 0;
 			timerJuego = System.currentTimeMillis();
 			//Estado moverse izquierda
-			while(!APulsado && DPulsado && !WPulsado && !StageCerrado && !SpacePulsado) {
+			while(APulsado && !DPulsado && !WPulsado && !StageCerrado && !SpacePulsado) {
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
+				
+				pPrincipal.Moverse(-1,0);
+				stage.getiProta().setLocation(pPrincipal.getPosicion());
 				
 				stage.repaint();
 				stage.revalidate();
 				
-				if(diferenciaTimers <= ElementoAnimacion.tiempoAnimMoverse) {
+				if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimParado()) {
 					EstadoMoverseIzquierda(diferenciaTimers);
 				}else {
 					diferenciaTimers = 0;
