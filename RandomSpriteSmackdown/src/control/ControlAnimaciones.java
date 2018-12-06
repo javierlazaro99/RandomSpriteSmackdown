@@ -50,9 +50,55 @@ public class ControlAnimaciones {
 		for (ElementoAnimacion elementoAnimacion : animSaltando) {
 			if(milis <= elementoAnimacion.getTiempos()) {
 				stage.getiProta().setImagen(elementoAnimacion.getLabel());
+				
 				return 1;
 			}
 		}
 		return 0;
+	}
+
+
+	public int AnimacionMoverseDerecha(long milis,Personaje personaje,VentanaStage stage) {
+		ArrayList<ElementoAnimacion>animMoverse = ElementoAnimacion.animMoverse;
+		for(ElementoAnimacion elementoAnimacion:animMoverse) {
+			if(milis <=elementoAnimacion.getTiempos()) {
+				stage.getiProta().setImagen(elementoAnimacion.getLabel());
+				personaje.Moverse(1,0);
+				return 1;
+			}
+		}
+		
+		return 0;
+		
+	}
+
+	public int AnimacionMoverseIzquierda(long milis,Personaje personaje,VentanaStage stage) {
+		ArrayList<ElementoAnimacion>animMoverse = ElementoAnimacion.animMoverse;
+		for(ElementoAnimacion elementoAnimacion:animMoverse) {
+			if(milis <=elementoAnimacion.getTiempos()) {
+				stage.getiProta().setImagen(elementoAnimacion.getLabel());
+				personaje.Moverse(-1,0);
+				return 1;
+			}
+		}
+		
+		return 0;
+		
+	}
+	
+	public int AnimacionGolpear(long milis,Personaje personaje,VentanaStage stage,Personaje enemigo) {
+		ArrayList<ElementoAnimacion>animGolpear = ElementoAnimacion.animGolpear;
+		for(ElementoAnimacion elementoAnimacion:animGolpear) {
+			if(milis <=elementoAnimacion.getTiempos()) {
+				stage.getiProta().setImagen(elementoAnimacion.getLabel());
+				if(elementoAnimacion.getLabel().equals("png/Melee (4).png")){
+					personaje.DarGolpe(enemigo);
+				}
+				return 1;
+			}
+		}
+		
+		return 0;
+		
 	}
 }

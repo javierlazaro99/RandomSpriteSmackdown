@@ -73,6 +73,7 @@ public abstract class Personaje {
 	
 	/** Método para calcular un golpe en la lógica interna del programa
 	 * @param enemigo personaje que recibe el golpe
+	 * @return 
 	 */
 	public abstract void DarGolpe(Personaje enemigo);
 	

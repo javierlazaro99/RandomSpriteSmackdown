@@ -42,6 +42,8 @@ public class VentanaStage extends JFrame {
 		
 		ElementoAnimacion.CrearAnimParado();
 		ElementoAnimacion.CrearAnimSaltando();
+		ElementoAnimacion.CrearAnimMoverse();
+		ElementoAnimacion.CrearAnimGolpear();
 		p1.crearlPersonaje(50, 50);
 		
 		setSize(1920, 1080);
@@ -142,6 +144,9 @@ public class VentanaStage extends JFrame {
 				if(e.getKeyCode() == KeyEvent.VK_A) {
 					controlEstados.setAPulsado(false);
 				}
+				if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+					controlEstados.setSpacePulsado(false);
+				}
 			}
 			
 			@Override
@@ -154,6 +159,9 @@ public class VentanaStage extends JFrame {
 				}
 				if(e.getKeyCode() == KeyEvent.VK_A) {
 					controlEstados.setAPulsado(true);
+				}
+				if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+					controlEstados.setSpacePulsado(true);
 				}
 			}
 		});
