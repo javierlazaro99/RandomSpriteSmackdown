@@ -136,12 +136,24 @@ public class VentanaStage extends JFrame {
 				if(e.getKeyCode() == KeyEvent.VK_W) {
 					controlEstados.setWPulsado(false);
 				}
+				if(e.getKeyCode() == KeyEvent.VK_D) {
+					controlEstados.setDPulsado(false);
+				}
+				if(e.getKeyCode() == KeyEvent.VK_A) {
+					controlEstados.setAPulsado(false);
+				}
 			}
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode() == KeyEvent.VK_W) {
 					controlEstados.setWPulsado(true);
+				}
+				if(e.getKeyCode() == KeyEvent.VK_D) {
+					controlEstados.setDPulsado(true);
+				}
+				if(e.getKeyCode() == KeyEvent.VK_A) {
+					controlEstados.setAPulsado(true);
 				}
 			}
 		});

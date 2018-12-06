@@ -15,6 +15,8 @@ public class ControlEstados implements Runnable{
 	private boolean APulsado;
 	private boolean DPulsado;
 	private boolean WPulsado;
+	private boolean saltando;
+	private boolean saltandoLateral;
 	private PersonajeJugable pPrincipal;
 	private Personaje pSecundario;
 	private boolean StageCerrado;
@@ -96,6 +98,16 @@ public class ControlEstados implements Runnable{
 		}
 	}
 	
+	private void EstadoSaltoDerecha(long diferenciaTimers) {
+		stage.getiProta().setHorFlip(false);
+		controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage);
+	}
+	
+	private void EstadoSaltoIzquierda(long diferenciaTimers) {
+		stage.getiProta().setHorFlip(true);
+		controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage);
+	}
+	
 	
 	@Override
 	public void run() {
@@ -163,9 +175,9 @@ public class ControlEstados implements Runnable{
 			
 			diferenciaTimers = 0;
 			timerJuego = System.currentTimeMillis();
-			//Esatdo saltando básico
+			//Estado saltando básico
 			while(!APulsado && !DPulsado && WPulsado && !StageCerrado) {
-				boolean saltando = true;
+				saltando = true;
 				
 				int alturaBase = (int) pPrincipal.getPosicion().getY();
 				int alturaMaxima = alturaBase - 100;
@@ -213,6 +225,112 @@ public class ControlEstados implements Runnable{
 				}
 				
 			}	
+			
+			diferenciaTimers = 0;
+			timerJuego = System.currentTimeMillis();
+			//Estado saltando derecha
+			while(!APulsado && DPulsado && WPulsado && !StageCerrado) {
+				boolean saltandoDerecha = true;
+				
+				int alturaBase = (int) pPrincipal.getPosicion().getY();
+				int alturaMaxima = alturaBase - 100;
+				int alturaObjetivo = alturaMaxima;
+				
+				while(saltandoDerecha) {
+					timerEstado = System.currentTimeMillis();
+					diferenciaTimers = timerEstado - timerJuego;
+					
+					//Movimiento del salto(Se podría meter en un método)
+					int miposicion = (int) pPrincipal.getPosicion().getY();
+					
+					if(miposicion > alturaObjetivo) {
+						pPrincipal.Moverse(1, -1);
+						miposicion = (int) pPrincipal.getPosicion().getY();
+						stage.getiProta().setLocation(pPrincipal.getPosicion());
+					}if(miposicion == alturaObjetivo) {
+						alturaObjetivo = alturaBase;	
+					}if(miposicion < alturaObjetivo) {
+						pPrincipal.Moverse(1, 1);
+						miposicion = (int) pPrincipal.getPosicion().getY();
+						stage.getiProta().setLocation(pPrincipal.getPosicion());	
+						
+						if(miposicion == alturaBase) {
+							saltandoDerecha = false; //Acaba el salto y puede volver a comprobar si w está pulsado
+						}
+					}
+					
+					stage.repaint();
+					stage.revalidate();
+					
+					
+					if(diferenciaTimers <= 1000) {
+						EstadoSaltoDerecha(diferenciaTimers);
+					}else {
+						diferenciaTimers = 0;
+						timerJuego = System.currentTimeMillis();
+					}
+					
+					try {
+						Thread.sleep(16); //Mas o menos 60 veces por segundo hará el bucle
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			}	
+			
+			diferenciaTimers = 0;
+			timerJuego = System.currentTimeMillis();
+			//Estado saltando izquierda
+			while(APulsado && !DPulsado && WPulsado && !StageCerrado) {
+				boolean saltandoIzquierda = true;
+				
+				int alturaBase = (int) pPrincipal.getPosicion().getY();
+				int alturaMaxima = alturaBase - 100;
+				int alturaObjetivo = alturaMaxima;
+				
+				while(saltandoIzquierda) {
+					timerEstado = System.currentTimeMillis();
+					diferenciaTimers = timerEstado - timerJuego;
+					
+					//Movimiento del salto(Se podría meter en un método)
+					int miposicion = (int) pPrincipal.getPosicion().getY();
+					
+					if(miposicion > alturaObjetivo) {
+						pPrincipal.Moverse(-1, -1);
+						miposicion = (int) pPrincipal.getPosicion().getY();
+						stage.getiProta().setLocation(pPrincipal.getPosicion());
+					}if(miposicion == alturaObjetivo) {
+						alturaObjetivo = alturaBase;	
+					}if(miposicion < alturaObjetivo) {
+						pPrincipal.Moverse(-1, 1);
+						miposicion = (int) pPrincipal.getPosicion().getY();
+						stage.getiProta().setLocation(pPrincipal.getPosicion());	
+						
+						if(miposicion == alturaBase) {
+							saltandoIzquierda = false; //Acaba el salto y puede volver a comprobar si w está pulsado
+						}
+					}
+					
+					stage.repaint();
+					stage.revalidate();
+					
+					
+					if(diferenciaTimers <= 1000) {
+						EstadoSaltoIzquierda(diferenciaTimers);
+					}else {
+						diferenciaTimers = 0;
+						timerJuego = System.currentTimeMillis();
+					}
+					
+					try {
+						Thread.sleep(16); //Mas o menos 60 veces por segundo hará el bucle
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			}
 		}	
 	}
 }
