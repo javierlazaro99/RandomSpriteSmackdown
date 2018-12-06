@@ -15,8 +15,6 @@ public class ControlEstados implements Runnable{
 	private boolean APulsado;
 	private boolean DPulsado;
 	private boolean WPulsado;
-	private boolean saltando;
-	private boolean saltandoLateral;
 	private PersonajeJugable pPrincipal;
 	private Personaje pSecundario;
 	private boolean StageCerrado;
@@ -177,7 +175,7 @@ public class ControlEstados implements Runnable{
 			timerJuego = System.currentTimeMillis();
 			//Estado saltando básico
 			while(!APulsado && !DPulsado && WPulsado && !StageCerrado) {
-				saltando = true;
+				boolean saltando = true;
 				
 				int alturaBase = (int) pPrincipal.getPosicion().getY();
 				int alturaMaxima = alturaBase - 100;
