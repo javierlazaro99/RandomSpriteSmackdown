@@ -172,6 +172,17 @@ public class ControlEstados implements Runnable{
 			long timerJuego = System.currentTimeMillis();
 			long diferenciaTimers = 0;
 			long timerEstado = 0;
+			
+			if(APulsado && DPulsado) { //Evitar bug de andar hacia un lado, dar a adar hacia opuesto y quedarse congelado
+				APulsado = false;
+				DPulsado = false;
+			}
+			
+			if(SpacePulsado && APulsado || DPulsado) { //Evitar bug anterior pero con el golpeo
+				APulsado = false;
+				DPulsado = false;
+			}
+			
 			//Estado moverse parado
 			while(!APulsado && !DPulsado && !WPulsado && !SpacePulsado && !StageCerrado) { //Estado parado
 				timerEstado = System.currentTimeMillis();
@@ -198,52 +209,80 @@ public class ControlEstados implements Runnable{
 			timerJuego = System.currentTimeMillis(); //Volvemos a calcular el tiempo del juego para el siguiente estado
 			//Estado moverse derecha
 			while(!APulsado && DPulsado && !WPulsado && !StageCerrado && !SpacePulsado) {//Moverse hacia la derecha
-				timerEstado = System.currentTimeMillis();
-				diferenciaTimers = timerEstado - timerJuego;
+				boolean corriendoDerecha = true;
 				
-				pPrincipal.Moverse(1,0);
-				stage.getiProta().setLocation(pPrincipal.getPosicion());
+				int posActual = (int) pPrincipal.getPosicion().getX();
+				int posObjetivo = posActual + 20; //Este +20 se puede cambiar a lo que quieras que valga el ciclo, múltiplo de 10 tiene que ser
 				
-				stage.repaint();
-				stage.revalidate();
-				
-				if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimParado()) {//Posible cambio
-					EstadoMoverseDerecha(diferenciaTimers);
-				}else {
-					diferenciaTimers = 0;
-					timerJuego = System.currentTimeMillis();
-				}
-				
-				try {
-					Thread.sleep(16); //Mas o menos 60 veces por segundo hará el bucle
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				while(corriendoDerecha) {
+					timerEstado = System.currentTimeMillis();
+					diferenciaTimers = timerEstado - timerJuego;
+					
+					if(posActual < posObjetivo) {
+						pPrincipal.Moverse(1,0);
+						posActual = (int) pPrincipal.getPosicion().getX();
+					}
+					if(posActual == posObjetivo) { //Completa el ciclo de movimiento y vuelve a comprobar si D pulsado
+						corriendoDerecha = false;
+					}
+					
+					stage.getiProta().setLocation(pPrincipal.getPosicion());
+					
+					stage.repaint();
+					stage.revalidate();
+					
+					if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimParado()) {//Posible cambio
+						EstadoMoverseDerecha(diferenciaTimers);
+					}else {
+						diferenciaTimers = 0;
+						timerJuego = System.currentTimeMillis();
+					}
+					
+					try {
+						Thread.sleep(16); //Mas o menos 60 veces por segundo hará el bucle
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 			diferenciaTimers = 0;
 			timerJuego = System.currentTimeMillis();
 			//Estado moverse izquierda
 			while(APulsado && !DPulsado && !WPulsado && !StageCerrado && !SpacePulsado) {
-				timerEstado = System.currentTimeMillis();
-				diferenciaTimers = timerEstado - timerJuego;
+				boolean corriendoIzquierda = true;
 				
-				pPrincipal.Moverse(-1,0);
-				stage.getiProta().setLocation(pPrincipal.getPosicion());
+				int posActual = (int) pPrincipal.getPosicion().getX();
+				int posObjetivo = posActual - 20; //Este -20 se puede cambiar a lo que quieras que valga el ciclo, múltiplo de 10 tiene que ser
 				
-				stage.repaint();
-				stage.revalidate();
-				
-				if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimParado()) {
-					EstadoMoverseIzquierda(diferenciaTimers);
-				}else {
-					diferenciaTimers = 0;
-					timerJuego = System.currentTimeMillis();
-				}
-				
-				try {
-					Thread.sleep(16); //Mas o menos 60 veces por segundo hará el bucle
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				while(corriendoIzquierda) {
+					timerEstado = System.currentTimeMillis();
+					diferenciaTimers = timerEstado - timerJuego;
+					
+					if(posActual > posObjetivo) {
+						pPrincipal.Moverse(-1,0);
+						posActual = (int) pPrincipal.getPosicion().getX();
+					}
+					if(posActual == posObjetivo) { //Completa el ciclo de movimiento y vuelve a comprobar si A pulsado
+						corriendoIzquierda = false;
+					}
+					
+					stage.getiProta().setLocation(pPrincipal.getPosicion());
+					
+					stage.repaint();
+					stage.revalidate();
+					
+					if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimParado()) {
+						EstadoMoverseIzquierda(diferenciaTimers);
+					}else {
+						diferenciaTimers = 0;
+						timerJuego = System.currentTimeMillis();
+					}
+					
+					try {
+						Thread.sleep(16); //Mas o menos 60 veces por segundo hará el bucle
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 			
@@ -254,7 +293,7 @@ public class ControlEstados implements Runnable{
 				boolean saltando = true;
 				
 				int alturaBase = (int) pPrincipal.getPosicion().getY();
-				int alturaMaxima = alturaBase - 100;
+				int alturaMaxima = alturaBase - 150;
 				int alturaObjetivo = alturaMaxima;
 				
 				while(saltando) {
@@ -307,7 +346,7 @@ public class ControlEstados implements Runnable{
 				boolean saltandoDerecha = true;
 				
 				int alturaBase = (int) pPrincipal.getPosicion().getY();
-				int alturaMaxima = alturaBase - 100;
+				int alturaMaxima = alturaBase - 150;
 				int alturaObjetivo = alturaMaxima;
 				
 				while(saltandoDerecha) {
@@ -360,7 +399,7 @@ public class ControlEstados implements Runnable{
 				boolean saltandoIzquierda = true;
 				
 				int alturaBase = (int) pPrincipal.getPosicion().getY();
-				int alturaMaxima = alturaBase - 100;
+				int alturaMaxima = alturaBase - 150;
 				int alturaObjetivo = alturaMaxima;
 				
 				while(saltandoIzquierda) {
