@@ -23,10 +23,12 @@ import javax.swing.JProgressBar;
 import Personalizados.FondoSwing;
 import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
+import Usuarios.UsuariosValidar;
 import control.Animaciones;
 import control.BaseDeDatos;
 import control.ControlAnimaciones;
 import control.ControlEstados;
+import control.ControlHistoria;
 import control.ElementoAnimacion;
 import personaje.Personaje;
 import personaje.enemigo.Enemigo;
@@ -36,9 +38,11 @@ public class VentanaStage extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	private JLabelGraficoAjustado iProta = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
-	
-
-	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel) {
+	private JLabelGraficoAjustado iEnemigo = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
+	private JLabel lTiempo=null ;
+	private int contador=60;
+	private ControlEstados controlEstados ;
+	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel,ControlHistoria ch ) {
 		
 		ElementoAnimacion.CrearAnimParado();
 		ElementoAnimacion.CrearAnimSaltando();
@@ -49,7 +53,7 @@ public class VentanaStage extends JFrame {
 		setSize(1920, 1080);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
-		ControlEstados controlEstados = new ControlEstados(p1, p2, this);
+		controlEstados = new ControlEstados(p1, p2, this,ch);
 		Thread t = new Thread(controlEstados);
 		controlEstados.setStageCerrado(false);
 		t.start();
@@ -60,6 +64,7 @@ public class VentanaStage extends JFrame {
 		
 		p1.setPosicion(new Point(0, (int) (d.getHeight()*0.5)));
 		p2 = new Enemigo(null, 10, 10, 10, 1);
+		p2.setPosicion(new Point((int)(d.getWidth()-d.getWidth()*0.2),(int) (d.getHeight()*0.5)));
 		
 		JPanelBackground jpBackground = new JPanelBackground(SpriteStage(nivel));
 		JPanel pNorte = new JPanel(new GridLayout(2, 1));
@@ -80,7 +85,7 @@ public class VentanaStage extends JFrame {
 		JProgressBar jpbVida2 = new JProgressBar();
 			jpbVida1.setValue((int)p1.getVida());
 			jpbVida1.setValue((int)p2.getVida());
-		JLabel lTiempo = new JLabel("60");
+		lTiempo = new JLabel("60");
 		JLabel lStage = new JLabel("Stage "+nivel);
 		
 		lTiempo.setFont(new Font("", Font.PLAIN, 40));
@@ -89,11 +94,10 @@ public class VentanaStage extends JFrame {
 		jpbVida2.setPreferredSize(new Dimension(500, 60));
 		lTiempo.setPreferredSize(new Dimension(50, 50));
 		
-		jpbVida1.setValue(500);
 		jpbVida2.setValue(500);
 		jpbVida1.setBorderPainted(false);
 		jpbVida2.setBorderPainted(false);
-		jpbVida1.setOpaque(false);
+		jpbVida1.setOpaque(true);
 		jpbVida2.setOpaque(false);
 		jpbVida1.setForeground(Color.RED);
 		jpbVida2.setForeground(Color.RED);
@@ -110,9 +114,13 @@ public class VentanaStage extends JFrame {
 		pN2.setOpaque(false);
 		pN3.setOpaque(false);
 		iProta.setOpaque(false);
+		iEnemigo.setOpaque(false);
 		pCentral.add(iProta);
+		pCentral.add(iEnemigo);
 		iProta.setLocation(p1.getPosicion().x, p1.getPosicion().y);
 		iProta.setSize(new Dimension(width, height));
+		iEnemigo.setLocation(p2.getPosicion().x,p2.getPosicion().y);
+		iEnemigo.setSize(new Dimension(width, height));
 		pNorte.add(pNs);
 		pNorte.add(pNi);
 		
@@ -125,6 +133,8 @@ public class VentanaStage extends JFrame {
 		pN1.add(jpbVida1);
 		pN2.add(lTiempo);
 		pN3.add(jpbVida2);
+		
+		tiempo.start();
 		
 		addKeyListener(new KeyListener() {
 			
@@ -174,7 +184,33 @@ public class VentanaStage extends JFrame {
 			}
 		});
 	}
+	
+ Thread tiempo = new Thread(new Runnable() {
+	
+	@Override
+	public void run() {
+		
+		try {
 			
+			while(contador>0 && controlEstados.isStageCerrado()==false) {
+			Thread.sleep(1000);
+			contador= contador -1;
+			
+			lTiempo.setText(""+contador);
+			VentanaStage.this.revalidate();
+			
+			}
+			controlEstados.setStageCerrado(true);
+			VentanaStage.this.dispose();
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+});
+
 	public String SpriteStage(int nivel) {
 		String snivel= "src/Stage";
 		String snivelfinal = ".gif";
@@ -212,7 +248,7 @@ public class VentanaStage extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png"), new Enemigo(new Point(100, 0), 10, 10, 10, 1) ,1);
+		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png"), new Enemigo(new Point(100, 0), 10, 10, 10, 1) ,1,new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png"), 0));
 		vs.setVisible(true);
 	}
 }

@@ -36,9 +36,9 @@ public class VentanaCreacionPersonaje extends JFrame {
 	private PersonajeJugable personajeSeleccionado;
 	private PersonajeJugable personajeCreado;
 	
-	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Melee (8).png");
-	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20, "png/Run (2).png");
-	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5, "png/Jump (1).png");
+	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png");
+	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20, "png/Idle (1).png");
+	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5, "png/Idle (1).png");
 	
 	
 	public VentanaCreacionPersonaje(int codigo,UsuariosValidar user,PersonajeJugable pPrincipal1, ControlHistoria ch, int victorias1v1,int nivelesCompletados) {

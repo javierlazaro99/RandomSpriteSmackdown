@@ -30,7 +30,7 @@ public class VentanaMejoras extends JFrame{
 
 		JPanel pIzquierda = new JPanel(new BorderLayout());
 			JLabel lTitulo = new JLabel("Mejoras");
-			JLabelGraficoAjustado lgaPersonaje = new JLabelGraficoAjustado("", 200, 200);
+			JLabelGraficoAjustado lgaPersonaje = new JLabelGraficoAjustado(ch.getPersonajePrincipal().getPath(), 200, 200);
 			JButton bHome = new JButton("Home");
 		JPanel pDerecha = new JPanel(new BorderLayout());
 			JLabel lPuntosMejora = new JLabel("Puntos de mejora: " + ch.getPersonajePrincipal().getPuntosMejora());

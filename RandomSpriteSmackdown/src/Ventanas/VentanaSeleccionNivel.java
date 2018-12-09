@@ -26,7 +26,7 @@ public class VentanaSeleccionNivel extends JFrame{
 
 	public VentanaSeleccionNivel(UsuariosValidar user, ControlHistoria ch, int victorias1v1) {
 		
-		Nivel.generarListaNiveles(ch.getPersonajePrincipal()); //Del control de la historia se coje el personaje y se genera la lista de niveles 
+		Nivel.generarListaNiveles(ch.getPersonajePrincipal(),ch); //Del control de la historia se coje el personaje y se genera la lista de niveles 
 		
 		setSize(600, 500);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);

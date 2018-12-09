@@ -4,8 +4,10 @@ import java.awt.Point;
 import java.sql.Time;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import Personalizados.JLabelGraficoAjustado;
+import Usuarios.UsuariosValidar;
 import Ventanas.VentanaStage;
 import personaje.Personaje;
 import personaje.personajeJugable.PersonajeJugable;
@@ -21,13 +23,14 @@ public class ControlEstados implements Runnable{
 	private boolean StageCerrado;
 	private ControlAnimaciones controlAnimacion= new ControlAnimaciones();
 	private VentanaStage stage;
+	private String lTiempo="";
+	private ControlHistoria ch;
 	
-	
-	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario, VentanaStage stage) {//Personaje de la izquierda y de la derecha
+	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario, VentanaStage stage,ControlHistoria ch) {//Personaje de la izquierda y de la derecha
 		this.pPrincipal=pPrincipal;
 		this.pSecundario=pSecundario;
 		this.stage = stage;
-		
+		this.ch=ch;
 		this.APulsado = false;
 		this.DPulsado = false;
 		this.WPulsado = false;
@@ -465,6 +468,33 @@ public class ControlEstados implements Runnable{
 				}
 			}
 			
+			//CONTROL DE LADOS
+				//lado izquierdo
+			if(pPrincipal.getPosicion().getX()<=3 || pSecundario.getPosicion().getX()<=3) {
+				pPrincipal.setPosicion(new Point((int)(pPrincipal.getPosicion().getX()+5),(int)(pPrincipal.getPosicion().getY())));
+				pSecundario.setPosicion(new Point((int)(pPrincipal.getPosicion().getX()+5),(int)(pPrincipal.getPosicion().getY())));
+			}
+				//lado derecho
+			if(pPrincipal.getPosicion().getX()>=(stage.getWidth()-3) || pSecundario.getPosicion().getX()>=(stage.getWidth()-3)) {
+				pPrincipal.setPosicion(new Point((int)(pPrincipal.getPosicion().getX()-5),(int)(pPrincipal.getPosicion().getY())));
+				pSecundario.setPosicion(new Point((int)(pPrincipal.getPosicion().getX()-5),(int)(pPrincipal.getPosicion().getY())));
+			}
+			//CIERRE DE JUEGO
+			if(pPrincipal.getVida()==0 || pSecundario.getVida()==0) {
+				if(pSecundario.getVida()==0) {
+					if(ch.getNivelesCompletados()<8) {
+					ch.setNivelesCompletados(ch.getNivelesCompletados()+1);
+					}
+				}
+				
+				StageCerrado=true;
+				stage.dispose();
+			}
+			
+			
+			
+			
 		}	
+		
 	}
 }

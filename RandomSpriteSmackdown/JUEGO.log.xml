@@ -5541,3 +5541,483 @@
   <message>Connection cerrado</message>
 </record>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-07T20:32:08</date>
+  <millis>1544211128012</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>17</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-07T20:32:08</date>
+  <millis>1544211128023</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>17</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-07T20:32:08</date>
+  <millis>1544211128098</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>17</thread>
+  <message>Usuario:guiller Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-07T20:32:08</date>
+  <millis>1544211128143</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>17</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-07T20:36:44</date>
+  <millis>1544211404618</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>17</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-07T20:36:44</date>
+  <millis>1544211404639</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>17</thread>
+  <message>Comando: INSERT INTO Partida VALUES(1,0, 0,'guiller') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-07T20:36:44</date>
+  <millis>1544211404668</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>17</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('guiller',15.0,10.0,5.0,0,1) ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-07T20:36:44</date>
+  <millis>1544211404689</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>17</thread>
+  <message>Personaje principal guiller,15.0,10.0,5.0 creado</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-07T20:48:07</date>
+  <millis>1544212087505</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>17</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-07T20:48:13</date>
+  <millis>1544212093814</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>17</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-07T20:48:13</date>
+  <millis>1544212093815</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>17</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='guiller'</message>
+</record>
+<record>
+  <date>2018-12-07T20:48:13</date>
+  <millis>1544212093815</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>17</thread>
+  <message>Error de ejecución en: SELECT * FROM Personaje WHERE cod_partida='1'</message>
+</record>
+<record>
+  <date>2018-12-07T20:48:15</date>
+  <millis>1544212095909</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>17</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-07T20:48:15</date>
+  <millis>1544212095910</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>17</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='guiller'</message>
+</record>
+<record>
+  <date>2018-12-07T20:48:15</date>
+  <millis>1544212095910</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>17</thread>
+  <message>Error de ejecución en: SELECT * FROM Personaje WHERE cod_partida='1'</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-07T20:49:39</date>
+  <millis>1544212179345</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>17</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-07T20:49:42</date>
+  <millis>1544212182600</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>17</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-07T20:49:42</date>
+  <millis>1544212182601</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>17</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='guiller'</message>
+</record>
+<record>
+  <date>2018-12-07T20:49:42</date>
+  <millis>1544212182602</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>17</thread>
+  <message>Error de ejecución en: SELECT * FROM Personaje WHERE cod_partida='1'</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-07T20:50:20</date>
+  <millis>1544212220194</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>17</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-07T20:50:20</date>
+  <millis>1544212220207</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>17</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-07T20:50:20</date>
+  <millis>1544212220269</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>17</thread>
+  <message>Usuario:dos Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-07T20:50:20</date>
+  <millis>1544212220310</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>17</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-07T20:50:25</date>
+  <millis>1544212225139</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>17</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-07T20:50:25</date>
+  <millis>1544212225155</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>17</thread>
+  <message>Comando: INSERT INTO Partida VALUES(2,0, 0,'dos') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-07T20:50:25</date>
+  <millis>1544212225158</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>17</thread>
+  <message>Error de ejecución en: INSERT INTO Personaje VALUES('dos',10.0,10.0,10.0,0,2png/Idle (1).png)</message>
+</record>
+<record>
+  <date>2018-12-07T20:50:25</date>
+  <millis>1544212225176</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>17</thread>
+  <message>Personaje principal dos,10.0,10.0,10.0 creado</message>
+</record>
+<record>
+  <date>2018-12-07T20:50:35</date>
+  <millis>1544212235936</millis>
+  <sequence>14</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>17</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-07T20:50:36</date>
+  <millis>1544212236031</millis>
+  <sequence>15</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>17</thread>
+  <message>Comando: INSERT INTO Partida VALUES(3,0, 0,'dos') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-07T20:50:36</date>
+  <millis>1544212236031</millis>
+  <sequence>16</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>17</thread>
+  <message>Error de ejecución en: INSERT INTO Personaje VALUES('dos',10.0,10.0,10.0,0,3png/Idle (1).png)</message>
+</record>
+<record>
+  <date>2018-12-07T20:50:36</date>
+  <millis>1544212236032</millis>
+  <sequence>17</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>17</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-07T20:50:36</date>
+  <millis>1544212236032</millis>
+  <sequence>18</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>17</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-07T20:50:36</date>
+  <millis>1544212236038</millis>
+  <sequence>19</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>17</thread>
+  <message>Connection cerrado</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-07T21:24:19</date>
+  <millis>1544214259151</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>17</thread>
+  <message>Usuario cargado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-07T21:24:30</date>
+  <millis>1544214270064</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>17</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-07T21:24:30</date>
+  <millis>1544214270074</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>17</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-07T21:24:30</date>
+  <millis>1544214270182</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>17</thread>
+  <message>Usuario:76 Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-07T21:24:36</date>
+  <millis>1544214276128</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>17</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-07T21:24:36</date>
+  <millis>1544214276147</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>17</thread>
+  <message>Comando: INSERT INTO Partida VALUES(15,0, 0,'76') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-07T21:24:36</date>
+  <millis>1544214276148</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>17</thread>
+  <message>Error de ejecución en: INSERT INTO Personaje VALUES('76',10.0,10.0,10.0,0,15,'png/Idle (1).png')</message>
+</record>
+<record>
+  <date>2018-12-07T21:24:36</date>
+  <millis>1544214276165</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>17</thread>
+  <message>Personaje principal 76,10.0,10.0,10.0 creado</message>
+</record>

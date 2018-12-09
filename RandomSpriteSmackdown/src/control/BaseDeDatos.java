@@ -74,7 +74,8 @@ public class BaseDeDatos {
 					+ "vida NUMERIC,"
 					+ "velocidad NUMERIC,"
 					+ "puntos_mejora NUMERIC,"
-					+ "cod_partida NUMERIC REFERENCES Partida(cod_partida) ON DELETE CASCADE)";
+					+ "cod_partida NUMERIC REFERENCES Partida(cod_partida) ON DELETE CASCADE,"
+					+"path STRING)";
 			logger.log(Level.INFO, comando);
 			s.executeUpdate(comando);
 			logger.log(Level.INFO, "Tabla T3 creada");
@@ -129,6 +130,7 @@ public class BaseDeDatos {
 		int vida = 0;
 		int velocidad = 0;
 		int puntosMejora = 0;
+		String path="";
 		PersonajeJugable personaje;
 		try {//Parte de obtención de datos de Partida
 			query = "SELECT * FROM Partida WHERE nick=" + "'" + user.getNombre() + "'";
@@ -155,10 +157,12 @@ public class BaseDeDatos {
 				vida = rs.getInt("vida");
 				velocidad = rs.getInt("velocidad");
 				puntosMejora = rs.getInt("puntos_mejora");
+				path=rs.getString("path");
+				System.out.println("  " +path);
 			}
 			
 			listaRespuestas.add(puntosMejora);
-			personaje = new PersonajeJugable(nombrePersonaje, new Point(0, 0), fuerza, vida, velocidad, "");
+			personaje = new PersonajeJugable(nombrePersonaje, new Point(0, 0), fuerza, vida, velocidad, path);
 			listaRespuestas.add(personaje);
 
 		} catch (SQLException e) {
@@ -191,7 +195,8 @@ public class BaseDeDatos {
 			query = "INSERT INTO Personaje VALUES('" + ch.getPersonajePrincipal().getNombre() + "'," 
 					+ ch.getPersonajePrincipal().getFuerza() + "," + ch.getPersonajePrincipal().getVida() 
 					+  "," + ch.getPersonajePrincipal().getVelocidad() + "," + ch.getPersonajePrincipal().getPuntosMejora()
-					+ "," + codigo + ")";
+					+ "," + codigo + ","+"'"+ch.getPersonajePrincipal().getPath()+"'"+")";
+			System.out.println(ch.getPersonajePrincipal().getPath());
 			s.executeUpdate(query);
 			VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
 			

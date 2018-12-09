@@ -142,6 +142,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 						int victorias1v1 = (int) listaObjetos.get(1);
 						int puntosMejora = (int)listaObjetos.get(2);
 						PersonajeJugable pj = (PersonajeJugable) listaObjetos.get(3);
+						System.out.println("		"+pj.getPath());
 						pj.setPuntosMejora(puntosMejora);
 						
 						VentanaPrincipal ventana = new VentanaPrincipal(0, usuario, pj, nivelesCompletados, victorias1v1);
@@ -214,105 +215,5 @@ public class VentanaValidacionUsuarios extends JFrame{
 		}
 	}
 	
-//	private ArrayList<Object> cargarPartidaDesdeBD(UsuariosValidar user , ArrayList<Object> listaRespuestas) {
-//		String query = "";
-//		int codPartida = 0;
-//		int nivelesCompletados = 0;
-//		int victorias1v1 = 0;
-//		String nombrePersonaje = "";
-//		int fuerza = 0;
-//		int vida = 0;
-//		int velocidad = 0;
-//		int puntosMejora = 0;
-//		PersonajeJugable personaje;
-//		try {
-//			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
-//			s = con.createStatement();
-//			try {//Parte de obtención de datos de Partida
-//				query = "SELECT * FROM Partida WHERE nick=" + "'" + user.getNombre() + "'";
-//				ResultSet rs = s.executeQuery(query);
-//				while(rs.next()) {
-//					codPartida = rs.getInt("cod_partida");
-//					nivelesCompletados = rs.getInt("niveles_comp");
-//					victorias1v1 = rs.getInt("victorias1v1");
-//				}
-//				
-//				listaRespuestas.add(nivelesCompletados);
-//				listaRespuestas.add(victorias1v1);
-//			} catch (SQLException e) {
-//				logger.log(Level.SEVERE, "Error de ejecución en: " + query);
-//			}
-//			
-//			try {//Parte de obtención de datos de Personaje
-//				query = "SELECT * FROM Personaje WHERE cod_partida=" + "'" + codPartida + "'";
-//				ResultSet rs = s.executeQuery(query);
-//				while(rs.next()) {
-//					nombrePersonaje = rs.getString("nom_personaje");
-//					fuerza = rs.getInt("fuerza");
-//					vida = rs.getInt("vida");
-//					velocidad = rs.getInt("velocidad");
-//					puntosMejora = rs.getInt("puntos_mejora");
-//				}
-//				
-//				listaRespuestas.add(puntosMejora);
-//				personaje = new PersonajeJugable(nombrePersonaje, new Point(0, 0), fuerza, vida, velocidad);
-//				listaRespuestas.add(personaje);
-//
-//			} catch (SQLException e) {
-//				logger.log(Level.SEVERE, "Error de ejecución en: " + query);
-//			}
-//		} catch (SQLException e) {
-//			logger.log(Level.SEVERE, "Error al conectarse con la BD");
-//		}
-//		
-//		return listaRespuestas;
-//	}
-	
-//	public static void main(String[] args) {
-//		VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(0);
-//		ventana.setVisible(true);
-		
-		//Creación de la tabla Usuario en nuestra BD
-		//Si la tabla ya se ha creado no hace nada, trabaja con la existente
-//		String comando = "";
-//		try {
-//			Class.forName("org.sqlite.JDBC");
-//			con = DriverManager.getConnection("jdbc:sqlite:randomspritesmackdown.db");
-//			s = con.createStatement();
-//			try {
-//				comando = "create table Usuario(nick STRING, password STRING)";
-//				logger.log(Level.INFO, comando);
-//				s.executeUpdate(comando);
-//			} catch (SQLException e) {
-//				logger.log(Level.INFO, "Tabla T1 ya existente");
-//			}
-//			try {
-//				comando = "create table Partida("
-//						+ "cod_partida NUMERIC PRIMARY KEY NOT NULL,"
-//						+ "niveles_comp NUMERIC CHECK(niveles_comp >= 0),"
-//						+ "victorias1v1 NUMERIC,"
-//						+ "nick STRING REFERENCES Usuario(nick))";
-//				logger.log(Level.INFO, comando);
-//				s.executeUpdate(comando);
-//			} catch (SQLException e) {
-//				logger.log(Level.INFO, "Tabla T2 ya existente");
-//			}
-//			try {
-//				comando = "create table Personaje("
-//						+ "nom_personaje STRING,"
-//						+ "fuerza NUMERIC,"
-//						+ "vida NUMERIC,"
-//						+ "velocidad NUMERIC,"
-//						+ "puntos_mejora NUMERIC,"
-//						+ "cod_partida NUMERIC REFERENCES Partida(cod_partida) ON DELETE CASCADE)";
-//				logger.log(Level.INFO, comando);
-//				s.executeUpdate(comando);
-//			} catch (SQLException e) {
-//				logger.log(Level.INFO, "Tabla T3 ya existente");
-//			}
-//		}	catch (SQLException|ClassNotFoundException e) {
-//			logger.log(Level.SEVERE, "Error en la clase, último comando: " + comando);
-//			e.printStackTrace();
-//		}
-//	}
+
 }

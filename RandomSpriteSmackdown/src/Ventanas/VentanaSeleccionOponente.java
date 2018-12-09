@@ -40,7 +40,7 @@ public class VentanaSeleccionOponente extends JFrame {
 	private JProgressBar jProgress2= new JProgressBar(0,100);
 	private JProgressBar jProgress3= new JProgressBar(0,100);
 
-	public VentanaSeleccionOponente(int codigo, UsuariosValidar user, PersonajeJugable pPrincipal, int nivelesCompletados, int victorias1v1) {
+	public VentanaSeleccionOponente(int codigo, UsuariosValidar user, PersonajeJugable pPrincipal, int nivelesCompletados, int victorias1v1,ControlHistoria ch) {
 		// TODO Auto-generated constructor stub
 		listaPersonajes.add(personajeRegular);
 		listaPersonajes.add(personajeRápido);
@@ -246,7 +246,7 @@ public class VentanaSeleccionOponente extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Nivel nivel = new Nivel(personajeSeleccionado, enemigo, 666);
+				Nivel nivel = new Nivel(personajeSeleccionado, enemigo, 666,ch);
 
 			}
 		});
@@ -297,7 +297,7 @@ public class VentanaSeleccionOponente extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(0,null, null, 0,0);
+		VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(0,null, null, 0,0,null);
 		ventana.setVisible(true);
 	}
 }
