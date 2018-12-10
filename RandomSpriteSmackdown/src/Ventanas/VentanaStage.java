@@ -53,19 +53,22 @@ public class VentanaStage extends JFrame {
 		setSize(1920, 1080);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
+		Dimension d = getSize();
+		p1.setPosicion(new Point(0, (int) (d.getHeight()*0.5)));
+		p2 = new Enemigo(null, 10, 10, 10, 1);
+		p2.setPosicion(new Point((int)(d.getWidth()-d.getWidth()*0.2),(int) (d.getHeight()*0.5)));
+		
 		controlEstados = new ControlEstados(p1, p2, this,ch);
 		Thread t = new Thread(controlEstados);
 		controlEstados.setStageCerrado(false);
 		t.start();
 		
-		Dimension d = getSize();
+	
 		int width = (int) (d.getWidth()*0.2);
 		int height = (int) (d.getHeight()*0.25);	
 		
-		p1.setPosicion(new Point(0, (int) (d.getHeight()*0.5)));
-		p2 = new Enemigo(null, 10, 10, 10, 1);
-		p2.setPosicion(new Point((int)(d.getWidth()-d.getWidth()*0.2),(int) (d.getHeight()*0.5)));
 		
+		System.out.println(p2.getPosicion());
 		JPanelBackground jpBackground = new JPanelBackground(SpriteStage(nivel));
 		JPanel pNorte = new JPanel(new GridLayout(2, 1));
 			JPanel pNs = new JPanel();
