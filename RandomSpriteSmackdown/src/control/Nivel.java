@@ -12,13 +12,43 @@ import personaje.personajeJugable.PersonajeJugable;
 public class Nivel {
 	
 	public static ArrayList<Nivel> listaNiveles = new ArrayList<Nivel>();
+	
 	private VentanaStage stage;
 	private int numNivel;
-	
+	private PersonajeJugable pj;
+	private Enemigo enem;
+	private ControlHistoria ch;
 	public Nivel(PersonajeJugable pj, Enemigo enem, int numNiv,ControlHistoria ch) {
 		stage = new VentanaStage(pj, enem,numNiv,ch);
+		this.pj=pj;
+		this.enem=enem;
+		this.ch=ch;
 	}
 	
+	public PersonajeJugable getPj() {
+		return pj;
+	}
+
+	public void setPj(PersonajeJugable pj) {
+		this.pj = pj;
+	}
+
+	public Enemigo getEnem() {
+		return enem;
+	}
+
+	public void setEnem(Enemigo enem) {
+		this.enem = enem;
+	}
+
+	public ControlHistoria getCh() {
+		return ch;
+	}
+
+	public void setCh(ControlHistoria ch) {
+		this.ch = ch;
+	}
+
 	public static void generarListaNiveles(PersonajeJugable pj,ControlHistoria ch) {
 		//Me he copiado y pegado el mismo nivel todo el rato, esto hay que tunearlo para hacer cada uno distinto del otro
 		//cambiando los atributos del enemigo, y el stage
@@ -47,4 +77,6 @@ public class Nivel {
 	public void setNumNivel(int numNivel) {
 		this.numNivel = numNivel;
 	}
+
+	
 }

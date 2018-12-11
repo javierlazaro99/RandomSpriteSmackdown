@@ -33,11 +33,11 @@ public class Animaciones implements Runnable {
 	public void run() {
 		if(codigoMovimiento==0) {
 
-			p.Moverse(1, 0);
+		//	p.Moverse(1, 0);
 			
 			
 
-			p.Moverse(10, 0);
+		//	p.Moverse(10, 0);
 				
 
 			
@@ -53,7 +53,7 @@ public class Animaciones implements Runnable {
 			}
 		}
 		if(codigoMovimiento==1) {
-			p.Moverse(-5, 0);
+		//	p.Moverse(-5, 0);
 			
 			for (String path : listaPaths) {
 				lAnim.setImagen(path);
@@ -71,14 +71,14 @@ public class Animaciones implements Runnable {
 		if(codigoMovimiento==2) {
 			
 			try {
-				p.Moverse(0, -15);
+		//		p.Moverse(0, -15);
 				lAnim.setLocation(p.getPosicion());
 				
 				for (String path : listaPaths) {
 					lAnim.setImagen(path);
 					Thread.sleep(16);
 				}
-				p.Moverse(0, 15);
+		//		p.Moverse(0, 15);
 				lAnim.setLocation(p.getPosicion());
 				codigoMovimiento=0;
 				

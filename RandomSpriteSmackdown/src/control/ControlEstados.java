@@ -222,7 +222,7 @@ public class ControlEstados implements Runnable{
 					diferenciaTimers = timerEstado - timerJuego;
 					
 					if(posActual < posObjetivo) {
-						pPrincipal.Moverse(1,0);
+						pPrincipal.Moverse(1,0,stage);
 						posActual = (int) pPrincipal.getPosicion().getX();
 					}
 					if(posActual == posObjetivo) { //Completa el ciclo de movimiento y vuelve a comprobar si D pulsado
@@ -262,7 +262,7 @@ public class ControlEstados implements Runnable{
 					diferenciaTimers = timerEstado - timerJuego;
 					
 					if(posActual > posObjetivo) {
-						pPrincipal.Moverse(-1,0);
+						pPrincipal.Moverse(-1,0,stage);
 						posActual = (int) pPrincipal.getPosicion().getX();
 					}
 					if(posActual == posObjetivo) { //Completa el ciclo de movimiento y vuelve a comprobar si A pulsado
@@ -307,13 +307,13 @@ public class ControlEstados implements Runnable{
 					int miposicion = (int) pPrincipal.getPosicion().getY();
 					
 					if(miposicion > alturaObjetivo) {
-						pPrincipal.Moverse(0, -1);
+						pPrincipal.Moverse(0, -1,stage);
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());
 					}if(miposicion == alturaObjetivo) {
 						alturaObjetivo = alturaBase;	
 					}if(miposicion < alturaObjetivo) {
-						pPrincipal.Moverse(0, 1);
+						pPrincipal.Moverse(0, 1,stage);
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());	
 						
@@ -360,13 +360,13 @@ public class ControlEstados implements Runnable{
 					int miposicion = (int) pPrincipal.getPosicion().getY();
 					
 					if(miposicion > alturaObjetivo) {
-						pPrincipal.Moverse(1, -1);
+						pPrincipal.Moverse(1, -1,stage);
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());
 					}if(miposicion == alturaObjetivo) {
 						alturaObjetivo = alturaBase;	
 					}if(miposicion < alturaObjetivo) {
-						pPrincipal.Moverse(1, 1);
+						pPrincipal.Moverse(1, 1,stage);
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());	
 						
@@ -413,13 +413,13 @@ public class ControlEstados implements Runnable{
 					int miposicion = (int) pPrincipal.getPosicion().getY();
 					
 					if(miposicion > alturaObjetivo) {
-						pPrincipal.Moverse(-1, -1);
+						pPrincipal.Moverse(-1, -1,stage);
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());
 					}if(miposicion == alturaObjetivo) {
 						alturaObjetivo = alturaBase;	
 					}if(miposicion < alturaObjetivo) {
-						pPrincipal.Moverse(-1, 1);
+						pPrincipal.Moverse(-1, 1,stage);
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());	
 						
@@ -478,15 +478,15 @@ public class ControlEstados implements Runnable{
 			
 			//CONTROL DE LADOS
 				//lado izquierdo
-			if(pPrincipal.getPosicion().getX()<=3 || pSecundario.getPosicion().getX()<=3) {
-				pPrincipal.setPosicion(new Point((int)(pPrincipal.getPosicion().getX()+5),(int)(pPrincipal.getPosicion().getY())));
-				pSecundario.setPosicion(new Point((int)(pPrincipal.getPosicion().getX()+5),(int)(pPrincipal.getPosicion().getY())));
-			}
-				//lado derecho
-			if(pPrincipal.getPosicion().getX()>=(stage.getWidth()-3) || pSecundario.getPosicion().getX()>=(stage.getWidth()-3)) {
-				pPrincipal.setPosicion(new Point((int)(pPrincipal.getPosicion().getX()-5),(int)(pPrincipal.getPosicion().getY())));
-				pSecundario.setPosicion(new Point((int)(pPrincipal.getPosicion().getX()-5),(int)(pPrincipal.getPosicion().getY())));
-			}
+		//	if(pPrincipal.getPosicion().getX()<=3 || pSecundario.getPosicion().getX()<=3) {
+		//		pPrincipal.setPosicion(new Point((int)(pPrincipal.getPosicion().getX()+5),(int)(pPrincipal.getPosicion().getY())));
+		//		pSecundario.setPosicion(new Point((int)(pPrincipal.getPosicion().getX()+5),(int)(pPrincipal.getPosicion().getY())));
+		//	}
+		//		//lado derecho
+		//	if(pPrincipal.getPosicion().getX()>=(stage.getWidth()-3) || pSecundario.getPosicion().getX()>=(stage.getWidth()-3)) {
+		//		pPrincipal.setPosicion(new Point((int)(pPrincipal.getPosicion().getX()-5),(int)(pPrincipal.getPosicion().getY())));
+		//		pSecundario.setPosicion(new Point((int)(pPrincipal.getPosicion().getX()-5),(int)(pPrincipal.getPosicion().getY())));
+		//	}
 			//CIERRE DE JUEGO
 			if(pPrincipal.getVida()==0 || pSecundario.getVida()==0) {
 				if(pSecundario.getVida()==0) {

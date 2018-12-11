@@ -5,6 +5,7 @@ import java.awt.Point;
 import javax.swing.JFrame;
 
 import Personalizados.JLabelGraficoAjustado;
+import Ventanas.VentanaStage;
 
 public abstract class Personaje {
 	
@@ -77,8 +78,12 @@ public abstract class Personaje {
 	 */
 	public abstract void DarGolpe(Personaje enemigo);
 	
-	public void Moverse(double movX, double movY) {
+	public void Moverse(double movX, double movY,VentanaStage stage) {
+		//if(posicion.getX()<=-20 || posicion.getX() >= 1800) {
+		System.out.println(stage.getWidth()+"-"+posicion.getX());
 		posicion.setLocation(posicion.getX() + movX * getVelocidad(), posicion.getY() + movY * getVelocidad());
+		
+		//}
 	}
 	
 	public void Rebotar(Personaje golpeador) {

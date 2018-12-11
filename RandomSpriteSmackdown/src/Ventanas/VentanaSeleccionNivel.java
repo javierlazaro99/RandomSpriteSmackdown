@@ -86,7 +86,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel1 = Nivel.listaNiveles.get(0);
-				VentanaStage stage1 = nivel1.getStage();
+				VentanaStage stage1 = new VentanaStage(nivel1.getPj(), nivel1.getEnem(), 1, nivel1.getCh());
 				stage1.setVisible(true);
 				
 			}
@@ -97,7 +97,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel2 = Nivel.listaNiveles.get(1);
-				VentanaStage stage2 = nivel2.getStage();
+				VentanaStage stage2 = new VentanaStage(nivel2.getPj(), nivel2.getEnem(), 2, nivel2.getCh());
 				stage2.setVisible(true);
 				
 				
@@ -109,7 +109,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel3 = Nivel.listaNiveles.get(2);
-				VentanaStage stage3 = nivel3.getStage();
+				VentanaStage stage3 = new VentanaStage(nivel3.getPj(), nivel3.getEnem(), 3, nivel3.getCh());
 				stage3.setVisible(true);
 				
 				
@@ -120,7 +120,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel4 = Nivel.listaNiveles.get(3);
-				VentanaStage stage4 = nivel4.getStage();
+				VentanaStage stage4 = new VentanaStage(nivel4.getPj(), nivel4.getEnem(), 4, nivel4.getCh());
 				stage4.setVisible(true);
 				
 			}
@@ -130,7 +130,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel5 = Nivel.listaNiveles.get(4);
-				VentanaStage stage5 = nivel5.getStage();
+				VentanaStage stage5 = new VentanaStage(nivel5.getPj(), nivel5.getEnem(), 5, nivel5.getCh());
 				stage5.setVisible(true);
 				
 			}
@@ -140,7 +140,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel6 = Nivel.listaNiveles.get(5);
-				VentanaStage stage6 = nivel6.getStage();
+				VentanaStage stage6 = new VentanaStage(nivel6.getPj(), nivel6.getEnem(), 6, nivel6.getCh());
 				stage6.setVisible(true);
 				
 			}
@@ -150,7 +150,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel7= Nivel.listaNiveles.get(6);
-				VentanaStage stage7 = nivel7.getStage();
+				VentanaStage stage7 = new VentanaStage(nivel7.getPj(), nivel7.getEnem(), 7, nivel7.getCh());
 				stage7.setVisible(true);
 				
 			}
@@ -160,7 +160,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel8 = Nivel.listaNiveles.get(7);
-				VentanaStage stage8 = nivel8.getStage();
+				VentanaStage stage8 = new VentanaStage(nivel8.getPj(), nivel8.getEnem(), 8, nivel8.getCh());
 				stage8.setVisible(true);
 				
 			}

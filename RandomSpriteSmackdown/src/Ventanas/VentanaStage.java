@@ -40,7 +40,7 @@ public class VentanaStage extends JFrame {
 	private JLabelGraficoAjustado iProta = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
 	private JLabelGraficoAjustado iEnemigo = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
 	private JLabel lTiempo=null ;
-	private double contador=60;
+	private int contador=60;
 	private ControlEstados controlEstados ;
 	private PersonajeJugable pPrincipal;
 	private Personaje pSecundario;
@@ -201,15 +201,15 @@ public class VentanaStage extends JFrame {
 		try {
 			
 			while(contador>0 ) {
-			Thread.sleep(100);
-			contador= contador -0.1;
+			Thread.sleep(1000);
+			contador= contador -1;
 			
-			lTiempo.setText(""+contador);
+			lTiempo.setText(String.valueOf(contador));
 			VentanaStage.this.revalidate();
-			//lado izquierdo
+			
 	
 			}
-			controlEstados.setStageCerrado(true);
+			
 			contador=0;
 			VentanaStage.this.dispose();
 			
