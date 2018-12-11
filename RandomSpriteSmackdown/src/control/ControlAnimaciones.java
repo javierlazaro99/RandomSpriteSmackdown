@@ -90,8 +90,13 @@ public class ControlAnimaciones {
 		for(ElementoAnimacion elementoAnimacion:animGolpear) {
 			if(milis <=elementoAnimacion.getTiempos()) {
 				stage.getiProta().setImagen(elementoAnimacion.getLabel());
+				
 				if(elementoAnimacion.getLabel().equals("png/Melee (4).png")){
 					personaje.DarGolpe(enemigo);
+					
+					System.out.println(personaje.getPosicion());
+					System.out.println(enemigo.getPosicion());
+					System.out.println(enemigo.getVida());
 				}
 				return 1;
 			}

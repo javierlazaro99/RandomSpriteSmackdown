@@ -216,7 +216,7 @@ public class ControlEstados implements Runnable{
 				
 				int posActual = (int) pPrincipal.getPosicion().getX();
 				int posObjetivo = posActual + 20; //Este +20 se puede cambiar a lo que quieras que valga el ciclo, múltiplo de 10 tiene que ser
-				
+				//Cambiar el + 20 la relacionarlo con la velocidad del personaje
 				while(corriendoDerecha) {
 					timerEstado = System.currentTimeMillis();
 					diferenciaTimers = timerEstado - timerJuego;
@@ -447,24 +447,32 @@ public class ControlEstados implements Runnable{
 				}
 				
 			}
+			
+			//Estado golpe
 			while(!APulsado && !DPulsado && !WPulsado && !StageCerrado && SpacePulsado) {
-				timerEstado=System.currentTimeMillis();
-				diferenciaTimers=timerEstado - timerJuego;
+				boolean golpeando = true;
 				
-				stage.repaint();
-				stage.revalidate();
-				
-				if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimGolpear() ) {
-					EstadoGolpear(diferenciaTimers);
-				}
-				else {
-					diferenciaTimers =0;
-					timerJuego = System.currentTimeMillis();
-				}
-				try {
-					Thread.sleep(16); //Mas o menos 60 veces por segundo hará el bucle
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				while(golpeando) {
+
+					timerEstado=System.currentTimeMillis();
+					diferenciaTimers=timerEstado - timerJuego;
+					
+					stage.repaint();
+					stage.revalidate();
+					
+					if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimGolpear() ) {
+						EstadoGolpear(diferenciaTimers);
+					}
+					else {
+						diferenciaTimers =0;
+						timerJuego = System.currentTimeMillis();
+						golpeando = false;
+					}
+					try {
+						Thread.sleep(16); //Mas o menos 60 veces por segundo hará el bucle
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 			
