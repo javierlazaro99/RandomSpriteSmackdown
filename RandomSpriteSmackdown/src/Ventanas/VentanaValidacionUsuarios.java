@@ -179,6 +179,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 				VentanaValidacionUsuarios.this.dispose();
 			}
 		});
+		
 	}
 	
 	/**

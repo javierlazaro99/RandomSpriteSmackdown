@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
@@ -57,11 +58,12 @@ public class VentanaStage extends JFrame {
 		
 		setSize(1920, 1080);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setUndecorated(true);
 		
 		Dimension d = getSize();
-		p1.setPosicion(new Point(0, (int) (d.getHeight()*0.5)));
+		p1.setPosicion(new Point(0, (int) (d.getHeight()*0.6)));
 		p2 = new Enemigo(null, 10, 10, 10, 1);
-		p2.setPosicion(new Point((int)(d.getWidth()-d.getWidth()*0.2),(int) (d.getHeight()*0.5)));
+		p2.setPosicion(new Point((int)(d.getWidth()-d.getWidth()*0.2),(int) (d.getHeight()*0.6)));
 		
 		controlEstados = new ControlEstados(p1, p2, this,ch);
 		Thread t = new Thread(controlEstados);
@@ -181,18 +183,19 @@ public class VentanaStage extends JFrame {
 				if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 					controlEstados.setSpacePulsado(true);
 				}
+				if(e.getKeyCode()==KeyEvent.VK_ESCAPE) {
+					if(JOptionPane.showConfirmDialog(null, "¿Quieres cerrar jel juego?","Cierre de ventana",JOptionPane.INFORMATION_MESSAGE)==0) {
+						VentanaStage.this.dispose();
+						contador=0;
+						controlEstados.setStageCerrado(false);
+					}
+				}
 			}
 		});
 		
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosed(WindowEvent e) {
-				controlEstados.setStageCerrado(true);
-				
-			}
-		});
-	}
-	
+		
+	}				
+			
  Thread tiempo = new Thread(new Runnable() {
 	
 	@Override
@@ -209,7 +212,7 @@ public class VentanaStage extends JFrame {
 			
 	
 			}
-			
+			controlEstados.setStageCerrado(true);
 			contador=0;
 			VentanaStage.this.dispose();
 			
@@ -219,8 +222,8 @@ public class VentanaStage extends JFrame {
 		}
 		
 	}
-});
-
+ });
+	
 	public String SpriteStage(int nivel) {
 		String snivel= "src/Stage";
 		String snivelfinal = ".gif";
