@@ -108,7 +108,7 @@ public class PersonajeJugable extends Personaje {
 		if(distancia < 500) {
 			//Se ejecuta el pegado
 			enemigo.setVida(enemigo.getVida() - 0.1 * this.getFuerza());
-			enemigo.Rebotar(this);
+			
 			
 		}
 		

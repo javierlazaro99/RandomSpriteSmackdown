@@ -79,20 +79,22 @@ public abstract class Personaje {
 	public abstract void DarGolpe(Personaje enemigo);
 	
 	public void Moverse(double movX, double movY,VentanaStage stage) {
-		//if(posicion.getX()<=-20 || posicion.getX() >= 1800) {
+		if(posicion.getX()>=-100 || posicion.getX() <= 1800) {
 		System.out.println(stage.getWidth()+"-"+posicion.getX());
 		posicion.setLocation(posicion.getX() + movX * getVelocidad(), posicion.getY() + movY * getVelocidad());
 		
-		//}
+		}
 	}
 	
-	public void Rebotar(Personaje golpeador) {
+	public void Rebotar(Personaje golpeador,VentanaStage stage) {
 		double pos = this.getPosicion().getX();
 		
 		if(golpeador.getPosicion().getX() <= this.getPosicion().getX()) { //El golpeado está a la derecha
-			posicion.setLocation(pos + pos/2, getPosicion().getY());
+			posicion.setLocation(pos + 2, getPosicion().getY());
+			stage.getiProta().setLocation(posicion);
 		}else if (golpeador.getPosicion().getX() >= this.getPosicion().getX()) {
-			posicion.setLocation(pos -  pos/2, getPosicion().getY());
+			posicion.setLocation(pos - 2, getPosicion().getY());
+			stage.getiProta().setLocation(posicion);
 		}
 	}
 }

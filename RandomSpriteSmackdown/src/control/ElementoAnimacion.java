@@ -15,7 +15,8 @@ public class ElementoAnimacion {
 	static long tiempoAnimMoverse;
 	public static ArrayList<ElementoAnimacion> animGolpear = new ArrayList<ElementoAnimacion>();
 	static long tiempoAnimGolpear;
-	
+	public static ArrayList<ElementoAnimacion> animGolpeado = new ArrayList<ElementoAnimacion>();
+	static long tiempoAnimGolpeado;
 	public ElementoAnimacion(String label,long tiempos) {
 		this.label = label;
 		this.tiempos = tiempos;
@@ -99,7 +100,20 @@ public class ElementoAnimacion {
 		
 		return animGolpear;
 	}
-	
+	public static ArrayList<ElementoAnimacion> CrearAnimGolpeado(){
+		animGolpeado.add(new ElementoAnimacion("png/Slide (1).png", 100));
+		animGolpeado.add(new ElementoAnimacion("png/Slide (2).png", 200));
+		animGolpeado.add(new ElementoAnimacion("png/Slide (3).png", 300));
+		animGolpeado.add(new ElementoAnimacion("png/Slide (4).png", 400));
+		animGolpeado.add(new ElementoAnimacion("png/Slide (5).png", 500));
+		animGolpeado.add(new ElementoAnimacion("png/Slide (6).png", 600));
+		animGolpeado.add(new ElementoAnimacion("png/Slide (7).png", 700));
+		animGolpeado.add(new ElementoAnimacion("png/Slide (8).png", 800));
+		animGolpeado.add(new ElementoAnimacion("png/Slide (9).png", 900));
+		animGolpeado.add(new ElementoAnimacion("png/Slide (10).png", 1000));
+		
+		return animGolpeado;
+	}
 	public static long getTiempoAnimParado() {
 		return animParado.get(animParado.size() -1).tiempos;
 	}

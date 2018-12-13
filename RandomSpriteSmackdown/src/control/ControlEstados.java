@@ -18,6 +18,7 @@ public class ControlEstados implements Runnable{
 	private boolean DPulsado;
 	private boolean WPulsado;
 	private boolean SpacePulsado;
+	private boolean golpeado;
 	private PersonajeJugable pPrincipal;
 	private Personaje pSecundario;
 	private boolean StageCerrado;
@@ -35,6 +36,7 @@ public class ControlEstados implements Runnable{
 		this.DPulsado = false;
 		this.WPulsado = false;
 		this.SpacePulsado=false;
+		this.golpeado=false;
 	}
 	
 	public boolean isSpacePulsado() {
@@ -164,6 +166,19 @@ public class ControlEstados implements Runnable{
 				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
 			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario);
+		}
+	}
+	private void EstadoGolpeado(long diferenciaTimers) {
+		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<0) {
+			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira
+				pPrincipal.getlPersonaje().setHorFlip(false);
+			}
+			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pPrincipal, stage);//sprites
+		}else {
+			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
+				pPrincipal.getlPersonaje().setHorFlip(true);
+			}
+			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pPrincipal, stage);
 		}
 	}
 	
@@ -476,6 +491,38 @@ public class ControlEstados implements Runnable{
 				}
 			}
 			
+			//Estado golpeado
+			int posIni= (int) pPrincipal.getPosicion().getX();
+			int posFinDer= (int) pPrincipal.getPosicion().getX()+ 20;
+			int posFinIz= (int) pPrincipal.getPosicion().getX() -20; 
+			while(golpeado) {
+				APulsado=false;
+				DPulsado=false;
+				WPulsado=false;
+				SpacePulsado=false;
+				
+				timerEstado=System.currentTimeMillis();
+				diferenciaTimers= timerEstado - timerJuego;
+				
+				stage.repaint();
+				stage.revalidate();
+				if(((int) pPrincipal.getPosicion().getX() >= posFinIz && (int) pPrincipal.getPosicion().getX() <= posIni) || ((int) pPrincipal.getPosicion().getX()) >= posIni && (int) pPrincipal.getPosicion().getX() <= posFinDer) {
+				pPrincipal.Rebotar(pSecundario,stage);
+				}
+				if(diferenciaTimers <= ElementoAnimacion.tiempoAnimGolpeado) {
+					EstadoGolpeado(diferenciaTimers);
+				}
+				else {
+					diferenciaTimers =0;
+					timerJuego = System.currentTimeMillis();
+					golpeado=false;
+				}
+				try {
+					Thread.sleep(16); //Mas o menos 60 veces por segundo hará el bucle
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 			//CONTROL DE LADOS
 				//lado izquierdo
 		//	if(pPrincipal.getPosicion().getX()<=3 || pSecundario.getPosicion().getX()<=3) {
