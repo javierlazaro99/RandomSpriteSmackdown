@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 import Personalizados.JLabelGraficoAjustado;
 import Ventanas.VentanaStage;
+import control.ControlEstados;
 
 public abstract class Personaje {
 	
@@ -78,11 +79,13 @@ public abstract class Personaje {
 	 */
 	public abstract void DarGolpe(Personaje enemigo);
 	
-	public void Moverse(double movX, double movY,VentanaStage stage) {
-		if(posicion.getX()>=-100 || posicion.getX() <= 1800) {
-		System.out.println(stage.getWidth()+"-"+posicion.getX());
-		posicion.setLocation(posicion.getX() + movX * getVelocidad(), posicion.getY() + movY * getVelocidad());
+	public void Moverse(double movX, double movY,VentanaStage stage,ControlEstados ce) {//Preguntar
+		if(posicion.getX()>=-100 && posicion.getX() <= stage.getWidth()-150) {
 		
+		//System.out.println(stage.getWidth()+"-"+posicion.getX());
+		posicion.setLocation(posicion.getX() + movX * getVelocidad(), posicion.getY() + movY * getVelocidad());
+		}else {
+		ce.setChoque(true);
 		}
 	}
 	

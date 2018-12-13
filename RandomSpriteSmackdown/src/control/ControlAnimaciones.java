@@ -8,8 +8,8 @@ import Ventanas.VentanaStage;
 import personaje.Personaje;
 
 public class ControlAnimaciones {
-	ArrayList<String> label;
-	ArrayList<Integer> tiempos;
+	private ArrayList<String> label;
+	private ArrayList<Integer> tiempos;
 
 	
 	public int AnimacionParado(long milis, Personaje personaje, VentanaStage stage) {
@@ -74,12 +74,17 @@ public class ControlAnimaciones {
 				stage.getiProta().setImagen(elementoAnimacion.getLabel());
 				
 				if(elementoAnimacion.getLabel().equals("png/Melee (4).png")){
-					personaje.DarGolpe(enemigo);
 					
+					
+					personaje.DarGolpe(enemigo);
+					stage.setJpbVida2(enemigo.getVida());
 					System.out.println(personaje.getPosicion());
 					System.out.println(enemigo.getPosicion());
 					System.out.println(enemigo.getVida());
+					
+					
 				}
+				
 				return 1;
 			}
 		}

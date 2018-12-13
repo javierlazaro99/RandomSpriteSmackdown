@@ -6,6 +6,7 @@ import java.util.Random;
 import javax.swing.JFrame;
 
 import Ventanas.VentanaStage;
+import control.ControlEstados;
 import personaje.Personaje;
 import personaje.personajeJugable.PersonajeJugable;
 
@@ -32,13 +33,13 @@ public class Enemigo extends Personaje {
 
 	}
 
-	public void IAMovimiento(Personaje p,VentanaStage stage) {
+	public void IAMovimiento(Personaje p,VentanaStage stage,ControlEstados ce) {
 		Point pos = p.getPosicion();
 		//Hay que comprobar si el jugador está a la derecha del enemigo o a la izquierda
 		if (getPosicion().getX() > pos.getX()) {
-			this.Moverse( -1, 0,stage);
+			this.Moverse( -1, 0,stage,ce);
 		}else if (getPosicion().getX() < pos.getX()){
-			this.Moverse( 1, 0,stage);
+			this.Moverse( 1, 0,stage,ce);
 		}
 		
 		

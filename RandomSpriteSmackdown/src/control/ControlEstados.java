@@ -26,7 +26,15 @@ public class ControlEstados implements Runnable{
 	private VentanaStage stage;
 	private String lTiempo="";
 	private ControlHistoria ch;
-	
+	private boolean choque;
+	public boolean isChoque() {
+		return choque;
+	}
+
+	public void setChoque(boolean choque) {
+		this.choque = choque;
+	}
+
 	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario, VentanaStage stage,ControlHistoria ch) {//Personaje de la izquierda y de la derecha
 		this.pPrincipal=pPrincipal;
 		this.pSecundario=pSecundario;
@@ -37,6 +45,7 @@ public class ControlEstados implements Runnable{
 		this.WPulsado = false;
 		this.SpacePulsado=false;
 		this.golpeado=false;
+		this.choque=false;
 	}
 	
 	public boolean isSpacePulsado() {
@@ -201,6 +210,17 @@ public class ControlEstados implements Runnable{
 				DPulsado = false;
 			}
 			
+			if( pSecundario.getVida()<=0) {//Comprobacion de vida enemigo
+				
+				if(ch.getNivelesCompletados()<8) {
+				ch.setNivelesCompletados(ch.getNivelesCompletados()+1);
+				
+			}
+			
+			StageCerrado=true;
+			stage.setContador(0);
+			stage.dispose();
+		}
 			//Estado moverse parado
 			while(!APulsado && !DPulsado && !WPulsado && !SpacePulsado && !StageCerrado) { //Estado parado
 				timerEstado = System.currentTimeMillis();
@@ -226,7 +246,7 @@ public class ControlEstados implements Runnable{
 			diferenciaTimers = 0; //Reset de la diferencia al saltar a otro estado
 			timerJuego = System.currentTimeMillis(); //Volvemos a calcular el tiempo del juego para el siguiente estado
 			//Estado moverse derecha
-			while(!APulsado && DPulsado && !WPulsado && !StageCerrado && !SpacePulsado) {//Moverse hacia la derecha
+			while(!APulsado && DPulsado && !WPulsado && !StageCerrado && !SpacePulsado && !choque) {//Moverse hacia la derecha
 				boolean corriendoDerecha = true;
 				
 				int posActual = (int) pPrincipal.getPosicion().getX();
@@ -237,7 +257,7 @@ public class ControlEstados implements Runnable{
 					diferenciaTimers = timerEstado - timerJuego;
 					
 					if(posActual < posObjetivo) {
-						pPrincipal.Moverse(1,0,stage);
+						pPrincipal.Moverse(1,0,stage,this);
 						posActual = (int) pPrincipal.getPosicion().getX();
 					}
 					if(posActual >= posObjetivo) { //Completa el ciclo de movimiento y vuelve a comprobar si D pulsado
@@ -277,7 +297,7 @@ public class ControlEstados implements Runnable{
 					diferenciaTimers = timerEstado - timerJuego;
 					
 					if(posActual > posObjetivo) {
-						pPrincipal.Moverse(-1,0,stage);
+						pPrincipal.Moverse(-1,0,stage,this);
 						posActual = (int) pPrincipal.getPosicion().getX();
 					}
 					if(posActual <= posObjetivo) { //Completa el ciclo de movimiento y vuelve a comprobar si A pulsado
@@ -322,13 +342,13 @@ public class ControlEstados implements Runnable{
 					int miposicion = (int) pPrincipal.getPosicion().getY();
 					
 					if(miposicion > alturaObjetivo) {
-						pPrincipal.Moverse(0, -1,stage);
+						pPrincipal.Moverse(0, -1,stage,this);
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());
 					}if(miposicion == alturaObjetivo) {
 						alturaObjetivo = alturaBase;	
 					}if(miposicion < alturaObjetivo) {
-						pPrincipal.Moverse(0, 1,stage);
+						pPrincipal.Moverse(0, 1,stage,this);
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());	
 						
@@ -375,13 +395,13 @@ public class ControlEstados implements Runnable{
 					int miposicion = (int) pPrincipal.getPosicion().getY();
 					
 					if(miposicion > alturaObjetivo) {
-						pPrincipal.Moverse(1, -1,stage);
+						pPrincipal.Moverse(1, -1,stage,this);
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());
 					}if(miposicion == alturaObjetivo) {
 						alturaObjetivo = alturaBase;	
 					}if(miposicion < alturaObjetivo) {
-						pPrincipal.Moverse(1, 1,stage);
+						pPrincipal.Moverse(1, 1,stage,this);
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());	
 						
@@ -428,13 +448,13 @@ public class ControlEstados implements Runnable{
 					int miposicion = (int) pPrincipal.getPosicion().getY();
 					
 					if(miposicion > alturaObjetivo) {
-						pPrincipal.Moverse(-1, -1,stage);
+						pPrincipal.Moverse(-1, -1,stage,this);
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());
 					}if(miposicion == alturaObjetivo) {
 						alturaObjetivo = alturaBase;	
 					}if(miposicion < alturaObjetivo) {
-						pPrincipal.Moverse(-1, 1,stage);
+						pPrincipal.Moverse(-1, 1,stage,this);
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());	
 						
@@ -474,6 +494,7 @@ public class ControlEstados implements Runnable{
 					
 					stage.repaint();
 					stage.revalidate();
+					
 					
 					if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimGolpear() ) {
 						EstadoGolpear(diferenciaTimers);

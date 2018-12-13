@@ -42,15 +42,52 @@ public class VentanaStage extends JFrame {
 	private JLabelGraficoAjustado iEnemigo = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
 	private JLabel lTiempo=null ;
 	private int contador=60;
+	
+	public int getContador() {
+		return contador;
+	}
+
+
+
+	public void setContador(int contador) {
+		this.contador = contador;
+	}
+
 	private ControlEstados controlEstados ;
 	private PersonajeJugable pPrincipal;
 	private Personaje pSecundario;
+	private JProgressBar jpbVida2 ;
+	private JProgressBar jpbVida1 ;
+	public JProgressBar getJpbVida2() {
+		return jpbVida2;
+	}
+
+
+
+	public void setJpbVida2(double vidaEnemigo) {
+		this.jpbVida2.setValue((int)vidaEnemigo);;
+	}
+
+
+
+	public JProgressBar getJpbVida1() {
+		return jpbVida1;
+	}
+
+
+
+	public void setJpbVida1(double vidaPrincipal) {
+		this.jpbVida1.setValue((int)vidaPrincipal);
+	}
+
+
+
 	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel,ControlHistoria ch ) {
 		
 		pPrincipal=p1;
 		pSecundario=p2;
 		
-		p1.setVelocidad(100);
+		
 		
 		
 		ElementoAnimacion.CrearAnimParado();
@@ -94,8 +131,8 @@ public class VentanaStage extends JFrame {
 		
 		pNorte.setPreferredSize(new Dimension(4000, 150));
 		
-		JProgressBar jpbVida1 = new JProgressBar();
-		JProgressBar jpbVida2 = new JProgressBar();
+		jpbVida1 = new JProgressBar();
+		jpbVida2 = new JProgressBar();
 			jpbVida1.setValue((int)p1.getVida());
 			jpbVida1.setMaximum((int)p1.getVida());
 			jpbVida2.setValue((int)p2.getVida());
