@@ -50,6 +50,9 @@ public class VentanaStage extends JFrame {
 		pPrincipal=p1;
 		pSecundario=p2;
 		
+		p1.setVelocidad(100);
+		
+		
 		ElementoAnimacion.CrearAnimParado();
 		ElementoAnimacion.CrearAnimSaltando();
 		ElementoAnimacion.CrearAnimMoverse();

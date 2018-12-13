@@ -2,8 +2,6 @@ package personaje.personajeJugable;
 
 import java.awt.Point;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
 import Personalizados.JLabelGraficoAjustado;

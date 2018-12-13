@@ -225,7 +225,7 @@ public class ControlEstados implements Runnable{
 						pPrincipal.Moverse(1,0,stage);
 						posActual = (int) pPrincipal.getPosicion().getX();
 					}
-					if(posActual == posObjetivo) { //Completa el ciclo de movimiento y vuelve a comprobar si D pulsado
+					if(posActual >= posObjetivo) { //Completa el ciclo de movimiento y vuelve a comprobar si D pulsado
 						corriendoDerecha = false;
 					}
 					
@@ -265,7 +265,7 @@ public class ControlEstados implements Runnable{
 						pPrincipal.Moverse(-1,0,stage);
 						posActual = (int) pPrincipal.getPosicion().getX();
 					}
-					if(posActual == posObjetivo) { //Completa el ciclo de movimiento y vuelve a comprobar si A pulsado
+					if(posActual <= posObjetivo) { //Completa el ciclo de movimiento y vuelve a comprobar si A pulsado
 						corriendoIzquierda = false;
 					}
 					

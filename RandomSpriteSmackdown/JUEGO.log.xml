@@ -6101,3 +6101,281 @@
   <thread>17</thread>
   <message>Personaje principal Unai,10.0,10.0,10.0 creado</message>
 </record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-12T11:07:25</date>
+  <millis>1544609245388</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-12T11:07:30</date>
+  <millis>1544609250624</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-12T11:07:32</date>
+  <millis>1544609252771</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-12T11:08:00</date>
+  <millis>1544609280559</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-12T11:08:00</date>
+  <millis>1544609280589</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-12T11:08:00</date>
+  <millis>1544609280918</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:a Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-12T11:08:40</date>
+  <millis>1544609320123</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-12T11:08:40</date>
+  <millis>1544609320204</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(1,0, 0,'a') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-12T11:08:40</date>
+  <millis>1544609320225</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('hola',15.0,10.0,5.0,0,1,'png/Idle (1).png') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-12T11:08:40</date>
+  <millis>1544609320253</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal hola,15.0,10.0,5.0 creado</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-12T11:09:39</date>
+  <millis>1544609379976</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-12T11:09:39</date>
+  <millis>1544609379992</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-12T11:09:40</date>
+  <millis>1544609380088</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:b Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-12T11:09:47</date>
+  <millis>1544609387524</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-12T11:09:47</date>
+  <millis>1544609387594</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(2,0, 0,'b') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-12T11:09:47</date>
+  <millis>1544609387653</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('',5.0,5.0,20.0,0,2,'png/Idle (1).png') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-12T11:09:47</date>
+  <millis>1544609387684</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal ,5.0,5.0,20.0 creado</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-12T11:14:18</date>
+  <millis>1544609658611</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-12T11:14:18</date>
+  <millis>1544609658650</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-12T11:14:18</date>
+  <millis>1544609658900</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:c Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-12T11:14:32</date>
+  <millis>1544609672172</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-12T11:14:32</date>
+  <millis>1544609672327</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(3,0, 0,'c') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-12T11:14:32</date>
+  <millis>1544609672426</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('pene',15.0,10.0,5.0,0,3,'png/Idle (1).png') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-12T11:14:32</date>
+  <millis>1544609672450</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal pene,15.0,10.0,5.0 creado</message>
+</record>
+</log>
