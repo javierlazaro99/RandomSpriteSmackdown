@@ -246,7 +246,7 @@ public class ControlEstados implements Runnable{
 			diferenciaTimers = 0; //Reset de la diferencia al saltar a otro estado
 			timerJuego = System.currentTimeMillis(); //Volvemos a calcular el tiempo del juego para el siguiente estado
 			//Estado moverse derecha
-			while(!APulsado && DPulsado && !WPulsado && !StageCerrado && !SpacePulsado && !choque) {//Moverse hacia la derecha
+			while(!APulsado && DPulsado && !WPulsado && !StageCerrado && !SpacePulsado ) {//Moverse hacia la derecha
 				boolean corriendoDerecha = true;
 				
 				int posActual = (int) pPrincipal.getPosicion().getX();
