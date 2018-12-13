@@ -8,15 +8,23 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import Ventanas.VentanaStage;
+import control.ControlEstados;
+import control.ControlHistoria;
 import personaje.enemigo.Enemigo;
 
 public class PersonajeJugableTest {
 	
 	private PersonajeJugable pj;
-
+	private VentanaStage stage;
+	private ControlEstados ce;
+	private ControlHistoria ch;
 	@Before
 	public void setUp() throws Exception {
 		pj = new PersonajeJugable("personaje", new Point(0, 0), 10, 10, 10, "");
+		ch = new ControlHistoria(pj, 0);
+		ce= new ControlEstados(pj, null, stage, ch);
+		stage = new VentanaStage(pj, null, 0, ch);
 	}
 
 	@After
@@ -59,20 +67,20 @@ public class PersonajeJugableTest {
 	@Test
 	public void DarGolpeTestEnemigo() {
 		Enemigo enem = new Enemigo(new Point(20, 0), 10, 10, 10, 1);
-		pj.Moverse(1, 0);
-		pj.DarGolpe(enem);
-		assertEquals(10, enem.getVida(), 0.01);
-		
-		pj.Moverse(1, 0);
+		pj.Moverse(1, 0,stage,ce);
 		pj.DarGolpe(enem);
 		assertEquals(9, enem.getVida(), 0.01);
+		
+		pj.Moverse(1, 0,stage,ce);
+		pj.DarGolpe(enem);
+		assertEquals(8, enem.getVida(), 0.01);
 	}
 	
 	@Test
 	public void DarGolpeTestJugador() {
 		PersonajeJugable pj2 = new PersonajeJugable("Guille", new Point(20, 0), 20, 20, 10, "");
-		pj.Moverse(1, 0);
-		pj2.Moverse(-1, 0);
+		pj.Moverse(1, 0,stage,ce);
+		pj2.Moverse(-1, 0,stage,ce);
 		
 		pj.DarGolpe(pj2);
 		pj2.DarGolpe(pj);

@@ -49,7 +49,7 @@ public class BDtest {
 	public void Creacion_Partida() throws SQLException {
 		BaseDeDatos bd = new BaseDeDatos();
 		UsuariosValidar user = new UsuariosValidar("Prueba","Prueba");
-		ControlHistoria ch = new ControlHistoria(new PersonajeJugable("PersonajePrueba", new Point(0, 0), 0, 0, 0), 0);
+		ControlHistoria ch = new ControlHistoria(new PersonajeJugable("PersonajePrueba", new Point(0, 0), 0, 0, 0," "), 0);
 		bd.guardarPartidaBD2(user, ch);
 		
 		
