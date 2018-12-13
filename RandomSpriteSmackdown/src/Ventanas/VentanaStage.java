@@ -97,7 +97,9 @@ public class VentanaStage extends JFrame {
 		JProgressBar jpbVida1 = new JProgressBar();
 		JProgressBar jpbVida2 = new JProgressBar();
 			jpbVida1.setValue((int)p1.getVida());
-			jpbVida1.setValue((int)p2.getVida());
+			jpbVida1.setMaximum((int)p1.getVida());
+			jpbVida2.setValue((int)p2.getVida());
+			jpbVida2.setMaximum((int)p2.getVida());
 		lTiempo = new JLabel("60");
 		JLabel lStage = new JLabel("Stage "+nivel);
 		
