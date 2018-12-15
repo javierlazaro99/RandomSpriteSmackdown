@@ -230,6 +230,7 @@ public class VentanaStage extends JFrame {
 						VentanaStage.this.dispose();
 						contador=0;
 						controlEstados.setStageCerrado(false);
+						
 					}
 				}
 			}

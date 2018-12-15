@@ -223,6 +223,7 @@ public class ControlEstados implements Runnable{
 		}
 			//Estado moverse parado
 			while(!APulsado && !DPulsado && !WPulsado && !SpacePulsado && !StageCerrado) { //Estado parado
+				
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
 				
@@ -247,6 +248,7 @@ public class ControlEstados implements Runnable{
 			timerJuego = System.currentTimeMillis(); //Volvemos a calcular el tiempo del juego para el siguiente estado
 			//Estado moverse derecha
 			while(!APulsado && DPulsado && !WPulsado && !StageCerrado && !SpacePulsado ) {//Moverse hacia la derecha
+				
 				boolean corriendoDerecha = true;
 				
 				int posActual = (int) pPrincipal.getPosicion().getX();
@@ -260,7 +262,8 @@ public class ControlEstados implements Runnable{
 						pPrincipal.Moverse(1,0,stage,this);
 						posActual = (int) pPrincipal.getPosicion().getX();
 					}
-					if(posActual >= posObjetivo) { //Completa el ciclo de movimiento y vuelve a comprobar si D pulsado
+					
+					if(posActual >= posObjetivo || choque==true) { //Completa el ciclo de movimiento y vuelve a comprobar si D pulsado
 						corriendoDerecha = false;
 					}
 					
@@ -300,7 +303,7 @@ public class ControlEstados implements Runnable{
 						pPrincipal.Moverse(-1,0,stage,this);
 						posActual = (int) pPrincipal.getPosicion().getX();
 					}
-					if(posActual <= posObjetivo) { //Completa el ciclo de movimiento y vuelve a comprobar si A pulsado
+					if(posActual <= posObjetivo || choque==true) { //Completa el ciclo de movimiento y vuelve a comprobar si A pulsado
 						corriendoIzquierda = false;
 					}
 					
@@ -405,8 +408,9 @@ public class ControlEstados implements Runnable{
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());	
 						
-						if(miposicion == alturaBase) {
-							saltandoDerecha = false; //Acaba el salto y puede volver a comprobar si w está pulsado
+						if(miposicion == alturaBase ) {
+							saltandoDerecha = false;//Acaba el salto y puede volver a comprobar si w está pulsado
+						
 						}
 					}
 					
@@ -458,7 +462,7 @@ public class ControlEstados implements Runnable{
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						stage.getiProta().setLocation(pPrincipal.getPosicion());	
 						
-						if(miposicion == alturaBase) {
+						if(miposicion == alturaBase ) {
 							saltandoIzquierda = false; //Acaba el salto y puede volver a comprobar si w está pulsado
 						}
 					}
