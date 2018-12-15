@@ -17,6 +17,8 @@ public class ElementoAnimacion {
 	static long tiempoAnimGolpear;
 	public static ArrayList<ElementoAnimacion> animGolpeado = new ArrayList<ElementoAnimacion>();
 	static long tiempoAnimGolpeado;
+	public static ArrayList<ElementoAnimacion> animEnemMoverse= new ArrayList<ElementoAnimacion>();
+	static long tiempoAnimEnemMoverse;
 	public ElementoAnimacion(String label,long tiempos) {
 		this.label = label;
 		this.tiempos = tiempos;
@@ -113,6 +115,10 @@ public class ElementoAnimacion {
 		animGolpeado.add(new ElementoAnimacion("png/Slide (10).png", 1000));
 		
 		return animGolpeado;
+	}
+	public static ArrayList<ElementoAnimacion >CrearAnimEnemMoverse(){
+		
+		return animEnemMoverse;
 	}
 	public static long getTiempoAnimParado() {
 		return animParado.get(animParado.size() -1).tiempos;

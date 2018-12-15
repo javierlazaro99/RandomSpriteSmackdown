@@ -229,7 +229,7 @@ public class VentanaStage extends JFrame {
 					if(JOptionPane.showConfirmDialog(null, "¿Quieres cerrar jel juego?","Cierre de ventana",JOptionPane.INFORMATION_MESSAGE)==0) {
 						VentanaStage.this.dispose();
 						contador=0;
-						controlEstados.setStageCerrado(false);
+						controlEstados.setStageCerrado(true);
 						
 					}
 				}
