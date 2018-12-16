@@ -228,17 +228,25 @@ public class ControlEstados implements Runnable{
 				DPulsado = false;
 			}
 			
-			if( pSecundario.getVida()<=0) {//Comprobacion de vida enemigo
+			if( pSecundario.getVida()<=0 ) {//Comprobacion de vida enemigo
 				
 				if(ch.getNivelesCompletados()<8) {
 				ch.setNivelesCompletados(ch.getNivelesCompletados()+1);
 				
 			}
 			
+			
 			StageCerrado=true;
 			stage.setContador(0);
 			stage.dispose();
 		}
+			if( pPrincipal.getVida()<=0) {//Comprobacion de vida enemigo
+				
+				
+				StageCerrado=true;
+				stage.setContador(0);
+				stage.dispose();
+			}
 			//Estado moverse parado
 			while(!APulsado && !DPulsado && !WPulsado && !SpacePulsado && !StageCerrado && !StagePausado) { //Estado parado
 				

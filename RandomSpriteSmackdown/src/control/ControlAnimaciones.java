@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 import Ventanas.VentanaStage;
 import personaje.Personaje;
+import personaje.enemigo.Enemigo;
 
 public class ControlAnimaciones {
 	private ArrayList<String> label;
@@ -104,5 +105,16 @@ public class ControlAnimaciones {
 		
 		return 0;
 		
+	}
+	public int AnimEnemMoverse(long milis,Enemigo enemigo,VentanaStage stage) {
+		ArrayList<ElementoAnimacion>animMoverse = ElementoAnimacion.CrearAnimEnemMoverse();
+		for(ElementoAnimacion elemento:animMoverse) {
+			if(milis<=elemento.getTiempos()) {
+				
+				stage.getiEnemigo().setImagen(elemento.getLabel());
+				return 1;
+			}
+		}
+		return 0;
 	}
 }

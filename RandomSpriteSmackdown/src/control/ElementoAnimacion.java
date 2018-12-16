@@ -117,6 +117,16 @@ public class ElementoAnimacion {
 		return animGolpeado;
 	}
 	public static ArrayList<ElementoAnimacion >CrearAnimEnemMoverse(){
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_000.png", 100));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_001.png", 200));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_002.png", 300));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_003.png", 400));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_004.png", 500));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_005.png", 600));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_006.png", 700));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_007.png", 800));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_008.png", 900));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_009.png", 1000));
 		
 		return animEnemMoverse;
 	}
@@ -133,5 +143,7 @@ public class ElementoAnimacion {
 	public static long getTiempoAnimGolpear() {
 		return animGolpear.get(animGolpear.size() -1).tiempos;
 	}
-	
+	public static long getTiempoEnemAnimGolpear() {
+		return animEnemMoverse.get(animEnemMoverse.size()-1).tiempos;
+	}
 }

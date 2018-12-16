@@ -30,6 +30,7 @@ import control.BaseDeDatos;
 import control.ControlAnimaciones;
 import control.ControlEstados;
 import control.ControlHistoria;
+import control.ControlIA;
 import control.ElementoAnimacion;
 import personaje.Personaje;
 import personaje.enemigo.Enemigo;
@@ -40,6 +41,16 @@ public class VentanaStage extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JLabelGraficoAjustado iProta = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
 	private JLabelGraficoAjustado iEnemigo = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
+	public JLabelGraficoAjustado getiEnemigo() {
+		return iEnemigo;
+	}
+
+
+
+	public void setiEnemigo(JLabelGraficoAjustado iEnemigo) {
+		this.iEnemigo = iEnemigo;
+	}
+
 	private JLabel lTiempo=null ;
 	private int contador=60;
 	
@@ -54,6 +65,7 @@ public class VentanaStage extends JFrame {
 	}
 
 	private ControlEstados controlEstados ;
+	private ControlIA controlIA;
 	private PersonajeJugable pPrincipal;
 	private Personaje pSecundario;
 	private JProgressBar jpbVida2 ;
@@ -82,7 +94,7 @@ public class VentanaStage extends JFrame {
 
 
 
-	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel,ControlHistoria ch ) {
+	public VentanaStage(PersonajeJugable p1, Enemigo p2,int nivel,ControlHistoria ch ) {
 		
 		pPrincipal=p1;
 		pSecundario=p2;
@@ -94,6 +106,7 @@ public class VentanaStage extends JFrame {
 		ElementoAnimacion.CrearAnimSaltando();
 		ElementoAnimacion.CrearAnimMoverse();
 		ElementoAnimacion.CrearAnimGolpear();
+		ElementoAnimacion.CrearAnimEnemMoverse();
 		p1.crearlPersonaje(50, 50);
 		
 		setSize(1920, 1080);
@@ -102,14 +115,17 @@ public class VentanaStage extends JFrame {
 		
 		Dimension d = getSize();
 		p1.setPosicion(new Point(0, (int) (d.getHeight()*0.6)));
-		p2 = new Enemigo(null, 10, 10, 10, 1);
+		
 		p2.setPosicion(new Point((int)(d.getWidth()-d.getWidth()*0.2),(int) (d.getHeight()*0.6)));
 		
+		//Thread de juego
 		controlEstados = new ControlEstados(p1, p2, this,ch);
 		Thread t = new Thread(controlEstados);
 		controlEstados.setStageCerrado(false);
 		t.start();
-		
+		controlIA= new ControlIA(p1, p2, this, ch);
+		Thread enemt = new Thread(controlIA);
+		enemt.start();
 	
 		int width = (int) (d.getWidth()*0.2);
 		int height = (int) (d.getHeight()*0.25);	
