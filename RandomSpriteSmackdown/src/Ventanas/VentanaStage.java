@@ -204,6 +204,7 @@ public class VentanaStage extends JFrame {
 					controlEstados.setDPulsado(false);
 				}
 				if(e.getKeyCode() == KeyEvent.VK_A) {
+					System.out.println("hola");
 					controlEstados.setAPulsado(false);
 				}
 				if(e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -226,11 +227,16 @@ public class VentanaStage extends JFrame {
 					controlEstados.setSpacePulsado(true);
 				}
 				if(e.getKeyCode()==KeyEvent.VK_ESCAPE) {
-					if(JOptionPane.showConfirmDialog(null, "¿Quieres cerrar jel juego?","Cierre de ventana",JOptionPane.INFORMATION_MESSAGE)==0) {
+					controlEstados.setStagePausado(true);
+					if(JOptionPane.showInternalConfirmDialog(getContentPane(), "¿Quieres cerrar el juego?","Cierre de ventana",JOptionPane.YES_NO_OPTION)==0) {
 						VentanaStage.this.dispose();
-						contador=0;
+						controlEstados.setStagePausado(false);
 						controlEstados.setStageCerrado(true);
-						
+						contador=0;
+					}else {
+						controlEstados.setAPulsado(false);
+						controlEstados.setDPulsado(false);
+						controlEstados.setStagePausado(false);
 					}
 				}
 			}
@@ -246,19 +252,25 @@ public class VentanaStage extends JFrame {
 		
 		try {
 			
+				
 			while(contador>0 ) {
-			Thread.sleep(1000);
-			contador= contador -1;
-			
-			lTiempo.setText(String.valueOf(contador));
-			VentanaStage.this.revalidate();
-			
-	
-			}
-			controlEstados.setStageCerrado(true);
-			contador=0;
-			VentanaStage.this.dispose();
-			
+				
+				while(controlEstados.isStagePausado()) {
+					Thread.sleep(1000);
+				}
+				
+				Thread.sleep(1000);
+				contador= contador -1;
+				
+				lTiempo.setText(String.valueOf(contador));
+				VentanaStage.this.revalidate();
+				
+		
+				}
+				controlEstados.setStageCerrado(true);
+				contador=0;
+				VentanaStage.this.dispose();
+		
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

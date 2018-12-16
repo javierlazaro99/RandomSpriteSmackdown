@@ -22,6 +22,7 @@ public class ControlEstados implements Runnable{
 	private PersonajeJugable pPrincipal;
 	private Personaje pSecundario;
 	private boolean StageCerrado;
+	private boolean StagePausado;
 	private ControlAnimaciones controlAnimacion= new ControlAnimaciones();
 	private VentanaStage stage;
 	private String lTiempo="";
@@ -86,6 +87,14 @@ public class ControlEstados implements Runnable{
 
 	public void setStageCerrado(boolean stageCerrado) {
 		StageCerrado = stageCerrado;
+	}
+	
+	public boolean isStagePausado() {
+		return StagePausado;
+	}
+
+	public void setStagePausado(boolean stagePausado) {
+		StagePausado = stagePausado;
 	}
 
 	private void EstadoParado(long diferenciaTimers) { //Puede haber parado mirando a derecha o izquierda pero eso lo voy a arreglar de otra forma
@@ -196,6 +205,15 @@ public class ControlEstados implements Runnable{
 	public void run() {
 		
 		while (!StageCerrado) {
+			
+			while(StagePausado) {
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		
 			long timerJuego = System.currentTimeMillis();
 			long diferenciaTimers = 0;
 			long timerEstado = 0;
@@ -222,7 +240,7 @@ public class ControlEstados implements Runnable{
 			stage.dispose();
 		}
 			//Estado moverse parado
-			while(!APulsado && !DPulsado && !WPulsado && !SpacePulsado && !StageCerrado) { //Estado parado
+			while(!APulsado && !DPulsado && !WPulsado && !SpacePulsado && !StageCerrado && !StagePausado) { //Estado parado
 				
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
@@ -247,7 +265,7 @@ public class ControlEstados implements Runnable{
 			diferenciaTimers = 0; //Reset de la diferencia al saltar a otro estado
 			timerJuego = System.currentTimeMillis(); //Volvemos a calcular el tiempo del juego para el siguiente estado
 			//Estado moverse derecha
-			while(!APulsado && DPulsado && !WPulsado && !StageCerrado && !SpacePulsado ) {//Moverse hacia la derecha
+			while(!APulsado && DPulsado && !WPulsado && !StageCerrado && !SpacePulsado && !StagePausado) {//Moverse hacia la derecha
 				
 				boolean corriendoDerecha = true;
 				
@@ -289,8 +307,9 @@ public class ControlEstados implements Runnable{
 			diferenciaTimers = 0;
 			timerJuego = System.currentTimeMillis();
 			//Estado moverse izquierda
-			while(APulsado && !DPulsado && !WPulsado && !StageCerrado && !SpacePulsado) {
+			while(APulsado && !DPulsado && !WPulsado && !StageCerrado && !SpacePulsado && !StagePausado) {
 				boolean corriendoIzquierda = true;
+				
 				
 				int posActual = (int) pPrincipal.getPosicion().getX();
 				int posObjetivo = posActual - 20; //Este -20 se puede cambiar a lo que quieras que valga el ciclo, múltiplo de 10 tiene que ser
@@ -330,7 +349,7 @@ public class ControlEstados implements Runnable{
 			diferenciaTimers = 0;
 			timerJuego = System.currentTimeMillis();
 			//Estado saltando básico
-			while(!APulsado && !DPulsado && WPulsado && !StageCerrado && !SpacePulsado) {
+			while(!APulsado && !DPulsado && WPulsado && !StageCerrado && !SpacePulsado && !StagePausado) {
 				boolean saltando = true;
 				
 				int alturaBase = (int) pPrincipal.getPosicion().getY();
@@ -383,7 +402,7 @@ public class ControlEstados implements Runnable{
 			diferenciaTimers = 0;
 			timerJuego = System.currentTimeMillis();
 			//Estado saltando derecha
-			while(!APulsado && DPulsado && WPulsado && !StageCerrado && !SpacePulsado) {
+			while(!APulsado && DPulsado && WPulsado && !StageCerrado && !SpacePulsado && !StagePausado) {
 				boolean saltandoDerecha = true;
 				
 				int alturaBase = (int) pPrincipal.getPosicion().getY();
@@ -437,7 +456,7 @@ public class ControlEstados implements Runnable{
 			diferenciaTimers = 0;
 			timerJuego = System.currentTimeMillis();
 			//Estado saltando izquierda
-			while(APulsado && !DPulsado && WPulsado && !StageCerrado && !SpacePulsado) {
+			while(APulsado && !DPulsado && WPulsado && !StageCerrado && !SpacePulsado && !StagePausado) {
 				boolean saltandoIzquierda = true;
 				
 				int alturaBase = (int) pPrincipal.getPosicion().getY();
@@ -488,7 +507,7 @@ public class ControlEstados implements Runnable{
 			}
 			
 			//Estado golpe
-			while(!APulsado && !DPulsado && !WPulsado && !StageCerrado && SpacePulsado) {
+			while(!APulsado && !DPulsado && !WPulsado && !StageCerrado && SpacePulsado && !StagePausado) {
 				boolean golpeando = true;
 				
 				while(golpeando) {
@@ -570,11 +589,6 @@ public class ControlEstados implements Runnable{
 				StageCerrado=true;
 				stage.dispose();
 			}
-			
-			
-			
-			
 		}	
-		
 	}
 }
