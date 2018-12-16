@@ -77,7 +77,7 @@ public abstract class Personaje {
 	 * @param enemigo personaje que recibe el golpe
 	 * @return 
 	 */
-	public abstract void DarGolpe(Personaje enemigo);
+	public abstract int DarGolpe(Personaje enemigo);
 	
 	public void Moverse(double movX, double movY,VentanaStage stage,ControlEstados ce) {//Preguntar
 		if((posicion.getX() + movX * getVelocidad())>=-100 && (posicion.getX() + movX * getVelocidad())<= stage.getWidth()-150) {

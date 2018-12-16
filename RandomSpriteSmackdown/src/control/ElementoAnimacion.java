@@ -19,6 +19,8 @@ public class ElementoAnimacion {
 	static long tiempoAnimGolpeado;
 	public static ArrayList<ElementoAnimacion> animEnemMoverse= new ArrayList<ElementoAnimacion>();
 	static long tiempoAnimEnemMoverse;
+	public static ArrayList<ElementoAnimacion> animEnemGolpear= new ArrayList<ElementoAnimacion>();
+	static long tiempoAnimEnemGolpear;
 	public ElementoAnimacion(String label,long tiempos) {
 		this.label = label;
 		this.tiempos = tiempos;
@@ -117,18 +119,34 @@ public class ElementoAnimacion {
 		return animGolpeado;
 	}
 	public static ArrayList<ElementoAnimacion >CrearAnimEnemMoverse(){
-		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_000.png", 100));
-		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_001.png", 200));
-		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_002.png", 300));
-		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_003.png", 400));
-		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_004.png", 500));
-		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_005.png", 600));
-		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_006.png", 700));
-		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_007.png", 800));
-		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_008.png", 900));
-		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run_009.png", 1000));
+		
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run__000.png", 100));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run__001.png", 200));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run__002.png", 300));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run__003.png", 400));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run__004.png", 500));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run__005.png", 600));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run__006.png", 700));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run__007.png", 800));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run__008.png", 900));
+		animEnemMoverse.add(new ElementoAnimacion("pngEnem/Run__009.png", 1000));
+		
 		
 		return animEnemMoverse;
+	}
+	public static ArrayList<ElementoAnimacion>CrearAnimEnemGolpear(){
+		animEnemGolpear.add(new ElementoAnimacion("pngEnem/Attack__000.png", 100));
+		animEnemGolpear.add(new ElementoAnimacion("pngEnem/Attack__001.png", 200));
+		animEnemGolpear.add(new ElementoAnimacion("pngEnem/Attack__002.png", 300));
+		animEnemGolpear.add(new ElementoAnimacion("pngEnem/Attack__003.png", 400));
+		animEnemGolpear.add(new ElementoAnimacion("pngEnem/Attack__004.png", 500));
+		animEnemGolpear.add(new ElementoAnimacion("pngEnem/Attack__005.png", 600));
+		animEnemGolpear.add(new ElementoAnimacion("pngEnem/Attack__006.png", 700));
+		animEnemGolpear.add(new ElementoAnimacion("pngEnem/Attack__007.png", 800));
+		animEnemGolpear.add(new ElementoAnimacion("pngEnem/Attack__008.png", 900));
+		animEnemGolpear.add(new ElementoAnimacion("pngEnem/Attack__009.png", 1000));
+		return animEnemGolpear;
+
 	}
 	public static long getTiempoAnimParado() {
 		return animParado.get(animParado.size() -1).tiempos;
@@ -143,7 +161,10 @@ public class ElementoAnimacion {
 	public static long getTiempoAnimGolpear() {
 		return animGolpear.get(animGolpear.size() -1).tiempos;
 	}
-	public static long getTiempoEnemAnimGolpear() {
+	public static long getTiempoEnemAnimMoverse() {
 		return animEnemMoverse.get(animEnemMoverse.size()-1).tiempos;
+	}
+	public static long getTiempoEnemAnimGolpear() {
+		return animEnemGolpear.get(animEnemGolpear.size()-1).tiempos;
 	}
 }

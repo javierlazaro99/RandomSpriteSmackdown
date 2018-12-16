@@ -11,6 +11,7 @@ import org.junit.Test;
 import Ventanas.VentanaStage;
 import control.ControlEstados;
 import control.ControlHistoria;
+import personaje.enemigo.Enemigo;
 import personaje.personajeJugable.PersonajeJugable;
 
 public class PersonajeTest {
@@ -24,14 +25,7 @@ public class PersonajeTest {
 	public void setUp() throws Exception {
 		p1 = new PersonajeJugable(null, new Point(0,0), 10, 10, 10, null) ; 
 		
-		p2 = new Personaje(new Point(0,0), 10, 10, 10) {
-			
-			@Override
-			public void DarGolpe(Personaje enemigo) {
-				// No necesario
-				
-			}
-		};
+		p2 = new Enemigo(new Point(0,0), 10, 10, 10, 0) ;
 		ch= new ControlHistoria(p1, 0);
 		stage= new VentanaStage(p1, p2, 0, ch);
 		ce= new ControlEstados(p1, p2,stage , ch);

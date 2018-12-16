@@ -107,11 +107,13 @@ public class ControlAnimaciones {
 		
 	}
 	public int AnimEnemMoverse(long milis,Enemigo enemigo,VentanaStage stage) {
-		ArrayList<ElementoAnimacion>animMoverse = ElementoAnimacion.CrearAnimEnemMoverse();
+		ArrayList<ElementoAnimacion>animMoverse = ElementoAnimacion.animEnemMoverse;
 		for(ElementoAnimacion elemento:animMoverse) {
-			if(milis<=elemento.getTiempos()) {
+			if(milis <= elemento.getTiempos()) {
 				
 				stage.getiEnemigo().setImagen(elemento.getLabel());
+				stage.repaint();
+				stage.revalidate();
 				return 1;
 			}
 		}

@@ -21,12 +21,14 @@ public class ControlIA implements Runnable{
 	private boolean moverse;
 	private ControlAnimaciones ca;
 	private ControlEstados ce;
+	private boolean golpeando;
 	public ControlIA(PersonajeJugable pPrincipal,Enemigo pSecundario,VentanaStage stage,ControlHistoria ch)
 	{
 	this.pPrincipal=pPrincipal;
 	this.pSecundario=pSecundario;
 	this.stage=stage;
 	moverse=true;
+	golpeando=false;
 	ca=new ControlAnimaciones();
 	ce= new ControlEstados(pPrincipal, pSecundario, stage, ch);
 	}
@@ -34,6 +36,18 @@ public class ControlIA implements Runnable{
 	public void EnemMoverse(long diferenciaTimers) {
 		ca.AnimEnemMoverse(diferenciaTimers, pSecundario, stage);
 		
+	}
+	public void ReajusteLabel() {
+		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<0) {
+			if(stage.getiEnemigo().isHorFlip()== false) {
+			stage.getiEnemigo().setHorFlip(true);
+			}
+		}
+		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())>0) {
+			if(stage.getiEnemigo().isHorFlip()==true) {
+				stage.getiEnemigo().setHorFlip(false);
+				}
+		}
 	}
 	
 	@Override
@@ -53,23 +67,43 @@ public class ControlIA implements Runnable{
 		while(moverse) {
 			timerEstado=System.currentTimeMillis();
 			
+			ReajusteLabel();
 			
 			diferenciaTimers=timerEstado-timerJuego;
 			System.out.println(diferenciaTimers);
-			if(pPrincipal.getPosicion().getX()!=pSecundario.getPosicion().getX()) {
+			if((pPrincipal.getPosicion().getX()+200)<=pSecundario.getPosicion().getX()) {
 			pSecundario.IAMovimiento(pPrincipal, stage, ce);
-			}
 			stage.getiEnemigo().setLocation(pSecundario.getPosicion());
-			stage.repaint();
-			stage.revalidate();
-			if(diferenciaTimers<=ElementoAnimacion.getTiempoEnemAnimGolpear()) {
+				if(diferenciaTimers<=ElementoAnimacion.getTiempoEnemAnimGolpear()) {
 				EnemMoverse(diferenciaTimers);
-			}else {
+				}else {
 				timerJuego=System.currentTimeMillis();
 				timerEstado=0;
 				diferenciaTimers=0;
 				moverse=false;
+				}
+			}else if(pPrincipal.getPosicion().getX() - 200 > pSecundario.getPosicion().getX()) {
+				System.out.println("Esta adelante");
+				pSecundario.IAMovimiento(pPrincipal, stage, ce);
+				stage.getiEnemigo().setLocation(pSecundario.getPosicion());
+				if(diferenciaTimers<=ElementoAnimacion.getTiempoEnemAnimGolpear()) {
+					EnemMoverse(diferenciaTimers);
+					}else {
+					timerJuego=System.currentTimeMillis();
+					timerEstado=0;
+					diferenciaTimers=0;
+					moverse=false;
+					}
+
+			}else {
+				if(pSecundario.DarGolpe(pPrincipal)==1) {
+					moverse=false;
+					golpeando=false;
+				}
 			}
+			
+			
+			
 			try {
 				Thread.sleep(16);
 			} catch (InterruptedException e) {
@@ -78,7 +112,14 @@ public class ControlIA implements Runnable{
 			}
 			
 		}
+		
 		moverse=true;
+		timerJuego=System.currentTimeMillis();
+		while(golpeando) {
+			timerEstado= System.currentTimeMillis();
+			diferenciaTimers= timerEstado-timerJuego;
+			if(diferenciaTimers<=)
+		}
 		}
 		
 	}

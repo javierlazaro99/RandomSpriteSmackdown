@@ -102,15 +102,16 @@ public class PersonajeJugable extends Personaje {
 	}
 
 	@Override
-	public void DarGolpe(Personaje enemigo) {
+	public int DarGolpe(Personaje enemigo) {
 		double distancia = Math.sqrt(Math.pow(enemigo.getPosicion().getX() - this.getPosicion().getX(), 2));
 		
 		if(distancia < 500) {
 			//Se ejecuta el pegado
 			enemigo.setVida(enemigo.getVida() - 0.1 * this.getFuerza());
-			
+			return 1;
 			
 		}
+		return 0;
 		
 	}
 }
