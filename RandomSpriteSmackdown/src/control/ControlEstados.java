@@ -603,8 +603,10 @@ public class ControlEstados implements Runnable{
 			//CIERRE DE JUEGO
 			if(pPrincipal.getVida()==0 || pSecundario.getVida()==0) {
 				if(pSecundario.getVida()==0) {
-					if(ch.getNivelesCompletados()<8) {
-					ch.setNivelesCompletados(ch.getNivelesCompletados()+1);
+					if(pSecundario instanceof Enemigo) {
+						if(ch.getNivelesCompletados()<8) {
+							ch.setNivelesCompletados(ch.getNivelesCompletados()+1);
+						}
 					}
 				}
 				

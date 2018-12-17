@@ -41,60 +41,50 @@ public class VentanaStage extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JLabelGraficoAjustado iProta = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
 	private JLabelGraficoAjustado iEnemigo = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
-	public JLabelGraficoAjustado getiEnemigo() {
-		return iEnemigo;
-	}
-
-
-
-	public void setiEnemigo(JLabelGraficoAjustado iEnemigo) {
-		this.iEnemigo = iEnemigo;
-	}
-
-	private JLabel lTiempo=null ;
-	private int contador=60;
-	
-	public int getContador() {
-		return contador;
-	}
-
-
-
-	public void setContador(int contador) {
-		this.contador = contador;
-	}
-
-	private ControlEstados controlEstados ;
+	private ControlEstados controlEstados;
+	private ControlEstados controlEstadosP2;
 	private ControlIA controlIA;
 	private PersonajeJugable pPrincipal;
 	private Personaje pSecundario;
 	private JProgressBar jpbVida2 ;
 	private JProgressBar jpbVida1 ;
+	private JLabel lTiempo=null ;
+	private int contador=60;
+	
+	
+	public JLabelGraficoAjustado getiEnemigo() {
+		return iEnemigo;
+	}
+	
+	public void setiEnemigo(JLabelGraficoAjustado iEnemigo) {
+		this.iEnemigo = iEnemigo;
+	}
+
+	public int getContador() {
+		return contador;
+	}
+
+	public void setContador(int contador) {
+		this.contador = contador;
+	}
+
 	public JProgressBar getJpbVida2() {
 		return jpbVida2;
 	}
-
-
 
 	public void setJpbVida2(double vidaEnemigo) {
 		this.jpbVida2.setValue((int)vidaEnemigo);;
 	}
 
-
-
 	public JProgressBar getJpbVida1() {
 		return jpbVida1;
 	}
-
-
 
 	public void setJpbVida1(double vidaPrincipal) {
 		this.jpbVida1.setValue((int)vidaPrincipal);
 	}
 
-
-
-	public VentanaStage(PersonajeJugable p1, Enemigo p2,int nivel,ControlHistoria ch ) {
+	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel,ControlHistoria ch, boolean activaIA) {
 		
 		pPrincipal=p1;
 		pSecundario=p2;
@@ -115,17 +105,27 @@ public class VentanaStage extends JFrame {
 		Dimension d = getSize();
 		p1.setPosicion(new Point(0, (int) (d.getHeight()*0.6)));
 		
-		p2.setPosicion(new Point((int)(d.getWidth()-d.getWidth()*0.2),(int) (d.getHeight()*0.6)));
+		p2.setPosicion(new Point((int)(d.getWidth() - d.getWidth()*0.2),(int) (d.getHeight()*0.6)));
 		
 		//Thread de juego
 		controlEstados = new ControlEstados(p1, p2, this,ch);
 		Thread t = new Thread(controlEstados);
 		controlEstados.setStageCerrado(false);
 		t.start();
-		controlIA= new ControlIA(p1, p2, this, ch);
-		Thread enemt = new Thread(controlIA);
-		enemt.start();
-	
+		
+		if(activaIA && p2 instanceof Enemigo) {
+			controlIA= new ControlIA(p1, (Enemigo)p2, this, ch);
+			Thread enemt = new Thread(controlIA);
+			enemt.start();
+		}
+		
+		if(p2 instanceof PersonajeJugable) {
+			p2.crearlPersonaje(50, 50);
+			controlEstadosP2 = new ControlEstados((PersonajeJugable) p2, p1, this, ch);
+			Thread t2 = new Thread(controlEstadosP2);
+			t2.start();
+		}
+		
 		int width = (int) (d.getWidth()*0.2);
 		int height = (int) (d.getHeight()*0.25);	
 		
@@ -331,7 +331,9 @@ public class VentanaStage extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), new Enemigo(new Point(100, 0), 10, 10, 10, "robot" , 1) ,1,new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png"), 0));
+		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 
+				new Enemigo(new Point(100, 0), 10, 10, 10, "robot" , 1) ,1,
+				new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png"), 0), true);
 		vs.setVisible(true);
 	}
 }

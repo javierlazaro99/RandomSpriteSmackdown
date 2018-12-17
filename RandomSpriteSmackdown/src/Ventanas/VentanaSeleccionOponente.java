@@ -41,7 +41,7 @@ public class VentanaSeleccionOponente extends JFrame {
 	private JLabelGraficoAjustado labelImage;
 	private JLabelGraficoAjustado labelImage1;
 
-	public VentanaSeleccionOponente(int codigo, UsuariosValidar user, PersonajeJugable pPrincipal, int nivelesCompletados, int victorias1v1,ControlHistoria ch) {
+	public VentanaSeleccionOponente(int codigo, UsuariosValidar user, PersonajeJugable pPrincipal, int nivelesCompletados, int victorias1v1, ControlHistoria ch, boolean UnoVUno) {
 		
 		listaPersonajesIzquierda.add(personajeRegular);
 		listaPersonajesIzquierda.add(personajeRápido);
@@ -245,8 +245,22 @@ public class VentanaSeleccionOponente extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				Nivel nivel = new Nivel(personajeSeleccionadoIzquierda, personajeSeleccionadoDerecha, 666,ch);
+				
+				if(UnoVUno) {
+					VentanaStage vs = new VentanaStage(personajeSeleccionadoIzquierda, personajeSeleccionadoDerecha, 0, ch, false);
+					vs.setVisible(true);
+					dispose();
+				}else {
+					Enemigo enem = new Enemigo(new Point(100, 0), (int)personajeSeleccionadoDerecha.getFuerza(), 
+							(int)personajeSeleccionadoDerecha.getVida(), (int)personajeSeleccionadoDerecha.getVelocidad(), 
+							personajeSeleccionadoDerecha.getTipoPersonaje(), 1);
+					
+					VentanaStage vs = new VentanaStage(personajeSeleccionadoIzquierda, enem, 0, ch, false);
+					vs.setVisible(true);
+					dispose();
+				}
+				
+//				Nivel nivel = new Nivel(personajeSeleccionadoIzquierda, personajeSeleccionadoDerecha, 666,ch);
 
 			}
 		});
@@ -305,7 +319,7 @@ public class VentanaSeleccionOponente extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(0,null, null, 0,0,null);
+		VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(0,null, null, 0,0,null, true);
 		ventana.setVisible(true);
 	}
 }
