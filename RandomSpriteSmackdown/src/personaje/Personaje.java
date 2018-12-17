@@ -15,12 +15,14 @@ public abstract class Personaje {
 	private double vida;
 	private double velocidad;
 	private JLabelGraficoAjustado lPersonaje;
+	private String tipoPersonaje;
 	
-	public Personaje(Point posicion, double fuerza, double vida, double velocidad) {
+	public Personaje(Point posicion, double fuerza, double vida, double velocidad, String tipoPersonaje) {
 		this.posicion = posicion;
 		this.fuerza = fuerza;
 		this.vida = vida;
 		this.velocidad = velocidad;
+		this.tipoPersonaje = tipoPersonaje;
 	}
 
 	public Point getPosicion() {
@@ -65,6 +67,14 @@ public abstract class Personaje {
 	
 	public void setlPersonaje(String path) {
 		this.lPersonaje.setImagen(path);
+	}
+	
+	public String getTipoPersonaje() {
+		return tipoPersonaje;
+	}
+
+	public void setTipoPersonaje(String tipoPersonaje) {
+		this.tipoPersonaje = tipoPersonaje;
 	}
 
 	@Override

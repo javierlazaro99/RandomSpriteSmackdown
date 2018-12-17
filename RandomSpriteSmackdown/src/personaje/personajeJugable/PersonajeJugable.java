@@ -15,12 +15,10 @@ public class PersonajeJugable extends Personaje {
 	private JProgressBar pbFuerza;
 	private JProgressBar pbVida;
 	private JProgressBar pbVelocidad;
-	private String path;
 
-	public PersonajeJugable(String nombre,Point posicion, int fuerza, int vida, int velocidad, String path) {
-		super(posicion, fuerza, vida, velocidad);
+	public PersonajeJugable(String nombre,Point posicion, int fuerza, int vida, int velocidad, String tipoPersonaje) {
+		super(posicion, fuerza, vida, velocidad, tipoPersonaje);
 		this.nombre = nombre;
-		this.path = path;
 	}
 
 	public String getNombre() {
@@ -39,13 +37,6 @@ public class PersonajeJugable extends Personaje {
 		this.puntosMejora = puntosMejora;
 	}
 	
-	public JLabelGraficoAjustado getlPersonaje(int width, int height) {
-		if(lPersonaje == null) {
-			lPersonaje = new JLabelGraficoAjustado(path, width, height);
-		}
-		return lPersonaje;
-	}
-	
 //	public void setlPersonaje(String path, int width, int height) {
 //		this.lPersonaje = new JLabelGraficoAjustado(path, width, height);
 //	}
@@ -53,14 +44,6 @@ public class PersonajeJugable extends Personaje {
 //	public JLabelGraficoAjustado getlPersonaje() {
 //		return lPersonaje;
 //	}
-
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
-	}
 
 	public JProgressBar getPbFuerza() {
 		if(pbFuerza == null) {

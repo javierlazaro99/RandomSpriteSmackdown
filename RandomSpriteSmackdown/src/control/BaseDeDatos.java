@@ -75,7 +75,7 @@ public class BaseDeDatos {
 					+ "velocidad NUMERIC,"
 					+ "puntos_mejora NUMERIC,"
 					+ "cod_partida NUMERIC REFERENCES Partida(cod_partida) ON DELETE CASCADE,"
-					+"path STRING)";
+					+ "tipoPersonaje STRING)";
 			logger.log(Level.INFO, comando);
 			s.executeUpdate(comando);
 			logger.log(Level.INFO, "Tabla T3 creada");
@@ -130,7 +130,7 @@ public class BaseDeDatos {
 		int vida = 0;
 		int velocidad = 0;
 		int puntosMejora = 0;
-		String path="";
+		String tipoPersonaje="";
 		PersonajeJugable personaje;
 		try {//Parte de obtención de datos de Partida
 			query = "SELECT * FROM Partida WHERE nick=" + "'" + user.getNombre() + "'";
@@ -157,12 +157,11 @@ public class BaseDeDatos {
 				vida = rs.getInt("vida");
 				velocidad = rs.getInt("velocidad");
 				puntosMejora = rs.getInt("puntos_mejora");
-				path=rs.getString("path");
-				System.out.println("  " +path);
+				tipoPersonaje=rs.getString("tipoPersonaje");
 			}
 			
 			listaRespuestas.add(puntosMejora);
-			personaje = new PersonajeJugable(nombrePersonaje, new Point(0, 0), fuerza, vida, velocidad, path);
+			personaje = new PersonajeJugable(nombrePersonaje, new Point(0, 0), fuerza, vida, velocidad, tipoPersonaje);
 			listaRespuestas.add(personaje);
 
 		} catch (SQLException e) {
@@ -195,8 +194,8 @@ public class BaseDeDatos {
 			query = "INSERT INTO Personaje VALUES('" + ch.getPersonajePrincipal().getNombre() + "'," 
 					+ ch.getPersonajePrincipal().getFuerza() + "," + ch.getPersonajePrincipal().getVida() 
 					+  "," + ch.getPersonajePrincipal().getVelocidad() + "," + ch.getPersonajePrincipal().getPuntosMejora()
-					+ "," + codigo + ","+"'"+ch.getPersonajePrincipal().getPath()+"'"+")";
-			System.out.println(ch.getPersonajePrincipal().getPath());
+					+ "," + codigo + ","+"'"+ch.getPersonajePrincipal().getTipoPersonaje()+"'"+")";
+			System.out.println(ch.getPersonajePrincipal().getTipoPersonaje());
 			s.executeUpdate(query);
 			VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
 			

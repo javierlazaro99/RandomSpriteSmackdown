@@ -100,13 +100,12 @@ public class VentanaStage extends JFrame {
 		pSecundario=p2;
 		
 		
-		
-		
-		ElementoAnimacion.CrearAnimParado();
-		ElementoAnimacion.CrearAnimSaltando();
-		ElementoAnimacion.CrearAnimMoverse();
-		ElementoAnimacion.CrearAnimGolpear();
-		ElementoAnimacion.CrearAnimEnemMoverse();
+		ElementoAnimacion.CrearAnimParadoRobot();
+		ElementoAnimacion.CrearAnimSaltandoRobot();
+		ElementoAnimacion.CrearAnimMoverseRobot();
+		ElementoAnimacion.CrearAnimGolpearRobot();
+		ElementoAnimacion.CrearAnimMoverseNinja();
+		ElementoAnimacion.CrearAnimGolpearNinja();
 		p1.crearlPersonaje(50, 50);
 		
 		setSize(1920, 1080);
@@ -332,7 +331,7 @@ public class VentanaStage extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png"), new Enemigo(new Point(100, 0), 10, 10, 10, 1) ,1,new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png"), 0));
+		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), new Enemigo(new Point(100, 0), 10, 10, 10, "robot" , 1) ,1,new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png"), 0));
 		vs.setVisible(true);
 	}
 }

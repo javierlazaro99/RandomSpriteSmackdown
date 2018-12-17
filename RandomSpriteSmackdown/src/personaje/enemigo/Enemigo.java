@@ -15,8 +15,8 @@ public class Enemigo extends Personaje {
 	
 	private int dificultad;
 
-	public Enemigo(Point posicion, int fuerza, int vida, int velocidad, int dificultad) {
-		super(posicion, fuerza, vida, velocidad);
+	public Enemigo(Point posicion, int fuerza, int vida, int velocidad, String tipoPersonaje, int dificultad) {
+		super(posicion, fuerza, vida, velocidad, tipoPersonaje);
 		this.dificultad = dificultad;
 	}
 	

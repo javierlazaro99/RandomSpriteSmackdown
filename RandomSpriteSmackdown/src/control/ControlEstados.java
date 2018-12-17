@@ -10,6 +10,7 @@ import Personalizados.JLabelGraficoAjustado;
 import Usuarios.UsuariosValidar;
 import Ventanas.VentanaStage;
 import personaje.Personaje;
+import personaje.enemigo.Enemigo;
 import personaje.personajeJugable.PersonajeJugable;
 
 public class ControlEstados implements Runnable{
@@ -25,7 +26,11 @@ public class ControlEstados implements Runnable{
 	private boolean StagePausado;
 	private ControlAnimaciones controlAnimacion= new ControlAnimaciones();
 	private VentanaStage stage;
-	private String lTiempo="";
+	private long tiempoAnimParado;
+	private long tiempoAnimMoverse;
+	private long tiempoAnimGolpear;
+	private long tiempoAnimGolpeado;
+	
 	private ControlHistoria ch;
 	private boolean choque;
 	public boolean isChoque() {
@@ -47,7 +52,16 @@ public class ControlEstados implements Runnable{
 		this.SpacePulsado=false;
 		this.golpeado=false;
 		this.choque=false;
+		
+		//Añadido de Javi para hacer la vida más facil
+		this.tiempoAnimParado = calcularTiempoAnimParado(pPrincipal);
+		this.tiempoAnimMoverse	= calcularTiempoAnimMoverse(pPrincipal);
+		this.tiempoAnimGolpear = calcularTiempoAnimGolpear(pPrincipal);
+		this.tiempoAnimGolpeado = calcularTiempoAnimGolpeado(pPrincipal);		
+		
 	}
+	
+	
 	
 	public boolean isSpacePulsado() {
 		return SpacePulsado;
@@ -256,7 +270,7 @@ public class ControlEstados implements Runnable{
 				stage.repaint();
 				stage.revalidate();
 				
-				if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimParado()) {//Posible cambio
+				if(diferenciaTimers <= tiempoAnimParado) {//Posible cambio
 					EstadoParado(diferenciaTimers);
 				}else {
 					diferenciaTimers = 0;
@@ -298,7 +312,7 @@ public class ControlEstados implements Runnable{
 					stage.repaint();
 					stage.revalidate();
 					
-					if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimParado()) {//Posible cambio
+					if(diferenciaTimers <= tiempoAnimParado) {//Posible cambio
 						EstadoMoverseDerecha(diferenciaTimers);
 					}else {
 						diferenciaTimers = 0;
@@ -339,7 +353,7 @@ public class ControlEstados implements Runnable{
 					stage.repaint();
 					stage.revalidate();
 					
-					if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimParado()) {
+					if(diferenciaTimers <= tiempoAnimMoverse) {
 						EstadoMoverseIzquierda(diferenciaTimers);
 					}else {
 						diferenciaTimers = 0;
@@ -527,7 +541,7 @@ public class ControlEstados implements Runnable{
 					stage.revalidate();
 					
 					
-					if(diferenciaTimers <= ElementoAnimacion.getTiempoAnimGolpear() ) {
+					if(diferenciaTimers <= tiempoAnimGolpear) {
 						EstadoGolpear(diferenciaTimers);
 					}
 					else {
@@ -561,7 +575,7 @@ public class ControlEstados implements Runnable{
 				if(((int) pPrincipal.getPosicion().getX() >= posFinIz && (int) pPrincipal.getPosicion().getX() <= posIni) || ((int) pPrincipal.getPosicion().getX()) >= posIni && (int) pPrincipal.getPosicion().getX() <= posFinDer) {
 				pPrincipal.Rebotar(pSecundario,stage);
 				}
-				if(diferenciaTimers <= ElementoAnimacion.tiempoAnimGolpeado) {
+				if(diferenciaTimers <= tiempoAnimGolpeado) {
 					EstadoGolpeado(diferenciaTimers);
 				}
 				else {
@@ -598,5 +612,55 @@ public class ControlEstados implements Runnable{
 				stage.dispose();
 			}
 		}	
+	}
+	
+	private long calcularTiempoAnimParado(PersonajeJugable principal) {
+		if(principal.getTipoPersonaje().equals("robot")) {
+			return ElementoAnimacion.getTiempoAnimParadoRobot();
+		}
+		if(principal.getTipoPersonaje().equals("ninja")) {
+			return 0;
+			//return ElementoAnimacion.getTiempoAnimParadoNinja();
+		}
+		else {
+			return 0;
+		}
+	}
+	
+	private long calcularTiempoAnimMoverse(PersonajeJugable principal) {
+		if(principal.getTipoPersonaje().equals("robot")) {
+			return ElementoAnimacion.getTiempoAnimMoverseRobot();
+		} 
+		if(principal.getTipoPersonaje().equals("ninja")) {
+			return ElementoAnimacion.getTiempoAnimMoverseNinja();
+		}
+		else {
+			return 0;
+		}
+	}
+	
+	private long calcularTiempoAnimGolpear(PersonajeJugable principal) {
+		if(principal.getTipoPersonaje().equals("robot")) {
+			return ElementoAnimacion.getTiempoAnimGolpearRobot();
+		}
+		if(principal.getTipoPersonaje().equals("ninja")) {
+			return ElementoAnimacion.getTiempoAnimGolpearNinja();
+		}
+		else {
+			return 0;
+		}
+	}
+	
+	private long calcularTiempoAnimGolpeado(PersonajeJugable principal) {
+		if(principal.getTipoPersonaje().equals("robot")) {
+			return ElementoAnimacion.getTiempoAnimGolpeadoRobot();
+		}
+		if(principal.getTipoPersonaje().equals("ninja")) {
+			return 0;
+			//return ElementoAnimacion.getTiempoAnimParadoNinja();
+		}
+		else {
+			return 0;
+		}
 	}
 }

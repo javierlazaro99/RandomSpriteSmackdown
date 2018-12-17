@@ -6395,3 +6395,106 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-17T10:10:17</date>
+  <millis>1545037817686</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-17T10:10:17</date>
+  <millis>1545037817704</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-17T10:10:17</date>
+  <millis>1545037817833</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-17T10:10:17</date>
+  <millis>1545037817933</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-17T10:10:26</date>
+  <millis>1545037826809</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-17T10:10:26</date>
+  <millis>1545037826823</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(4,0, 0,'javi') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-17T10:10:29</date>
+  <millis>1545037829725</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-17T10:10:29</date>
+  <millis>1545037829727</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-17T10:10:29</date>
+  <millis>1545037829739</millis>
+  <sequence>14</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>

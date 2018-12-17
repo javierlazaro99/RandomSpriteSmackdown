@@ -14,7 +14,11 @@ public class ControlAnimaciones {
 
 	
 	public int AnimacionParado(long milis, Personaje personaje, VentanaStage stage) {
-		ArrayList<ElementoAnimacion> animParado = ElementoAnimacion.animParado;
+		
+		ArrayList<ElementoAnimacion> animParado = new ArrayList<>();
+		
+		if(personaje.getTipoPersonaje().equals("robot")) animParado = ElementoAnimacion.animParadoRobot; 
+//		if(personaje.getTipoPersonaje().equals("ninja")) animParado = ElementoAnimacion.animParadoNinja;
 		
 		for (ElementoAnimacion elementoAnimacion : animParado) {
 			if(milis <= elementoAnimacion.getTiempos()) {
@@ -28,7 +32,12 @@ public class ControlAnimaciones {
 
 	
 	public int AnimacionSaltando(long milis, Personaje personaje, VentanaStage stage) {
-		ArrayList<ElementoAnimacion> animSaltando = ElementoAnimacion.animSaltando;
+		
+		ArrayList<ElementoAnimacion> animSaltando = new ArrayList<>();
+		
+		if(personaje.getTipoPersonaje().equals("robot")) animSaltando = ElementoAnimacion.animSaltandoRobot; 
+	//	if(personaje.getTipoPersonaje().equals("ninja")) animSaltando = ElementoAnimacion.animSaltandoNinja;
+		
 		
 		for (ElementoAnimacion elementoAnimacion : animSaltando) {
 			if(milis <= elementoAnimacion.getTiempos()) {
@@ -42,7 +51,10 @@ public class ControlAnimaciones {
 
 
 	public int AnimacionMoverseDerecha(long milis,Personaje personaje,VentanaStage stage) {
-		ArrayList<ElementoAnimacion>animMoverse = ElementoAnimacion.animMoverse;
+		ArrayList<ElementoAnimacion>animMoverse = new ArrayList<>();
+		
+		if(personaje.getTipoPersonaje().equals("robot")) animMoverse = ElementoAnimacion.animMoverseRobot; 
+		if(personaje.getTipoPersonaje().equals("ninja")) animMoverse = ElementoAnimacion.animMoverseNinja;
 		
 		for(ElementoAnimacion elementoAnimacion: animMoverse) {
 			if(milis <= elementoAnimacion.getTiempos()) {
@@ -56,7 +68,12 @@ public class ControlAnimaciones {
 	}
 
 	public int AnimacionMoverseIzquierda(long milis,Personaje personaje, VentanaStage stage) {
-		ArrayList<ElementoAnimacion>animMoverse = ElementoAnimacion.animMoverse;
+		
+		ArrayList<ElementoAnimacion>animMoverse = new ArrayList<>();
+		
+		if(personaje.getTipoPersonaje().equals("robot")) animMoverse = ElementoAnimacion.animMoverseRobot; 
+		if(personaje.getTipoPersonaje().equals("ninja")) animMoverse = ElementoAnimacion.animMoverseNinja; 
+		
 		for(ElementoAnimacion elementoAnimacion:animMoverse) {
 			if(milis <=elementoAnimacion.getTiempos()) {
 				stage.getiProta().setImagen(elementoAnimacion.getLabel());
@@ -69,7 +86,12 @@ public class ControlAnimaciones {
 	}
 	
 	public int AnimacionGolpear(long milis,Personaje personaje,VentanaStage stage,Personaje enemigo) {
-		ArrayList<ElementoAnimacion>animGolpear = ElementoAnimacion.animGolpear;
+		
+		ArrayList<ElementoAnimacion>animGolpear = new ArrayList<>(); 
+		
+		if(personaje.getTipoPersonaje().equals("robot")) animGolpear = ElementoAnimacion.animGolpearRobot; 
+		if(personaje.getTipoPersonaje().equals("ninja")) animGolpear = ElementoAnimacion.animGolpearNinja; 
+		 
 		for(ElementoAnimacion elementoAnimacion:animGolpear) {
 			if(milis <=elementoAnimacion.getTiempos()) {
 				stage.getiProta().setImagen(elementoAnimacion.getLabel());
@@ -95,7 +117,12 @@ public class ControlAnimaciones {
 	}
 	
 	public int AnimacionGolpeado(long milis,Personaje personaje, VentanaStage stage) {
-		ArrayList<ElementoAnimacion>animGolpeado = ElementoAnimacion.animGolpeado;
+		
+		ArrayList<ElementoAnimacion>animGolpeado = new ArrayList<>();
+		
+		if(personaje.getTipoPersonaje().equals("robot")) animGolpeado = ElementoAnimacion.animGolpeadoRobot; 
+	//	if(personaje.getTipoPersonaje().equals("ninja")) animGolpeado = ElementoAnimacion.animGolpeadoNinja; 
+		
 		for(ElementoAnimacion elementoAnimacion:animGolpeado) {
 			if(milis <=elementoAnimacion.getTiempos()) {
 				stage.getiProta().setImagen(elementoAnimacion.getLabel());
@@ -107,7 +134,13 @@ public class ControlAnimaciones {
 		
 	}
 	public int AnimEnemMoverse(long milis,Enemigo enemigo,VentanaStage stage) {
-		ArrayList<ElementoAnimacion>animMoverse = ElementoAnimacion.animEnemMoverse;
+		
+		ArrayList<ElementoAnimacion>animMoverse = new ArrayList<>();
+		
+		if(enemigo.getTipoPersonaje().equals("robot")) animMoverse = ElementoAnimacion.animMoverseRobot; 
+		if(enemigo.getTipoPersonaje().equals("ninja")) animMoverse = ElementoAnimacion.animMoverseNinja; 
+		
+
 		for(ElementoAnimacion elemento:animMoverse) {
 			if(milis <= elemento.getTiempos()) {
 				

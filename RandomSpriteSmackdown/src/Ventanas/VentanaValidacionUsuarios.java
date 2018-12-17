@@ -142,7 +142,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 						int victorias1v1 = (int) listaObjetos.get(1);
 						int puntosMejora = (int)listaObjetos.get(2);
 						PersonajeJugable pj = (PersonajeJugable) listaObjetos.get(3);
-						System.out.println("		"+pj.getPath());
+						System.out.println("		"+pj.getTipoPersonaje());
 						pj.setPuntosMejora(puntosMejora);
 						
 						VentanaPrincipal ventana = new VentanaPrincipal(0, usuario, pj, nivelesCompletados, victorias1v1);

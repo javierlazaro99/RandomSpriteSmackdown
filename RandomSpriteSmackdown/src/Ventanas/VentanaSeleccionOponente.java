@@ -1,6 +1,7 @@
 package Ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -19,43 +20,44 @@ import Personalizados.JLabelGraficoAjustado;
 import Usuarios.UsuariosValidar;
 import control.ControlHistoria;
 import control.Nivel;
+import personaje.Personaje;
 import personaje.enemigo.Enemigo;
 import personaje.personajeJugable.PersonajeJugable;
 
 public class VentanaSeleccionOponente extends JFrame {
-	private ArrayList<Enemigo> listaEnemigo = new ArrayList<Enemigo>();
-	private ArrayList<PersonajeJugable> listaPersonajes = new ArrayList<PersonajeJugable>();
-	private PersonajeJugable personajeSeleccionado;
-	private Enemigo enemigo;
+	private ArrayList<PersonajeJugable> listaPersonajesDerecha = new ArrayList<PersonajeJugable>();
+	private ArrayList<PersonajeJugable> listaPersonajesIzquierda = new ArrayList<PersonajeJugable>();
+	private PersonajeJugable personajeSeleccionadoIzquierda;
+	private PersonajeJugable personajeSeleccionadoDerecha;
 	private PersonajeJugable personajeCreado;
 
-	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "");
-	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20, "");
-	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5, "");
-	private Enemigo EnemigoRegular = new Enemigo(new Point(0,0),10, 10, 10, 1);
-	private Enemigo EnemigoRapido = new Enemigo(new Point(0,0),5, 5, 20, 1);
-	private Enemigo EnemigoLento = new Enemigo(new Point(0,0),15, 10, 5, 1);
+	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "ninja");
+	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20, "robot");
+	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5, "ninja");
+	private PersonajeJugable enemigoRegular = new PersonajeJugable(null, new Point(0,0),10, 10, 10,"robot");
+	private PersonajeJugable enemigoRapido = new PersonajeJugable(null, new Point(0,0),5, 5, 20,"ninja");
+	private PersonajeJugable enemigoLento = new PersonajeJugable(null, new Point(0,0),15, 10, 5,"robot");
 	
-	private JProgressBar jProgress1= new JProgressBar(0,100);
-	private JProgressBar jProgress2= new JProgressBar(0,100);
-	private JProgressBar jProgress3= new JProgressBar(0,100);
+	private JLabelGraficoAjustado labelImage;
+	private JLabelGraficoAjustado labelImage1;
 
 	public VentanaSeleccionOponente(int codigo, UsuariosValidar user, PersonajeJugable pPrincipal, int nivelesCompletados, int victorias1v1,ControlHistoria ch) {
-		// TODO Auto-generated constructor stub
-		listaPersonajes.add(personajeRegular);
-		listaPersonajes.add(personajeRápido);
-		listaPersonajes.add(personajeLento);
-//		listaPersonajes.add(pPrincipal);
-		personajeSeleccionado = listaPersonajes.get(0);
-		listaEnemigo.add(EnemigoRegular);
-		listaEnemigo.add(EnemigoRapido);
-		listaEnemigo.add(EnemigoLento);
-		enemigo = listaEnemigo.get(0);
+		
+		listaPersonajesIzquierda.add(personajeRegular);
+		listaPersonajesIzquierda.add(personajeRápido);
+		listaPersonajesIzquierda.add(personajeLento);
+		personajeSeleccionadoIzquierda = listaPersonajesIzquierda.get(0);
+		
+		listaPersonajesDerecha.add(enemigoRegular);
+		listaPersonajesDerecha.add(enemigoRapido);
+		listaPersonajesDerecha.add(enemigoLento);
+		personajeSeleccionadoDerecha = listaPersonajesDerecha.get(0);
 		personajeCreado = null;
 
 		setTitle("Seleccion de Srickmans");
 		setSize(1400, 600);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
 
 		// Creacion de contenedores
 
@@ -63,13 +65,14 @@ public class VentanaSeleccionOponente extends JFrame {
 		JLabel labelTitulo = new JLabel("SELECCION DE STICMAN");
 		labelTitulo.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 16));
 		JPanel panelCentral = new JPanel();
-		panelCentral.setLayout(new FlowLayout());
+		panelCentral.setLayout(new GridLayout(1,2));
 		JPanel panelIzquierdo = new JPanel();
 		// panelIzquierdo.setLayout(new GridLayout(1,1));
 		JPanel panelIzInterior = new JPanel();
 		panelIzInterior.setLayout(new BorderLayout());
-		JPanel panelInteriorCentral = new JPanel();
-		JLabelGraficoAjustado labelImage = new JLabelGraficoAjustado("", 300, 400);
+		JPanel panelInteriorCentral = new JPanel(new BorderLayout());
+		labelImage = new JLabelGraficoAjustado("pngEnem/Idle__000.png", 200, 300);
+		labelImage.setPreferredSize(new Dimension(400, 400));
 		JPanel panelInteriorInferior = new JPanel();
 		panelInteriorInferior.setLayout(new GridLayout(0, 2));
 		JButton atras = new JButton("Previous");
@@ -84,10 +87,11 @@ public class VentanaSeleccionOponente extends JFrame {
 		panelDerecho.setLayout(new FlowLayout());
 		JPanel panelIzInterior1 = new JPanel();
 		panelIzInterior1.setLayout(new BorderLayout());
-		JPanel panelInteriorCentral1 = new JPanel();
-		JLabelGraficoAjustado labelImage1 = new JLabelGraficoAjustado("", 300, 400);
+		JPanel panelInteriorCentral1 = new JPanel(new BorderLayout());
+		labelImage1 = new JLabelGraficoAjustado("png/Idle (1).png", 400, 300);
+		labelImage1.setPreferredSize(new Dimension(400, 400));
 		JPanel panelInteriorInferior1 = new JPanel();
-		panelInteriorInferior1.setLayout(new GridLayout(0, 2));
+		panelInteriorInferior1.setLayout(new GridLayout(1, 2));
 		JButton atras1 = new JButton("Previous");
 		JButton siguiente1 = new JButton("Next");
 		JPanel panelDerInterior1 = new JPanel();
@@ -97,7 +101,7 @@ public class VentanaSeleccionOponente extends JFrame {
 		JPanel pVida1 = new JPanel(new FlowLayout());
 		JPanel pVelocidad1 = new JPanel(new FlowLayout());
 		JPanel panelInferior = new JPanel();
-		panelInferior.setLayout(new GridLayout(0, 2));
+		panelInferior.setLayout(new GridLayout(1, 2));
 		JPanel panelIzInferior = new JPanel();
 		panelIzInferior.setLayout(new FlowLayout(FlowLayout.LEFT));
 		JButton bAtras = new JButton("Home");
@@ -120,13 +124,13 @@ public class VentanaSeleccionOponente extends JFrame {
 		pEstadisticas.add(lEstadisticas);
 		pEstadisticas.add(pVida);
 		pVida.add(new JLabel("Vida"));
-		pVida.add(personajeSeleccionado.getPbVida());
+		pVida.add(personajeSeleccionadoIzquierda.getPbVida());
 		pEstadisticas.add(pFuerza);
 		pFuerza.add(new JLabel("Fuerza"));
-		pFuerza.add(personajeSeleccionado.getPbFuerza());
+		pFuerza.add(personajeSeleccionadoIzquierda.getPbFuerza());
 		pEstadisticas.add(pVelocidad);
 		pVelocidad.add(new JLabel("Velocidad"));
-		pVelocidad.add(personajeSeleccionado.getPbVelocidad());
+		pVelocidad.add(personajeSeleccionadoIzquierda.getPbVelocidad());
 		panelCentral.add(panelDerecho);
 		panelDerecho.add(panelIzInterior1);
 		panelIzInterior1.add(panelInteriorCentral1, BorderLayout.CENTER);
@@ -139,16 +143,13 @@ public class VentanaSeleccionOponente extends JFrame {
 		pEstadisticas1.add(lEstadisticas1);
 		pEstadisticas1.add(pVida1);
 		pVida1.add(new JLabel("Vida"));
-		pVida1.add(jProgress1);
-			jProgress1.setValue((int) enemigo.getVida());
+		pVida1.add(personajeSeleccionadoDerecha.getPbVida());
 		pEstadisticas1.add(pFuerza1);
 		pFuerza1.add(new JLabel("Fuerza"));
-		pFuerza1.add(jProgress2);
-			jProgress2.setValue((int) enemigo.getFuerza());
+		pFuerza1.add(personajeSeleccionadoDerecha.getPbFuerza());
 		pEstadisticas1.add(pVelocidad1);
 		pVelocidad1.add(new JLabel("Velocidad"));
-		pVelocidad1.add(jProgress3);
-			jProgress3.setValue((int) enemigo.getVelocidad());
+		pVelocidad1.add(personajeSeleccionadoDerecha.getPbVelocidad());
 		add(panelInferior, BorderLayout.SOUTH);
 		panelInferior.add(panelIzInferior);
 		panelIzInferior.add(bAtras);
@@ -159,16 +160,15 @@ public class VentanaSeleccionOponente extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				personajeSeleccionado  = cambiarAnterior(personajeSeleccionado);
-				labelImage.removeAll();
-				labelImage.add(personajeSeleccionado.getlPersonaje());
-
+				personajeSeleccionadoIzquierda  = cambiarAnterior(personajeSeleccionadoIzquierda, listaPersonajesIzquierda);
+				ElegirLabel(personajeSeleccionadoIzquierda, labelImage);
+				
 				pFuerza.remove(1);
-				pFuerza.add(personajeSeleccionado.getPbFuerza());
+				pFuerza.add(personajeSeleccionadoIzquierda.getPbFuerza());
 				pVelocidad.remove(1);
-				pVelocidad.add(personajeSeleccionado.getPbVelocidad());
+				pVelocidad.add(personajeSeleccionadoIzquierda.getPbVelocidad());
 				pVida.remove(1);
-				pVida.add(personajeSeleccionado.getPbVida());
+				pVida.add(personajeSeleccionadoIzquierda.getPbVida());
 				revalidate();
 				repaint();
 
@@ -178,16 +178,15 @@ public class VentanaSeleccionOponente extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				personajeSeleccionado = cambiarSiguiente(personajeSeleccionado);
-				labelImage.removeAll();
-				labelImage.add(personajeSeleccionado.getlPersonaje(200, 200));
+				personajeSeleccionadoIzquierda = cambiarSiguiente(personajeSeleccionadoIzquierda, listaPersonajesIzquierda);
+				ElegirLabel(personajeSeleccionadoIzquierda, labelImage);
 				
 				pFuerza.remove(1);
-				pFuerza.add(personajeSeleccionado.getPbFuerza());
+				pFuerza.add(personajeSeleccionadoIzquierda.getPbFuerza());
 				pVelocidad.remove(1);
-				pVelocidad.add(personajeSeleccionado.getPbVelocidad());
+				pVelocidad.add(personajeSeleccionadoIzquierda.getPbVelocidad());
 				pVida.remove(1);
-				pVida.add(personajeSeleccionado.getPbVida());
+				pVida.add(personajeSeleccionadoIzquierda.getPbVida());
 				
 				revalidate();
 				repaint();
@@ -198,15 +197,16 @@ public class VentanaSeleccionOponente extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				if(listaEnemigo.indexOf(enemigo)!= 0) {
-					enemigo=listaEnemigo.get(listaEnemigo.indexOf(enemigo)-1);
-				}else {
-					enemigo= listaEnemigo.get(listaEnemigo.size()-1);
-				}
-				jProgress1.setValue((int) enemigo.getVida());
-				jProgress2.setValue((int) enemigo.getFuerza());
-				jProgress3.setValue((int) enemigo.getVelocidad());
+				personajeSeleccionadoDerecha = cambiarAnterior(personajeSeleccionadoDerecha, listaPersonajesDerecha);
+				ElegirLabel(personajeSeleccionadoDerecha, labelImage1);
+				
+				pFuerza1.remove(1);
+				pFuerza1.add(personajeSeleccionadoDerecha.getPbFuerza());
+				pVelocidad1.remove(1);
+				pVelocidad1.add(personajeSeleccionadoDerecha.getPbVelocidad());
+				pVida1.remove(1);
+				pVida1.add(personajeSeleccionadoDerecha.getPbVida());
+				
 				revalidate();
 				repaint();
 			}
@@ -215,16 +215,16 @@ public class VentanaSeleccionOponente extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				if(listaEnemigo.indexOf(enemigo)!= listaEnemigo.size()-1) {
-					enemigo=listaEnemigo.get(listaEnemigo.indexOf(enemigo)+1);
-				}else {
-					enemigo= listaEnemigo.get(0);
-				}
+				personajeSeleccionadoDerecha = cambiarSiguiente(personajeSeleccionadoDerecha, listaPersonajesDerecha);
+				ElegirLabel(personajeSeleccionadoDerecha, labelImage1);
 				
-				jProgress1.setValue((int) enemigo.getVida());
-				jProgress2.setValue((int) enemigo.getFuerza());
-				jProgress3.setValue((int) enemigo.getVelocidad());
+				pFuerza1.remove(1);				
+				pFuerza1.add(personajeSeleccionadoDerecha.getPbFuerza());
+				pVelocidad1.remove(1);
+				pVelocidad1.add(personajeSeleccionadoDerecha.getPbVelocidad());
+				pVida1.remove(1);
+				pVida1.add(personajeSeleccionadoDerecha.getPbVida());
+				
 				revalidate();
 				repaint();
 
@@ -246,7 +246,7 @@ public class VentanaSeleccionOponente extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Nivel nivel = new Nivel(personajeSeleccionado, enemigo, 666,ch);
+				Nivel nivel = new Nivel(personajeSeleccionadoIzquierda, personajeSeleccionadoDerecha, 666,ch);
 
 			}
 		});
@@ -257,7 +257,7 @@ public class VentanaSeleccionOponente extends JFrame {
 	 * Método para escoger el siguiente personaje seleccionable de la lista de
 	 * personajes que se le muestran al jugador
 	 */
-	private PersonajeJugable cambiarSiguiente(PersonajeJugable personajeSeleccionado) {
+	private PersonajeJugable cambiarSiguiente(Personaje personajeSeleccionado, ArrayList<PersonajeJugable> listaPersonajes) {
 		PersonajeJugable personajeParaCambiar;
 		if (listaPersonajes.indexOf(personajeSeleccionado) != listaPersonajes.size() - 1) {
 			personajeParaCambiar = listaPersonajes.get(listaPersonajes.indexOf(personajeSeleccionado) + 1);
@@ -271,27 +271,35 @@ public class VentanaSeleccionOponente extends JFrame {
 	 * Método para escoger el anterior personaje seleccionable de la lista de
 	 * personajes que se le muestran al jugador
 	 */
-	private PersonajeJugable cambiarAnterior(PersonajeJugable personajeSeleccionado) {
+	private PersonajeJugable cambiarAnterior(PersonajeJugable personajeSeleccionado, ArrayList<PersonajeJugable> listaPersonajes) {
 		PersonajeJugable personajeParaCambiar;
+		
 		if (listaPersonajes.indexOf(personajeSeleccionado) != 0) {
 			personajeParaCambiar = listaPersonajes.get(listaPersonajes.indexOf(personajeSeleccionado) - 1);
+			
 		} else {
 			personajeParaCambiar = listaPersonajes.get(listaPersonajes.size() - 1);
 		}
 		return personajeParaCambiar;
 	}
-
-	private void cambioDeJprogresBar(PersonajeJugable personajeSeleccionado, JPanel pFuerza, JPanel pVida,
-			JPanel pVelocidad) {
-		pFuerza.remove(1);
-		pFuerza.add(personajeSeleccionado.getPbFuerza());
-		pVida.remove(1);
-		pVida.add(personajeSeleccionado.getPbVida());
-		pVelocidad.remove(1);
-		pVelocidad.add(personajeSeleccionado.getPbVelocidad());
+	
+	private void ElegirLabel(PersonajeJugable personajeSeleccionado, JLabelGraficoAjustado lImagen) {
+		
+		if(personajeSeleccionado.getTipoPersonaje().equals("robot")) {
+			lImagen.setImagen("png/Idle (1).png");
+			lImagen.setSize(400, 300);
+			lImagen.setPreferredSize(new Dimension(400, 400));
+		}
+		if(personajeSeleccionado.getTipoPersonaje().equals("ninja")) {
+			lImagen.setImagen("pngEnem/Idle__000.png");
+			lImagen.setSize(200, 300);
+			lImagen.setPreferredSize(new Dimension(400, 400));
+		}
+		
 		revalidate();
+		repaint();
 	}
-
+	
 	public PersonajeJugable devolverCreado() {
 		return personajeCreado;
 	}
