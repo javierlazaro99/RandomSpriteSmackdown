@@ -31,7 +31,7 @@ public class ControlIA implements Runnable{
 		
 		//Añadido de javi para hacer la vida más facil
 		
-		this.tiempoAnimGolpear = calcularTiempoAnimGolpear(pSecundario);
+		//this.tiempoAnimGolpear = calcularTiempoAnimGolpear(pSecundario);
 		
 		moverse=true;
 		golpeando=false;
@@ -40,7 +40,10 @@ public class ControlIA implements Runnable{
 	}
 	
 	public void EnemMoverse(long diferenciaTimers) {
-		ca.AnimEnemMoverse(diferenciaTimers, pSecundario, stage);
+		ca.AnimacionMoverse(diferenciaTimers, pSecundario, stage,stage.getElementoEnem());
+		
+	}
+	public void EnemGolpear(long diferenciaTimers) {
 		
 	}
 	public void ReajusteLabel() {
@@ -80,7 +83,7 @@ public class ControlIA implements Runnable{
 			if((pPrincipal.getPosicion().getX()+200)<=pSecundario.getPosicion().getX()) {
 			pSecundario.IAMovimiento(pPrincipal, stage, ce);
 			stage.getiEnemigo().setLocation(pSecundario.getPosicion());
-				if(diferenciaTimers<= tiempoAnimGolpear) {
+				if(diferenciaTimers<= stage.getElementoEnem().getTiempoAnimMoverse()) {
 				EnemMoverse(diferenciaTimers);
 				}else {
 				timerJuego=System.currentTimeMillis();
@@ -106,6 +109,7 @@ public class ControlIA implements Runnable{
 				if(pSecundario.DarGolpe(pPrincipal)==1) {
 					moverse=false;
 					golpeando=false;
+					
 				}
 			}
 			
@@ -125,12 +129,14 @@ public class ControlIA implements Runnable{
 		while(golpeando) {
 			timerEstado= System.currentTimeMillis();
 			diferenciaTimers= timerEstado-timerJuego;
-//			if(diferenciaTimers<=)
+			if(diferenciaTimers<=stage.getElementoEnem().getTiempoAnimGolpear()) {
+				
+			}
 		}
 		}
 		
 	}	
-	
+	/*
 	private long calcularTiempoAnimGolpear(Enemigo enem) {
 		if(enem.getTipoPersonaje().equals("robot")) {
 			return ElementoAnimacion.getTiempoAnimGolpearRobot();
@@ -142,4 +148,5 @@ public class ControlIA implements Runnable{
 			return 0;
 		}
 	}
+	*/
 }

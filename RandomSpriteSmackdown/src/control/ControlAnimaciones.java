@@ -13,12 +13,12 @@ public class ControlAnimaciones {
 	private ArrayList<Integer> tiempos;
 
 	
-	public int AnimacionParado(long milis, Personaje personaje, VentanaStage stage) {
+	public int AnimacionParado(long milis, Personaje personaje, VentanaStage stage,ElementoAnimacion x) {
 		
 		ArrayList<ElementoAnimacion> animParado = new ArrayList<>();
 		
-		if(personaje.getTipoPersonaje().equals("robot")) animParado = ElementoAnimacion.animParadoRobot; 
-//		if(personaje.getTipoPersonaje().equals("ninja")) animParado = ElementoAnimacion.animParadoNinja;
+		animParado = x.getAnimParado();
+
 		
 		for (ElementoAnimacion elementoAnimacion : animParado) {
 			if(milis <= elementoAnimacion.getTiempos()) {
@@ -31,12 +31,11 @@ public class ControlAnimaciones {
 	
 
 	
-	public int AnimacionSaltando(long milis, Personaje personaje, VentanaStage stage) {
+	public int AnimacionSaltando(long milis, Personaje personaje, VentanaStage stage,ElementoAnimacion x) {
 		
 		ArrayList<ElementoAnimacion> animSaltando = new ArrayList<>();
 		
-		if(personaje.getTipoPersonaje().equals("robot")) animSaltando = ElementoAnimacion.animSaltandoRobot; 
-	//	if(personaje.getTipoPersonaje().equals("ninja")) animSaltando = ElementoAnimacion.animSaltandoNinja;
+		animSaltando= x.getAnimSaltando();
 		
 		
 		for (ElementoAnimacion elementoAnimacion : animSaltando) {
@@ -50,29 +49,13 @@ public class ControlAnimaciones {
 	}
 
 
-	public int AnimacionMoverseDerecha(long milis,Personaje personaje,VentanaStage stage) {
-		ArrayList<ElementoAnimacion>animMoverse = new ArrayList<>();
-		
-		if(personaje.getTipoPersonaje().equals("robot")) animMoverse = ElementoAnimacion.animMoverseRobot; 
-		if(personaje.getTipoPersonaje().equals("ninja")) animMoverse = ElementoAnimacion.animMoverseNinja;
-		
-		for(ElementoAnimacion elementoAnimacion: animMoverse) {
-			if(milis <= elementoAnimacion.getTiempos()) {
-				stage.getiProta().setImagen(elementoAnimacion.getLabel());
-				return 1;
-			}
-		}
-		
-		return 0;
-		
-	}
+	
 
-	public int AnimacionMoverseIzquierda(long milis,Personaje personaje, VentanaStage stage) {
+	public int AnimacionMoverse(long milis,Personaje personaje, VentanaStage stage,ElementoAnimacion x) {
 		
 		ArrayList<ElementoAnimacion>animMoverse = new ArrayList<>();
 		
-		if(personaje.getTipoPersonaje().equals("robot")) animMoverse = ElementoAnimacion.animMoverseRobot; 
-		if(personaje.getTipoPersonaje().equals("ninja")) animMoverse = ElementoAnimacion.animMoverseNinja; 
+		animMoverse = x.getAnimMoverse();
 		
 		for(ElementoAnimacion elementoAnimacion:animMoverse) {
 			if(milis <=elementoAnimacion.getTiempos()) {
@@ -85,20 +68,22 @@ public class ControlAnimaciones {
 		
 	}
 	
-	public int AnimacionGolpear(long milis,Personaje personaje,VentanaStage stage,Personaje enemigo) {
+	public int AnimacionGolpear(long milis,Personaje personaje,VentanaStage stage,Personaje enemigo,ElementoAnimacion x) {
 		
 		ArrayList<ElementoAnimacion>animGolpear = new ArrayList<>(); 
 		
-		if(personaje.getTipoPersonaje().equals("robot")) animGolpear = ElementoAnimacion.animGolpearRobot; 
-		if(personaje.getTipoPersonaje().equals("ninja")) animGolpear = ElementoAnimacion.animGolpearNinja; 
+		animGolpear= x.getAnimGolpear();
 		 
 		for(ElementoAnimacion elementoAnimacion:animGolpear) {
 			if(milis <=elementoAnimacion.getTiempos()) {
 				stage.getiProta().setImagen(elementoAnimacion.getLabel());
 				
-				if(elementoAnimacion.getLabel().equals("png/Melee (4).png")){
+				if(elementoAnimacion.getLabel().equals("png/Melee (4).png") || elementoAnimacion.getLabel().equals("pngEnem/Attack__004.png") ){
 					
-					
+					if(stage.isActiveIA()==true) {
+						enemigo.setVida(enemigo.getVida()-personaje.getFuerza()*0.1);
+						stage.setJpbVida1(enemigo.getVida());
+					}
 					personaje.DarGolpe(enemigo);
 					stage.setJpbVida2(enemigo.getVida());
 					System.out.println(personaje.getPosicion());
@@ -116,12 +101,11 @@ public class ControlAnimaciones {
 		
 	}
 	
-	public int AnimacionGolpeado(long milis,Personaje personaje, VentanaStage stage) {
+	public int AnimacionGolpeado(long milis,Personaje personaje, VentanaStage stage,ElementoAnimacion x) {
 		
 		ArrayList<ElementoAnimacion>animGolpeado = new ArrayList<>();
 		
-		if(personaje.getTipoPersonaje().equals("robot")) animGolpeado = ElementoAnimacion.animGolpeadoRobot; 
-	//	if(personaje.getTipoPersonaje().equals("ninja")) animGolpeado = ElementoAnimacion.animGolpeadoNinja; 
+		animGolpeado= x.animGolpeado;
 		
 		for(ElementoAnimacion elementoAnimacion:animGolpeado) {
 			if(milis <=elementoAnimacion.getTiempos()) {
@@ -133,23 +117,6 @@ public class ControlAnimaciones {
 		return 0;
 		
 	}
-	public int AnimEnemMoverse(long milis,Enemigo enemigo,VentanaStage stage) {
-		
-		ArrayList<ElementoAnimacion>animMoverse = new ArrayList<>();
-		
-		if(enemigo.getTipoPersonaje().equals("robot")) animMoverse = ElementoAnimacion.animMoverseRobot; 
-		if(enemigo.getTipoPersonaje().equals("ninja")) animMoverse = ElementoAnimacion.animMoverseNinja; 
-		
-
-		for(ElementoAnimacion elemento:animMoverse) {
-			if(milis <= elemento.getTiempos()) {
-				
-				stage.getiEnemigo().setImagen(elemento.getLabel());
-				stage.repaint();
-				stage.revalidate();
-				return 1;
-			}
-		}
-		return 0;
-	}
+	
+	
 }
