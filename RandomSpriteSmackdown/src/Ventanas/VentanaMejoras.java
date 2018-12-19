@@ -1,6 +1,7 @@
 package Ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Point;
@@ -30,7 +31,7 @@ public class VentanaMejoras extends JFrame{
 
 		JPanel pIzquierda = new JPanel(new BorderLayout());
 			JLabel lTitulo = new JLabel("Mejoras");
-			JLabelGraficoAjustado lgaPersonaje = new JLabelGraficoAjustado(ch.getPersonajePrincipal().getPath(), 200, 200);
+			JLabelGraficoAjustado lgaPersonaje = SeleccionarLabel(ch.getPersonajePrincipal());
 			JButton bHome = new JButton("Home");
 		JPanel pDerecha = new JPanel(new BorderLayout());
 			JLabel lPuntosMejora = new JLabel("Puntos de mejora: " + ch.getPersonajePrincipal().getPuntosMejora());
@@ -123,7 +124,29 @@ public class VentanaMejoras extends JFrame{
 				
 			}
 		});	
-		
 	}
-
+	
+	/**
+	 * Métdodo para generar un JLabelGrafico ajustado a partir del personaje principal del jugador
+	 * @param p Personaje principal del jugador
+	 * @return JLabel correspondiente al tipo de personaje enviado
+	 */
+	private JLabelGraficoAjustado SeleccionarLabel(PersonajeJugable p) {
+		JLabelGraficoAjustado lDevolver;
+		
+		if(p.getTipoPersonaje().equals("robot")) {
+			lDevolver = new JLabelGraficoAjustado("png/Idle (1).png", 400, 300);
+			lDevolver.setPreferredSize(new Dimension(400, 400));
+			
+			return lDevolver;
+		}
+		if(p.getTipoPersonaje().equals("ninja")) {
+			lDevolver = new JLabelGraficoAjustado("pngEnem/Idle__000.png", 200, 300);
+			lDevolver.setPreferredSize(new Dimension(400, 400));
+					
+			return lDevolver;
+		}else {
+			return null;
+		}
+	}
 }
