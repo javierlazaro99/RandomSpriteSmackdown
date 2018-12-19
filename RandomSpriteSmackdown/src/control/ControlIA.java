@@ -40,7 +40,7 @@ public class ControlIA implements Runnable{
 	}
 	
 	public void EnemMoverse(long diferenciaTimers) {
-		ca.AnimacionMoverse(diferenciaTimers, pSecundario, stage,stage.getElementoEnem());
+		ca.AnimacionMoverse(diferenciaTimers, pSecundario, stage,stage.getElementoAnimacion(),"P2");
 		
 	}
 	public void EnemGolpear(long diferenciaTimers) {
@@ -83,7 +83,7 @@ public class ControlIA implements Runnable{
 			if((pPrincipal.getPosicion().getX()+200)<=pSecundario.getPosicion().getX()) {
 			pSecundario.IAMovimiento(pPrincipal, stage, ce);
 			stage.getiEnemigo().setLocation(pSecundario.getPosicion());
-				if(diferenciaTimers<= stage.getElementoEnem().getTiempoAnimMoverse()) {
+				if(diferenciaTimers<= stage.getElementoAnimacion().getTiempoAnimMoverse(1)) {
 				EnemMoverse(diferenciaTimers);
 				}else {
 				timerJuego=System.currentTimeMillis();
@@ -129,7 +129,7 @@ public class ControlIA implements Runnable{
 		while(golpeando) {
 			timerEstado= System.currentTimeMillis();
 			diferenciaTimers= timerEstado-timerJuego;
-			if(diferenciaTimers<=stage.getElementoEnem().getTiempoAnimGolpear()) {
+			if(diferenciaTimers<=stage.getElementoAnimacion().getTiempoAnimGolpear(1)) {
 				
 			}
 		}

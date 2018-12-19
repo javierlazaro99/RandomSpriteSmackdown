@@ -13,11 +13,18 @@ public class ControlAnimaciones {
 	private ArrayList<Integer> tiempos;
 
 	
-	public int AnimacionParado(long milis, Personaje personaje, VentanaStage stage,ElementoAnimacion x) {
+	public int AnimacionParado(long milis, Personaje personaje, VentanaStage stage,ElementoAnimacion x,String personajeTipo) {
 		
 		ArrayList<ElementoAnimacion> animParado = new ArrayList<>();
+		switch(personajeTipo) {
+		case "P1":
+			animParado = x.getAnimParadoP1();
+		break;
+		case "P2":
+			animParado = x.getAnimParadoP2();
+		break;
+	}
 		
-		animParado = x.getAnimParado();
 
 		
 		for (ElementoAnimacion elementoAnimacion : animParado) {
@@ -31,11 +38,18 @@ public class ControlAnimaciones {
 	
 
 	
-	public int AnimacionSaltando(long milis, Personaje personaje, VentanaStage stage,ElementoAnimacion x) {
+	public int AnimacionSaltando(long milis, Personaje personaje, VentanaStage stage,ElementoAnimacion x,String personajeTipo) {
 		
 		ArrayList<ElementoAnimacion> animSaltando = new ArrayList<>();
+		switch(personajeTipo) {
+		case "P1":
+			animSaltando= x.getAnimSaltandoP1();
+		break;
+		case "P2":
+			animSaltando= x.getAnimSaltandoP2();
+		break;
+	}
 		
-		animSaltando= x.getAnimSaltando();
 		
 		
 		for (ElementoAnimacion elementoAnimacion : animSaltando) {
@@ -51,11 +65,17 @@ public class ControlAnimaciones {
 
 	
 
-	public int AnimacionMoverse(long milis,Personaje personaje, VentanaStage stage,ElementoAnimacion x) {
+	public int AnimacionMoverse(long milis,Personaje personaje, VentanaStage stage,ElementoAnimacion x,String personajeTipo) {
 		
 		ArrayList<ElementoAnimacion>animMoverse = new ArrayList<>();
-		
-		animMoverse = x.getAnimMoverse();
+		switch(personajeTipo) {
+			case "P1":
+			animMoverse = x.getAnimMoverseP1();
+			break;
+			case "P2":
+				animMoverse = x.getAnimMoverseP2();
+				break;
+		}
 		
 		for(ElementoAnimacion elementoAnimacion:animMoverse) {
 			if(milis <=elementoAnimacion.getTiempos()) {
@@ -68,11 +88,18 @@ public class ControlAnimaciones {
 		
 	}
 	
-	public int AnimacionGolpear(long milis,Personaje personaje,VentanaStage stage,Personaje enemigo,ElementoAnimacion x) {
+	public int AnimacionGolpear(long milis,Personaje personaje,VentanaStage stage,Personaje enemigo,ElementoAnimacion x,String personajeTipo) {
 		
 		ArrayList<ElementoAnimacion>animGolpear = new ArrayList<>(); 
+		switch(personajeTipo) {
+		case "P1":
+			animGolpear= x.getAnimGolpearP1();
+		break;
+		case "P2":
+			animGolpear= x.getAnimGolpearP2();
+		break;
+	}
 		
-		animGolpear= x.getAnimGolpear();
 		 
 		for(ElementoAnimacion elementoAnimacion:animGolpear) {
 			if(milis <=elementoAnimacion.getTiempos()) {
@@ -101,11 +128,18 @@ public class ControlAnimaciones {
 		
 	}
 	
-	public int AnimacionGolpeado(long milis,Personaje personaje, VentanaStage stage,ElementoAnimacion x) {
+	public int AnimacionGolpeado(long milis,Personaje personaje, VentanaStage stage,ElementoAnimacion x,String personajeTipo) {
 		
 		ArrayList<ElementoAnimacion>animGolpeado = new ArrayList<>();
+		switch(personajeTipo) {
+		case "P1":
+			animGolpeado= x.getAnimGolpeadoP1();
+		break;
+		case "P2":
+			animGolpeado= x.animGolpeadoP2;
+		break;
+	}
 		
-		animGolpeado= x.animGolpeado;
 		
 		for(ElementoAnimacion elementoAnimacion:animGolpeado) {
 			if(milis <=elementoAnimacion.getTiempos()) {

@@ -50,8 +50,20 @@ public class VentanaStage extends JFrame {
 	private JProgressBar jpbVida1 ;
 	private JLabel lTiempo=null ;
 	private int contador=60;
+
+	private boolean activeIA;
+	private ElementoAnimacion elementoAnimacion;
+
 	
 	
+	public ElementoAnimacion getElementoAnimacion() {
+		return elementoAnimacion;
+	}
+
+	public void setElementoAnimacion(ElementoAnimacion elementoAnimacion) {
+		this.elementoAnimacion = elementoAnimacion;
+	}
+
 	public JLabelGraficoAjustado getiEnemigo() {
 		return iEnemigo;
 	}
@@ -83,11 +95,19 @@ public class VentanaStage extends JFrame {
 	public void setJpbVida1(double vidaPrincipal) {
 		this.jpbVida1.setValue((int)vidaPrincipal);
 	}
+	public boolean isActiveIA() {
+			return activeIA;
+		}
+
+		public void setActiveIA(boolean activeIA) {
+			this.activeIA = activeIA;
+		}
 
 	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel,ControlHistoria ch, boolean activaIA) {
 		
 		pPrincipal=p1;
 		pSecundario=p2;
+		activeIA=activaIA;
 		
 		
 		ElementoAnimacion.CrearAnimParadoRobot();
@@ -96,6 +116,8 @@ public class VentanaStage extends JFrame {
 		ElementoAnimacion.CrearAnimGolpearRobot();
 		ElementoAnimacion.CrearAnimMoverseNinja();
 		ElementoAnimacion.CrearAnimGolpearNinja();
+		elementoAnimacion= new ElementoAnimacion("", 0) ;
+		initLabel(pPrincipal, pSecundario);
 		p1.crearlPersonaje(50, 50);
 		
 		setSize(1920, 1080);
@@ -117,6 +139,7 @@ public class VentanaStage extends JFrame {
 			controlIA= new ControlIA(p1, (Enemigo)p2, this, ch);
 			Thread enemt = new Thread(controlIA);
 			enemt.start();
+			
 		}
 		
 		if(p2 instanceof PersonajeJugable) {
@@ -124,6 +147,7 @@ public class VentanaStage extends JFrame {
 			controlEstadosP2 = new ControlEstados((PersonajeJugable) p2, p1, this, ch);
 			Thread t2 = new Thread(controlEstadosP2);
 			t2.start();
+			
 		}
 		
 		int width = (int) (d.getWidth()*0.2);
@@ -260,7 +284,9 @@ public class VentanaStage extends JFrame {
 		
 	}				
 			
- Thread tiempo = new Thread(new Runnable() {
+
+
+Thread tiempo = new Thread(new Runnable() {
 	
 	@Override
 	public void run() {
@@ -330,11 +356,28 @@ public class VentanaStage extends JFrame {
 		this.iProta = iProta;
 	}
 
+	public void initLabel(PersonajeJugable p1,Personaje p2) {
+		
+		elementoAnimacion.CrearAnimGolpeado(p1,0);
+		elementoAnimacion.CrearAnimGolpear(p1,0);
+		elementoAnimacion.CrearAnimMoverse(p1,0);
+		elementoAnimacion.CrearAnimParado(p1,0);
+		elementoAnimacion.CrearAnimSaltando(p1,0);
+		
+		elementoAnimacion.CrearAnimGolpeado(p2,1);
+		elementoAnimacion.CrearAnimGolpear(p2,1);
+		elementoAnimacion.CrearAnimMoverse(p2,1);
+		elementoAnimacion.CrearAnimParado(p2,1);
+		elementoAnimacion.CrearAnimSaltando(p2,1);
+	}
+
 	public static void main(String[] args) {
 		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 
-				new Enemigo(new Point(100, 0), 10, 10, 10, "robot" , 1) ,1,
-				new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png"), 0), true);
+				new Enemigo(new Point(100, 0), 10, 10, 10, "ninja" , 1) ,1,
+				new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 0), true);
 		vs.setVisible(true);
 	}
+
 }
+
 

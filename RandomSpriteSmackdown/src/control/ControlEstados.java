@@ -119,18 +119,18 @@ public class ControlEstados implements Runnable{
 			if(pPrincipal.getlPersonaje().isVertFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setVertFlip(false);
 			}
-			controlAnimacion.AnimacionParado(diferenciaTimers, pPrincipal, stage,stage.getElementoAliado());//sprites
+			controlAnimacion.AnimacionParado(diferenciaTimers, pPrincipal, stage,stage.getElementoAnimacion(),"P1");//sprites
 		}else {
 			if(pPrincipal.getlPersonaje().isVertFlip()==false) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setVertFlip(true);
 			}
-			controlAnimacion.AnimacionParado(diferenciaTimers, pPrincipal, stage,stage.getElementoAliado());
+			controlAnimacion.AnimacionParado(diferenciaTimers, pPrincipal, stage,stage.getElementoAnimacion(),"P1");
 		}
 	}
 	
 	private void EstadoMoverseDerecha(long diferenciaTimers) {
 		stage.getiProta().setHorFlip(false);
-		controlAnimacion.AnimacionMoverse(diferenciaTimers, pPrincipal, stage,stage.getElementoAliado());
+		controlAnimacion.AnimacionMoverse(diferenciaTimers, pPrincipal, stage,stage.getElementoAnimacion(),"P1");
 		
 //		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<=0) {//Comprobacion de direccion de vista
 //			
@@ -148,7 +148,7 @@ public class ControlEstados implements Runnable{
 	
 	private void EstadoMoverseIzquierda(long diferenciaTimers) {
 		stage.getiProta().setHorFlip(true);
-		controlAnimacion.AnimacionMoverse(diferenciaTimers, pPrincipal, stage,stage.getElementoAliado());
+		controlAnimacion.AnimacionMoverse(diferenciaTimers, pPrincipal, stage,stage.getElementoAnimacion(),"P1");
 		
 //		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<=0) {//Comprobacion de direccion de vista
 //			
@@ -169,23 +169,23 @@ public class ControlEstados implements Runnable{
 			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(false);
 			}
-			controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage,stage.getElementoAliado());//sprites
+			controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage,stage.getElementoAnimacion(),"P1");//sprites
 		}else {
 			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
-			controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage,stage.getElementoAliado());
+			controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage,stage.getElementoAnimacion(),"P1");
 		}
 	}
 	
 	private void EstadoSaltoDerecha(long diferenciaTimers) {
 		stage.getiProta().setHorFlip(false);
-		controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage,stage.getElementoAliado());
+		controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage,stage.getElementoAnimacion(),"P1");
 	}
 	
 	private void EstadoSaltoIzquierda(long diferenciaTimers) {
 		stage.getiProta().setHorFlip(true);
-		controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage,stage.getElementoAliado());
+		controlAnimacion.AnimacionSaltando(diferenciaTimers, pPrincipal, stage,stage.getElementoAnimacion(),"P1");
 	}
 	
 	private void EstadoGolpear(long diferenciaTimers) {
@@ -193,12 +193,12 @@ public class ControlEstados implements Runnable{
 			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(false);
 			}
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario,stage.getElementoAliado());//sprites
+			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario,stage.getElementoAnimacion(),"P1");//sprites
 		}else {
 			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario,stage.getElementoAliado());
+			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario,stage.getElementoAnimacion(),"P1");
 		}
 	}
 	private void EstadoGolpeado(long diferenciaTimers) {
@@ -206,12 +206,12 @@ public class ControlEstados implements Runnable{
 			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(false);
 			}
-			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pPrincipal, stage,stage.getElementoAliado());//sprites
+			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pPrincipal, stage,stage.getElementoAnimacion(),"P1");//sprites
 		}else {
 			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
-			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pPrincipal, stage,stage.getElementoAliado());
+			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pPrincipal, stage,stage.getElementoAnimacion(),"P1");
 		}
 	}
 	
@@ -271,7 +271,7 @@ public class ControlEstados implements Runnable{
 				stage.repaint();
 				stage.revalidate();
 				
-				if(diferenciaTimers <= stage.getElementoAliado().getTiempoAnimParadt()) {//Posible cambio
+				if(diferenciaTimers <= stage.getElementoAnimacion().getTiempoAnimParado(0)) {//Posible cambio
 					EstadoParado(diferenciaTimers);
 				}else {
 					diferenciaTimers = 0;
@@ -313,7 +313,7 @@ public class ControlEstados implements Runnable{
 					stage.repaint();
 					stage.revalidate();
 					
-					if(diferenciaTimers <= stage.getElementoAliado().getTiempoAnimMoverse()) {//Posible cambio
+					if(diferenciaTimers <= stage.getElementoAnimacion().getTiempoAnimMoverse(0)) {//Posible cambio
 						EstadoMoverseDerecha(diferenciaTimers);
 					}else {
 						diferenciaTimers = 0;
@@ -354,7 +354,7 @@ public class ControlEstados implements Runnable{
 					stage.repaint();
 					stage.revalidate();
 					
-					if(diferenciaTimers <= stage.getElementoAliado().getTiempoAnimMoverse()) {
+					if(diferenciaTimers <= stage.getElementoAnimacion().getTiempoAnimMoverse(0)) {
 						EstadoMoverseIzquierda(diferenciaTimers);
 					}else {
 						diferenciaTimers = 0;
@@ -406,7 +406,7 @@ public class ControlEstados implements Runnable{
 					stage.revalidate();
 					
 					
-					if(diferenciaTimers <= stage.getElementoAliado().getTiempoAnimSaltando()) {
+					if(diferenciaTimers <= stage.getElementoAnimacion().getTiempoAnimSaltando(0)) {
 						EstadoSalto(diferenciaTimers);
 					}else {
 						diferenciaTimers = 0;
@@ -460,7 +460,7 @@ public class ControlEstados implements Runnable{
 					stage.revalidate();
 					
 					
-					if(diferenciaTimers <= stage.getElementoAliado().getTiempoAnimSaltando()) {
+					if(diferenciaTimers <= stage.getElementoAnimacion().getTiempoAnimSaltando(0)) {
 						EstadoSaltoDerecha(diferenciaTimers);
 					}else {
 						diferenciaTimers = 0;
@@ -513,7 +513,7 @@ public class ControlEstados implements Runnable{
 					stage.revalidate();
 					
 					
-					if(diferenciaTimers <= stage.getElementoAliado().getTiempoAnimSaltando()) {
+					if(diferenciaTimers <= stage.getElementoAnimacion().getTiempoAnimSaltando(0)) {
 						EstadoSaltoIzquierda(diferenciaTimers);
 					}else {
 						diferenciaTimers = 0;
@@ -542,7 +542,7 @@ public class ControlEstados implements Runnable{
 					stage.revalidate();
 					
 					
-					if(diferenciaTimers <= stage.getElementoAliado().getTiempoAnimGolpear()) {
+					if(diferenciaTimers <= stage.getElementoAnimacion().getTiempoAnimGolpear(0)) {
 						EstadoGolpear(diferenciaTimers);
 					}
 					else {
@@ -576,7 +576,7 @@ public class ControlEstados implements Runnable{
 				if(((int) pPrincipal.getPosicion().getX() >= posFinIz && (int) pPrincipal.getPosicion().getX() <= posIni) || ((int) pPrincipal.getPosicion().getX()) >= posIni && (int) pPrincipal.getPosicion().getX() <= posFinDer) {
 				pPrincipal.Rebotar(pSecundario,stage);
 				}
-				if(diferenciaTimers <= stage.getElementoAliado().getTiempoAnimGolpeado()) {
+				if(diferenciaTimers <= stage.getElementoAnimacion().getTiempoAnimGolpeado(0)) {
 					EstadoGolpeado(diferenciaTimers);
 				}
 				else {
