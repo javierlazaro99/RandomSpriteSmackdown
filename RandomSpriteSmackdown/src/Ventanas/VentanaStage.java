@@ -279,6 +279,7 @@ public class VentanaStage extends JFrame {
 						VentanaStage.this.dispose();
 						controlEstados.setStagePausado(false);
 						controlEstados.setStageCerrado(true);
+						controlIA.setStageCerrado(true);
 						contador=0;
 					}else {
 						controlEstados.setAPulsado(false);

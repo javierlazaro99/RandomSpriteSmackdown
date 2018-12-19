@@ -38,6 +38,14 @@ public class ControlIA implements Runnable{
 		ce= new ControlEstados(pPrincipal, pSecundario, stage, ch);
 	}
 	
+	public boolean isStageCerrado() {
+		return stageCerrado;
+	}
+
+	public void setStageCerrado(boolean stageCerrado) {
+		this.stageCerrado = stageCerrado;
+	}
+
 	public void EnemMoverse(long diferenciaTimers) {
 		ca.AnimacionMoverse(diferenciaTimers, pSecundario, stage, elementoAnimacionP2);
 		
@@ -135,17 +143,4 @@ public class ControlIA implements Runnable{
 		}
 		
 	}	
-	/*
-	private long calcularTiempoAnimGolpear(Enemigo enem) {
-		if(enem.getTipoPersonaje().equals("robot")) {
-			return ElementoAnimacion.getTiempoAnimGolpearRobot();
-		}
-		if(enem.getTipoPersonaje().equals("ninja")) {
-			return ElementoAnimacion.getTiempoAnimGolpearNinja();
-		}
-		else {
-			return 0;
-		}
-	}
-	*/
 }
