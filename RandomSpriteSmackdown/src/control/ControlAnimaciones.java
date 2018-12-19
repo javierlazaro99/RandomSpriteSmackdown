@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import Ventanas.VentanaStage;
 import personaje.Personaje;
 import personaje.enemigo.Enemigo;
+import personaje.personajeJugable.PersonajeJugable;
 
 public class ControlAnimaciones {
 	private ArrayList<String> label;
@@ -94,15 +95,22 @@ public class ControlAnimaciones {
 				
 				if(elementoAnimacion.getLabel().equals("png/Melee (4).png") || elementoAnimacion.getLabel().equals("pngEnem/Attack__004.png") ){
 					
-					if(stage.isActiveIA()==true) {
-						enemigo.setVida(enemigo.getVida() - personaje.getFuerza()*0.1);
-						stage.setJpbVida1(enemigo.getVida());
+					if(personaje instanceof PersonajeJugable) {
+						personaje.DarGolpe(enemigo);
+						stage.getJpbVida2().setValue((int)enemigo.getVida());
 					}
-					personaje.DarGolpe(enemigo);
-					stage.setJpbVida2(enemigo.getVida());
-					System.out.println(personaje.getPosicion());
-					System.out.println(enemigo.getPosicion());
-					System.out.println(enemigo.getVida());		
+					if(personaje instanceof Enemigo) {
+						if(personaje.getPosicion().getX() >= (enemigo.getPosicion().getX()-200) && personaje.getPosicion().getX()<= enemigo.getPosicion().getX() && stage.getiEnemigo().isHorFlip()==false ) {
+						enemigo.setVida(enemigo.getVida()-personaje.getFuerza()*0.1);
+						stage.getJpbVida1().setValue((int)enemigo.getVida());
+						
+						}
+						if(personaje.getPosicion().getX() <= (enemigo.getPosicion().getX() +200) && personaje.getPosicion().getX() >= enemigo.getPosicion().getX() && stage.getiEnemigo().isHorFlip()==true) {
+							enemigo.setVida(enemigo.getVida()-personaje.getFuerza()*0.1);
+							stage.getJpbVida1().setValue((int)enemigo.getVida());
+						}
+						
+					}
 				}
 				
 				return 1;

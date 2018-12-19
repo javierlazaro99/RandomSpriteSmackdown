@@ -24,8 +24,8 @@ public class ControlIA implements Runnable{
 	private boolean golpeando;
 	private ElementoAnimacion elementoAnimacionP1;
 	private ElementoAnimacion elementoAnimacionP2;
-	
-	public ControlIA(PersonajeJugable pPrincipal,Enemigo pSecundario,VentanaStage stage,ControlHistoria ch) {
+	private boolean golpeado;
+	public ControlIA(PersonajeJugable pPrincipal,Enemigo pSecundario,VentanaStage stage,ControlHistoria ch,ControlEstados ce) {
 		this.pPrincipal=pPrincipal;
 		this.pSecundario=pSecundario;
 		this.stage=stage;
@@ -34,8 +34,9 @@ public class ControlIA implements Runnable{
 		
 		moverse=true;
 		golpeando=false;
+		golpeado=false;
 		ca=new ControlAnimaciones();
-		ce= new ControlEstados(pPrincipal, pSecundario, stage, ch);
+		this.ce=ce;
 	}
 	
 	public boolean isStageCerrado() {
@@ -45,7 +46,14 @@ public class ControlIA implements Runnable{
 	public void setStageCerrado(boolean stageCerrado) {
 		this.stageCerrado = stageCerrado;
 	}
+	public boolean isGolpeado() {
+		return golpeado;
+	}
 
+	public void setGolpeado(boolean golpeado) {
+		this.golpeado = golpeado;
+	}	
+	
 	public void EnemMoverse(long diferenciaTimers) {
 		ca.AnimacionMoverse(diferenciaTimers, pSecundario, stage, elementoAnimacionP2);
 		
@@ -115,7 +123,7 @@ public class ControlIA implements Runnable{
 			}else {
 				if(pSecundario.DarGolpe(pPrincipal)==1) {
 					moverse=false;
-					golpeando=false;
+					golpeando=true;
 					
 				}
 			}
@@ -130,17 +138,33 @@ public class ControlIA implements Runnable{
 			}
 			
 		}
-		
-		moverse=true;
+		if(golpeando !=true || golpeado !=true ) {
+			moverse=true;
+		}
 		timerJuego=System.currentTimeMillis();
 		while(golpeando) {
 			timerEstado= System.currentTimeMillis();
 			diferenciaTimers= timerEstado-timerJuego;
 			if(diferenciaTimers<= elementoAnimacionP2.getTiempoAnimGolpear()) {
+				ca.AnimacionGolpear(diferenciaTimers, pSecundario, stage, pPrincipal, elementoAnimacionP2);
+			}else {
+				diferenciaTimers=0;
+				timerJuego=System.currentTimeMillis();
+				timerEstado=0;
+				moverse=true;
+				golpeando=false;
 				
+			}
+			try {
+				Thread.sleep(16);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 		}
 		
-	}	
+	}
+
+	
 }
