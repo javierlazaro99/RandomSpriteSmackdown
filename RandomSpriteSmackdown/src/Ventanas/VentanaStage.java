@@ -52,17 +52,8 @@ public class VentanaStage extends JFrame {
 	private int contador=60;
 
 	private boolean activeIA;
-	private ElementoAnimacion elementoAnimacion;
-
-	
-	
-	public ElementoAnimacion getElementoAnimacion() {
-		return elementoAnimacion;
-	}
-
-	public void setElementoAnimacion(ElementoAnimacion elementoAnimacion) {
-		this.elementoAnimacion = elementoAnimacion;
-	}
+	private ElementoAnimacion elementoAnimacionPersonaje1;
+	private ElementoAnimacion elementoAnimacionPersonaje2;
 
 	public JLabelGraficoAjustado getiEnemigo() {
 		return iEnemigo;
@@ -97,11 +88,28 @@ public class VentanaStage extends JFrame {
 	}
 	public boolean isActiveIA() {
 			return activeIA;
-		}
+	}
 
-		public void setActiveIA(boolean activeIA) {
-			this.activeIA = activeIA;
-		}
+	public void setActiveIA(boolean activeIA) {
+		this.activeIA = activeIA;
+	}
+	
+	public ElementoAnimacion getElementoAnimacionPersonaje1() {
+		return elementoAnimacionPersonaje1;
+	}
+
+	public ElementoAnimacion getElementoAnimacionPersonaje2() {
+		return elementoAnimacionPersonaje2;
+	}
+	
+	public PersonajeJugable getpPrincipal() {
+		return pPrincipal;
+	}
+
+	public Personaje getpSecundario() {
+		return pSecundario;
+	}
+
 
 	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel,ControlHistoria ch, boolean activaIA) {
 		
@@ -109,15 +117,15 @@ public class VentanaStage extends JFrame {
 		pSecundario=p2;
 		activeIA=activaIA;
 		
+		elementoAnimacionPersonaje1 = new ElementoAnimacion("", 0);
+		elementoAnimacionPersonaje2 = new ElementoAnimacion("", 0);
 		
-		ElementoAnimacion.CrearAnimParadoRobot();
-		ElementoAnimacion.CrearAnimSaltandoRobot();
-		ElementoAnimacion.CrearAnimMoverseRobot();
-		ElementoAnimacion.CrearAnimGolpearRobot();
-		ElementoAnimacion.CrearAnimMoverseNinja();
-		ElementoAnimacion.CrearAnimGolpearNinja();
-		elementoAnimacion= new ElementoAnimacion("", 0) ;
+		
 		initLabel(pPrincipal, pSecundario);
+		
+		System.out.println(elementoAnimacionPersonaje1.getAnimParado().get(0).getLabel());
+		System.out.println(elementoAnimacionPersonaje2.getAnimParado().get(0).getLabel());
+		
 		p1.crearlPersonaje(50, 50);
 		
 		setSize(1920, 1080);
@@ -357,18 +365,17 @@ Thread tiempo = new Thread(new Runnable() {
 	}
 
 	public void initLabel(PersonajeJugable p1,Personaje p2) {
+		elementoAnimacionPersonaje1.CrearAnimMoverse(p1);
+		elementoAnimacionPersonaje1.CrearAnimGolpear(p1);
+		elementoAnimacionPersonaje1.CrearAnimParado(p1);
+		elementoAnimacionPersonaje1.CrearAnimSaltando(p1);
+		elementoAnimacionPersonaje1.CrearAnimGolpeado(p1);
 		
-		elementoAnimacion.CrearAnimGolpeado(p1,0);
-		elementoAnimacion.CrearAnimGolpear(p1,0);
-		elementoAnimacion.CrearAnimMoverse(p1,0);
-		elementoAnimacion.CrearAnimParado(p1,0);
-		elementoAnimacion.CrearAnimSaltando(p1,0);
-		
-		elementoAnimacion.CrearAnimGolpeado(p2,1);
-		elementoAnimacion.CrearAnimGolpear(p2,1);
-		elementoAnimacion.CrearAnimMoverse(p2,1);
-		elementoAnimacion.CrearAnimParado(p2,1);
-		elementoAnimacion.CrearAnimSaltando(p2,1);
+		elementoAnimacionPersonaje2.CrearAnimMoverse(p2);
+		elementoAnimacionPersonaje2.CrearAnimGolpear(p2);
+		elementoAnimacionPersonaje2.CrearAnimParado(p2);
+		elementoAnimacionPersonaje2.CrearAnimSaltando(p2);
+		elementoAnimacionPersonaje2.CrearAnimGolpeado(p2);
 	}
 
 	public static void main(String[] args) {

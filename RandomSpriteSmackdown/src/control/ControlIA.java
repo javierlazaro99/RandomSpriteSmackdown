@@ -22,16 +22,15 @@ public class ControlIA implements Runnable{
 	private ControlAnimaciones ca;
 	private ControlEstados ce;
 	private boolean golpeando;
-	private long tiempoAnimGolpear;
+	private ElementoAnimacion elementoAnimacionP1;
+	private ElementoAnimacion elementoAnimacionP2;
 	
 	public ControlIA(PersonajeJugable pPrincipal,Enemigo pSecundario,VentanaStage stage,ControlHistoria ch) {
 		this.pPrincipal=pPrincipal;
 		this.pSecundario=pSecundario;
 		this.stage=stage;
-		
-		//Añadido de javi para hacer la vida más facil
-		
-		//this.tiempoAnimGolpear = calcularTiempoAnimGolpear(pSecundario);
+		this.elementoAnimacionP1 = stage.getElementoAnimacionPersonaje1();
+		this.elementoAnimacionP2 = stage.getElementoAnimacionPersonaje2();
 		
 		moverse=true;
 		golpeando=false;
@@ -40,7 +39,7 @@ public class ControlIA implements Runnable{
 	}
 	
 	public void EnemMoverse(long diferenciaTimers) {
-		ca.AnimacionMoverse(diferenciaTimers, pSecundario, stage,stage.getElementoAnimacion(),"P2");
+		ca.AnimacionMoverse(diferenciaTimers, pSecundario, stage, elementoAnimacionP2);
 		
 	}
 	public void EnemGolpear(long diferenciaTimers) {
@@ -83,7 +82,7 @@ public class ControlIA implements Runnable{
 			if((pPrincipal.getPosicion().getX()+200)<=pSecundario.getPosicion().getX()) {
 			pSecundario.IAMovimiento(pPrincipal, stage, ce);
 			stage.getiEnemigo().setLocation(pSecundario.getPosicion());
-				if(diferenciaTimers<= stage.getElementoAnimacion().getTiempoAnimMoverse(1)) {
+				if(diferenciaTimers<= elementoAnimacionP2.getTiempoAnimMoverse()) {
 				EnemMoverse(diferenciaTimers);
 				}else {
 				timerJuego=System.currentTimeMillis();
@@ -96,7 +95,7 @@ public class ControlIA implements Runnable{
 				pSecundario.IAMovimiento(pPrincipal, stage, ce);
 				stage.getiEnemigo().setLocation(pSecundario.getPosicion());
 				
-				if(diferenciaTimers<= tiempoAnimGolpear) {
+				if(diferenciaTimers<= elementoAnimacionP2.getTiempoAnimGolpear()) {
 					EnemMoverse(diferenciaTimers);
 					}else {
 					timerJuego=System.currentTimeMillis();
@@ -129,7 +128,7 @@ public class ControlIA implements Runnable{
 		while(golpeando) {
 			timerEstado= System.currentTimeMillis();
 			diferenciaTimers= timerEstado-timerJuego;
-			if(diferenciaTimers<=stage.getElementoAnimacion().getTiempoAnimGolpear(1)) {
+			if(diferenciaTimers<= elementoAnimacionP2.getTiempoAnimGolpear()) {
 				
 			}
 		}
