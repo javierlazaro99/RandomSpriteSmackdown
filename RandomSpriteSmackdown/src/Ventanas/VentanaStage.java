@@ -51,23 +51,15 @@ public class VentanaStage extends JFrame {
 	private JLabel lTiempo=null ;
 	private int contador=60;
 	private boolean activeIA;
-	private ElementoAnimacion elementoAliado;
-	ElementoAnimacion elementoEnem;
+	private ElementoAnimacion elementoAnimacion;
+
 	
-	public ElementoAnimacion getElementoAliado() {
-		return elementoAliado;
+	public ElementoAnimacion getElementoAnimacion() {
+		return elementoAnimacion;
 	}
 
-	public void setElementoAliado(ElementoAnimacion elementoAliado) {
-		this.elementoAliado = elementoAliado;
-	}
-
-	public ElementoAnimacion getElementoEnem() {
-		return elementoEnem;
-	}
-
-	public void setElementoEnem(ElementoAnimacion elementoEnem) {
-		this.elementoEnem = elementoEnem;
+	public void setElementoAnimacion(ElementoAnimacion elementoAnimacion) {
+		this.elementoAnimacion = elementoAnimacion;
 	}
 
 	public JLabelGraficoAjustado getiEnemigo() {
@@ -114,8 +106,8 @@ public class VentanaStage extends JFrame {
 		pPrincipal=p1;
 		pSecundario=p2;
 		activeIA=activaIA;
-		
-		initLabel(p1, p2);
+		elementoAnimacion= new ElementoAnimacion("", 0) ;
+		initLabel(pPrincipal, pSecundario);
 		p1.crearlPersonaje(50, 50);
 		
 		setSize(1920, 1080);
@@ -137,6 +129,7 @@ public class VentanaStage extends JFrame {
 			controlIA= new ControlIA(p1, (Enemigo)p2, this, ch);
 			Thread enemt = new Thread(controlIA);
 			enemt.start();
+			
 		}
 		
 		if(p2 instanceof PersonajeJugable) {
@@ -144,6 +137,7 @@ public class VentanaStage extends JFrame {
 			controlEstadosP2 = new ControlEstados((PersonajeJugable) p2, p1, this, ch);
 			Thread t2 = new Thread(controlEstadosP2);
 			t2.start();
+			
 		}
 		
 		int width = (int) (d.getWidth()*0.2);
@@ -351,26 +345,25 @@ Thread tiempo = new Thread(new Runnable() {
 	public void setiProta(JLabelGraficoAjustado iProta) {
 		this.iProta = iProta;
 	}
-	public void initLabel(Personaje p1,Personaje p2) {
-		elementoAliado= new ElementoAnimacion("", 0);
-		elementoAliado.CrearAnimParado(p1);
-		elementoAliado.CrearAnimSaltando(p1);
-		elementoAliado.CrearAnimMoverse(p1);
-		elementoAliado.CrearAnimGolpear(p1);
-		elementoAliado.CrearAnimMoverse(p1);
-		elementoAliado.CrearAnimGolpeado(p1);
-		elementoEnem= new ElementoAnimacion("", 0);
-		elementoEnem.CrearAnimMoverse(p2);
-		elementoEnem.CrearAnimParado(p2);
-		elementoEnem.CrearAnimSaltando(p2);
-		elementoEnem.CrearAnimGolpear(p2);
-		elementoEnem.CrearAnimGolpeado(p2);
+	public void initLabel(PersonajeJugable p1,Personaje p2) {
+		
+		elementoAnimacion.CrearAnimGolpeado(p1,0);
+		elementoAnimacion.CrearAnimGolpear(p1,0);
+		elementoAnimacion.CrearAnimMoverse(p1,0);
+		elementoAnimacion.CrearAnimParado(p1,0);
+		elementoAnimacion.CrearAnimSaltando(p1,0);
+		
+		elementoAnimacion.CrearAnimGolpeado(p2,1);
+		elementoAnimacion.CrearAnimGolpear(p2,1);
+		elementoAnimacion.CrearAnimMoverse(p2,1);
+		elementoAnimacion.CrearAnimParado(p2,1);
+		elementoAnimacion.CrearAnimSaltando(p2,1);
 	}
 
 	public static void main(String[] args) {
 		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 
 				new Enemigo(new Point(100, 0), 10, 10, 10, "ninja" , 1) ,1,
-				new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png"), 0), true);
+				new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 0), true);
 		vs.setVisible(true);
 	}
 
