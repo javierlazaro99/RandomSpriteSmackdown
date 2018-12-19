@@ -29,9 +29,10 @@ public class ControlEstados implements Runnable{
 	private VentanaStage stage;
 	private ElementoAnimacion elementoAnimacionP1;
 	private ElementoAnimacion elementoAnimacionP2;
-	
+	private ControlIA cIA;
 	private ControlHistoria ch;
 	private boolean choque;
+	private boolean Parado;
 	public boolean isChoque() {
 		return choque;
 	}
@@ -40,7 +41,7 @@ public class ControlEstados implements Runnable{
 		this.choque = choque;
 	}
 
-	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario, VentanaStage stage,ControlHistoria ch) {//Personaje de la izquierda y de la derecha
+	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario, VentanaStage stage,ControlHistoria ch,ControlIA cIA) {//Personaje de la izquierda y de la derecha
 		this.pPrincipal=pPrincipal;
 		this.pSecundario=pSecundario;
 		this.stage = stage;
@@ -51,13 +52,23 @@ public class ControlEstados implements Runnable{
 		this.SpacePulsado=false;
 		this.golpeado=false;
 		this.choque=false;
+		Parado=true;
 		this.elementoAnimacionP1 = stage.getElementoAnimacionPersonaje1();
 		this.elementoAnimacionP2 = stage.getElementoAnimacionPersonaje2();
+		this.cIA=cIA;
 		
 	}
 	
 	
 	
+	public boolean isParado() {
+		return Parado;
+	}
+
+	public void setParado(boolean parado) {
+		Parado = parado;
+	}
+
 	public boolean isSpacePulsado() {
 		return SpacePulsado;
 	}
@@ -161,12 +172,12 @@ public class ControlEstados implements Runnable{
 			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(false);
 			}
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionP1);//sprites
+			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionP1,cIA);//sprites
 		}else {
 			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionP1);
+			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionP1,cIA);
 		}
 	}
 	private void EstadoGolpeado(long diferenciaTimers) {
@@ -174,12 +185,12 @@ public class ControlEstados implements Runnable{
 			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(false);
 			}
-			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pPrincipal, stage, elementoAnimacionP1);//sprites
+			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, elementoAnimacionP1,cIA,this);//sprites
 		}else {
 			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
-			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pPrincipal, stage, elementoAnimacionP1);
+			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, elementoAnimacionP1,cIA,this);
 		}
 	}
 	
@@ -231,7 +242,7 @@ public class ControlEstados implements Runnable{
 				stage.dispose();
 			}
 			//Estado moverse parado
-			while(!APulsado && !DPulsado && !WPulsado && !SpacePulsado && !StageCerrado && !StagePausado) { //Estado parado
+			while(!APulsado && !DPulsado && !WPulsado && !SpacePulsado && !StageCerrado && !StagePausado && Parado) { //Estado parado
 				
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;

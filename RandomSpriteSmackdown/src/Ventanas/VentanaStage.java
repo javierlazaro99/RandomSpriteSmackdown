@@ -1,33 +1,17 @@
 package Ventanas;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.Point;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
-import Personalizados.FondoSwing;
 import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
-import Usuarios.UsuariosValidar;
-import control.Animaciones;
-import control.BaseDeDatos;
-import control.ControlAnimaciones;
 import control.ControlEstados;
 import control.ControlHistoria;
 import control.ControlIA;
@@ -43,7 +27,7 @@ public class VentanaStage extends JFrame {
 	private JLabelGraficoAjustado iEnemigo = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
 	private ControlEstados controlEstados;
 	private ControlEstados controlEstadosP2;
-	private ControlIA controlIA;
+	private ControlIA controlIA=null;
 	private PersonajeJugable pPrincipal;
 	private Personaje pSecundario;
 	private JProgressBar jpbVida2 ;
@@ -138,24 +122,29 @@ public class VentanaStage extends JFrame {
 		p2.setPosicion(new Point((int)(d.getWidth() - d.getWidth()*0.2),(int) (d.getHeight()*0.6)));
 		
 		//Thread de juego
-		controlEstados = new ControlEstados(p1, p2, this,ch);
+		
+		
+		if(activaIA && p2 instanceof Enemigo) {
+			
+		controlEstados = new ControlEstados(p1, p2, this,ch,controlIA);
 		Thread t = new Thread(controlEstados);
 		controlEstados.setStageCerrado(false);
 		t.start();
-		
-		if(activaIA && p2 instanceof Enemigo) {
 			controlIA= new ControlIA(p1, (Enemigo)p2, this, ch,controlEstados);
 			Thread enemt = new Thread(controlIA);
 			enemt.start();
-			
 		}
 		
 		if(p2 instanceof PersonajeJugable) {
+			
+			controlEstados = new ControlEstados(p1, p2, this,ch,null);
+			Thread t = new Thread(controlEstados);
+			controlEstados.setStageCerrado(false);
+			t.start();
 			p2.crearlPersonaje(50, 50);
-			controlEstadosP2 = new ControlEstados((PersonajeJugable) p2, p1, this, ch);
+			controlEstadosP2 = new ControlEstados((PersonajeJugable) p2, p1, this, ch,null);
 			Thread t2 = new Thread(controlEstadosP2);
 			t2.start();
-			
 		}
 		
 		int width = (int) (d.getWidth()*0.2);
@@ -167,7 +156,7 @@ public class VentanaStage extends JFrame {
 		JPanel pNorte = new JPanel(new GridLayout(2, 1));
 			JPanel pNs = new JPanel();
 			JPanel pNi = new JPanel(new GridLayout(1, 3));
-			JPanel pN1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			JPanel pN1 = new JPanel();
 			JPanel pN2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
 			JPanel pN3 = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JPanel pCentral = new JPanel();

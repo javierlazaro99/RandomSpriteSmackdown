@@ -146,7 +146,7 @@ public class ControlIA implements Runnable{
 			timerEstado= System.currentTimeMillis();
 			diferenciaTimers= timerEstado-timerJuego;
 			if(diferenciaTimers<= elementoAnimacionP2.getTiempoAnimGolpear()) {
-				ca.AnimacionGolpear(diferenciaTimers, pSecundario, stage, pPrincipal, elementoAnimacionP2);
+				ca.AnimacionGolpear(diferenciaTimers, pSecundario, stage, pPrincipal, elementoAnimacionP2,this);
 			}else {
 				diferenciaTimers=0;
 				timerJuego=System.currentTimeMillis();
@@ -160,6 +160,25 @@ public class ControlIA implements Runnable{
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
+		}
+		timerJuego=System.currentTimeMillis();
+		while(golpeado) {
+			timerEstado=System.currentTimeMillis();
+			diferenciaTimers=timerEstado-timerJuego;
+			if(diferenciaTimers<=elementoAnimacionP2.getTiempoAnimGolpeado()) {
+				
+				ca.AnimacionGolpeado(diferenciaTimers, pPrincipal,pSecundario, stage, elementoAnimacionP1,this,ce);
+			}
+			else {
+				diferenciaTimers=0;
+				timerJuego=System.currentTimeMillis();
+				timerEstado=0;
+				moverse=false;
+				golpeando=false;
+				golpeado=false;
+				
+				ce.setParado(true);
 			}
 		}
 		}

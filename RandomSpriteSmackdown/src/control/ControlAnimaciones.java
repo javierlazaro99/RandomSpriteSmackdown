@@ -1,5 +1,6 @@
 package control;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -79,7 +80,7 @@ public class ControlAnimaciones {
 		
 	}
 	
-	public int AnimacionGolpear(long milis,Personaje personaje,VentanaStage stage,Personaje enemigo,ElementoAnimacion x) {
+	public int AnimacionGolpear(long milis,Personaje personaje,VentanaStage stage,Personaje enemigo,ElementoAnimacion x,ControlIA cIA) {
 		
 		ArrayList<ElementoAnimacion>animGolpear = new ArrayList<>(); 
 		animGolpear = x.getAnimGolpear();
@@ -103,11 +104,13 @@ public class ControlAnimaciones {
 						if(personaje.getPosicion().getX() >= (enemigo.getPosicion().getX()-200) && personaje.getPosicion().getX()<= enemigo.getPosicion().getX() && stage.getiEnemigo().isHorFlip()==false ) {
 						enemigo.setVida(enemigo.getVida()-personaje.getFuerza()*0.1);
 						stage.getJpbVida1().setValue((int)enemigo.getVida());
+						cIA.setGolpeado(true);
 						
 						}
 						if(personaje.getPosicion().getX() <= (enemigo.getPosicion().getX() +200) && personaje.getPosicion().getX() >= enemigo.getPosicion().getX() && stage.getiEnemigo().isHorFlip()==true) {
 							enemigo.setVida(enemigo.getVida()-personaje.getFuerza()*0.1);
 							stage.getJpbVida1().setValue((int)enemigo.getVida());
+							cIA.setGolpeado(true);
 						}
 						
 					}
@@ -121,17 +124,45 @@ public class ControlAnimaciones {
 		
 	}
 	
-	public int AnimacionGolpeado(long milis,Personaje personaje, VentanaStage stage,ElementoAnimacion x) {
+	public int AnimacionGolpeado(long milis,Personaje golpeado,Personaje golpeador, VentanaStage stage,ElementoAnimacion x,ControlIA cIA,ControlEstados ce) {
 		
 		ArrayList<ElementoAnimacion>animGolpeado = new ArrayList<>();
 		animGolpeado = x.getAnimGolpeado();
 		
-		
+		//int posicionDer=(int)golpeado.getPosicion().getX()+50;
+		//int posicionIz=(int)golpeado.getPosicion().getX()-50;
+		int contador=0;
 		for(ElementoAnimacion elementoAnimacion:animGolpeado) {
 			if(milis <=elementoAnimacion.getTiempos()) {
+				if(cIA.isGolpeado()==true) {
+				
+				ce.setParado(false);
 				stage.getiProta().setImagen(elementoAnimacion.getLabel());
+				if(golpeado.getPosicion().getX()-golpeador.getPosicion().getX() >0) {
+					
+										
+					
+					if(contador<=6) {
+						golpeado.setPosicion(new Point((int)(golpeado.getPosicion().getX()+2),((int)golpeado.getPosicion().getY())));
+						stage.getiProta().setLocation(golpeado.getPosicion());
+					}
+					contador++;
+				}
+				if(golpeado.getPosicion().getX()-golpeador.getPosicion().getX() <0) {
+					
+				
+					if(contador<=6) {
+					stage.getiProta().setLocation(golpeado.getPosicion());
+					golpeado.setPosicion(new Point((int)(golpeado.getPosicion().getX()-2),((int)golpeado.getPosicion().getY())));
+					}
+					contador++;
+				}
 				return 1;
+				}
+				
+				
 			}
+			
 		}
 		
 		return 0;
