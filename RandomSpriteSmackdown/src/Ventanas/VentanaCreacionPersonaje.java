@@ -38,7 +38,7 @@ public class VentanaCreacionPersonaje extends JFrame {
 	
 	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot");
 	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20, "ninja");
-	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5, "robot");
+	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5, "caballero");
 	
 	private JLabelGraficoAjustado lImagen;
 	
@@ -217,6 +217,11 @@ public class VentanaCreacionPersonaje extends JFrame {
 		personajeSeleccionado = personajeParaCambiar;
 	}
 	
+	/**
+	 * Selecciona el label adecuado para el nuevo personaje seleccionado de la lista de personajes
+	 * @param personajeSeleccionado personaje de la lista actualmente seleccionado
+	 * @param lImagen label que se quiere modificar su imagen
+	 */
 	private void ElegirLabel(PersonajeJugable personajeSeleccionado, JLabelGraficoAjustado lImagen) {
 		
 		if(personajeSeleccionado.getTipoPersonaje().equals("robot")) {
@@ -227,6 +232,11 @@ public class VentanaCreacionPersonaje extends JFrame {
 		if(personajeSeleccionado.getTipoPersonaje().equals("ninja")) {
 			lImagen.setImagen("pngEnem/Idle__000.png");
 			lImagen.setSize(200, 300);
+			lImagen.setPreferredSize(new Dimension(400, 400));
+		}
+		if(personajeSeleccionado.getTipoPersonaje().equals("caballero")) {
+			lImagen.setImagen("pngEnem2/Idle (1).png");
+			lImagen.setSize(350, 350);
 			lImagen.setPreferredSize(new Dimension(400, 400));
 		}
 		

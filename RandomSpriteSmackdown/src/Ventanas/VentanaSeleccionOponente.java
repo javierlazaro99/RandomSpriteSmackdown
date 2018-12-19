@@ -31,12 +31,12 @@ public class VentanaSeleccionOponente extends JFrame {
 	private PersonajeJugable personajeSeleccionadoDerecha;
 	private PersonajeJugable personajeCreado;
 
-	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "ninja");
-	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20, "robot");
-	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5, "ninja");
+	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot");
+	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20, "ninja");
+	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5, "caballero");
 	private PersonajeJugable enemigoRegular = new PersonajeJugable(null, new Point(0,0),10, 10, 10,"robot");
 	private PersonajeJugable enemigoRapido = new PersonajeJugable(null, new Point(0,0),5, 5, 20,"ninja");
-	private PersonajeJugable enemigoLento = new PersonajeJugable(null, new Point(0,0),15, 10, 5,"robot");
+	private PersonajeJugable enemigoLento = new PersonajeJugable(null, new Point(0,0),15, 10, 5,"caballero");
 	
 	private JLabelGraficoAjustado labelImage;
 	private JLabelGraficoAjustado labelImage1;
@@ -71,7 +71,7 @@ public class VentanaSeleccionOponente extends JFrame {
 		JPanel panelIzInterior = new JPanel();
 		panelIzInterior.setLayout(new BorderLayout());
 		JPanel panelInteriorCentral = new JPanel(new BorderLayout());
-		labelImage = new JLabelGraficoAjustado("pngEnem/Idle__000.png", 200, 300);
+		labelImage = new JLabelGraficoAjustado("png/Idle (1).png", 400, 300);
 		labelImage.setPreferredSize(new Dimension(400, 400));
 		JPanel panelInteriorInferior = new JPanel();
 		panelInteriorInferior.setLayout(new GridLayout(0, 2));
@@ -297,6 +297,11 @@ public class VentanaSeleccionOponente extends JFrame {
 		return personajeParaCambiar;
 	}
 	
+	/**
+	 * Selecciona el label adecuado para el nuevo personaje seleccionado de la lista de personajes
+	 * @param personajeSeleccionado personaje de la lista actualmente seleccionado
+	 * @param lImagen label que se quiere modificar su imagen
+	 */
 	private void ElegirLabel(PersonajeJugable personajeSeleccionado, JLabelGraficoAjustado lImagen) {
 		
 		if(personajeSeleccionado.getTipoPersonaje().equals("robot")) {
@@ -307,6 +312,11 @@ public class VentanaSeleccionOponente extends JFrame {
 		if(personajeSeleccionado.getTipoPersonaje().equals("ninja")) {
 			lImagen.setImagen("pngEnem/Idle__000.png");
 			lImagen.setSize(200, 300);
+			lImagen.setPreferredSize(new Dimension(400, 400));
+		}
+		if(personajeSeleccionado.getTipoPersonaje().equals("caballero")) {
+			lImagen.setImagen("pngEnem2/Idle (1).png");
+			lImagen.setSize(350, 350);
 			lImagen.setPreferredSize(new Dimension(400, 400));
 		}
 		
