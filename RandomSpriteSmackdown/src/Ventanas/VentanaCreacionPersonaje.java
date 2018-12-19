@@ -36,9 +36,11 @@ public class VentanaCreacionPersonaje extends JFrame {
 	private PersonajeJugable personajeSeleccionado;
 	private PersonajeJugable personajeCreado;
 	
-	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "png/Idle (1).png");
-	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20, "png/Idle (1).png");
-	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5, "png/Idle (1).png");
+	private PersonajeJugable personajeRegular = new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot");
+	private PersonajeJugable personajeRápido = new PersonajeJugable(null, new Point(0, 0), 5, 5, 20, "ninja");
+	private PersonajeJugable personajeLento = new PersonajeJugable(null, new Point(0, 0), 15, 10, 5, "robot");
+	
+	private JLabelGraficoAjustado lImagen;
 	
 	
 	public VentanaCreacionPersonaje(int codigo,UsuariosValidar user,PersonajeJugable pPrincipal1, ControlHistoria ch, int victorias1v1,int nivelesCompletados) {
@@ -60,6 +62,7 @@ public class VentanaCreacionPersonaje extends JFrame {
 			JPanel pPrincipal = new JPanel(new GridLayout(1, 2));
 				JPanel pIzquierda = new JPanel(new BorderLayout());
 					JPanel pSprite = new JPanel(new BorderLayout());
+						lImagen = new JLabelGraficoAjustado("png/Idle (1).png", 400, 300);
 					JPanel pCambioSprite = new JPanel(new FlowLayout(FlowLayout.CENTER));
 						JButton bAtras = new JButton("Previous");
 						JButton bAlante = new JButton("Next");
@@ -90,7 +93,7 @@ public class VentanaCreacionPersonaje extends JFrame {
 		pFondo.add(pPrincipal, BorderLayout.CENTER);
 			pPrincipal.add(pIzquierda);
 				pIzquierda.add(pSprite, BorderLayout.CENTER);
-					pSprite.add(personajeSeleccionado.getlPersonaje(width, height), BorderLayout.CENTER);
+					pSprite.add(lImagen);
 				pIzquierda.add(pCambioSprite, BorderLayout.SOUTH);
 					pCambioSprite.add(bAtras);
 					pCambioSprite.add(bAlante);
@@ -123,8 +126,8 @@ public class VentanaCreacionPersonaje extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				cambiarSiguiente();
-				pSprite.removeAll();
-				pSprite.add(personajeSeleccionado.getlPersonaje(width, height));
+				
+				ElegirLabel(personajeSeleccionado, lImagen);
 				
 				pFuerza.remove(1);
 				pFuerza.add(personajeSeleccionado.getPbFuerza());
@@ -143,8 +146,9 @@ public class VentanaCreacionPersonaje extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				cambiarAnterior();
-				pSprite.removeAll();
-				pSprite.add(personajeSeleccionado.getlPersonaje(width, height));
+
+				ElegirLabel(personajeSeleccionado, lImagen);
+				
 				pFuerza.remove(1);
 				pFuerza.add(personajeSeleccionado.getPbFuerza());
 				pVida.remove(1);
@@ -211,6 +215,23 @@ public class VentanaCreacionPersonaje extends JFrame {
 			personajeParaCambiar = listaPersonajes.get(listaPersonajes.size() - 1);
 		}
 		personajeSeleccionado = personajeParaCambiar;
+	}
+	
+	private void ElegirLabel(PersonajeJugable personajeSeleccionado, JLabelGraficoAjustado lImagen) {
+		
+		if(personajeSeleccionado.getTipoPersonaje().equals("robot")) {
+			lImagen.setImagen("png/Idle (1).png");
+			lImagen.setSize(400, 300);
+			lImagen.setPreferredSize(new Dimension(400, 400));
+		}
+		if(personajeSeleccionado.getTipoPersonaje().equals("ninja")) {
+			lImagen.setImagen("pngEnem/Idle__000.png");
+			lImagen.setSize(200, 300);
+			lImagen.setPreferredSize(new Dimension(400, 400));
+		}
+		
+		revalidate();
+		repaint();
 	}
 	
 	public PersonajeJugable devolverCreado() {

@@ -52,14 +52,14 @@ public class Nivel {
 	public static void generarListaNiveles(PersonajeJugable pj,ControlHistoria ch) {
 		//Me he copiado y pegado el mismo nivel todo el rato, esto hay que tunearlo para hacer cada uno distinto del otro
 		//cambiando los atributos del enemigo, y el stage
-		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10, 1), 1,ch));
-		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10, 1), 2,ch));
-		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10, 1), 3,ch));
-		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10, 1), 4,ch));
-		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10, 1), 5,ch));
-		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10, 1), 6,ch));
-		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10, 1), 7,ch));
-		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10, 1), 8,ch));
+		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10,"robot", 1), 1,ch));
+		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10,"ninja", 1), 2,ch));
+		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10,"robot", 1), 3,ch));
+		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10,"ninja", 1), 4,ch));
+		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10,"robot", 1), 5,ch));
+		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10,"ninja", 1), 6,ch));
+		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10,"robot", 1), 7,ch));
+		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 10, 10, 10,"ninja", 1), 8,ch));
 	}
 
 	public VentanaStage getStage() {
