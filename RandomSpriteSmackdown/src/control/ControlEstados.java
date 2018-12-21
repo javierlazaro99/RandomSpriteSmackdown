@@ -242,7 +242,7 @@ public class ControlEstados implements Runnable{
 				stage.dispose();
 			}
 			//Estado moverse parado
-			while(!APulsado && !DPulsado && !WPulsado && !SpacePulsado && !StageCerrado && !StagePausado && Parado) { //Estado parado
+			while(!APulsado && !DPulsado && !WPulsado && !SpacePulsado && !StageCerrado && !StagePausado) { //Estado parado
 				
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
@@ -251,7 +251,10 @@ public class ControlEstados implements Runnable{
 				stage.revalidate();
 				
 				if(diferenciaTimers <= elementoAnimacionP1.getTiempoAnimParado()) {//Posible cambio
-					EstadoParado(diferenciaTimers);
+					if(Parado==true) {
+						EstadoParado(diferenciaTimers);
+					}
+					
 				}else {
 					diferenciaTimers = 0;
 					timerJuego = System.currentTimeMillis();

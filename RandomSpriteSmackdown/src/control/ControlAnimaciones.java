@@ -129,14 +129,14 @@ public class ControlAnimaciones {
 		ArrayList<ElementoAnimacion>animGolpeado = new ArrayList<>();
 		animGolpeado = x.getAnimGolpeado();
 		
-		//int posicionDer=(int)golpeado.getPosicion().getX()+50;
-		//int posicionIz=(int)golpeado.getPosicion().getX()-50;
+		
 		int contador=0;
 		for(ElementoAnimacion elementoAnimacion:animGolpeado) {
 			if(milis <=elementoAnimacion.getTiempos()) {
 				if(cIA.isGolpeado()==true) {
 				
 				ce.setParado(false);
+				
 				stage.getiProta().setImagen(elementoAnimacion.getLabel());
 				if(golpeado.getPosicion().getX()-golpeador.getPosicion().getX() >0) {
 					

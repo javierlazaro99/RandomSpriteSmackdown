@@ -169,6 +169,7 @@ public class ControlIA implements Runnable{
 			if(diferenciaTimers<=elementoAnimacionP2.getTiempoAnimGolpeado()) {
 				
 				ca.AnimacionGolpeado(diferenciaTimers, pPrincipal,pSecundario, stage, elementoAnimacionP1,this,ce);
+				ce.setParado(true);
 			}
 			else {
 				diferenciaTimers=0;
@@ -178,7 +179,7 @@ public class ControlIA implements Runnable{
 				golpeando=false;
 				golpeado=false;
 				
-				ce.setParado(true);
+				
 			}
 		}
 		}

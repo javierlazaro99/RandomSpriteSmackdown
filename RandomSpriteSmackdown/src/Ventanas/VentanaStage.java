@@ -240,7 +240,7 @@ public class VentanaStage extends JFrame {
 					controlEstados.setDPulsado(false);
 				}
 				if(e.getKeyCode() == KeyEvent.VK_A) {
-					System.out.println("hola");
+					
 					controlEstados.setAPulsado(false);
 				}
 				if(e.getKeyCode() == KeyEvent.VK_SPACE) {
