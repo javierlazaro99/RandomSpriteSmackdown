@@ -120,7 +120,7 @@ public class ControlAnimaciones {
 						if(stage.getiProta().isHorFlip()==true && stage.getiEnemigo().isHorFlip()==false || stage.getiProta().isHorFlip()==false && stage.getiEnemigo().isHorFlip()==true) {
 						personaje.DarGolpe(enemigo);
 						stage.getJpbVida2().setValue((int)enemigo.getVida());
-						//ce.setGolpeado(true);
+						ce.setGolpeado(true);
 
 						if(personaje.equals(stage.getpPrincipal())) {
 							stage.getJpbVida2().setValue((int)enemigo.getVida());
@@ -190,7 +190,7 @@ public class ControlAnimaciones {
 				return 1;
 				}else {
 					if(stage.isActiveIA()==true) {
-						System.out.println("Te pego ia");
+						
 						cIA.setMoverse(false);
 						stage.getiEnemigo().setImagen(elementoAnimacion.getLabel());
 						if(golpeado.getPosicion().getX()-golpeador.getPosicion().getX() >0) {
@@ -198,7 +198,7 @@ public class ControlAnimaciones {
 												
 							
 							if(contador<=6) {
-								golpeado.setPosicion(new Point((int)(golpeado.getPosicion().getX()+2),((int)golpeado.getPosicion().getY())));
+								golpeado.setPosicion(new Point((int)(golpeado.getPosicion().getX()+4),((int)golpeado.getPosicion().getY())));
 								stage.getiEnemigo().setLocation(golpeado.getPosicion());
 							}
 							contador++;
@@ -208,7 +208,7 @@ public class ControlAnimaciones {
 						
 							if(contador<=6) {
 							stage.getiEnemigo().setLocation(golpeado.getPosicion());
-							golpeado.setPosicion(new Point((int)(golpeado.getPosicion().getX()-2),((int)golpeado.getPosicion().getY())));
+							golpeado.setPosicion(new Point((int)(golpeado.getPosicion().getX()-4),((int)golpeado.getPosicion().getY())));
 							}
 							contador++;
 					}

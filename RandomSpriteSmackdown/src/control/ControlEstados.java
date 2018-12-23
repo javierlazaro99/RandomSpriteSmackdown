@@ -64,6 +64,14 @@ public class ControlEstados implements Runnable{
 	
 	
 	
+	public ControlIA getcIA() {
+		return cIA;
+	}
+
+	public void setcIA(ControlIA cIA) {
+		this.cIA = cIA;
+	}
+
 	public boolean isParado() {
 		return Parado;
 	}
@@ -221,12 +229,12 @@ public class ControlEstados implements Runnable{
 			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(false);
 			}
-			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, elementoAnimacionPersonaje,cIA,this);//sprites
+			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, stage.getElementoAnimacionPersonaje2(),cIA,this);//sprites
 		}else {
 			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
-			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, elementoAnimacionPersonaje,cIA,this);
+			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, stage.getElementoAnimacionPersonaje2(),cIA,this);
 		}
 	}
 	
@@ -602,10 +610,7 @@ public class ControlEstados implements Runnable{
 			int posFinDer= (int) pPrincipal.getPosicion().getX()+ 20;
 			int posFinIz= (int) pPrincipal.getPosicion().getX() -20; 
 			while(golpeado) {
-				APulsado=false;
-				DPulsado=false;
-				WPulsado=false;
-				SpacePulsado=false;
+				
 				
 				timerEstado=System.currentTimeMillis();
 				diferenciaTimers= timerEstado - timerJuego;
@@ -638,6 +643,7 @@ public class ControlEstados implements Runnable{
 							ch.setNivelesCompletados(ch.getNivelesCompletados()+1);
 							stage.setContador(0);
 							StageCerrado=true;
+							cIA.setStageCerrado(true);
 							stage.dispose();
 						}
 					}

@@ -27,7 +27,7 @@ public class VentanaStage extends JFrame {
 	private JLabelGraficoAjustado iEnemigo = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
 	private ControlEstados controlEstados;
 	private ControlEstados controlEstadosP2;
-	private ControlIA controlIA=null;
+	private ControlIA controlIA;
 	private PersonajeJugable pPrincipal;
 	private Personaje pSecundario;
 	private JProgressBar jpbVida2 ;
@@ -133,6 +133,7 @@ public class VentanaStage extends JFrame {
 			controlIA= new ControlIA(p1, (Enemigo)p2, this, ch,controlEstados);
 			Thread enemt = new Thread(controlIA);
 			enemt.start();
+			controlEstados.setcIA(controlIA);
 		}
 		
 		if(p2 instanceof PersonajeJugable && !activaIA) {
