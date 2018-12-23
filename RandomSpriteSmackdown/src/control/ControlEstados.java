@@ -192,20 +192,20 @@ public class ControlEstados implements Runnable{
 			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(false);
 			}
-<<<<<<< HEAD
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionP1,cIA,this);//sprites
-=======
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionPersonaje,cIA);//sprites
->>>>>>> branch 'master' of https://github.com/javierlazaro99/RandomSpriteSmackdown.git
+
+			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, stage.getElementoAnimacionPersonaje1(),cIA,this);//sprites
+
+			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, stage.getElementoAnimacionPersonaje1(),cIA,this);//sprites
+
 		}else {
 			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
-<<<<<<< HEAD
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionP1,cIA,this);
-=======
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionPersonaje,cIA);
->>>>>>> branch 'master' of https://github.com/javierlazaro99/RandomSpriteSmackdown.git
+
+			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, stage.getElementoAnimacionPersonaje1(),cIA,this);
+
+			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, stage.getElementoAnimacionPersonaje1(),cIA,this);
+
 		}
 	}
 	public boolean isGolpeado() {

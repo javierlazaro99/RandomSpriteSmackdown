@@ -118,17 +118,17 @@ public class ControlAnimaciones {
 					
 					if(personaje instanceof PersonajeJugable) {
 						personaje.DarGolpe(enemigo);
-<<<<<<< HEAD
+
 						stage.getJpbVida2().setValue((int)enemigo.getVida());
 						ce.setGolpeado(true);
-=======
+
 						if(personaje.equals(stage.getpPrincipal())) {
 							stage.getJpbVida2().setValue((int)enemigo.getVida());
 						}else {
 							stage.getJpbVida1().setValue((int)enemigo.getVida());
 						}
 						
->>>>>>> branch 'master' of https://github.com/javierlazaro99/RandomSpriteSmackdown.git
+
 					}
 					if(personaje instanceof Enemigo) {
 						if(personaje.getPosicion().getX() >= (enemigo.getPosicion().getX()-200) && personaje.getPosicion().getX()<= enemigo.getPosicion().getX() && stage.getiEnemigo().isHorFlip()==false ) {

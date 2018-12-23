@@ -65,8 +65,8 @@ public class ControlIA implements Runnable{
 		ca.AnimacionMoverse(diferenciaTimers, pSecundario, stage, elementoAnimacionP2);
 		
 	}
-	public void EnemGolpear(long diferenciaTimers) {
-		
+	public void EnemParado(long diferenciaTimers) {
+		ca.AnimacionParado(diferenciaTimers, pSecundario, stage, elementoAnimacionP2);
 	}
 	public void ReajusteLabel() {
 		if((pPrincipal.getPosicion().getX() - pSecundario.getPosicion().getX())<0) {
@@ -114,7 +114,7 @@ public class ControlIA implements Runnable{
 				moverse=false;
 				}
 			}else if(pPrincipal.getPosicion().getX() - 200 > pSecundario.getPosicion().getX()) {
-				System.out.println("Esta adelante");
+				
 				pSecundario.IAMovimiento(pPrincipal, stage, ce);
 				stage.getiEnemigo().setLocation(pSecundario.getPosicion());
 				
@@ -128,13 +128,23 @@ public class ControlIA implements Runnable{
 					}
 
 			}else {
+				
+				timerEstado=System.currentTimeMillis();
+				diferenciaTimers=timerEstado-timerJuego;
+				if(diferenciaTimers<=stage.getElementoAnimacionPersonaje2().getTiempoAnimParado()) {
+					EnemParado(diferenciaTimers);
 				if(pSecundario.DarGolpe(pPrincipal)==1) {
 					moverse=false;
 					golpeando=true;
 					
 				}
+			}else {
+				timerJuego=System.currentTimeMillis();
+				timerEstado=0;
+				diferenciaTimers=0;
+				
 			}
-			
+			}
 			
 			
 			try {
