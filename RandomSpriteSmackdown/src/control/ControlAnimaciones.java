@@ -117,10 +117,10 @@ public class ControlAnimaciones {
 						|| elementoAnimacion.getLabel().equals("pngEnem2/Attack (5).png")){
 					
 					if(personaje instanceof PersonajeJugable) {
+						if(stage.getiProta().isHorFlip()==true && stage.getiEnemigo().isHorFlip()==false || stage.getiProta().isHorFlip()==false && stage.getiEnemigo().isHorFlip()==true) {
 						personaje.DarGolpe(enemigo);
-
 						stage.getJpbVida2().setValue((int)enemigo.getVida());
-						ce.setGolpeado(true);
+						//ce.setGolpeado(true);
 
 						if(personaje.equals(stage.getpPrincipal())) {
 							stage.getJpbVida2().setValue((int)enemigo.getVida());
@@ -128,7 +128,7 @@ public class ControlAnimaciones {
 							stage.getJpbVida1().setValue((int)enemigo.getVida());
 						}
 						
-
+						}
 					}
 					if(personaje instanceof Enemigo) {
 						if(personaje.getPosicion().getX() >= (enemigo.getPosicion().getX()-200) && personaje.getPosicion().getX()<= enemigo.getPosicion().getX() && stage.getiEnemigo().isHorFlip()==false ) {

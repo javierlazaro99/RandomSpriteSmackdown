@@ -195,7 +195,7 @@ public class ControlEstados implements Runnable{
 
 			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, stage.getElementoAnimacionPersonaje1(),cIA,this);//sprites
 
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, stage.getElementoAnimacionPersonaje1(),cIA,this);//sprites
+			
 
 		}else {
 			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
@@ -204,7 +204,7 @@ public class ControlEstados implements Runnable{
 
 			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, stage.getElementoAnimacionPersonaje1(),cIA,this);
 
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, stage.getElementoAnimacionPersonaje1(),cIA,this);
+			
 
 		}
 	}
