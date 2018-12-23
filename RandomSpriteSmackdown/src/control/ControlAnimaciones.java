@@ -1,5 +1,6 @@
 package control;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -24,9 +25,15 @@ public class ControlAnimaciones {
 			if(milis <= elementoAnimacion.getTiempos()) {
 				if(personaje.equals(stage.getpPrincipal())) {
 					stage.getiProta().setImagen(elementoAnimacion.getLabel());
+					if(personaje.getTipoPersonaje().equals("ninja")) {
+						stage.getiProta().setSize(200, 250);
+					}
 				}
 				if(personaje.equals(stage.getpSecundario())) {
 					stage.getiEnemigo().setImagen(elementoAnimacion.getLabel());
+					if(personaje.getTipoPersonaje().equals("ninja")) {
+						stage.getiEnemigo().setSize(200, 250);
+					}
 				}
 				return 1;
 			}
@@ -67,9 +74,15 @@ public class ControlAnimaciones {
 				
 				if(personaje.equals(stage.getpPrincipal())) {
 					stage.getiProta().setImagen(elementoAnimacion.getLabel());
+					if(personaje.getTipoPersonaje().equals("ninja")) {
+						stage.getiProta().setSize(300, 250);
+					}
 				}
 				if(personaje.equals(stage.getpSecundario())) {
 					stage.getiEnemigo().setImagen(elementoAnimacion.getLabel());
+					if(personaje.getTipoPersonaje().equals("ninja")) {
+						stage.getiEnemigo().setSize(300, 250);
+					}
 				}
 				
 				return 1;
@@ -89,16 +102,27 @@ public class ControlAnimaciones {
 			if(milis <=elementoAnimacion.getTiempos()) {
 				if(personaje.equals(stage.getpPrincipal())) {
 					stage.getiProta().setImagen(elementoAnimacion.getLabel());
+					if(personaje.getTipoPersonaje().equals("ninja")) {
+						stage.getiProta().setSize(365, 280);
+					}
 				}
 				if(personaje.equals(stage.getpSecundario())) {
 					stage.getiEnemigo().setImagen(elementoAnimacion.getLabel());
+					if(personaje.getTipoPersonaje().equals("ninja")) {
+						stage.getiEnemigo().setSize(365, 280);
+					}
 				}
 				
 				if(elementoAnimacion.getLabel().equals("png/Melee (4).png") || elementoAnimacion.getLabel().equals("pngEnem/Attack__004.png") ){
 					
 					if(personaje instanceof PersonajeJugable) {
 						personaje.DarGolpe(enemigo);
-						stage.getJpbVida2().setValue((int)enemigo.getVida());
+						if(personaje.equals(stage.getpPrincipal())) {
+							stage.getJpbVida2().setValue((int)enemigo.getVida());
+						}else {
+							stage.getJpbVida1().setValue((int)enemigo.getVida());
+						}
+						
 					}
 					if(personaje instanceof Enemigo) {
 						if(personaje.getPosicion().getX() >= (enemigo.getPosicion().getX()-200) && personaje.getPosicion().getX()<= enemigo.getPosicion().getX() && stage.getiEnemigo().isHorFlip()==false ) {

@@ -94,7 +94,6 @@ public class VentanaStage extends JFrame {
 		return pSecundario;
 	}
 
-
 	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel,ControlHistoria ch, boolean activaIA) {
 		
 		pPrincipal=p1;
@@ -123,26 +122,22 @@ public class VentanaStage extends JFrame {
 		
 		//Thread de juego
 		
-		
-		if(activaIA && p2 instanceof Enemigo) {
-			
 		controlEstados = new ControlEstados(p1, p2, this,ch,controlIA);
 		Thread t = new Thread(controlEstados);
 		controlEstados.setStageCerrado(false);
 		t.start();
+		
+		
+		if(activaIA && p2 instanceof Enemigo) {
 			controlIA= new ControlIA(p1, (Enemigo)p2, this, ch,controlEstados);
 			Thread enemt = new Thread(controlIA);
 			enemt.start();
 		}
 		
-		if(p2 instanceof PersonajeJugable) {
-			
-			controlEstados = new ControlEstados(p1, p2, this,ch,null);
-			Thread t = new Thread(controlEstados);
-			controlEstados.setStageCerrado(false);
-			t.start();
+		if(p2 instanceof PersonajeJugable && !activaIA) {
+		
 			p2.crearlPersonaje(50, 50);
-			controlEstadosP2 = new ControlEstados((PersonajeJugable) p2, p1, this, ch,null);
+			controlEstadosP2 = new ControlEstados((PersonajeJugable) p2, p1, this, ch, null);
 			Thread t2 = new Thread(controlEstadosP2);
 			t2.start();
 		}
@@ -246,6 +241,21 @@ public class VentanaStage extends JFrame {
 				if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 					controlEstados.setSpacePulsado(false);
 				}
+				
+				if(pSecundario instanceof PersonajeJugable) {
+					if(e.getKeyCode() == KeyEvent.VK_I) {
+						controlEstadosP2.setWPulsado(false);
+					}
+					if(e.getKeyCode() == KeyEvent.VK_L) {
+						controlEstadosP2.setDPulsado(false);
+					}
+					if(e.getKeyCode() == KeyEvent.VK_J) {
+						controlEstadosP2.setAPulsado(false);
+					}
+					if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+						controlEstadosP2.setSpacePulsado(false);
+					}
+				}
 			}
 			
 			@Override
@@ -268,12 +278,32 @@ public class VentanaStage extends JFrame {
 						VentanaStage.this.dispose();
 						controlEstados.setStagePausado(false);
 						controlEstados.setStageCerrado(true);
-						controlIA.setStageCerrado(true);
+						if(activaIA) {
+							controlIA.setStageCerrado(true);
+						}if(pSecundario instanceof PersonajeJugable) {
+							controlEstadosP2.setStagePausado(false);
+							controlEstadosP2.setStageCerrado(true);
+						}
 						contador=0;
 					}else {
 						controlEstados.setAPulsado(false);
 						controlEstados.setDPulsado(false);
 						controlEstados.setStagePausado(false);
+					}
+				}
+				
+				if(pSecundario instanceof PersonajeJugable) {
+					if(e.getKeyCode() == KeyEvent.VK_I) {
+						controlEstadosP2.setWPulsado(true);
+					}
+					if(e.getKeyCode() == KeyEvent.VK_L) {
+						controlEstadosP2.setDPulsado(true);
+					}
+					if(e.getKeyCode() == KeyEvent.VK_J) {
+						controlEstadosP2.setAPulsado(true);
+					}
+					if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+						controlEstadosP2.setSpacePulsado(true);
 					}
 				}
 			}

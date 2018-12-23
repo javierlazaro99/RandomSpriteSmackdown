@@ -107,7 +107,21 @@ public class ElementoAnimacion {
 			animParado.add(new ElementoAnimacion("pngEnem/Idle__008.png", 900));
 			animParado.add(new ElementoAnimacion("pngEnem/Idle__009.png", 1000));
 			return animParado;
-		}else {
+		}if(p.getTipoPersonaje().equals("caballero")) {
+			animParado.add(new ElementoAnimacion("pngEnem2/Idle (1).png", 100));
+			animParado.add(new ElementoAnimacion("pngEnem2/Idle (2).png", 200));
+			animParado.add(new ElementoAnimacion("pngEnem2/Idle (3).png", 300));
+			animParado.add(new ElementoAnimacion("pngEnem2/Idle (4).png", 400));
+			animParado.add(new ElementoAnimacion("pngEnem2/Idle (5).png", 500));
+			animParado.add(new ElementoAnimacion("pngEnem2/Idle (6).png", 600));
+			animParado.add(new ElementoAnimacion("pngEnem2/Idle (7).png", 700));
+			animParado.add(new ElementoAnimacion("pngEnem2/Idle (8).png", 800));
+			animParado.add(new ElementoAnimacion("pngEnem2/Idle (9).png", 900));
+			animParado.add(new ElementoAnimacion("pngEnem2/Idle (10).png", 1000));
+			
+			return animParado;
+		}
+		else {
 			return null;
 		}
 	}
@@ -138,6 +152,19 @@ public class ElementoAnimacion {
 				animSaltando.add(new ElementoAnimacion("pngEnem/Jump__008.png", 900));
 				animSaltando.add(new ElementoAnimacion("pngEnem/Jump__009.png", 1000));
 					return animSaltando;
+			}if(p.getTipoPersonaje().equals("caballero")) {
+				animSaltando.add(new ElementoAnimacion("pngEnem2/Jump (1).png", 100));
+				animSaltando.add(new ElementoAnimacion("pngEnem2/Jump (2).png", 200));
+				animSaltando.add(new ElementoAnimacion("pngEnem2/Jump (3).png", 300));
+				animSaltando.add(new ElementoAnimacion("pngEnem2/Jump (4).png", 400));
+				animSaltando.add(new ElementoAnimacion("pngEnem2/Jump (5).png", 500));
+				animSaltando.add(new ElementoAnimacion("pngEnem2/Jump (6).png", 600));
+				animSaltando.add(new ElementoAnimacion("pngEnem2/Jump (7).png", 700));
+				animSaltando.add(new ElementoAnimacion("pngEnem2/Jump (8).png", 800));
+				animSaltando.add(new ElementoAnimacion("pngEnem2/Jump (9).png", 900));
+				animSaltando.add(new ElementoAnimacion("pngEnem2/Jump (10).png", 1000));
+				
+				return animParado;
 			}else {
 				return null;
 			}
@@ -187,7 +214,33 @@ public class ElementoAnimacion {
 			animMoverse.add(new ElementoAnimacion("pngEnem/Run__009.png", 1000));
 			
 			return animMoverse;
-		}else {
+		}if(p.getTipoPersonaje().equals("caballero")) {
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (1).png", 50));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (2).png", 100));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (3).png", 150));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (4).png", 200));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (5).png", 250));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (6).png", 300));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (7).png", 350));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (8).png", 400));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (9).png", 450));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (10).png", 500));
+			
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (1).png", 550));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (2).png", 600));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (3).png", 650));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (4).png", 700));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (5).png", 750));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (6).png", 800));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (7).png", 850));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (8).png", 900));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (9).png", 950));
+			animMoverse.add(new ElementoAnimacion("pngEnem2/Walk (10).png", 1000));
+			
+			return animMoverse;
+			
+		}
+		else {
 			return null;
 		}
 	}
@@ -217,6 +270,19 @@ public class ElementoAnimacion {
 			animGolpear.add(new ElementoAnimacion("pngEnem/Attack__008.png", 900));
 			animGolpear.add(new ElementoAnimacion("pngEnem/Attack__009.png", 1000));
 			
+			return animGolpear;
+		}if(p.getTipoPersonaje().equals("caballero")) {
+			animGolpear.add(new ElementoAnimacion("pngEnem2/Attack (1).png", 90));
+			animGolpear.add(new ElementoAnimacion("pngEnem2/Attack (2).png", 180));
+			animGolpear.add(new ElementoAnimacion("pngEnem2/Attack (3).png", 270));
+			animGolpear.add(new ElementoAnimacion("pngEnem2/Attack (4).png", 360));
+			animGolpear.add(new ElementoAnimacion("pngEnem2/Attack (5).png", 450));
+			animGolpear.add(new ElementoAnimacion("pngEnem2/Attack (6).png", 540));
+			animGolpear.add(new ElementoAnimacion("pngEnem2/Attack (7).png", 630));
+			animGolpear.add(new ElementoAnimacion("pngEnem2/Attack (8).png", 720));
+			animGolpear.add(new ElementoAnimacion("pngEnem2/Attack (9).png", 720));
+			animGolpear.add(new ElementoAnimacion("pngEnem2/Attack (10).png", 720));
+
 			return animGolpear;
 		}else {
 			return null;
@@ -249,6 +315,19 @@ public class ElementoAnimacion {
 			animGolpeado.add(new ElementoAnimacion("pngEnem/Slide__008.png", 900));
 			animGolpeado.add(new ElementoAnimacion("pngEnem/Slide__009.png", 1000));
 			
+			return animGolpeado;
+		}if(p.getTipoPersonaje().equals("caballero")) {
+			animGolpeado.add(new ElementoAnimacion("pngEnem2/Run (1).png", 100));
+			animGolpeado.add(new ElementoAnimacion("pngEnem2/Run (2).png", 200));
+			animGolpeado.add(new ElementoAnimacion("pngEnem2/Run (3).png", 300));
+			animGolpeado.add(new ElementoAnimacion("pngEnem2/Run (4).png", 400));
+			animGolpeado.add(new ElementoAnimacion("pngEnem2/Run (5).png", 500));
+			animGolpeado.add(new ElementoAnimacion("pngEnem2/Run (6).png", 600));
+			animGolpeado.add(new ElementoAnimacion("pngEnem2/Run (7).png", 700));
+			animGolpeado.add(new ElementoAnimacion("pngEnem2/Run (8).png", 800));
+			animGolpeado.add(new ElementoAnimacion("pngEnem2/Run (9).png", 900));
+			animGolpeado.add(new ElementoAnimacion("pngEnem2/Run (10).png", 1000));
+
 			return animGolpeado;
 		}else {
 			return null;
