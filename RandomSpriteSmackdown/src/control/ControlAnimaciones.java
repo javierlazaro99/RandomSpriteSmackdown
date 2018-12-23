@@ -113,7 +113,8 @@ public class ControlAnimaciones {
 					}
 				}
 				
-				if(elementoAnimacion.getLabel().equals("png/Melee (4).png") || elementoAnimacion.getLabel().equals("pngEnem/Attack__004.png") ){
+				if(elementoAnimacion.getLabel().equals("png/Melee (4).png") || elementoAnimacion.getLabel().equals("pngEnem/Attack__004.png") 
+						|| elementoAnimacion.getLabel().equals("pngEnem2/Attack (5).png")){
 					
 					if(personaje instanceof PersonajeJugable) {
 						personaje.DarGolpe(enemigo);
