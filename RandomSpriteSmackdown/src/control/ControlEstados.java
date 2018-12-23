@@ -172,14 +172,22 @@ public class ControlEstados implements Runnable{
 			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(false);
 			}
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionP1,cIA);//sprites
+			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionP1,cIA,this);//sprites
 		}else {
 			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionP1,cIA);
+			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionP1,cIA,this);
 		}
 	}
+	public boolean isGolpeado() {
+		return golpeado;
+	}
+
+	public void setGolpeado(boolean golpeado) {
+		this.golpeado = golpeado;
+	}
+
 	private void EstadoGolpeado(long diferenciaTimers) {
 		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<0) {
 			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira

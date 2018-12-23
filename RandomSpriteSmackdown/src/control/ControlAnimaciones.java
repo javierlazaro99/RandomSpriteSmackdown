@@ -80,7 +80,7 @@ public class ControlAnimaciones {
 		
 	}
 	
-	public int AnimacionGolpear(long milis,Personaje personaje,VentanaStage stage,Personaje enemigo,ElementoAnimacion x,ControlIA cIA) {
+	public int AnimacionGolpear(long milis,Personaje personaje,VentanaStage stage,Personaje enemigo,ElementoAnimacion x,ControlIA cIA,ControlEstados ce) {
 		
 		ArrayList<ElementoAnimacion>animGolpear = new ArrayList<>(); 
 		animGolpear = x.getAnimGolpear();
@@ -99,6 +99,7 @@ public class ControlAnimaciones {
 					if(personaje instanceof PersonajeJugable) {
 						personaje.DarGolpe(enemigo);
 						stage.getJpbVida2().setValue((int)enemigo.getVida());
+						ce.setGolpeado(true);
 					}
 					if(personaje instanceof Enemigo) {
 						if(personaje.getPosicion().getX() >= (enemigo.getPosicion().getX()-200) && personaje.getPosicion().getX()<= enemigo.getPosicion().getX() && stage.getiEnemigo().isHorFlip()==false ) {
@@ -158,6 +159,31 @@ public class ControlAnimaciones {
 					contador++;
 				}
 				return 1;
+				}else {
+					if(stage.isActiveIA()==true) {
+						System.out.println("Te pego ia");
+						cIA.setMoverse(false);
+						stage.getiEnemigo().setImagen(elementoAnimacion.getLabel());
+						if(golpeado.getPosicion().getX()-golpeador.getPosicion().getX() >0) {
+							
+												
+							
+							if(contador<=6) {
+								golpeado.setPosicion(new Point((int)(golpeado.getPosicion().getX()+2),((int)golpeado.getPosicion().getY())));
+								stage.getiEnemigo().setLocation(golpeado.getPosicion());
+							}
+							contador++;
+						}
+						if(golpeado.getPosicion().getX()-golpeador.getPosicion().getX() <0) {
+							
+						
+							if(contador<=6) {
+							stage.getiEnemigo().setLocation(golpeado.getPosicion());
+							golpeado.setPosicion(new Point((int)(golpeado.getPosicion().getX()-2),((int)golpeado.getPosicion().getY())));
+							}
+							contador++;
+					}
+						return 1;
 				}
 				
 				
@@ -168,6 +194,7 @@ public class ControlAnimaciones {
 		return 0;
 		
 	}
-	
-	
+	cIA.setMoverse(true);
+	return 0;
+	}	
 }

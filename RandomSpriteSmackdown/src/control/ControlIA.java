@@ -46,6 +46,13 @@ public class ControlIA implements Runnable{
 	public void setStageCerrado(boolean stageCerrado) {
 		this.stageCerrado = stageCerrado;
 	}
+	public boolean isMoverse() {
+		return moverse;
+	}
+
+	public void setMoverse(boolean moverse) {
+		this.moverse = moverse;
+	}
 	public boolean isGolpeado() {
 		return golpeado;
 	}
@@ -146,7 +153,7 @@ public class ControlIA implements Runnable{
 			timerEstado= System.currentTimeMillis();
 			diferenciaTimers= timerEstado-timerJuego;
 			if(diferenciaTimers<= elementoAnimacionP2.getTiempoAnimGolpear()) {
-				ca.AnimacionGolpear(diferenciaTimers, pSecundario, stage, pPrincipal, elementoAnimacionP2,this);
+				ca.AnimacionGolpear(diferenciaTimers, pSecundario, stage, pPrincipal, elementoAnimacionP2,this,ce);
 			}else {
 				diferenciaTimers=0;
 				timerJuego=System.currentTimeMillis();
@@ -185,6 +192,8 @@ public class ControlIA implements Runnable{
 		}
 		
 	}
+
+	
 
 	
 }
