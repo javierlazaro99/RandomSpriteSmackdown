@@ -154,7 +154,7 @@ public class VentanaPrincipal extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				ControlHistoria ch = new ControlHistoria(pPrincipal, nivelesCompletados);
-				VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(codigo, user, pPrincipal, nivelesCompletados, victorias1v1,ch);
+				VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(codigo, user, pPrincipal, nivelesCompletados, victorias1v1,ch, false);
 				ventana.setVisible(true);
 				VentanaPrincipal.this.dispose();
 			}
@@ -166,7 +166,7 @@ public class VentanaPrincipal extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				
 				ControlHistoria ch = new ControlHistoria(pPrincipal, nivelesCompletados);
-				VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(codigo, user, pPrincipal, nivelesCompletados, victorias1v1,ch);
+				VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(codigo, user, pPrincipal, nivelesCompletados, victorias1v1,ch,true);
 				ventana.setVisible(true);
 				VentanaPrincipal.this.dispose();
 				
