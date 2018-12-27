@@ -182,7 +182,7 @@ public class ControlIA implements Runnable{
 			timerEstado= System.currentTimeMillis();
 			diferenciaTimers= timerEstado-timerJuego;
 			if(diferenciaTimers<= elementoAnimacionP2.getTiempoAnimGolpear()) {
-				ca.AnimacionGolpear(diferenciaTimers, pSecundario, stage, pPrincipal, elementoAnimacionP2,this,ce);
+				ca.AnimacionGolpear(diferenciaTimers, pSecundario, stage, pPrincipal, elementoAnimacionP2,this,ce, null);
 			}else {
 				diferenciaTimers=0;
 				timerJuego=System.currentTimeMillis();
@@ -249,7 +249,7 @@ public class ControlIA implements Runnable{
 				stage.getiEnemigo().setLocation(pGolpeado.getPosicion());
 				
 				if(diferenciaTimers<=elementoAnimacionP2.getTiempoAnimGolpeado()) {
-					ca.AnimacionGolpeado(diferenciaTimers, pPrincipal,pSecundario, stage, elementoAnimacionP2,this,ce);
+					ca.AnimacionGolpeado(diferenciaTimers, pPrincipal,pSecundario, stage, elementoAnimacionP2,this,ce, null);
 				}
 				else {
 					diferenciaTimers=0;

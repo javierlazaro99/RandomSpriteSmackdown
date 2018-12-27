@@ -122,7 +122,7 @@ public class VentanaStage extends JFrame {
 		
 		//Thread de juego
 		
-		controlEstados = new ControlEstados(p1, p2, this,ch,controlIA);
+		controlEstados = new ControlEstados(p1, p2, this,ch,controlIA, controlEstadosP2);
 		Thread t = new Thread(controlEstados);
 		controlEstados.setStageCerrado(false);
 		t.start();
@@ -139,9 +139,10 @@ public class VentanaStage extends JFrame {
 		if(p2 instanceof PersonajeJugable && !activaIA) {
 		
 			p2.crearlPersonaje(50, 50);
-			controlEstadosP2 = new ControlEstados((PersonajeJugable) p2, p1, this, ch, null);
+			controlEstadosP2 = new ControlEstados((PersonajeJugable) p2, p1, this, ch, null, controlEstados);
 			Thread t2 = new Thread(controlEstadosP2);
 			t2.start();
+			controlEstados.setCeEnem(controlEstadosP2);
 		}
 		
 		int width = (int) (d.getWidth()*0.2);
@@ -323,7 +324,6 @@ Thread tiempo = new Thread(new Runnable() {
 		
 		try {
 			
-				
 			while(contador>0 ) {
 				
 				while(controlEstados.isStagePausado()) {
@@ -339,6 +339,9 @@ Thread tiempo = new Thread(new Runnable() {
 		
 				}
 				controlEstados.setStageCerrado(true);
+				if(pSecundario instanceof Enemigo && activeIA) {
+					controlIA.setStageCerrado(true);
+				}
 				contador=0;
 				VentanaStage.this.dispose();
 		
@@ -402,7 +405,7 @@ Thread tiempo = new Thread(new Runnable() {
 
 	public static void main(String[] args) {
 		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 
-				new Enemigo(new Point(100, 0), 10, 10, 10, "ninja" , 1) ,1,
+				new Enemigo(new Point(100, 0), 10, 10, 10, "ninja" , 8) ,1,
 				new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 0), true);
 		vs.setVisible(true);
 	}

@@ -30,6 +30,7 @@ public class ControlEstados implements Runnable{
 	private ElementoAnimacion elementoAnimacionPersonaje;
 	private ControlIA cIA;
 	private ControlHistoria ch;
+	private ControlEstados ceEnem;
 	private boolean choque;
 	private boolean Parado;
 	public boolean isChoque() {
@@ -40,7 +41,7 @@ public class ControlEstados implements Runnable{
 		this.choque = choque;
 	}
 
-	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario, VentanaStage stage,ControlHistoria ch,ControlIA cIA) {//Personaje de la izquierda y de la derecha
+	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario, VentanaStage stage,ControlHistoria ch,ControlIA cIA, ControlEstados ceEnem) {//Personaje de la izquierda y de la derecha
 		this.pPrincipal=pPrincipal;
 		this.pSecundario=pSecundario;
 		this.stage = stage;
@@ -59,11 +60,18 @@ public class ControlEstados implements Runnable{
 		}
 		
 		this.cIA=cIA;
+		this.ceEnem = ceEnem;
 		
 	}
 	
-	
-	
+	public ControlEstados getCeEnem() {
+		return ceEnem;
+	}
+
+	public void setCeEnem(ControlEstados ceEnem) {
+		this.ceEnem = ceEnem;
+	}
+
 	public ControlIA getcIA() {
 		return cIA;
 	}
@@ -201,7 +209,7 @@ public class ControlEstados implements Runnable{
 				pPrincipal.getlPersonaje().setHorFlip(false);
 			}
 
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, stage.getElementoAnimacionPersonaje1(),cIA,this);//sprites
+			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionPersonaje,cIA,this, ceEnem);//sprites
 
 			
 
@@ -210,9 +218,7 @@ public class ControlEstados implements Runnable{
 				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
 
-			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, stage.getElementoAnimacionPersonaje1(),cIA,this);
-
-			
+			controlAnimacion.AnimacionGolpear(diferenciaTimers, pPrincipal, stage,pSecundario, elementoAnimacionPersonaje,cIA,this, ceEnem);
 
 		}
 	}
@@ -229,12 +235,12 @@ public class ControlEstados implements Runnable{
 			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(false);
 			}
-			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, stage.getElementoAnimacionPersonaje1(),cIA,this);//sprites
+			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, elementoAnimacionPersonaje,cIA,this, ceEnem);//sprites
 		}else {
 			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
-			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, stage.getElementoAnimacionPersonaje1(),cIA,this);
+			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, elementoAnimacionPersonaje,cIA,this, ceEnem);
 		}
 	}
 	
@@ -652,7 +658,13 @@ public class ControlEstados implements Runnable{
 						}
 					}
 					
-					stage.getiProta().setLocation(pGolpeado.getPosicion());
+					if(pPrincipal.equals(stage.getpPrincipal())) {
+						stage.getiProta().setLocation(pGolpeado.getPosicion());
+					}
+					if(pPrincipal.equals(stage.getpSecundario())) {
+						stage.getiEnemigo().setLocation(pGolpeado.getPosicion());
+					}
+					
 					
 					if(diferenciaTimers <= elementoAnimacionPersonaje.getTiempoAnimGolpeado()) {
 						EstadoGolpeado(diferenciaTimers);
