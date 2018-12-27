@@ -1,6 +1,9 @@
 package control;
 
+import java.awt.Point;
+
 import Ventanas.VentanaStage;
+import personaje.Personaje;
 import personaje.enemigo.Enemigo;
 import personaje.personajeJugable.PersonajeJugable;
 
@@ -25,6 +28,7 @@ public class ControlIA implements Runnable{
 	private ElementoAnimacion elementoAnimacionP1;
 	private ElementoAnimacion elementoAnimacionP2;
 	private boolean golpeado;
+	private boolean espera;
 	public ControlIA(PersonajeJugable pPrincipal,Enemigo pSecundario,VentanaStage stage,ControlHistoria ch,ControlEstados ce) {
 		this.pPrincipal=pPrincipal;
 		this.pSecundario=pSecundario;
@@ -61,6 +65,14 @@ public class ControlIA implements Runnable{
 		this.golpeado = golpeado;
 	}	
 	
+	public boolean isEspera() {
+		return espera;
+	}
+
+	public void setEspera(boolean espera) {
+		this.espera = espera;
+	}
+
 	public void EnemMoverse(long diferenciaTimers) {
 		ca.AnimacionMoverse(diferenciaTimers, pSecundario, stage, elementoAnimacionP2);
 		
@@ -88,14 +100,21 @@ public class ControlIA implements Runnable{
 			
 			
 		if( pPrincipal.getVida()<=0) {//Comprobacion de vida enemigo
-			
-			
 			stageCerrado=true;
 			stage.setContador(0);
 			stage.dispose();
 		}
 		
-		while(moverse) {
+		while(espera) {
+			try {
+				Thread.sleep(100);
+				espera = false;
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		while(moverse && !golpeado) {
 			timerEstado=System.currentTimeMillis();
 			
 			ReajusteLabel();
@@ -155,11 +174,11 @@ public class ControlIA implements Runnable{
 			}
 			
 		}
-		if(golpeando !=true || golpeado !=true ) {
+		if(golpeando !=true && golpeado !=true ) {
 			moverse=true;
 		}
 		timerJuego=System.currentTimeMillis();
-		while(golpeando) {
+		while(golpeando && !golpeado) {
 			timerEstado= System.currentTimeMillis();
 			diferenciaTimers= timerEstado-timerJuego;
 			if(diferenciaTimers<= elementoAnimacionP2.getTiempoAnimGolpear()) {
@@ -181,27 +200,72 @@ public class ControlIA implements Runnable{
 		}
 		timerJuego=System.currentTimeMillis();
 		while(golpeado) {
-			timerEstado=System.currentTimeMillis();
-			diferenciaTimers=timerEstado-timerJuego;
-			if(diferenciaTimers<=elementoAnimacionP2.getTiempoAnimGolpeado()) {
-				
-				ca.AnimacionGolpeado(diferenciaTimers, pPrincipal,pSecundario, stage, elementoAnimacionP1,this,ce);
-				ce.setParado(true);
+			
+//			moverse = false;
+//			golpeando = false;
+			boolean movimientoGolpeado = true;
+			
+			Personaje pGolpeado = pSecundario;
+			Personaje pGolpeador = pPrincipal;
+			
+			int posIni= (int) pSecundario.getPosicion().getX();
+			int posFin = 0;
+			int posActual;
+			
+			//Elige destino en función de si está a derecha o a izquierda
+			if (pGolpeado.getPosicion().getX() - pGolpeador.getPosicion().getX() > 0) {
+				posFin = (int) pSecundario.getPosicion().getX() + 80; //Derecha
 			}
-			else {
-				diferenciaTimers=0;
-				timerJuego=System.currentTimeMillis();
-				timerEstado=0;
-				moverse=false;
-				golpeando=false;
-				golpeado=false;
-				
-				
+			if (pGolpeado.getPosicion().getX() - pGolpeador.getPosicion().getX() < 0) {
+				posFin = (int) pSecundario.getPosicion().getX() - 80; //Izquierda
 			}
+			
+			while(movimientoGolpeado) {
+				
+				timerEstado=System.currentTimeMillis();
+				diferenciaTimers=timerEstado-timerJuego;
+				
+				stage.repaint();
+				stage.revalidate();
+				
+				posActual = (int) pGolpeado.getPosicion().getX();
+				if (posFin > posIni) { //Objetivo derecha
+					pGolpeado.setPosicion(new Point((int) (pGolpeado.getPosicion().getX() + 4),
+							((int) pGolpeado.getPosicion().getY())));
+					if(posFin <= posActual) {
+						movimientoGolpeado = false;
+						golpeado = false;
+					}
+				}
+				if (posFin < posIni) { //Objetivo Izquierda
+					pGolpeado.setPosicion(new Point((int) (pGolpeado.getPosicion().getX() - 4), 
+							((int) pGolpeado.getPosicion().getY())));
+					if(posFin >= posActual) {
+						movimientoGolpeado = false;
+						golpeado = false;
+					}
+				}
+				
+				stage.getiEnemigo().setLocation(pGolpeado.getPosicion());
+				
+				if(diferenciaTimers<=elementoAnimacionP2.getTiempoAnimGolpeado()) {
+					ca.AnimacionGolpeado(diferenciaTimers, pPrincipal,pSecundario, stage, elementoAnimacionP2,this,ce);
+				}
+				else {
+					diferenciaTimers=0;
+					timerJuego=System.currentTimeMillis();
+					timerEstado=0;
+					moverse=false;
+					golpeando=false;
+//					golpeado=false;
+					
+				}
+			}
+			
 		}
-		}
-		
 	}
+		
+}
 
 	
 

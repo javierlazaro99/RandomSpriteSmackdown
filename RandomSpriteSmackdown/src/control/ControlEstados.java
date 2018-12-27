@@ -229,12 +229,12 @@ public class ControlEstados implements Runnable{
 			if(pPrincipal.getlPersonaje().isHorFlip()==true) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(false);
 			}
-			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, stage.getElementoAnimacionPersonaje2(),cIA,this);//sprites
+			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, stage.getElementoAnimacionPersonaje1(),cIA,this);//sprites
 		}else {
 			if(pPrincipal.getlPersonaje().isHorFlip()==false) {//comprobacion de adonde mira
 				pPrincipal.getlPersonaje().setHorFlip(true);
 			}
-			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, stage.getElementoAnimacionPersonaje2(),cIA,this);
+			controlAnimacion.AnimacionGolpeado(diferenciaTimers, pSecundario,pPrincipal, stage, stage.getElementoAnimacionPersonaje1(),cIA,this);
 		}
 	}
 	
@@ -273,7 +273,7 @@ public class ControlEstados implements Runnable{
 			}
 			
 			//Estado moverse parado
-			while(!APulsado && !DPulsado && !WPulsado && !SpacePulsado && !StageCerrado && !StagePausado) { //Estado parado
+			while(!APulsado && !DPulsado && !WPulsado && !SpacePulsado && !StageCerrado && !StagePausado && !golpeado) { //Estado parado
 				
 				timerEstado = System.currentTimeMillis();
 				diferenciaTimers = timerEstado - timerJuego;
@@ -605,33 +605,67 @@ public class ControlEstados implements Runnable{
 				}
 			}
 			
-			//Estado golpeado
-			int posIni= (int) pPrincipal.getPosicion().getX();
-			int posFinDer= (int) pPrincipal.getPosicion().getX()+ 20;
-			int posFinIz= (int) pPrincipal.getPosicion().getX() -20; 
+			//Estado golpeado		
+			
 			while(golpeado) {
 				
+				boolean movimientoGolpeado = true;
 				
-				timerEstado=System.currentTimeMillis();
-				diferenciaTimers= timerEstado - timerJuego;
+				Personaje pGolpeado = pPrincipal;
+				Personaje pGolpeador = pSecundario;
 				
-				stage.repaint();
-				stage.revalidate();
-				if(((int) pPrincipal.getPosicion().getX() >= posFinIz && (int) pPrincipal.getPosicion().getX() <= posIni) || ((int) pPrincipal.getPosicion().getX()) >= posIni && (int) pPrincipal.getPosicion().getX() <= posFinDer) {
-				pPrincipal.Rebotar(pSecundario,stage);
+				int posIni= (int) pPrincipal.getPosicion().getX();
+				int posFin = 0;
+				int posActual;
+				
+				//Elige destino en función de si está a derecha o a izquierda
+				if (pGolpeado.getPosicion().getX() - pGolpeador.getPosicion().getX() > 0) {
+					posFin = (int) pPrincipal.getPosicion().getX() + 20; //Derecha
 				}
-				if(diferenciaTimers <= elementoAnimacionPersonaje.getTiempoAnimGolpeado()) {
-					EstadoGolpeado(diferenciaTimers);
+				if (pGolpeado.getPosicion().getX() - pGolpeador.getPosicion().getX() < 0) {
+					posFin = (int) pPrincipal.getPosicion().getX() - 20; //Izquierda
 				}
-				else {
-					diferenciaTimers =0;
-					timerJuego = System.currentTimeMillis();
-					golpeado=false;
-				}
-				try {
-					Thread.sleep(16); //Mas o menos 60 veces por segundo hará el bucle
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				
+				while(movimientoGolpeado) {
+					
+					timerEstado=System.currentTimeMillis();
+					diferenciaTimers= timerEstado - timerJuego;
+					
+					stage.repaint();
+					stage.revalidate();
+					
+					posActual = (int) pGolpeado.getPosicion().getX();
+					if (posFin > posIni) { //Objetivo derecha
+						pGolpeado.setPosicion(new Point((int) (pGolpeado.getPosicion().getX() + 4),
+								((int) pGolpeado.getPosicion().getY())));
+						if(posFin <= posActual) {
+							movimientoGolpeado = false;
+							golpeado = false;
+						}
+					}
+					if (posFin < posIni) { //Objetivo Izquierda
+						pGolpeado.setPosicion(new Point((int) (pGolpeado.getPosicion().getX() - 4), 
+								((int) pGolpeado.getPosicion().getY())));
+						if(posFin >= posActual) {
+							movimientoGolpeado = false;
+							golpeado = false;
+						}
+					}
+					
+					stage.getiProta().setLocation(pGolpeado.getPosicion());
+					
+					if(diferenciaTimers <= elementoAnimacionPersonaje.getTiempoAnimGolpeado()) {
+						EstadoGolpeado(diferenciaTimers);
+					}
+					else {
+						diferenciaTimers =0;
+						timerJuego = System.currentTimeMillis();
+					}
+					try {
+						Thread.sleep(16); //Mas o menos 60 veces por segundo hará el bucle
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 			

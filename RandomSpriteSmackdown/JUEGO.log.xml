@@ -6498,3 +6498,51 @@
   <message>Connection cerrado</message>
 </record>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-27T10:20:27</date>
+  <millis>1545902427418</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-27T10:20:27</date>
+  <millis>1545902427438</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-27T10:20:27</date>
+  <millis>1545902427597</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-27T10:20:27</date>
+  <millis>1545902427702</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>

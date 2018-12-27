@@ -133,7 +133,7 @@ public class VentanaStage extends JFrame {
 			controlIA= new ControlIA(p1, (Enemigo)p2, this, ch,controlEstados);
 			Thread enemt = new Thread(controlIA);
 			enemt.start();
-			controlEstados.setcIA(controlIA);
+			controlEstados.setcIA(controlIA); 
 		}
 		
 		if(p2 instanceof PersonajeJugable && !activaIA) {

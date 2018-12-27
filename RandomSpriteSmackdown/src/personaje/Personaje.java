@@ -105,10 +105,10 @@ public abstract class Personaje {
 		double pos = this.getPosicion().getX();
 		
 		if(golpeador.getPosicion().getX() <= this.getPosicion().getX()) { //El golpeado está a la derecha
-			posicion.setLocation(pos + 2, getPosicion().getY());
+			posicion.setLocation(pos + 20, getPosicion().getY());
 			stage.getiProta().setLocation(posicion);
 		}else if (golpeador.getPosicion().getX() >= this.getPosicion().getX()) {
-			posicion.setLocation(pos - 2, getPosicion().getY());
+			posicion.setLocation(pos - 20, getPosicion().getY());
 			stage.getiProta().setLocation(posicion);
 		}
 	}
