@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
 import control.BaseDeDatos;
+import control.Sonidos;
 
 public class VentanaValidacion extends JFrame {
 	int codigo;
@@ -78,7 +79,10 @@ public class VentanaValidacion extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				//Sonidos
+				Sonidos.punch2Sonido.cargarSonido("sounds/punch_2.wav");
+				
+				//Ventanas
 				VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(0);
 				ventana.setVisible(true);
 				VentanaValidacion.this.dispose();
@@ -89,7 +93,10 @@ public class VentanaValidacion extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				//Sonidos
+				Sonidos.punch1Sonido.cargarSonido("sounds/punch_1.wav");
+				
+				//Ventanas
 				VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(1);
 				ventana.setVisible(true);
 				VentanaValidacion.this.dispose();
@@ -101,7 +108,6 @@ public class VentanaValidacion extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				System.exit(0);
 			}
 		});

@@ -1,9 +1,14 @@
 package Ventanas;
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
+import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -16,6 +21,7 @@ import control.ControlEstados;
 import control.ControlHistoria;
 import control.ControlIA;
 import control.ElementoAnimacion;
+import control.Sonidos;
 import personaje.Personaje;
 import personaje.enemigo.Enemigo;
 import personaje.personajeJugable.PersonajeJugable;
@@ -34,6 +40,8 @@ public class VentanaStage extends JFrame {
 	private JProgressBar jpbVida1 ;
 	private JLabel lTiempo=null ;
 	private int contador=60;
+	private Clip punch1;
+	private Clip punch2;
 
 	private boolean activeIA;
 	private ElementoAnimacion elementoAnimacionPersonaje1;
@@ -148,8 +156,10 @@ public class VentanaStage extends JFrame {
 		int width = (int) (d.getWidth()*0.2);
 		int height = (int) (d.getHeight()*0.25);	
 		
+		//Carga de sonidos
+		CrearSonidoStage(nivel);
 		
-		System.out.println(p2.getPosicion());
+		//Creación de elementos ventana
 		JPanelBackground jpBackground = new JPanelBackground(SpriteStage(nivel));
 		JPanel pNorte = new JPanel(new GridLayout(2, 1));
 			JPanel pNs = new JPanel();
@@ -222,12 +232,7 @@ public class VentanaStage extends JFrame {
 		
 		tiempo.start();
 		
-		addKeyListener(new KeyListener() {
-			
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub	
-			}
+		addKeyListener(new KeyAdapter() {
 			
 			@Override
 			public void keyReleased(KeyEvent e) {
@@ -273,6 +278,8 @@ public class VentanaStage extends JFrame {
 					controlEstados.setAPulsado(true);
 				}
 				if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+					punch1 = Sonidos.punch1Sonido.cargarSonido("sounds/punch_1.wav");
+					punch1.start();
 					controlEstados.setSpacePulsado(true);
 				}
 				if(e.getKeyCode()==KeyEvent.VK_ESCAPE) {
@@ -288,6 +295,7 @@ public class VentanaStage extends JFrame {
 							controlEstadosP2.setStageCerrado(true);
 						}
 						contador=0;
+								
 					}else {
 						controlEstados.setAPulsado(false);
 						controlEstados.setDPulsado(false);
@@ -306,13 +314,23 @@ public class VentanaStage extends JFrame {
 						controlEstadosP2.setAPulsado(true);
 					}
 					if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+						punch2 = Sonidos.punch2Sonido.cargarSonido("sounds/punch_2.wav");
+						punch2.start();
 						controlEstadosP2.setSpacePulsado(true);
 					}
 				}
 			}
+		});	
+		
+		addWindowListener(new WindowAdapter() {
+				
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				CerrarSonidoStage(nivel);
+				Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
+				
+			}
 		});
-		
-		
 	}				
 			
 
@@ -346,7 +364,6 @@ Thread tiempo = new Thread(new Runnable() {
 				VentanaStage.this.dispose();
 		
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -378,6 +395,79 @@ Thread tiempo = new Thread(new Runnable() {
 			return "src/Stage1.gif";
 		}
 	}
+	
+	private void CrearSonidoStage(int nivel) {
+		
+		Sonidos.mainTheme.stop();
+		
+		switch(nivel) {
+		case 1:
+			Sonidos.nivel1Theme.loop(Clip.LOOP_CONTINUOUSLY);
+			break;
+		case 2:
+			Sonidos.nivel2Theme.loop(Clip.LOOP_CONTINUOUSLY);
+			break;
+		case 3:
+			Sonidos.nivel3Theme.loop(Clip.LOOP_CONTINUOUSLY);
+			break;
+		case 4:
+			Sonidos.nivel4Theme.loop(Clip.LOOP_CONTINUOUSLY);
+			break;
+		case 5:
+			Sonidos.nivel1Theme.loop(Clip.LOOP_CONTINUOUSLY);
+			break;
+		case 6:
+			Sonidos.nivel2Theme.loop(Clip.LOOP_CONTINUOUSLY);
+			break;
+		case 7:
+			Sonidos.nivel3Theme.loop(Clip.LOOP_CONTINUOUSLY);
+			break;
+		case 8: 
+			Sonidos.nivel4Theme.loop(Clip.LOOP_CONTINUOUSLY);
+			break;
+		default:
+			Sonidos.nivel1Theme.loop(Clip.LOOP_CONTINUOUSLY);
+			break;
+		}
+	}
+	
+	
+	private void CerrarSonidoStage(int nivel) {
+		
+		Sonidos.mainTheme.stop();
+		
+		switch(nivel) {
+		case 1:
+			Sonidos.nivel1Theme.stop();
+			break;
+		case 2:
+			Sonidos.nivel2Theme.stop();
+			break;
+		case 3:
+			Sonidos.nivel3Theme.stop();
+			break;
+		case 4:
+			Sonidos.nivel4Theme.stop();
+			break;
+		case 5:
+			Sonidos.nivel1Theme.stop();
+			break;
+		case 6:
+			Sonidos.nivel2Theme.stop();
+			break;
+		case 7:
+			Sonidos.nivel3Theme.stop();
+			break;
+		case 8: 
+			Sonidos.nivel4Theme.stop();
+			break;
+		default:
+			Sonidos.nivel1Theme.stop();
+			break;
+		}
+	}
+	
+	
 	
 	
 

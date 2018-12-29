@@ -19,7 +19,6 @@ public class Nivel {
 	private Enemigo enem;
 	private ControlHistoria ch;
 	public Nivel(PersonajeJugable pj, Enemigo enem, int numNiv,ControlHistoria ch) {
-		stage = new VentanaStage(pj, enem,numNiv,ch, false);
 		this.pj=pj;
 		this.enem=enem;
 		this.ch=ch;

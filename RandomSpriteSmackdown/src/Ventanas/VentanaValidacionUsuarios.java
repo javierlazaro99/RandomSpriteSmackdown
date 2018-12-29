@@ -25,6 +25,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.sound.sampled.Clip;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -36,6 +37,7 @@ import javax.swing.JTextField;
 
 import Usuarios.UsuariosValidar;
 import control.BaseDeDatos;
+import control.Sonidos;
 import personaje.personajeJugable.PersonajeJugable;
 
 
@@ -123,7 +125,10 @@ public class VentanaValidacionUsuarios extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+			
+				//Sonidos
+				Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
+				
 				UsuariosValidar estado ;
 				if(codigo == 0) {//Login
 					 estado =usuario.leer(tfNombre, tfPassword);

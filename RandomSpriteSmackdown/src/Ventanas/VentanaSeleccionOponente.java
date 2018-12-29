@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.sound.sampled.Clip;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,6 +21,7 @@ import Personalizados.JLabelGraficoAjustado;
 import Usuarios.UsuariosValidar;
 import control.ControlHistoria;
 import control.Nivel;
+import control.Sonidos;
 import personaje.Personaje;
 import personaje.enemigo.Enemigo;
 import personaje.personajeJugable.PersonajeJugable;
@@ -245,7 +247,7 @@ public class VentanaSeleccionOponente extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+		
 				if(UnoVUno) {
 					VentanaStage vs = new VentanaStage(personajeSeleccionadoIzquierda, personajeSeleccionadoDerecha, 0, ch, false);
 					vs.setVisible(true);
@@ -259,12 +261,8 @@ public class VentanaSeleccionOponente extends JFrame {
 					vs.setVisible(true);
 					dispose();
 				}
-				
-//				Nivel nivel = new Nivel(personajeSeleccionadoIzquierda, personajeSeleccionadoDerecha, 666,ch);
-
 			}
 		});
-
 	}
 
 	/**
