@@ -65,7 +65,7 @@ public class VentanaPrincipal extends JFrame{
 		//Contenedores
 		JPanelBackground sticman = new JPanelBackground("src/Stickman2.gif");
 		JPanelBackground fondo = new JPanelBackground("src/Fondo.gif");//Fondo
-		JLabelGraficoAjustado titulo = new JLabelGraficoAjustado("", 650, 137);
+		JLabelGraficoAjustado titulo = new JLabelGraficoAjustado("", 864, 128);
 		JPanel paneliz= new  JPanel();
 		JPanel panelde = new JPanel();
 		JPanel panelinf = new JPanel(); //Añadido de Javi

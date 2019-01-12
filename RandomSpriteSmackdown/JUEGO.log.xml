@@ -6546,3 +6546,2449 @@
   <message>Guardadas nuevas propiedades</message>
 </record>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-28T09:58:33</date>
+  <millis>1545987513116</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-28T09:58:38</date>
+  <millis>1545987518927</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-28T09:58:38</date>
+  <millis>1545987518931</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='javi'</message>
+</record>
+<record>
+  <date>2018-12-28T09:58:39</date>
+  <millis>1545987519364</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha loggueado</message>
+</record>
+<record>
+  <date>2018-12-28T09:58:39</date>
+  <millis>1545987519469</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-28T09:59:24</date>
+  <millis>1545987564776</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-28T09:59:24</date>
+  <millis>1545987564778</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-28T09:59:24</date>
+  <millis>1545987564781</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-28T09:59:58</date>
+  <millis>1545987598452</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-28T09:59:58</date>
+  <millis>1545987598479</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-28T09:59:58</date>
+  <millis>1545987598664</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-28T10:00:40</date>
+  <millis>1545987640983</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-28T10:00:41</date>
+  <millis>1545987641078</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(5,0, 0,'javi') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-28T10:00:41</date>
+  <millis>1545987641132</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('pepe',10.0,10.0,10.0,0,5,'robot') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-28T10:00:41</date>
+  <millis>1545987641170</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal pepe,10.0,10.0,10.0 creado</message>
+</record>
+<record>
+  <date>2018-12-28T10:03:29</date>
+  <millis>1545987809819</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-28T10:03:29</date>
+  <millis>1545987809897</millis>
+  <sequence>14</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(6,6, 0,'javi') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-28T10:03:29</date>
+  <millis>1545987809918</millis>
+  <sequence>15</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('pepe',10.0,7.0,10.0,0,6,'robot') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-28T10:03:29</date>
+  <millis>1545987809918</millis>
+  <sequence>16</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-28T10:03:29</date>
+  <millis>1545987809919</millis>
+  <sequence>17</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-28T10:03:29</date>
+  <millis>1545987809970</millis>
+  <sequence>18</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-28T11:00:05</date>
+  <millis>1545991205063</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:10</date>
+  <millis>1545991210300</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:10</date>
+  <millis>1545991210306</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='javi'</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:10</date>
+  <millis>1545991210482</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha loggueado</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:10</date>
+  <millis>1545991210534</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:14</date>
+  <millis>1545991214453</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:14</date>
+  <millis>1545991214455</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:14</date>
+  <millis>1545991214457</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-28T11:00:37</date>
+  <millis>1545991237716</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:37</date>
+  <millis>1545991237748</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:38</date>
+  <millis>1545991238009</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:bb Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:38</date>
+  <millis>1545991238192</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:41</date>
+  <millis>1545991241839</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:41</date>
+  <millis>1545991241895</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(7,0, 0,'bb') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:41</date>
+  <millis>1545991241981</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('',10.0,10.0,10.0,0,7,'robot') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-28T11:00:42</date>
+  <millis>1545991242016</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal ,10.0,10.0,10.0 creado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T10:31:50</date>
+  <millis>1546075910320</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-29T10:31:50</date>
+  <millis>1546075910355</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-29T10:31:50</date>
+  <millis>1546075910719</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-29T10:31:50</date>
+  <millis>1546075910871</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-29T10:31:53</date>
+  <millis>1546075913124</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T10:31:53</date>
+  <millis>1546075913147</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T10:31:58</date>
+  <millis>1546075918473</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-29T10:32:02</date>
+  <millis>1546075922714</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-29T10:32:02</date>
+  <millis>1546075922717</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='javi'</message>
+</record>
+<record>
+  <date>2018-12-29T10:32:03</date>
+  <millis>1546075923047</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha loggueado</message>
+</record>
+<record>
+  <date>2018-12-29T10:32:03</date>
+  <millis>1546075923162</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-29T10:32:05</date>
+  <millis>1546075925690</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T10:32:05</date>
+  <millis>1546075925692</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T10:32:05</date>
+  <millis>1546075925697</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T10:36:34</date>
+  <millis>1546076194779</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-29T10:36:38</date>
+  <millis>1546076198691</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-29T10:36:38</date>
+  <millis>1546076198695</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='javi'</message>
+</record>
+<record>
+  <date>2018-12-29T10:36:38</date>
+  <millis>1546076198895</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha loggueado</message>
+</record>
+<record>
+  <date>2018-12-29T10:36:38</date>
+  <millis>1546076198960</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T10:43:55</date>
+  <millis>1546076635369</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-29T10:43:58</date>
+  <millis>1546076638906</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-29T10:43:58</date>
+  <millis>1546076638911</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='javi'</message>
+</record>
+<record>
+  <date>2018-12-29T10:43:59</date>
+  <millis>1546076639101</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha loggueado</message>
+</record>
+<record>
+  <date>2018-12-29T10:43:59</date>
+  <millis>1546076639140</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T11:47:05</date>
+  <millis>1546080425274</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-29T11:47:05</date>
+  <millis>1546080425290</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-29T11:47:05</date>
+  <millis>1546080425369</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:cc Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-29T11:47:05</date>
+  <millis>1546080425450</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-29T11:47:11</date>
+  <millis>1546080431798</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-29T11:47:11</date>
+  <millis>1546080431830</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(8,0, 0,'cc') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-29T11:47:11</date>
+  <millis>1546080431842</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('hola',10.0,10.0,10.0,0,8,'robot') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-29T11:47:11</date>
+  <millis>1546080431868</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal hola,10.0,10.0,10.0 creado</message>
+</record>
+<record>
+  <date>2018-12-29T11:47:26</date>
+  <millis>1546080446750</millis>
+  <sequence>14</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T11:47:26</date>
+  <millis>1546080446750</millis>
+  <sequence>15</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T11:47:26</date>
+  <millis>1546080446751</millis>
+  <sequence>16</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T11:53:29</date>
+  <millis>1546080809286</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-29T11:53:29</date>
+  <millis>1546080809326</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-29T11:53:29</date>
+  <millis>1546080809546</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:dd Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-29T11:53:29</date>
+  <millis>1546080809639</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-29T11:53:37</date>
+  <millis>1546080817979</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-29T11:53:38</date>
+  <millis>1546080818051</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(9,0, 0,'dd') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-29T11:53:38</date>
+  <millis>1546080818127</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('jeje',10.0,10.0,10.0,0,9,'robot') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-29T11:53:38</date>
+  <millis>1546080818221</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal jeje,10.0,10.0,10.0 creado</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T11:57:21</date>
+  <millis>1546081041856</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-29T11:57:21</date>
+  <millis>1546081041894</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-29T11:57:22</date>
+  <millis>1546081042087</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:hh Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-29T11:57:22</date>
+  <millis>1546081042189</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-29T11:57:29</date>
+  <millis>1546081049555</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-29T11:57:29</date>
+  <millis>1546081049575</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(10,0, 0,'hh') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-29T11:57:29</date>
+  <millis>1546081049590</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('hihi',10.0,10.0,10.0,0,10,'robot') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-29T11:57:29</date>
+  <millis>1546081049613</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal hihi,10.0,10.0,10.0 creado</message>
+</record>
+<record>
+  <date>2018-12-29T11:58:27</date>
+  <millis>1546081107942</millis>
+  <sequence>14</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T11:58:27</date>
+  <millis>1546081107943</millis>
+  <sequence>15</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T11:58:27</date>
+  <millis>1546081107956</millis>
+  <sequence>16</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T11:58:50</date>
+  <millis>1546081130267</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-29T11:58:53</date>
+  <millis>1546081133593</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-29T11:58:53</date>
+  <millis>1546081133596</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='hh'</message>
+</record>
+<record>
+  <date>2018-12-29T11:58:53</date>
+  <millis>1546081133602</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>SEVERE</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Error de ejecución en: SELECT * FROM Personaje WHERE cod_partida='10'</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T12:00:09</date>
+  <millis>1546081209880</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:09</date>
+  <millis>1546081209937</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:10</date>
+  <millis>1546081210116</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:a Se ha registrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:10</date>
+  <millis>1546081210206</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:14</date>
+  <millis>1546081214742</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:14</date>
+  <millis>1546081214758</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(1,0, 0,'a') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:14</date>
+  <millis>1546081214773</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('a',10.0,10.0,10.0,0,1,'robot') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:14</date>
+  <millis>1546081214805</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal a,10.0,10.0,10.0 creado</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:18</date>
+  <millis>1546081218376</millis>
+  <sequence>14</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:18</date>
+  <millis>1546081218380</millis>
+  <sequence>15</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:18</date>
+  <millis>1546081218402</millis>
+  <sequence>16</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T12:00:24</date>
+  <millis>1546081224792</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:27</date>
+  <millis>1546081227828</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:27</date>
+  <millis>1546081227832</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='a'</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:28</date>
+  <millis>1546081228057</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:a Se ha loggueado</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:28</date>
+  <millis>1546081228117</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:32</date>
+  <millis>1546081232902</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:32</date>
+  <millis>1546081232903</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:00:32</date>
+  <millis>1546081232905</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T12:01:28</date>
+  <millis>1546081288868</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-29T12:01:31</date>
+  <millis>1546081291358</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-29T12:01:31</date>
+  <millis>1546081291360</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='a'</message>
+</record>
+<record>
+  <date>2018-12-29T12:01:31</date>
+  <millis>1546081291488</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:a Se ha loggueado</message>
+</record>
+<record>
+  <date>2018-12-29T12:01:31</date>
+  <millis>1546081291553</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-29T12:01:50</date>
+  <millis>1546081310908</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:01:50</date>
+  <millis>1546081310910</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:01:50</date>
+  <millis>1546081310913</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T12:04:31</date>
+  <millis>1546081471792</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-29T12:04:36</date>
+  <millis>1546081476360</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-29T12:04:36</date>
+  <millis>1546081476365</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='a'</message>
+</record>
+<record>
+  <date>2018-12-29T12:04:36</date>
+  <millis>1546081476526</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:a Se ha loggueado</message>
+</record>
+<record>
+  <date>2018-12-29T12:04:36</date>
+  <millis>1546081476589</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-29T12:04:50</date>
+  <millis>1546081490184</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:04:50</date>
+  <millis>1546081490186</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:04:50</date>
+  <millis>1546081490188</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T12:06:05</date>
+  <millis>1546081565321</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-29T12:06:08</date>
+  <millis>1546081568726</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-29T12:06:08</date>
+  <millis>1546081568729</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='a'</message>
+</record>
+<record>
+  <date>2018-12-29T12:06:08</date>
+  <millis>1546081568995</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:a Se ha loggueado</message>
+</record>
+<record>
+  <date>2018-12-29T12:06:09</date>
+  <millis>1546081569053</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-29T12:07:49</date>
+  <millis>1546081669850</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:07:49</date>
+  <millis>1546081669852</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:07:49</date>
+  <millis>1546081669855</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T12:09:31</date>
+  <millis>1546081771769</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-29T12:09:36</date>
+  <millis>1546081776368</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-29T12:09:36</date>
+  <millis>1546081776372</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='a'</message>
+</record>
+<record>
+  <date>2018-12-29T12:09:36</date>
+  <millis>1546081776589</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:a Se ha loggueado</message>
+</record>
+<record>
+  <date>2018-12-29T12:09:36</date>
+  <millis>1546081776647</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-29T12:09:55</date>
+  <millis>1546081795339</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:09:55</date>
+  <millis>1546081795341</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:09:55</date>
+  <millis>1546081795344</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-12-29T12:10:58</date>
+  <millis>1546081858802</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2018-12-29T12:11:01</date>
+  <millis>1546081861287</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2018-12-29T12:11:01</date>
+  <millis>1546081861291</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='a'</message>
+</record>
+<record>
+  <date>2018-12-29T12:11:01</date>
+  <millis>1546081861575</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:a Se ha loggueado</message>
+</record>
+<record>
+  <date>2018-12-29T12:11:01</date>
+  <millis>1546081861637</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2018-12-29T12:11:08</date>
+  <millis>1546081868877</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:11:08</date>
+  <millis>1546081868880</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2018-12-29T12:11:08</date>
+  <millis>1546081868883</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-01-09T20:40:53</date>
+  <millis>1547062853346</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2019-01-09T20:40:53</date>
+  <millis>1547062853385</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2019-01-09T20:40:53</date>
+  <millis>1547062853520</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:unai Se ha registrado</message>
+</record>
+<record>
+  <date>2019-01-09T20:40:53</date>
+  <millis>1547062853621</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2019-01-09T20:41:32</date>
+  <millis>1547062892968</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-09T20:41:32</date>
+  <millis>1547062892992</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(2,0, 0,'unai') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-09T20:41:33</date>
+  <millis>1547062893007</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('javi',10.0,10.0,10.0,0,2,'robot') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-09T20:41:33</date>
+  <millis>1547062893040</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal javi,10.0,10.0,10.0 creado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-01-12T12:07:37</date>
+  <millis>1547291257896</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2019-01-12T12:07:37</date>
+  <millis>1547291257937</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2019-01-12T12:07:38</date>
+  <millis>1547291258160</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha registrado</message>
+</record>
+<record>
+  <date>2019-01-12T12:07:38</date>
+  <millis>1547291258268</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2019-01-12T12:08:06</date>
+  <millis>1547291286635</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:08:06</date>
+  <millis>1547291286668</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(3,0, 0,'javi') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:08:51</date>
+  <millis>1547291331589</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:08:51</date>
+  <millis>1547291331642</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(4,0, 0,'javi') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:08:51</date>
+  <millis>1547291331679</millis>
+  <sequence>14</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('javi',15.0,10.0,5.0,0,4,'caballero') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:08:51</date>
+  <millis>1547291331756</millis>
+  <sequence>15</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal javi,15.0,10.0,5.0 creado</message>
+</record>
+<record>
+  <date>2019-01-12T12:08:58</date>
+  <millis>1547291338492</millis>
+  <sequence>16</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:08:58</date>
+  <millis>1547291338531</millis>
+  <sequence>17</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(5,0, 0,'javi') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:08:58</date>
+  <millis>1547291338567</millis>
+  <sequence>18</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('javi',15.0,10.0,5.0,0,5,'caballero') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:08:58</date>
+  <millis>1547291338570</millis>
+  <sequence>19</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2019-01-12T12:08:58</date>
+  <millis>1547291338572</millis>
+  <sequence>20</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2019-01-12T12:08:58</date>
+  <millis>1547291338597</millis>
+  <sequence>21</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-01-12T12:09:15</date>
+  <millis>1547291355410</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2019-01-12T12:09:19</date>
+  <millis>1547291359271</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2019-01-12T12:09:19</date>
+  <millis>1547291359275</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='javi'</message>
+</record>
+<record>
+  <date>2019-01-12T12:09:19</date>
+  <millis>1547291359556</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi Se ha loggueado</message>
+</record>
+<record>
+  <date>2019-01-12T12:09:19</date>
+  <millis>1547291359615</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-01-12T12:10:29</date>
+  <millis>1547291429877</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario no existia</message>
+</record>
+<record>
+  <date>2019-01-12T12:10:29</date>
+  <millis>1547291429913</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario guardado correctamente en la BD</message>
+</record>
+<record>
+  <date>2019-01-12T12:10:30</date>
+  <millis>1547291430136</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi2 Se ha registrado</message>
+</record>
+<record>
+  <date>2019-01-12T12:10:30</date>
+  <millis>1547291430233</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2019-01-12T12:10:37</date>
+  <millis>1547291437361</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:10:37</date>
+  <millis>1547291437402</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(6,0, 0,'javi2') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:10:37</date>
+  <millis>1547291437433</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('pepe',15.0,10.0,5.0,0,6,'caballero') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:10:37</date>
+  <millis>1547291437473</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaCreacionPersonaje$3</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Personaje principal pepe,15.0,10.0,5.0 creado</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:01</date>
+  <millis>1547291461938</millis>
+  <sequence>14</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:01</date>
+  <millis>1547291461970</millis>
+  <sequence>15</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(7,1, 0,'javi2') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:01</date>
+  <millis>1547291461997</millis>
+  <sequence>16</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('pepe',15.0,5.0,5.0,0,7,'caballero') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:01</date>
+  <millis>1547291461999</millis>
+  <sequence>17</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:02</date>
+  <millis>1547291462002</millis>
+  <sequence>18</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:02</date>
+  <millis>1547291462021</millis>
+  <sequence>19</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-01-12T12:11:10</date>
+  <millis>1547291470578</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:15</date>
+  <millis>1547291475040</millis>
+  <sequence>7</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>leerUsuarioBD</method>
+  <thread>16</thread>
+  <message>Usuario cargado</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:15</date>
+  <millis>1547291475043</millis>
+  <sequence>8</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cargarPartidaBD</method>
+  <thread>16</thread>
+  <message>Ejecutado correctamente: SELECT * FROM Partida WHERE nick='javi2'</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:15</date>
+  <millis>1547291475294</millis>
+  <sequence>9</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Usuario:javi2 Se ha loggueado</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:15</date>
+  <millis>1547291475356</millis>
+  <sequence>10</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios$1</class>
+  <method>actionPerformed</method>
+  <thread>16</thread>
+  <message>Guardadas nuevas propiedades</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:37</date>
+  <millis>1547291497323</millis>
+  <sequence>11</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: SELECT MAX(cod_partida) FROM Partida ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:37</date>
+  <millis>1547291497358</millis>
+  <sequence>12</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Partida VALUES(8,1, 0,'') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:37</date>
+  <millis>1547291497384</millis>
+  <sequence>13</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>guardarPartidaBD2</method>
+  <thread>16</thread>
+  <message>Comando: INSERT INTO Personaje VALUES('pepe',15.0,10.0,5.0,0,8,'caballero') ejecutado correctamente</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:37</date>
+  <millis>1547291497387</millis>
+  <sequence>14</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Statement cerrado</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:37</date>
+  <millis>1547291497389</millis>
+  <sequence>15</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>ResultSet cerrado</message>
+</record>
+<record>
+  <date>2019-01-12T12:11:37</date>
+  <millis>1547291497408</millis>
+  <sequence>16</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>control.BaseDeDatos</class>
+  <method>cerrarBD</method>
+  <thread>16</thread>
+  <message>Connection cerrado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-01-12T12:42:55</date>
+  <millis>1547293375114</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-01-12T12:45:55</date>
+  <millis>1547293555461</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>16</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-01-12T13:19:04</date>
+  <millis>1547295544682</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-01-12T13:19:43</date>
+  <millis>1547295583898</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>

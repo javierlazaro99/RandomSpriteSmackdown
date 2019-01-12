@@ -1,17 +1,11 @@
 package Ventanas;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
 
 import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
@@ -21,58 +15,105 @@ import control.Sonidos;
 public class VentanaValidacion extends JFrame {
 	int codigo;
 	public VentanaValidacion() {
-		// TODO Auto-generated constructor stub
+		//Creacion de font
+		
+		try {
+		     GraphicsEnvironment ge = 
+		         GraphicsEnvironment.getLocalGraphicsEnvironment();
+		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("fonts/SoulCalibur.ttf")));
+		} catch (IOException|FontFormatException e) {
+		     //Handle exception
+		}
+		
+		
 		
 		//Creacion de ventana basica
 		setTitle("Panel login/register");
-		setSize(400, 600);
+		setUndecorated(true);
+		
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		
 		//Creacion de componentes
-		JPanel panelcentral = new JPanel();
-		JPanel panelsur = new JPanel();
-		JPanel paneloeste = new JPanel();
-		JPanel paneleste = new JPanel();
-		JPanel panelnorte = new JPanel();
+		JPanel pNorte = new JPanel();
+		JPanel pCentral = new JPanel();
+		JPanel pTitulo = new JPanel(new BorderLayout());
+		JPanel pVacio = new JPanel();
+		JPanel pLogin = new JPanel();
+		JPanel pRegister = new JPanel();
+		JPanel pExit = new JPanel();
 		
-		JLabelGraficoAjustado titulo = new JLabelGraficoAjustado("src/Titulo.PNG", 650, 137);
+		
+		//JLabelGraficoAjustado titulo = new JLabelGraficoAjustado("src/Titulo.PNG", 864, 128);
+		JLabel titulo = new JLabel("Ramndom Sprite Smackdown");
 		JPanelBackground background = new JPanelBackground("src/Fondo.gif");
 		JButton login = new JButton("Login");
 		JButton register = new JButton("Register");
 		JButton exit = new JButton("Exit");
-		JPanel vacio = new JPanel();
-		//Modificaciones
 		
+		
+		//Modificación de componentes
+		login.setFont(new Font("SoulCalibur", Font.TRUETYPE_FONT, 80));
+			login.setForeground(Color.ORANGE);
+			login.setPreferredSize(new Dimension(500, 100));
+			login.setFocusable(false);
+		register.setFont(new Font("SoulCalibur", Font.TRUETYPE_FONT, 80));
+			register.setForeground(Color.ORANGE);
+			register.setPreferredSize(new Dimension(500, 100));
+			register.setFocusable(false);
+		exit.setFont(new Font("SoulCalibur", Font.TRUETYPE_FONT, 80));
+			exit.setForeground(Color.ORANGE);
+			exit.setPreferredSize(new Dimension(500, 100));
+			exit.setFocusable(false);
+
+		titulo.setFont(new Font("SoulCalibur", Font.TRUETYPE_FONT, 150));
+			titulo.setForeground(Color.orange);
+		
+		login.setOpaque(false);
+		login.setContentAreaFilled(false);
+		login.setBorderPainted(false);
+		
+		register.setOpaque(false);
+		register.setContentAreaFilled(false);
+		register.setBorderPainted(false);
+		
+		exit.setOpaque(false);
+		exit.setContentAreaFilled(false);
+		exit.setBorderPainted(false);
+		
+		
+		
+		//Modificaciones paneles
 		background.setOpaque(false);
-		panelcentral.setOpaque(false);
-		panelsur.setOpaque(false);
-		paneloeste.setOpaque(false);
-		paneleste.setOpaque(false);
-		panelnorte.setOpaque(false);
+		pCentral.setOpaque(false);
+		pNorte.setOpaque(false);
+		pTitulo.setOpaque(false);
+			pTitulo.setPreferredSize(new Dimension(1100, 400));
+		pVacio.setOpaque(false);
+		pLogin.setOpaque(false);
+		pRegister.setOpaque(false);
+		pExit.setOpaque(false);
 		
-		panelcentral.setLayout(new GridLayout(4, 0));
+		pCentral.setLayout(new GridLayout(5, 0));
 		background.setLayout(new BorderLayout());
-		paneleste.setLayout(new GridLayout(0, 1));
-		paneloeste.setLayout(new GridLayout(0, 1));
 		//Meter en contenedores
 		
 		add(background);
-		background.add(panelsur,BorderLayout.SOUTH);
-		
-		background.add(panelnorte,BorderLayout.NORTH);
-		panelnorte.add(titulo);
-		background.add(paneleste,BorderLayout.EAST);
-	
-		background.add(paneloeste,BorderLayout.WEST);
-		
-		background.add(panelcentral,BorderLayout.CENTER);
-		
-		panelcentral.add(login);
-		panelcentral.add(register);
-		panelcentral.add(exit);
-		
+		background.add(pNorte,BorderLayout.NORTH);
+			pNorte.add(pTitulo, BorderLayout.CENTER);
+				pTitulo.add(titulo, BorderLayout.CENTER);
+				titulo.setAlignmentY(CENTER_ALIGNMENT);
+			
+		background.add(pCentral,BorderLayout.CENTER);
+			pCentral.add(pVacio);
+			pCentral.add(pLogin);
+				pLogin.add(login);
+			pCentral.add(pRegister);
+				pRegister.add(register);
+			pCentral.add(pExit);
+				pExit.add(exit);
 		//Eventos
 		
 		login.addActionListener(new ActionListener() {
