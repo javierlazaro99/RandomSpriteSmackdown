@@ -8992,3 +8992,47 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-01-12T13:26:06</date>
+  <millis>1547295966591</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-01-12T13:28:02</date>
+  <millis>1547296082119</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-01-12T13:33:08</date>
+  <millis>1547296388650</millis>
+  <sequence>6</sequence>
+  <logger>Loggerjuego</logger>
+  <level>INFO</level>
+  <class>Ventanas.VentanaValidacionUsuarios</class>
+  <method>cargarProperties</method>
+  <thread>15</thread>
+  <message>Archivo Properties Cargado</message>
+</record>
+</log>

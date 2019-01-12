@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
 
@@ -14,6 +15,10 @@ import control.Sonidos;
 
 public class VentanaValidacion extends JFrame {
 	int codigo;
+	
+	public static VentanaValidacion ventanaVal;
+	private Clip punch;
+	
 	public VentanaValidacion() {
 		//Creacion de font
 		
@@ -121,12 +126,13 @@ public class VentanaValidacion extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//Sonidos
-				Sonidos.punch2Sonido.cargarSonido("sounds/punch_2.wav");
+				punch = Sonidos.punch1Sonido.cargarSonido("sounds/punch_2.wav");
+				punch.start();
 				
 				//Ventanas
 				VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(0);
 				ventana.setVisible(true);
-				VentanaValidacion.this.dispose();
+				VentanaValidacion.this.setEnabled(false);
 			}
 		});
 		
@@ -135,12 +141,13 @@ public class VentanaValidacion extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//Sonidos
-				Sonidos.punch1Sonido.cargarSonido("sounds/punch_1.wav");
+				punch = Sonidos.punch1Sonido.cargarSonido("sounds/punch_1.wav");
+				punch.start();
 				
 				//Ventanas
 				VentanaValidacionUsuarios ventana = new VentanaValidacionUsuarios(1);
 				ventana.setVisible(true);
-				VentanaValidacion.this.dispose();
+				VentanaValidacion.this.setEnabled(false);
 				
 			}
 		});
@@ -152,12 +159,5 @@ public class VentanaValidacion extends JFrame {
 				System.exit(0);
 			}
 		});
-	}
-	public static void main(String[] args) {
-		VentanaValidacion ventana = new VentanaValidacion();
-		ventana.setVisible(true);
-		
-		BaseDeDatos.crearConexion();
-		BaseDeDatos.crearBD();
 	}
 }
