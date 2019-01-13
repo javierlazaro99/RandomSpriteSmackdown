@@ -218,10 +218,6 @@ public class VentanaValidacionUsuarios extends JFrame{
 					if(estado==null) {
 						JOptionPane.showMessageDialog(null, "Datos erroneos");
 					}else {
-						
-						//Sonidos
-						Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
-						
 						//Ventana general
 						//Parte de BD para conseguir el personaje y los datos de la partida
 						ArrayList<Object> listaObjetos = new ArrayList<Object>();
@@ -239,6 +235,11 @@ public class VentanaValidacionUsuarios extends JFrame{
 						VentanaPrincipal ventana = new VentanaPrincipal(0, usuario, pj, nivelesCompletados, victorias1v1);
 						ventana.setVisible(true);
 						logger.log(Level.INFO, "Usuario:"+estado.getNombre()+" Se ha loggueado");
+						
+						VentanaValidacion.ventanaVal.dispose();
+						
+						//Sonidos
+						Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
 					}
 				}else {
 					estado =usuario.leer(tfNombre, tfPassword);
@@ -250,6 +251,8 @@ public class VentanaValidacionUsuarios extends JFrame{
 					VentanaPrincipal ventana = new VentanaPrincipal(1,usuario, null, 0, 0);
 					ventana.setVisible(true);
 					logger.log(Level.INFO,"Usuario:"+ usuario.getNombre()+" Se ha registrado");
+					
+					VentanaValidacion.ventanaVal.dispose();
 					
 					//Sonidos
 					Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);

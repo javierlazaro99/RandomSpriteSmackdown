@@ -1,43 +1,27 @@
 package Ventanas;
 
-
-
 import java.awt.BorderLayout;
-import java.awt.Component;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Frame;
-import java.awt.Graphics;
+import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 
-import Personalizados.Fondo;
-import Personalizados.FondoSwing;
 import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
 import Usuarios.UsuariosValidar;
 import control.BaseDeDatos;
 import control.ControlHistoria;
 import personaje.personajeJugable.PersonajeJugable;
-
-
 
 
 public class VentanaPrincipal extends JFrame{
@@ -54,79 +38,125 @@ public class VentanaPrincipal extends JFrame{
 	
 	boolean sigue = true;
 	public VentanaPrincipal(int codigo, UsuariosValidar user, PersonajeJugable pPrincipal, int nivelesCompletados, int victorias1v1) {
-		// TODO Auto-generated constructor stub
+		
 		//Settings
 		setTitle("RandomSprite Smackdown");
-		setSize(1024, 768);
+		setUndecorated(true);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setLocationRelativeTo(null);
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLayout(new FlowLayout());
+		
 		//Contenedores
 		JPanelBackground sticman = new JPanelBackground("src/Stickman2.gif");
 		JPanelBackground fondo = new JPanelBackground("src/Fondo.gif");//Fondo
-		JLabelGraficoAjustado titulo = new JLabelGraficoAjustado("", 864, 128);
+		JLabelGraficoAjustado titulo = new JLabelGraficoAjustado("", 1000, 150);
+		JPanel pTitulo = new JPanel();
 		JPanel paneliz= new  JPanel();
 		JPanel panelde = new JPanel();
-		JPanel panelinf = new JPanel(); //Añadido de Javi
 		JPanel panelinterior = new JPanel();
-		JButton botonHistoria= new JButton(new ImageIcon("src/Historia1.gif"));
-		JButton botonPractica = new JButton(new ImageIcon("src/Practica1.gif"));
-		JButton boton1VS1= new JButton(new ImageIcon("src/1VS11.gif"));
-		JButton botonAyuda = new JButton(new ImageIcon("src/Ayuda1.gif"));
-		JButton bSalir = new JButton("GUARDAR Y SALIR");
-		JButton B =  new  JButton();
-		B.add(new JLabelGraficoAjustado("src/Titulo.PNG", B.getSize().width, B.getSize().height));
+		JPanel panelVacio = new JPanel();
+		JPanel panelVacio2 = new JPanel();
+		JButton botonHistoria= new JButton("Historia");
+		JButton botonPractica = new JButton("Practica");
+		JButton boton1VS1= new JButton("Versus");
+		JButton botonAyuda = new JButton("Ayuda");
+		JButton bSalir = new JButton("<html><p>Guardar</p><p>y Salir</p></html>");
+		
 		//Modificaciones
 		//LAYAOUT
 		this.setLayout(new BorderLayout());
 		paneliz.setLayout(new GridLayout(0,1,0,2));
 		fondo.setLayout(new BoxLayout(fondo,BoxLayout.X_AXIS));
 		panelde.setLayout(new BorderLayout());
+		
 		//Añadir imagen
 		titulo.setImagen("src/Titulo.PNG");
+		
+		//Paneles
+		pTitulo.setPreferredSize(new Dimension(1200, 200));
+		panelVacio2.setPreferredSize(new Dimension(1000, 70));
+		
 		//Opaques
 		titulo.setOpaque(false);
 		panelde.setOpaque(false);
 		paneliz.setOpaque(false);
-		panelinf.setOpaque(false); // Añadido de Javi
 		botonHistoria.setOpaque(false);
 		botonPractica.setOpaque(false);
 		botonAyuda.setOpaque(false);
 		panelinterior.setOpaque(false);
 		boton1VS1.setOpaque(false);
 		sticman.setOpaque(false);
+		panelVacio.setOpaque(false);
+		pTitulo.setOpaque(false);
+		panelVacio2.setOpaque(false);
+		
+		//Font
+		botonHistoria.setFont(new Font("Unreal Tournament", Font.PLAIN, 60));
+		botonHistoria.setForeground(Color.ORANGE);
+		botonHistoria.setPreferredSize(new Dimension(500, 100));
+		
+		botonPractica.setFont(new Font("Unreal Tournament", Font.TRUETYPE_FONT, 60));
+		botonPractica.setForeground(Color.ORANGE);
+		botonPractica.setPreferredSize(new Dimension(500, 100));
+		
+		boton1VS1.setFont(new Font("Unreal Tournament", Font.TRUETYPE_FONT, 60));
+		boton1VS1.setForeground(Color.ORANGE);
+		boton1VS1.setPreferredSize(new Dimension(500, 100));
+		
+		botonAyuda.setFont(new Font("Unreal Tournament", Font.TRUETYPE_FONT, 60));
+		botonAyuda.setForeground(Color.ORANGE);
+		botonAyuda.setPreferredSize(new Dimension(500, 100));
+		
+		bSalir.setFont(new Font("Unreal Tournament", Font.TRUETYPE_FONT, 50));
+		bSalir.setForeground(Color.ORANGE);
+		bSalir.setPreferredSize(new Dimension(500, 150));
+		
+		//Focusable
+		botonHistoria.setFocusable(false);
+		botonPractica.setFocusable(false);
+		boton1VS1.setFocusable(false);
+		botonAyuda.setFocusable(false);	
+		bSalir.setFocusable(false);
+		
 		//Border
 		titulo.setBorder(null);
 		botonHistoria.setBorder(null);
 		botonPractica.setBorder(null);
 		boton1VS1.setBorder(null);
 		botonAyuda.setBorder(null);
+		bSalir.setBorder(null);
+		
 		//Contenedor a null
 		botonHistoria.setContentAreaFilled(false);
 		botonPractica.setContentAreaFilled(false);
 		boton1VS1.setContentAreaFilled(false);
 		botonAyuda.setContentAreaFilled(false);
+		bSalir.setContentAreaFilled(false);
+		
 		//Cambios de tamaño
 		sticman.setMaximumSize(new Dimension(600, 600));;
 		
 		//Meter contenedores
 		this.add(fondo, BorderLayout.CENTER);
+		
 		//Estructura principal
 		fondo.add(paneliz);
 		fondo.add(panelde);
-		panelde.add(titulo,BorderLayout.NORTH);
+		panelde.add(pTitulo,BorderLayout.NORTH);
+			pTitulo.add(panelVacio2, BorderLayout.NORTH);
+			pTitulo.add(titulo, BorderLayout.CENTER);
 		panelde.add(sticman,BorderLayout.CENTER);
-		panelde.add(panelinf, BorderLayout.SOUTH);// Añadido de Javi
-		panelinf.add(bSalir); // Añadido de Javi
 		paneliz.add(panelinterior);
 		paneliz.add(botonHistoria);
 		paneliz.add(botonPractica);
 		paneliz.add(boton1VS1);
 		paneliz.add(botonAyuda);
+		paneliz.add(bSalir);
+		paneliz.add(panelVacio);
 		
 		//Eventos
-		
 		//Boton historia activa pagina principal
 		botonHistoria.addActionListener(new ActionListener() {
 			
@@ -186,8 +216,10 @@ public class VentanaPrincipal extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ControlHistoria ch = new ControlHistoria(pPrincipal, nivelesCompletados);
-				BaseDeDatos.guardarPartidaBD2(user, ch);
+				if(pPrincipal != null) {
+					ControlHistoria ch = new ControlHistoria(pPrincipal, nivelesCompletados);
+					BaseDeDatos.guardarPartidaBD2(user, ch);
+				}
 				
 				BaseDeDatos.cerrarBD();
 				dispose();
