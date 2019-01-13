@@ -121,21 +121,21 @@ public class VentanaCreacionPersonaje extends JFrame {
 								lFuerza.setFont(new Font("Play Pretend", Font.PLAIN, 20));
 								lFuerza.setForeground(Color.ORANGE);
 							JPanel pFuerzaPb = new JPanel();
-								JProgressBar pbFuerza = FormatearPb(personajeSeleccionado.getPbFuerza());
+								JProgressBar pbFuerza = FormatearPb(personajeSeleccionado.getPbFuerza(), 170, 22);
 						JPanel pVida = new JPanel(new FlowLayout());
 							JPanel pVidaLabel = new JPanel();
 								JLabel lVida = new JLabel("Vida  ");
 								lVida.setFont(new Font("Play Pretend", Font.PLAIN, 20));
 								lVida.setForeground(Color.ORANGE);
 							JPanel pVidaPb = new JPanel();
-								JProgressBar pbVida = FormatearPb(personajeSeleccionado.getPbVida());
+								JProgressBar pbVida = FormatearPb(personajeSeleccionado.getPbVida(), 170, 22);
 						JPanel pVelocidad = new JPanel(new FlowLayout());
 							JPanel pVeloLabel = new JPanel();
 								JLabel lVelo = new JLabel("Velocidad  ");
 								lVelo.setFont(new Font("Play Pretend", Font.PLAIN, 20));
 								lVelo.setForeground(Color.ORANGE);
 							JPanel pVeloPb = new JPanel();
-								JProgressBar pbVelo = FormatearPb(personajeSeleccionado.getPbVelocidad());
+								JProgressBar pbVelo = FormatearPb(personajeSeleccionado.getPbVelocidad(), 170, 22);
 					JPanel pConfirmar = new JPanel(new FlowLayout(FlowLayout.CENTER));
 						JButton bConfirmar = new JButton("Finalizar Creacion");
 			JPanel pSalida = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -274,11 +274,11 @@ public class VentanaCreacionPersonaje extends JFrame {
 				ElegirLabel(personajeSeleccionado, lImagen);
 				
 				pFuerzaPb.removeAll();
-				pFuerzaPb.add(FormatearPb(personajeSeleccionado.getPbFuerza()));
+				pFuerzaPb.add(FormatearPb(personajeSeleccionado.getPbFuerza(), 170, 22));
 				pVidaPb.removeAll();
-				pVidaPb.add(FormatearPb(personajeSeleccionado.getPbVida()));
+				pVidaPb.add(FormatearPb(personajeSeleccionado.getPbVida(), 170, 22));
 				pVeloPb.removeAll();
-				pVeloPb.add(FormatearPb(personajeSeleccionado.getPbVelocidad()));
+				pVeloPb.add(FormatearPb(personajeSeleccionado.getPbVelocidad(), 170, 22));
 				repaint();
 				revalidate();
 			}
@@ -294,11 +294,11 @@ public class VentanaCreacionPersonaje extends JFrame {
 				ElegirLabel(personajeSeleccionado, lImagen);
 				
 				pFuerzaPb.removeAll();
-				pFuerzaPb.add(FormatearPb(personajeSeleccionado.getPbFuerza()));
+				pFuerzaPb.add(FormatearPb(personajeSeleccionado.getPbFuerza(), 170, 22));
 				pVidaPb.removeAll();
-				pVidaPb.add(FormatearPb(personajeSeleccionado.getPbVida()));
+				pVidaPb.add(FormatearPb(personajeSeleccionado.getPbVida(), 170, 22));
 				pVeloPb.removeAll();
-				pVeloPb.add(FormatearPb(personajeSeleccionado.getPbVelocidad()));
+				pVeloPb.add(FormatearPb(personajeSeleccionado.getPbVelocidad(), 170, 22));
 				repaint();
 				revalidate();
 			}
@@ -393,9 +393,9 @@ public class VentanaCreacionPersonaje extends JFrame {
 	 * @param progressBar Progress bar a cambiar
 	 * @return PB formateada para meter en algún componente
 	 */
-	private JProgressBar FormatearPb( JProgressBar progressBar) {
+	public static JProgressBar FormatearPb( JProgressBar progressBar, int ancho, int alto) {
 		
-		progressBar.setPreferredSize(new Dimension(170, 22));
+		progressBar.setPreferredSize(new Dimension(ancho, alto));
 		progressBar.setBorderPainted(false);
 		progressBar.setForeground(Color.orange);
 		progressBar.setBackground(Color.black);
