@@ -26,6 +26,7 @@ public class VentanaValidacion extends JFrame {
 		     GraphicsEnvironment ge = 
 		         GraphicsEnvironment.getLocalGraphicsEnvironment();
 		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("fonts/SoulCalibur.ttf")));
+		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("fonts/Play Pretend.otf")));
 		} catch (IOException|FontFormatException e) {
 		     //Handle exception
 		}

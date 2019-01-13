@@ -26,6 +26,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.sound.sampled.Clip;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -34,7 +36,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
+import Personalizados.JPanelBackground;
 import Usuarios.UsuariosValidar;
 import control.BaseDeDatos;
 import control.Sonidos;
@@ -70,52 +74,134 @@ public class VentanaValidacionUsuarios extends JFrame{
 		//Ventana 
 		setTitle("Registro de inicio");
 		setSize(400, 600);
+		setUndecorated(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setLayout(new BorderLayout());
 		
 		//Creación de paneles
-		JPanel pPrincipal = new JPanel(new GridLayout(5, 1));
+		JPanel pbackground = new JPanelBackground("src/RockBackground.jpg");
+		
+		JPanel pPrincipal = new JPanel(new GridLayout(3, 1));
 			JPanel pRelleno1 = new JPanel();
 			JPanel pRelleno2 = new JPanel();
 			JPanel pNickContra = new JPanel(new GridLayout(2, 1));
 				JPanel pPrincipalNick = new JPanel();
-				JPanel pPrincipalContraseña = new JPanel();
-			JPanel pRelleno3 = new JPanel();
-			JPanel pRelleno4 = new JPanel();
+					JPanel pLabelNick = new JPanel();
+					JPanel pTfNick = new JPanel();
+				JPanel pPrincipalContrasenya = new JPanel();
+					JPanel pLabelContra = new JPanel();
+					JPanel pTfContra = new JPanel();
 		JPanel pInferior = new JPanel(new GridLayout(2, 1));
 			JPanel pInferiorUltimoUser = new JPanel();
 			JPanel pInferiorAceptar = new JPanel();
 		
 		//Creacion de contenedores
 			
-		JLabel lLogintexto= new JLabel("Nombre");
-		tfNombre = new JTextField(10);
-		JLabel lPasswordtexto = new JLabel("Password");
-		JPasswordField tfPassword = new JPasswordField(10);
+		JLabel lLogintexto= new JLabel("Nick");
+		tfNombre = new JTextField(13);
+		JLabel lPasswordtexto = new JLabel("Pass");
+		JPasswordField tfPassword = new JPasswordField(13);
 		JButton bConfirmar = new JButton("Aceptar");
-		cbUltimoUsuario = new JCheckBox("Quiere que se guarde su usuario para la proxima vez");
+		JButton bCancelar = new JButton("Cancelar");
+		cbUltimoUsuario = new JCheckBox("  Guardar usuario");
+		
+		//Modificacion de peneles
+		pLabelNick.setPreferredSize(new Dimension(150, 55));
+		pLabelContra.setPreferredSize(new Dimension(140, 55));
+		
+		pPrincipal.setOpaque(false);
+		pRelleno1.setOpaque(false);
+		pRelleno2.setOpaque(false);
+		pNickContra.setOpaque(false);
+		pInferior.setOpaque(false);
+		pInferiorUltimoUser.setOpaque(false);
+		pInferiorAceptar.setOpaque(false);
+		pPrincipalNick.setOpaque(false);
+		pLabelNick.setOpaque(false);
+		pTfNick.setOpaque(false);
+		pPrincipalContrasenya.setOpaque(false);
+		pLabelContra.setOpaque(false);
+		pTfContra.setOpaque(false);
 		
 		
-		//Modificaciones
-		add(pPrincipal, BorderLayout.CENTER);
+		//Modifcacion de contenedores
+		
+		//Login y Password
+		lLogintexto.setFont(new Font("Play Pretend", Font.TRUETYPE_FONT, 30));
+		lPasswordtexto.setFont(new Font("Play Pretend", Font.TRUETYPE_FONT, 30));
+		
+		lLogintexto.setForeground(Color.orange);
+		lPasswordtexto.setForeground(Color.orange);
+		
+		tfNombre.setFont(new Font("Play Pretend", Font.TRUETYPE_FONT, 20));
+		tfNombre.setForeground(Color.orange);
+		tfNombre.setHorizontalAlignment(SwingConstants.CENTER);
+		tfPassword.setFont(new Font("Play Pretend", Font.TRUETYPE_FONT, 20));
+		tfPassword.setForeground(Color.orange);
+		tfPassword.setHorizontalAlignment(SwingConstants.CENTER);
+		tfNombre.setBackground(Color.BLACK);
+		tfNombre.setBorder(BorderFactory.createLineBorder(Color.lightGray, 3));
+		tfNombre.setPreferredSize(new Dimension(500, 35));
+		tfPassword.setBackground(Color.BLACK);
+		tfPassword.setBorder(BorderFactory.createLineBorder(Color.lightGray, 3));
+		tfPassword.setPreferredSize(new Dimension(500, 35));
+		
+		//Check Box
+		cbUltimoUsuario.setOpaque(false);
+		cbUltimoUsuario.setFocusable(false);
+		
+		cbUltimoUsuario.setFont(new Font("Play Pretend", Font.TRUETYPE_FONT, 18));
+		
+		ImageIcon chSinPulsar = new ImageIcon("src/unchecked-checkbox.png"); // load the image to a imageIcon
+		chSinPulsar = new ImageIcon(chSinPulsar.getImage().getScaledInstance(20, 20,  java.awt.Image.SCALE_SMOOTH));
+		
+		cbUltimoUsuario.setIcon(chSinPulsar);
+		
+		ImageIcon chPulsado = new ImageIcon("src/checked-checkbox.png"); 
+		chPulsado = new ImageIcon(chPulsado.getImage().getScaledInstance(20, 20,  java.awt.Image.SCALE_SMOOTH));
+		
+		cbUltimoUsuario.setSelectedIcon(chPulsado);
+		cbUltimoUsuario.setForeground(Color.orange);
+		
+		//Botones
+		bConfirmar.setFont(new Font("Play Pretend", Font.TRUETYPE_FONT, 20));
+		bConfirmar.setForeground(Color.ORANGE);
+		bConfirmar.setPreferredSize(new Dimension(150, 50));
+		bConfirmar.setFocusable(false);
+		bConfirmar.setBackground(Color.black);
+		bConfirmar.setBorder(BorderFactory.createLineBorder(Color.lightGray, 3));
+		
+		bCancelar.setFont(new Font("Play Pretend", Font.TRUETYPE_FONT, 20));
+		bCancelar.setForeground(Color.ORANGE);
+		bCancelar.setPreferredSize(new Dimension(150, 50));
+		bCancelar.setFocusable(false);
+		bCancelar.setBackground(Color.black);
+		bCancelar.setBorder(BorderFactory.createLineBorder(Color.lightGray, 3));
+		
+		//Inserción de paneles
+		add(pbackground, BorderLayout.CENTER);
+		pbackground.add(pPrincipal, BorderLayout.CENTER);
 			pPrincipal.add(pRelleno1);
 			pPrincipal.add(pNickContra);
 				pNickContra.add(pPrincipalNick);
-					pPrincipalNick.add(lLogintexto); pPrincipalNick.add(tfNombre);
-				pNickContra.add(pPrincipalContraseña);
-					pPrincipalContraseña.add(lPasswordtexto); pPrincipalContraseña.add(tfPassword);
+					pPrincipalNick.add(pLabelNick); pPrincipalNick.add(pTfNick);
+						pLabelNick.add(lLogintexto);
+						pTfNick.add(tfNombre);
+				pNickContra.add(pPrincipalContrasenya);
+					pPrincipalContrasenya.add(pLabelContra); pPrincipalContrasenya.add(pTfContra);
+						pLabelContra.add(lPasswordtexto);
+						pTfContra.add(tfPassword);
 			pPrincipal.add(pRelleno2);
-			pPrincipal.add(pRelleno3);
-			pPrincipal.add(pRelleno4);
 		
-		add(pInferior, BorderLayout.SOUTH);
+		pbackground.add(pInferior, BorderLayout.SOUTH);
 			pInferior.add(pInferiorUltimoUser);
 				pInferiorUltimoUser.add(cbUltimoUsuario);
 			pInferior.add(pInferiorAceptar);
 				pInferiorAceptar.add(bConfirmar);
-		
+				pInferiorAceptar.add(bCancelar);
+	
 		//Carga de properties
 		propiedades = new Properties();
 		cargarProperties(codigo);
@@ -125,9 +211,6 @@ public class VentanaValidacionUsuarios extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
-				//Sonidos
-				Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
 				
 				UsuariosValidar estado ;
 				if(codigo == 0) {//Login
@@ -135,6 +218,9 @@ public class VentanaValidacionUsuarios extends JFrame{
 					if(estado==null) {
 						JOptionPane.showMessageDialog(null, "Datos erroneos");
 					}else {
+						
+						//Sonidos
+						Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
 						
 						//Ventana general
 						//Parte de BD para conseguir el personaje y los datos de la partida
@@ -165,11 +251,15 @@ public class VentanaValidacionUsuarios extends JFrame{
 					ventana.setVisible(true);
 					logger.log(Level.INFO,"Usuario:"+ usuario.getNombre()+" Se ha registrado");
 					
+					//Sonidos
+					Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
+					
 					System.out.println(usuario.getNombre());
 					}else {
 						JOptionPane.showMessageDialog(null,"Ya existe un usuario con ese nombre");
 						tfNombre.setText("");
 						tfPassword.setText("");
+						VentanaValidacion.ventanaVal.setEnabled(true);
 					}
 				}
 				
@@ -185,48 +275,20 @@ public class VentanaValidacionUsuarios extends JFrame{
 			}
 		});
 		
-		addWindowListener(new WindowListener() {
+		bCancelar.addActionListener(new ActionListener() {
 			
 			@Override
-			public void windowOpened(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowIconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowDeiconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowDeactivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowClosing(WindowEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				VentanaValidacion.ventanaVal.setEnabled(true);
-				
+				VentanaValidacionUsuarios.this.dispose();
 			}
+		});
+		
+		addWindowListener(new WindowAdapter() {
 			
 			@Override
 			public void windowClosed(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void windowActivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
+				VentanaValidacion.ventanaVal.setEnabled(true);
 			}
 		});
 		
