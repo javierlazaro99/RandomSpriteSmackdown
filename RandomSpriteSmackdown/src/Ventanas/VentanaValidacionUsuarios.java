@@ -232,8 +232,8 @@ public class VentanaValidacionUsuarios extends JFrame{
 						System.out.println("		"+pj.getTipoPersonaje());
 						pj.setPuntosMejora(puntosMejora);
 						
-						VentanaPrincipal ventana = new VentanaPrincipal(0, usuario, pj, nivelesCompletados, victorias1v1);
-						ventana.setVisible(true);
+						VentanaPrincipal.venPrincip = new VentanaPrincipal(0, usuario, pj, nivelesCompletados, victorias1v1);
+						VentanaPrincipal.venPrincip.setVisible(true);
 						logger.log(Level.INFO, "Usuario:"+estado.getNombre()+" Se ha loggueado");
 						
 						VentanaValidacion.ventanaVal.dispose();
@@ -248,8 +248,8 @@ public class VentanaValidacionUsuarios extends JFrame{
 					usuario.setNombre(tfNombre.getText());
 					usuario.setPassword(String.valueOf(tfPassword.getPassword()));
 					usuario.guardar(usuario);
-					VentanaPrincipal ventana = new VentanaPrincipal(1,usuario, null, 0, 0);
-					ventana.setVisible(true);
+					VentanaPrincipal.venPrincip = new VentanaPrincipal(1,usuario, null, 0, 0);
+					VentanaPrincipal.venPrincip.setVisible(true);
 					logger.log(Level.INFO,"Usuario:"+ usuario.getNombre()+" Se ha registrado");
 					
 					VentanaValidacion.ventanaVal.dispose();

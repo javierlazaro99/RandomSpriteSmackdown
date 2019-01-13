@@ -310,11 +310,12 @@ public class VentanaCreacionPersonaje extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				personajeSeleccionado.setNombre(tfNombre.getText());
 				ch.setPersonajePrincipal(personajeSeleccionado);
-				setVisible(false);
 				VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(user, ch, victorias1v1);
 				BaseDeDatos.guardarPartidaBD2(user, ch);
 				ventana.setVisible(true);
+				setVisible(false);
 				VentanaCreacionPersonaje.this.dispose();
+				VentanaPrincipal.venPrincip.dispose();
 				Logger logger= VentanaValidacionUsuarios.getLogger();
 				logger.log(Level.INFO, "Personaje principal " +  personajeSeleccionado.getNombre() + "," + personajeSeleccionado.getFuerza() 
 				+ "," + personajeSeleccionado.getVida() + "," + personajeSeleccionado.getVelocidad() + " creado");
@@ -325,9 +326,8 @@ public class VentanaCreacionPersonaje extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				VentanaPrincipal ventana = new VentanaPrincipal(codigo, user, pPrincipal1, nivelesCompletados, victorias1v1);
-				ventana.setVisible(true);
+				VentanaPrincipal.venPrincip.setEnabled(true);
+				VentanaCreacionPersonaje.this.dispose();	
 			}
 		});
 			

@@ -10,6 +10,9 @@ import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -34,6 +37,7 @@ public class VentanaPrincipal extends JFrame{
 	private static Connection con=null;
 	private static Statement s;
 	private static ResultSet rs;
+	public static VentanaPrincipal venPrincip;
 	JPanel panel;
 	JButton botonHoistoria;
 	JButton botonPractica;
@@ -79,7 +83,7 @@ public class VentanaPrincipal extends JFrame{
 		titulo.setImagen("src/Titulo.PNG");
 		
 		//Paneles
-		pTitulo.setPreferredSize(new Dimension(1200, 200));
+		pTitulo.setPreferredSize(new Dimension(1200, 250));
 		panelVacio2.setPreferredSize(new Dimension(1000, 70));
 		
 		//Opaques
@@ -182,6 +186,8 @@ public class VentanaPrincipal extends JFrame{
 				
 			}
 		});
+		botonHistoria.addMouseListener(new MiMouseAdapter(botonHistoria)); 
+		
 		//Boton Practica activa stage personalizado
 		botonPractica.addActionListener(new ActionListener() {
 			
@@ -194,6 +200,8 @@ public class VentanaPrincipal extends JFrame{
 				VentanaPrincipal.this.dispose();
 			}
 		});
+		botonPractica.addMouseListener(new MiMouseAdapter(botonPractica));
+		
 		//Boton 1VS1 
 		boton1VS1.addActionListener(new ActionListener() {
 			
@@ -207,6 +215,8 @@ public class VentanaPrincipal extends JFrame{
 				
 			}
 		});
+		boton1VS1.addMouseListener(new MiMouseAdapter(boton1VS1)); 
+		
 		//Boton Ayuda
 		botonAyuda.addActionListener(new ActionListener() {
 			
@@ -216,6 +226,8 @@ public class VentanaPrincipal extends JFrame{
 				
 			}
 		});
+		botonAyuda.addMouseListener(new MiMouseAdapter(botonAyuda)); 
+		
 		//Boton Salir
 		bSalir.addActionListener(new ActionListener() {
 			
@@ -230,6 +242,7 @@ public class VentanaPrincipal extends JFrame{
 				dispose();
 			}
 		});
+		bSalir.addMouseListener(new MiMouseAdapter(bSalir)); 
 		
 		addWindowListener(new WindowAdapter() {
 			
@@ -239,5 +252,36 @@ public class VentanaPrincipal extends JFrame{
 				
 			}
 		});
+	}
+	
+	/**
+	 * Clase interna que implementa Mouse adapter para que lo usen todos
+	 * Los botones de la ventana
+	 * @author pc
+	 *
+	 */
+	class MiMouseAdapter extends MouseAdapter{
+		private JButton boton;
+		
+		public MiMouseAdapter(JButton b) {
+			this.boton = b;
+		}
+		
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			boton.setBorderPainted(true);
+			boton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));	
+			boton.setContentAreaFilled(true);
+			
+			float[] f = Color.RGBtoHSB(64, 64, 63, null);
+			boton.setBackground(Color.getHSBColor(f[0], f[1], f[2]));
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			boton.setBorder(null);
+			boton.setContentAreaFilled(false);
+		}
 	}
 }
