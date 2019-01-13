@@ -5,11 +5,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -165,14 +169,15 @@ public class VentanaPrincipal extends JFrame{
 				//Creamos el control de la historia nada más dar al botón
 				//Así guardamos el personaje y los niveles completados en una única variable
 				ControlHistoria ch = new ControlHistoria(pPrincipal, nivelesCompletados); 
-				if(codigo==0) {
+				if(codigo==0) { 
+					///////// Mirar esto del código que da error si te has registrado pero no has creado personaje
 					VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(user, ch, victorias1v1);
 					ventana.setVisible(true);
 					VentanaPrincipal.this.dispose();
 				}else {
 					VentanaCreacionPersonaje ventana = new VentanaCreacionPersonaje(codigo,user,pPrincipal,ch,victorias1v1,nivelesCompletados);
 					ventana.setVisible(true);
-					VentanaPrincipal.this.dispose();
+					VentanaPrincipal.this.setEnabled(false);
 				}
 				
 			}
