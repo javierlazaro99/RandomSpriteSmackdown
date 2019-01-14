@@ -41,6 +41,7 @@ import javax.swing.SwingConstants;
 import Personalizados.JPanelBackground;
 import Usuarios.UsuariosValidar;
 import control.BaseDeDatos;
+import control.MouseAdapters.MouseAdapterBotonesMenus;
 import control.Sonidos;
 import personaje.personajeJugable.PersonajeJugable;
 
@@ -207,6 +208,9 @@ public class VentanaValidacionUsuarios extends JFrame{
 		cargarProperties(codigo);
 					
 		//Eventos
+		
+		bConfirmar.addMouseListener(new MouseAdapterBotonesMenus(bConfirmar));
+		
 		bConfirmar.addActionListener(new ActionListener() {
 			
 			@Override
@@ -277,6 +281,8 @@ public class VentanaValidacionUsuarios extends JFrame{
 				VentanaValidacionUsuarios.this.dispose();
 			}
 		});
+		
+		bCancelar.addMouseListener(new MouseAdapterBotonesMenus(bCancelar));
 		
 		bCancelar.addActionListener(new ActionListener() {
 			

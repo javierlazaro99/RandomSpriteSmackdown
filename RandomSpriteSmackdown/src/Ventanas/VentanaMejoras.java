@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,8 +27,12 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 import Personalizados.JLabelGraficoAjustado;
+import Personalizados.JPanelBackground;
 import Usuarios.UsuariosValidar;
 import control.ControlHistoria;
+import control.MouseAdapters;
+import control.MouseAdapters.MouseAdapterBotonesMenus;
+import control.MouseAdapters.MouseAdapterSubirNivel;
 import personaje.personajeJugable.PersonajeJugable;
 
 public class VentanaMejoras extends JFrame{
@@ -53,7 +58,9 @@ public class VentanaMejoras extends JFrame{
 		setSize(800, 600);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
+		
+		JPanelBackground pFondo = new JPanelBackground("src/RockBackground.jpg");
+			pFondo.setLayout(new BorderLayout());
 		JPanel pIzquierda = new JPanel(new BorderLayout());
 			JPanel pTitulo = new JPanel();
 				JLabel lTitulo = new JLabel("Mejoras");
@@ -75,13 +82,13 @@ public class VentanaMejoras extends JFrame{
 							JPanel pFuerzaLabel = new JPanel(new GridBagLayout());
 								JLabel lFuerza = new JLabel("Fuerza  ");
 							JPanel pFuerzaPb = new JPanel(new GridBagLayout());
-							JPanel pSubirFuerza = new JPanel();
+							JPanel pSubirFuerza = new JPanel(new GridBagLayout());
 								bSubirFuerza = new JButton("+");
 						JPanel pVida = new JPanel(new FlowLayout());
 							JPanel pVidaLabel = new JPanel(new GridBagLayout());
 								JLabel lVida = new JLabel("Vida  ");
 							JPanel pVidaPb = new JPanel(new GridBagLayout());
-							JPanel pSubirVida = new JPanel();
+							JPanel pSubirVida = new JPanel(new GridBagLayout());
 								bSubirVida = new JButton("+");
 						JPanel pVelocidad = new JPanel(new FlowLayout());
 							JPanel pVelocidadLabel = new JPanel(new GridBagLayout());
@@ -89,14 +96,11 @@ public class VentanaMejoras extends JFrame{
 							JPanel pVelocidadPb = new JPanel(new GridBagLayout());
 							JPanel pSubirVelo = new JPanel(new GridBagLayout());
 								bSubirVelocidad = new JButton("+");
-				
-			
-		
-					
+						
 		//Mejora de componentes
 		lTitulo.setFont(new Font("Play Pretend", Font.TRUETYPE_FONT, 80));
 		lTitulo.setForeground(Color.orange);
-		pVacio.setPreferredSize(new Dimension(200, 100));
+		pVacio.setPreferredSize(new Dimension(200, 103));
 		pPuntosMejora.setPreferredSize(new Dimension(200, 100));
 		
 		lMejoras.setFont(new Font("Unreal Tournament", Font.TRUETYPE_FONT, 30));
@@ -113,18 +117,28 @@ public class VentanaMejoras extends JFrame{
 		bHome.setBackground(Color.black);
 		bHome.setBorder(BorderFactory.createLineBorder(Color.lightGray, 3));
 		
-		pFuerzaLabel.setPreferredSize(new Dimension(120, 30));
-		pVidaLabel.setPreferredSize(new Dimension(120, 30));
-		pVelocidadLabel.setPreferredSize(new Dimension(120, 30));
+		pFuerzaLabel.setPreferredSize(new Dimension(120, 35));
+		pVidaLabel.setPreferredSize(new Dimension(120, 35));
+		pVelocidadLabel.setPreferredSize(new Dimension(120, 35));
+		
+		pFuerzaLabel.setBackground(Color.black);
+		pFuerzaLabel.setBorder(BorderFactory.createLineBorder(Color.darkGray, 2));
+		pVidaLabel.setBackground(Color.black);
+		pVidaLabel.setBorder(BorderFactory.createLineBorder(Color.darkGray, 2));
+		pVelocidadLabel.setBackground(Color.black);
+		pVelocidadLabel.setBorder(BorderFactory.createLineBorder(Color.darkGray, 2));
 		
 		lFuerza.setFont(new Font("Play Pretend", Font.TRUETYPE_FONT, 19));
 		lFuerza.setForeground(Color.ORANGE);
 		
 		lVida.setFont(new Font("Play Pretend", Font.TRUETYPE_FONT, 19));
 		lVida.setForeground(Color.ORANGE);
-		lVelocidad.setFont(new Font("Play Pretend", Font.TRUETYPE_FONT, 16));
+		lVelocidad.setFont(new Font("Play Pretend", Font.TRUETYPE_FONT, 18));
 		lVelocidad.setForeground(Color.ORANGE);
 		
+		pSubirFuerza.setPreferredSize(new Dimension(60, 50));
+		pSubirVida.setPreferredSize(new Dimension(60, 50));
+		pSubirVelo.setPreferredSize(new Dimension(60, 50));
 		ArrayList<JButton> listaBotones = CrearListaBotones();
 		
 		for (JButton jButton : listaBotones) {
@@ -136,13 +150,33 @@ public class VentanaMejoras extends JFrame{
 			jButton.setFocusPainted(false);
 		}
 		
+		pVacio2.setPreferredSize(new Dimension(100, 50));
+		pPersonaje.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
+		pPersonaje.setBackground(Color.LIGHT_GRAY);
+		pMejorasStats.setBackground(Color.lightGray);
 		
-		pVacio2.setPreferredSize(new Dimension(100, 70));
-		
+		//Opaques
+		pIzquierda.setOpaque(false);
+		pTitulo.setOpaque(false);
+		pDerecha.setOpaque(false);
+		pMejoras.setOpaque(false);
+		pVacio.setOpaque(false);
+		pMejorasLabel.setOpaque(false);
+		pMejorasCentro.setOpaque(false);
+		pPuntosMejora.setOpaque(false);
+		pVacio2.setOpaque(false);
+		pHome.setOpaque(false);
+		pFuerza.setOpaque(false);
+		pVida.setOpaque(false);
+		pVelocidad.setOpaque(false);
+		pSubirFuerza.setOpaque(false);
+		pSubirVida.setOpaque(false);
+		pSubirVelo.setOpaque(false);
 		
 		//Estructura de la Ventana
-		getContentPane().add(pIzquierda, BorderLayout.WEST);		
-		getContentPane().add(pDerecha, BorderLayout.CENTER);
+		getContentPane().add(pFondo);
+		pFondo.add(pIzquierda, BorderLayout.WEST);		
+		pFondo.add(pDerecha, BorderLayout.CENTER);
 		
 		pIzquierda.add(pTitulo, BorderLayout.NORTH);
 			pTitulo.add(lTitulo);
@@ -164,25 +198,24 @@ public class VentanaMejoras extends JFrame{
 						pFuerza.add(pFuerzaLabel);
 							pFuerzaLabel.add(lFuerza);
 						pFuerza.add(pFuerzaPb);
-							pFuerzaPb.add(VentanaCreacionPersonaje.FormatearPb(ch.getPersonajePrincipal().getPbFuerza(), 140, 18));
+							pFuerzaPb.add(VentanaCreacionPersonaje.FormatearPb(ch.getPersonajePrincipal().getPbFuerza(), 140, 20));
 						pFuerza.add(pSubirFuerza);
 							pSubirFuerza.add(bSubirFuerza);
 					pMejorasStats.add(pVida);
 						pVida.add(pVidaLabel);
 							pVidaLabel.add(lVida);
 						pVida.add(pVidaPb);
-							pVidaPb.add(VentanaCreacionPersonaje.FormatearPb(ch.getPersonajePrincipal().getPbVida(), 140, 18));
+							pVidaPb.add(VentanaCreacionPersonaje.FormatearPb(ch.getPersonajePrincipal().getPbVida(), 140, 20));
 						pVida.add(pSubirVida);
 							pSubirVida.add(bSubirVida);
 					pMejorasStats.add(pVelocidad);
 						pVelocidad.add(pVelocidadLabel);
 							pVelocidadLabel.add(lVelocidad);
 						pVelocidad.add(pVelocidadPb);
-							pVelocidadPb.add(VentanaCreacionPersonaje.FormatearPb(ch.getPersonajePrincipal().getPbVelocidad(), 140, 18));
+							pVelocidadPb.add(VentanaCreacionPersonaje.FormatearPb(ch.getPersonajePrincipal().getPbVelocidad(), 140, 20));
 						pVelocidad.add(pSubirVelo);
 							pSubirVelo.add(bSubirVelocidad);
 						
-		
 		
 		bSubirFuerza.addActionListener(new ActionListener() {
 			@Override
@@ -195,7 +228,7 @@ public class VentanaMejoras extends JFrame{
 				getContentPane().revalidate();
 			}
 		});
-		bSubirFuerza.addMouseListener(new MiMouseAdapter(bSubirFuerza));
+		bSubirFuerza.addMouseListener(new MouseAdapterSubirNivel(bSubirFuerza));
 		
 		bSubirVida.addActionListener(new ActionListener() {
 			@Override
@@ -208,7 +241,7 @@ public class VentanaMejoras extends JFrame{
 				getContentPane().revalidate();
 			}
 		});
-		bSubirVida.addMouseListener(new MiMouseAdapter(bSubirVida));
+		bSubirVida.addMouseListener(new MouseAdapterSubirNivel(bSubirVida));
 		
 		bSubirVelocidad.addActionListener(new ActionListener() { 
 			@Override
@@ -221,7 +254,9 @@ public class VentanaMejoras extends JFrame{
 				getContentPane().revalidate();
 			}
 		});
-		bSubirVelocidad.addMouseListener(new MiMouseAdapter(bSubirVelocidad));
+		
+		
+		bSubirVelocidad.addMouseListener(new MouseAdapterSubirNivel(bSubirVelocidad));
 		
 		bHome.addActionListener(new ActionListener() {
 			@Override
@@ -231,6 +266,8 @@ public class VentanaMejoras extends JFrame{
 				VentanaMejoras.this.dispose();
 			}
 		});	
+		
+		bHome.addMouseListener(new MouseAdapterBotonesMenus(bHome));
 	}
 	
 	/**
@@ -252,7 +289,14 @@ public class VentanaMejoras extends JFrame{
 			lDevolver.setPreferredSize(new Dimension(400, 400));
 					
 			return lDevolver;
-		}else {
+		}if(p.getTipoPersonaje().equals("caballero")) {
+			lDevolver = new JLabelGraficoAjustado("pngEnem2/Idle (1).png", 350, 350);
+			lDevolver.setPreferredSize(new Dimension(400, 400));
+			
+			return lDevolver;
+		}
+		
+		else {
 			return null;
 		}
 	}
@@ -267,36 +311,6 @@ public class VentanaMejoras extends JFrame{
 		return lB;
 		
 	}
-	
-	/**
-	 * Clase interna que implementa Mouse adapter para que lo usen todos
-	 * Los botones de la ventana
-	 * @author pc
-	 *
-	 */
-	class MiMouseAdapter extends MouseAdapter{
-		private JButton boton;
-		
-		public MiMouseAdapter(JButton b) {
-			this.boton = b;
-		}
-		
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			boton.setBorderPainted(true);
-			boton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
-			boton.setContentAreaFilled(true);
-			boton.setBackground(Color.lightGray);
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			boton.setBorder(null);
-			boton.setContentAreaFilled(false);
-		}
-	}
-	
 	
 	public static void main(String[] args) {
 		VentanaMejoras vm = new VentanaMejoras(null, new ControlHistoria(new PersonajeJugable("Jose", new Point(0, 0), 10, 10, 10, "robot"), 0), 0);

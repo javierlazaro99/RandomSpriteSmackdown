@@ -31,6 +31,7 @@ import Personalizados.JPanelBackground;
 import Usuarios.UsuariosValidar;
 import control.ControlHistoria;
 import control.Nivel;
+import control.MouseAdapters.MouseAdapterBotonesMenus;
 import personaje.personajeJugable.PersonajeJugable;
 
 public class VentanaSeleccionNivel extends JFrame{
@@ -239,6 +240,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			}
 		});
 		
+		bHome.addMouseListener(new MouseAdapterBotonesMenus(bHome));
 		bHome.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -247,6 +249,7 @@ public class VentanaSeleccionNivel extends JFrame{
 				VentanaSeleccionNivel.this.dispose();	
 			}
 		});
+		bMejoras.addMouseListener(new MouseAdapterBotonesMenus(bMejoras));
 		bMejoras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

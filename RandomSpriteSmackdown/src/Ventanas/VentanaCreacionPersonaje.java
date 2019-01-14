@@ -40,6 +40,7 @@ import Personalizados.JPanelBackground;
 import Usuarios.UsuariosValidar;
 import control.BaseDeDatos;
 import control.ControlHistoria;
+import control.MouseAdapters.MouseAdapterBotonesMenus;
 import personaje.Personaje;
 import personaje.personajeJugable.PersonajeJugable;
 
@@ -264,7 +265,8 @@ public class VentanaCreacionPersonaje extends JFrame {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////
 		///////////Listerens///////////////////////////////////////////////////////////////////////
-			
+		
+		bAlante.addMouseListener(new MouseAdapterBotonesMenus(bAlante));	
 		bAlante.addActionListener(new ActionListener() {
 			
 			@Override
@@ -284,6 +286,7 @@ public class VentanaCreacionPersonaje extends JFrame {
 			}
 		});
 		
+		bAtras.addMouseListener(new MouseAdapterBotonesMenus(bAtras));
 		bAtras.addActionListener(new ActionListener() {
 			
 			@Override
@@ -304,6 +307,7 @@ public class VentanaCreacionPersonaje extends JFrame {
 			}
 		});
 		
+		bConfirmar.addMouseListener(new MouseAdapterBotonesMenus(bConfirmar));
 		bConfirmar.addActionListener(new ActionListener() {
 			
 			@Override
@@ -322,6 +326,7 @@ public class VentanaCreacionPersonaje extends JFrame {
 			}
 		});
 		
+		bSalir.addMouseListener(new MouseAdapterBotonesMenus(bSalir));
 		bSalir.addActionListener(new ActionListener() {
 			
 			@Override

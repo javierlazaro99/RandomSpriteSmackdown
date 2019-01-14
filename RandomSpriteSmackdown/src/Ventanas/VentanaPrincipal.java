@@ -28,6 +28,7 @@ import Personalizados.JPanelBackground;
 import Usuarios.UsuariosValidar;
 import control.BaseDeDatos;
 import control.ControlHistoria;
+import control.MouseAdapters.MouseAdapterBotonesVentanaPrincipal;
 import personaje.personajeJugable.PersonajeJugable;
 
 
@@ -186,21 +187,20 @@ public class VentanaPrincipal extends JFrame{
 				
 			}
 		});
-		botonHistoria.addMouseListener(new MiMouseAdapter(botonHistoria)); 
+		botonHistoria.addMouseListener(new MouseAdapterBotonesVentanaPrincipal(botonHistoria)); 
 		
 		//Boton Practica activa stage personalizado
 		botonPractica.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				ControlHistoria ch = new ControlHistoria(pPrincipal, nivelesCompletados);
 				VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(codigo, user, pPrincipal, nivelesCompletados, victorias1v1,ch, false);
 				ventana.setVisible(true);
 				VentanaPrincipal.this.dispose();
 			}
 		});
-		botonPractica.addMouseListener(new MiMouseAdapter(botonPractica));
+		botonPractica.addMouseListener(new MouseAdapterBotonesVentanaPrincipal(botonPractica));
 		
 		//Boton 1VS1 
 		boton1VS1.addActionListener(new ActionListener() {
@@ -215,7 +215,7 @@ public class VentanaPrincipal extends JFrame{
 				
 			}
 		});
-		boton1VS1.addMouseListener(new MiMouseAdapter(boton1VS1)); 
+		boton1VS1.addMouseListener(new MouseAdapterBotonesVentanaPrincipal(boton1VS1)); 
 		
 		//Boton Ayuda
 		botonAyuda.addActionListener(new ActionListener() {
@@ -226,7 +226,7 @@ public class VentanaPrincipal extends JFrame{
 				
 			}
 		});
-		botonAyuda.addMouseListener(new MiMouseAdapter(botonAyuda)); 
+		botonAyuda.addMouseListener(new MouseAdapterBotonesVentanaPrincipal(botonAyuda)); 
 		
 		//Boton Salir
 		bSalir.addActionListener(new ActionListener() {
@@ -242,7 +242,9 @@ public class VentanaPrincipal extends JFrame{
 				dispose();
 			}
 		});
-		bSalir.addMouseListener(new MiMouseAdapter(bSalir)); 
+		
+		
+		bSalir.addMouseListener(new MouseAdapterBotonesVentanaPrincipal(bSalir)); 
 		
 		addWindowListener(new WindowAdapter() {
 			
@@ -252,36 +254,5 @@ public class VentanaPrincipal extends JFrame{
 				
 			}
 		});
-	}
-	
-	/**
-	 * Clase interna que implementa Mouse adapter para que lo usen todos
-	 * Los botones de la ventana
-	 * @author pc
-	 *
-	 */
-	class MiMouseAdapter extends MouseAdapter{
-		private JButton boton;
-		
-		public MiMouseAdapter(JButton b) {
-			this.boton = b;
-		}
-		
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			boton.setBorderPainted(true);
-			boton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));	
-			boton.setContentAreaFilled(true);
-			
-			float[] f = Color.RGBtoHSB(64, 64, 63, null);
-			boton.setBackground(Color.getHSBColor(f[0], f[1], f[2]));
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			boton.setBorder(null);
-			boton.setContentAreaFilled(false);
-		}
 	}
 }
