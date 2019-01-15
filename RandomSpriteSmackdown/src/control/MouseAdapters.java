@@ -46,6 +46,11 @@ public class MouseAdapters {
 		}
 	}
 	
+	/**
+	 * Adaptador para los Botones de subida de nivel de la ventana principal 
+	 * @author pc
+	 *
+	 */
 	public static class MouseAdapterBotonesVentanaPrincipal extends MouseAdapter{
 		
 		private JButton boton;
@@ -71,6 +76,11 @@ public class MouseAdapters {
 		}
 	}
 	
+	/**
+	 * Adaptador para los Botones de los distintos menus 
+	 * @author pc
+	 *
+	 */
 	public static class MouseAdapterBotonesMenus extends MouseAdapter{
 		
 		private JButton boton;
@@ -88,6 +98,30 @@ public class MouseAdapters {
 		@Override
 		public void mouseExited(MouseEvent e) {
 			boton.setBackground(Color.black);
+		}
+	}
+	
+	/**
+	 * Adaptador para botones previous next de la venta de seleccion
+	 * @author pc
+	 *
+	 */
+	public static class MouseAdapterPreviousNext extends MouseAdapter{
+		private JButton boton;
+	
+		public MouseAdapterPreviousNext(JButton b) {
+			this.boton = b;
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			float[] f = Color.RGBtoHSB(225, 160, 45, null);
+			boton.setBackground(Color.getHSBColor(f[0], f[1], f [2]));
+		}
+	
+		@Override
+		public void mouseExited(MouseEvent e) {
+			boton.setBackground(Color.darkGray);
 		}
 	}
 }
