@@ -39,6 +39,7 @@ public class VentanaSeleccionNivel extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JButton bN1; private JButton bN2; private JButton bN3; private JButton bN4; private JButton bN5; private JButton bN6; private JButton bN7; private JButton bN8;
 	private ControlHistoria ch;
+	private ArrayList<JButton>arrayBotones;
 	public VentanaSeleccionNivel(UsuariosValidar user, ControlHistoria ch, int victorias1v1) {
 		this.ch=ch;
 		//Temporal mientras las pruebas
@@ -104,7 +105,7 @@ public class VentanaSeleccionNivel extends JFrame{
 		//Editar componentes
 		ArrayList<JButton> arrayBotones = CrearListaBotones();
 		ArrayList<ImageIcon> arrayIconos = CrearlistaIconos();
-		
+		this. arrayBotones=arrayBotones;
 		int cont = 0;
 		for (JButton boton : arrayBotones) {
 			boton.setMargin(new Insets(0, 0, 0, 0));
@@ -179,7 +180,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel1 = Nivel.listaNiveles.get(0);
-				VentanaStage stage1 = new VentanaStage(nivel1.getPj(), nivel1.getEnem(), 1, nivel1.getCh(), true);
+				VentanaStage stage1 = new VentanaStage(nivel1.getPj(), nivel1.getEnem(), 1, nivel1.getCh(), true,VentanaSeleccionNivel.this);
 				stage1.setVisible(true);	
 			}
 		});
@@ -188,7 +189,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel2 = Nivel.listaNiveles.get(1);
-				VentanaStage stage2 = new VentanaStage(nivel2.getPj(), nivel2.getEnem(), 2, nivel2.getCh(), true);
+				VentanaStage stage2 = new VentanaStage(nivel2.getPj(), nivel2.getEnem(), 2, nivel2.getCh(), true,VentanaSeleccionNivel.this);
 				stage2.setVisible(true);
 			}
 		});
@@ -196,7 +197,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel3 = Nivel.listaNiveles.get(2);
-				VentanaStage stage3 = new VentanaStage(nivel3.getPj(), nivel3.getEnem(), 3, nivel3.getCh(), true);
+				VentanaStage stage3 = new VentanaStage(nivel3.getPj(), nivel3.getEnem(), 3, nivel3.getCh(), true,VentanaSeleccionNivel.this);
 				stage3.setVisible(true);
 			}
 		});
@@ -204,7 +205,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel4 = Nivel.listaNiveles.get(3);
-				VentanaStage stage4 = new VentanaStage(nivel4.getPj(), nivel4.getEnem(), 4, nivel4.getCh(), true);
+				VentanaStage stage4 = new VentanaStage(nivel4.getPj(), nivel4.getEnem(), 4, nivel4.getCh(), true,VentanaSeleccionNivel.this);
 				stage4.setVisible(true);	
 			}
 		});
@@ -212,7 +213,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel5 = Nivel.listaNiveles.get(4);
-				VentanaStage stage5 = new VentanaStage(nivel5.getPj(), nivel5.getEnem(), 5, nivel5.getCh(), true);
+				VentanaStage stage5 = new VentanaStage(nivel5.getPj(), nivel5.getEnem(), 5, nivel5.getCh(), true,VentanaSeleccionNivel.this);
 				stage5.setVisible(true);
 			}
 		});
@@ -220,7 +221,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel6 = Nivel.listaNiveles.get(5);
-				VentanaStage stage6 = new VentanaStage(nivel6.getPj(), nivel6.getEnem(), 6, nivel6.getCh(), true);
+				VentanaStage stage6 = new VentanaStage(nivel6.getPj(), nivel6.getEnem(), 6, nivel6.getCh(), true,VentanaSeleccionNivel.this);
 				stage6.setVisible(true);	
 			}
 		});
@@ -229,7 +230,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel7= Nivel.listaNiveles.get(6);
-				VentanaStage stage7 = new VentanaStage(nivel7.getPj(), nivel7.getEnem(), 7, nivel7.getCh(), true);
+				VentanaStage stage7 = new VentanaStage(nivel7.getPj(), nivel7.getEnem(), 7, nivel7.getCh(), true,VentanaSeleccionNivel.this);
 				stage7.setVisible(true);	
 			}
 		});
@@ -238,7 +239,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Nivel nivel8 = Nivel.listaNiveles.get(7);
-				VentanaStage stage8 = new VentanaStage(nivel8.getPj(), nivel8.getEnem(), 8, nivel8.getCh(), true);
+				VentanaStage stage8 = new VentanaStage(nivel8.getPj(), nivel8.getEnem(), 8, nivel8.getCh(), true,VentanaSeleccionNivel.this);
 				stage8.setVisible(true);	
 			}
 		});
@@ -263,6 +264,14 @@ public class VentanaSeleccionNivel extends JFrame{
 		});
 	}
 		
+	public ArrayList<JButton> getArrayBotones() {
+		return arrayBotones;
+	}
+
+	public void setArrayBotones(ArrayList<JButton> arrayBotones) {
+		this.arrayBotones = arrayBotones;
+	}
+
 	private ArrayList<JButton> CrearListaBotones(){
 		ArrayList<JButton> listaBotones = new ArrayList<>();
 		
@@ -293,12 +302,16 @@ public class VentanaSeleccionNivel extends JFrame{
 		return listaIconos;
 		
 	}
-	private void ComprobarNiveles(ArrayList<JButton> listaBotones) {
+	 public void ComprobarNiveles(ArrayList<JButton> listaBotones) {
 		for(int contB=0;contB< listaBotones.size()-1;contB++) {
 			if(contB>=1 && contB+1>ch.getNivelesCompletados()) {
 				listaBotones.get(contB).setEnabled(false);
+			}else {
+				listaBotones.get(contB).setEnabled(true);
 			}
 		}
+		revalidate();
+		repaint();
 		
 	}
 	public static void main(String[] args) {

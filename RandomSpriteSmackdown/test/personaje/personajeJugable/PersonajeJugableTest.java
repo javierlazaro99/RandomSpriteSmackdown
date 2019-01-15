@@ -66,7 +66,7 @@ public class PersonajeJugableTest {
 	public void DarGolpeTestEnemigo() {
 		Enemigo enem = new Enemigo(new Point(20, 0), 10, 10, 10, "robot", 1);
 		ch=new ControlHistoria(pj, 0);
-		stage = new VentanaStage(pj, enem, 0, ch, true);
+		stage = new VentanaStage(pj, enem, 0, ch, true,null);
 		enem.setPosicion(new Point(40, 0));
 			
 		
@@ -81,7 +81,7 @@ public class PersonajeJugableTest {
 		PersonajeJugable pj2 = new PersonajeJugable("Guille", new Point(20, 0), 20, 20, 10, "robot");
 		
 		ch=new ControlHistoria(pj, 0);
-		stage = new VentanaStage(pj, pj2, 0, ch, false);
+		stage = new VentanaStage(pj, pj2, 0, ch, false,null);
 		pj2.setPosicion(new Point(40, 0));
 		
 		pj.DarGolpe(pj2);

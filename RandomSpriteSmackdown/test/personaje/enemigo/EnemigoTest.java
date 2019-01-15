@@ -27,8 +27,8 @@ public class EnemigoTest {
 		pj1 = new PersonajeJugable("", new Point(0, 0), 10, 10, 10, "robot");
 		enem = new Enemigo(new Point(100, 0), 10, 10, 10, "robot", 1);
 		ch= new ControlHistoria(pj1, 0);
-		stage=new VentanaStage(pj1, enem, 0, ch, true);
-		ce=new ControlEstados(pj1, enem, stage, ch,cia , ce);
+		stage=new VentanaStage(pj1, enem, 0, ch, true,null);
+		ce=new ControlEstados(pj1, enem, stage, ch,cia , ce,null);
 		cia = new ControlIA(pj1, enem, stage, ch, ce);
 	}
 

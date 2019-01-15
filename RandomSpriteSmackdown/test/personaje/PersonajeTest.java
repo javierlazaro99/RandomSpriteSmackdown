@@ -30,8 +30,8 @@ public class PersonajeTest {
 		
 		p2 = new Enemigo(new Point(0,0), 10, 10, 10, "robot", 0) ;
 		ch= new ControlHistoria(p1, 0);
-		stage= new VentanaStage(p1, p2, 0, ch, true);
-		ce= new ControlEstados(p1, p2,stage , ch, null, ce);
+		stage= new VentanaStage(p1, p2, 0, ch, true,null);
+		ce= new ControlEstados(p1, p2,stage , ch, null, ce, null);
 		cia = new ControlIA(p1, (Enemigo) p2, stage, ch, ce);
 	}
 

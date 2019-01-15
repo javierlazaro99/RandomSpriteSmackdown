@@ -454,7 +454,7 @@ public class VentanaSeleccionOponente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 		
 				if(UnoVUno) {
-					VentanaStage vs = new VentanaStage(personajeSeleccionadoIzquierda, personajeSeleccionadoDerecha, 0, ch, false);
+					VentanaStage vs = new VentanaStage(personajeSeleccionadoIzquierda, personajeSeleccionadoDerecha, 0, ch, false,null);
 					vs.setVisible(true);
 					dispose();
 				}else {
@@ -462,7 +462,7 @@ public class VentanaSeleccionOponente extends JFrame {
 							(int)personajeSeleccionadoDerecha.getVida(), (int)personajeSeleccionadoDerecha.getVelocidad(), 
 							personajeSeleccionadoDerecha.getTipoPersonaje(), 1);
 					
-					VentanaStage vs = new VentanaStage(personajeSeleccionadoIzquierda, enem, 0, ch, false);
+					VentanaStage vs = new VentanaStage(personajeSeleccionadoIzquierda, enem, 0, ch, false,null);
 					vs.setVisible(true);
 					dispose();
 				}

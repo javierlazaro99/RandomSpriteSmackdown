@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 
 import Personalizados.JLabelGraficoAjustado;
 import Usuarios.UsuariosValidar;
+import Ventanas.VentanaSeleccionNivel;
 import Ventanas.VentanaStage;
 import personaje.Personaje;
 import personaje.enemigo.Enemigo;
@@ -33,6 +34,7 @@ public class ControlEstados implements Runnable{
 	private ControlEstados ceEnem;
 	private boolean choque;
 	private boolean Parado;
+	private VentanaSeleccionNivel vNivel;
 	public boolean isChoque() {
 		return choque;
 	}
@@ -41,7 +43,7 @@ public class ControlEstados implements Runnable{
 		this.choque = choque;
 	}
 
-	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario, VentanaStage stage,ControlHistoria ch,ControlIA cIA, ControlEstados ceEnem) {//Personaje de la izquierda y de la derecha
+	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario, VentanaStage stage,ControlHistoria ch,ControlIA cIA, ControlEstados ceEnem,VentanaSeleccionNivel vNIvel) {//Personaje de la izquierda y de la derecha
 		this.pPrincipal=pPrincipal;
 		this.pSecundario=pSecundario;
 		this.stage = stage;
@@ -52,6 +54,7 @@ public class ControlEstados implements Runnable{
 		this.SpacePulsado=false;
 		this.golpeado=false;
 		this.choque=false;
+		this.vNivel=vNIvel;
 		Parado=true;
 		if(pPrincipal.equals(stage.getpPrincipal())) {
 			this.elementoAnimacionPersonaje = stage.getElementoAnimacionPersonaje1(); 
@@ -475,7 +478,11 @@ public class ControlEstados implements Runnable{
 					
 					//Movimiento del salto(Se podría meter en un método)
 					int miposicion = (int) pPrincipal.getPosicion().getY();
-					
+					if(choque==true) {
+						pPrincipal.setPosicion(new Point((int)pPrincipal.getPosicion().getX(),alturaBase));
+						stage.getiProta().setLocation(pPrincipal.getPosicion());
+						break;
+					}
 					if(miposicion > alturaObjetivo) {
 						pPrincipal.Moverse(1, -1,stage,this);
 						miposicion = (int) pPrincipal.getPosicion().getY();
@@ -537,7 +544,11 @@ public class ControlEstados implements Runnable{
 					
 					//Movimiento del salto(Se podría meter en un método)
 					int miposicion = (int) pPrincipal.getPosicion().getY();
-					
+					if(choque==true) {
+						pPrincipal.setPosicion(new Point((int)pPrincipal.getPosicion().getX(),alturaBase));
+						stage.getiProta().setLocation(pPrincipal.getPosicion());
+						break;
+					}
 					if(miposicion > alturaObjetivo) {
 						pPrincipal.Moverse(-1, -1,stage,this);
 						miposicion = (int) pPrincipal.getPosicion().getY();
@@ -548,7 +559,9 @@ public class ControlEstados implements Runnable{
 						}
 					}if(miposicion == alturaObjetivo) {
 						alturaObjetivo = alturaBase;	
-					}if(miposicion < alturaObjetivo) {
+					}
+					
+					if(miposicion < alturaObjetivo) {
 						pPrincipal.Moverse(-1, 1,stage,this);
 						miposicion = (int) pPrincipal.getPosicion().getY();
 						if(pPrincipal.equals(stage.getpPrincipal())) {
@@ -688,6 +701,7 @@ public class ControlEstados implements Runnable{
 						if(ch.getNivelesCompletados()<8) {
 							if(stage.getNivel()==ch.getNivelesCompletados()) {
 							ch.setNivelesCompletados(ch.getNivelesCompletados()+1);
+							vNivel.ComprobarNiveles(vNivel.getArrayBotones());
 							}
 							stage.setContador(0);
 							StageCerrado=true;
@@ -700,7 +714,12 @@ public class ControlEstados implements Runnable{
 				
 				stage.setContador(0);
 				StageCerrado=true;
+				
+				if(pSecundario instanceof Enemigo && cIA!=null) {
+					cIA.setStageCerrado(true);
+				}
 				stage.dispose();
+				
 			}
 		}	
 	}

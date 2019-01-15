@@ -17,6 +17,7 @@ import javax.swing.JProgressBar;
 
 import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
+import Usuarios.UsuariosValidar;
 import control.ControlEstados;
 import control.ControlHistoria;
 import control.ControlIA;
@@ -102,7 +103,7 @@ public class VentanaStage extends JFrame {
 		return pSecundario;
 	}
 
-	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel,ControlHistoria ch, boolean activaIA) {
+	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel,ControlHistoria ch, boolean activaIA,VentanaSeleccionNivel vNivel) {
 		this.nivel=nivel;
 		pPrincipal=p1;
 		pSecundario=p2;
@@ -130,7 +131,7 @@ public class VentanaStage extends JFrame {
 		
 		//Thread de juego
 		
-		controlEstados = new ControlEstados(p1, p2, this,ch,controlIA, controlEstadosP2);
+		controlEstados = new ControlEstados(p1, p2, this,ch,controlIA, controlEstadosP2,vNivel);
 		Thread t = new Thread(controlEstados);
 		controlEstados.setStageCerrado(false);
 		t.start();
@@ -147,7 +148,7 @@ public class VentanaStage extends JFrame {
 		if(p2 instanceof PersonajeJugable && !activaIA) {
 		
 			p2.crearlPersonaje(50, 50);
-			controlEstadosP2 = new ControlEstados((PersonajeJugable) p2, p1, this, ch, null, controlEstados);
+			controlEstadosP2 = new ControlEstados((PersonajeJugable) p2, p1, this, ch, null, controlEstados,vNivel);
 			Thread t2 = new Thread(controlEstadosP2);
 			t2.start();
 			controlEstados.setCeEnem(controlEstadosP2);
@@ -556,9 +557,10 @@ Thread tiempo = new Thread(new Runnable() {
 	}
 
 	public static void main(String[] args) {
+		ControlHistoria ch = new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 0);
 		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 
 				new Enemigo(new Point(100, 0), 10, 10, 10, "ninja" , 8) ,1,
-				new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 0), true);
+				new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 0), true,new VentanaSeleccionNivel(new UsuariosValidar("", ""), ch, 0));
 		vs.setVisible(true);
 	}
 
