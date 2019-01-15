@@ -12,6 +12,7 @@ import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
 import control.BaseDeDatos;
 import control.Sonidos;
+import control.MouseAdapters.MouseAdapterBotonesVentanaPrincipal;
 
 public class VentanaValidacion extends JFrame {
 	int codigo;
@@ -123,6 +124,7 @@ public class VentanaValidacion extends JFrame {
 				pExit.add(exit);
 		//Eventos
 		
+		login.addMouseListener(new MouseAdapterBotonesVentanaPrincipal(login)); 
 		login.addActionListener(new ActionListener() {
 			
 			@Override
@@ -138,6 +140,7 @@ public class VentanaValidacion extends JFrame {
 			}
 		});
 		
+		register.addMouseListener(new MouseAdapterBotonesVentanaPrincipal(register)); 
 		register.addActionListener(new ActionListener() {
 			
 			@Override
@@ -154,6 +157,7 @@ public class VentanaValidacion extends JFrame {
 			}
 		});
 		
+		exit.addMouseListener(new MouseAdapterBotonesVentanaPrincipal(exit)); 
 		exit.addActionListener(new ActionListener() {
 			
 			@Override
