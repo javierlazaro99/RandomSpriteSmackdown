@@ -38,8 +38,9 @@ public class VentanaSeleccionNivel extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	private JButton bN1; private JButton bN2; private JButton bN3; private JButton bN4; private JButton bN5; private JButton bN6; private JButton bN7; private JButton bN8;
+	private ControlHistoria ch;
 	public VentanaSeleccionNivel(UsuariosValidar user, ControlHistoria ch, int victorias1v1) {
-		
+		this.ch=ch;
 		//Temporal mientras las pruebas
 		try {
 		     GraphicsEnvironment ge = 
@@ -112,6 +113,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			boton.setIcon(new ImageIcon(arrayIconos.get(cont).getImage().getScaledInstance(500, 290,  java.awt.Image.SCALE_SMOOTH)));
 			cont++;
 		}
+		ComprobarNiveles(arrayBotones);
 		
 		pTitulo.setPreferredSize(new Dimension(900, 200));
 		
@@ -169,6 +171,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			pVacio3.add(pVacio32);
 		pN1.add(bN1, BorderLayout.CENTER); pN2.add(bN2, BorderLayout.CENTER); pN3.add(bN3, BorderLayout.CENTER); pN4.add(bN4, BorderLayout.CENTER); 
 		pN5.add(bN5, BorderLayout.CENTER); pN6.add(bN6, BorderLayout.CENTER); pN7.add(bN7, BorderLayout.CENTER); pN8.add(bN8, BorderLayout.CENTER);
+		
 		
 		
 		
@@ -288,6 +291,14 @@ public class VentanaSeleccionNivel extends JFrame{
 		listaIconos.add(new ImageIcon("StagePreview/Stage8Preview.jpg"));
 		
 		return listaIconos;
+		
+	}
+	private void ComprobarNiveles(ArrayList<JButton> listaBotones) {
+		for(int contB=0;contB< listaBotones.size()-1;contB++) {
+			if(contB>=1 && contB+1>ch.getNivelesCompletados()) {
+				listaBotones.get(contB).setEnabled(false);
+			}
+		}
 		
 	}
 	public static void main(String[] args) {

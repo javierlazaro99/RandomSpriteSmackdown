@@ -42,7 +42,7 @@ public class VentanaStage extends JFrame {
 	private int contador=60;
 	private Clip punch1;
 	private Clip punch2;
-
+	private int nivel=0;
 	private boolean activeIA;
 	private ElementoAnimacion elementoAnimacionPersonaje1;
 	private ElementoAnimacion elementoAnimacionPersonaje2;
@@ -103,7 +103,7 @@ public class VentanaStage extends JFrame {
 	}
 
 	public VentanaStage(PersonajeJugable p1, Personaje p2,int nivel,ControlHistoria ch, boolean activaIA) {
-		
+		this.nivel=nivel;
 		pPrincipal=p1;
 		pSecundario=p2;
 		activeIA=activaIA;
@@ -333,6 +333,68 @@ public class VentanaStage extends JFrame {
 		});
 	}				
 			
+
+
+public int getNivel() {
+		return nivel;
+	}
+
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
+	}
+
+public void setControlEstados(ControlEstados controlEstados) {
+		this.controlEstados = controlEstados;
+	}
+
+	public void setControlEstadosP2(ControlEstados controlEstadosP2) {
+		this.controlEstadosP2 = controlEstadosP2;
+	}
+
+	public void setControlIA(ControlIA controlIA) {
+		this.controlIA = controlIA;
+	}
+
+	public void setpPrincipal(PersonajeJugable pPrincipal) {
+		this.pPrincipal = pPrincipal;
+	}
+
+	public void setpSecundario(Personaje pSecundario) {
+		this.pSecundario = pSecundario;
+	}
+
+	public void setJpbVida2(JProgressBar jpbVida2) {
+		this.jpbVida2 = jpbVida2;
+	}
+
+	public void setJpbVida1(JProgressBar jpbVida1) {
+		this.jpbVida1 = jpbVida1;
+	}
+
+	public void setlTiempo(JLabel lTiempo) {
+		this.lTiempo = lTiempo;
+	}
+
+	public void setPunch1(Clip punch1) {
+		this.punch1 = punch1;
+	}
+
+	public void setPunch2(Clip punch2) {
+		this.punch2 = punch2;
+	}
+
+	public void setElementoAnimacionPersonaje1(ElementoAnimacion elementoAnimacionPersonaje1) {
+		this.elementoAnimacionPersonaje1 = elementoAnimacionPersonaje1;
+	}
+
+	public void setElementoAnimacionPersonaje2(ElementoAnimacion elementoAnimacionPersonaje2) {
+		this.elementoAnimacionPersonaje2 = elementoAnimacionPersonaje2;
+	}
+
+	public void setTiempo(Thread tiempo) {
+		this.tiempo = tiempo;
+	}
+
 
 
 Thread tiempo = new Thread(new Runnable() {

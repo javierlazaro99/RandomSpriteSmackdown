@@ -11,6 +11,7 @@ import org.junit.Test;
 import Ventanas.VentanaStage;
 import control.ControlEstados;
 import control.ControlHistoria;
+import control.ControlIA;
 import personaje.enemigo.Enemigo;
 import personaje.personajeJugable.PersonajeJugable;
 
@@ -21,14 +22,17 @@ public class PersonajeTest {
 	private ControlHistoria ch;
 	private ControlEstados ce;
 	private VentanaStage stage;
+	private ControlIA cia;
 	@Before
 	public void setUp() throws Exception {
-		p1 = new PersonajeJugable(null, new Point(0,0), 10, 10, 10, null) ; 
 		
-		p2 = new Enemigo(new Point(0,0), 10, 10, 10, 0) ;
+		p1 = new PersonajeJugable(null, new Point(0,0), 10, 10, 10, "robot") ; 
+		
+		p2 = new Enemigo(new Point(0,0), 10, 10, 10, "robot", 0) ;
 		ch= new ControlHistoria(p1, 0);
-		stage= new VentanaStage(p1, p2, 0, ch);
-		ce= new ControlEstados(p1, p2,stage , ch);
+		stage= new VentanaStage(p1, p2, 0, ch, true);
+		ce= new ControlEstados(p1, p2,stage , ch, null, ce);
+		cia = new ControlIA(p1, (Enemigo) p2, stage, ch, ce);
 	}
 
 	@After
@@ -51,10 +55,10 @@ public class PersonajeTest {
 		p2.setPosicion(new Point(60, 0));
 		
 		p1.Rebotar(p2,stage);
-		assertEquals(new Point(48,0) , p1.getPosicion());
+		assertEquals(new Point(30,0) , p1.getPosicion());
 		
 		p2.Rebotar(p1,stage);
-		assertEquals(new Point(62, 0), p2.getPosicion());
+		assertEquals(new Point(80, 0), p2.getPosicion());
 	}
 	
 	@Test 
