@@ -121,7 +121,7 @@ public class ControlAnimaciones {
 						if(stage.getiProta().isHorFlip()==true && stage.getiEnemigo().isHorFlip()==false || stage.getiProta().isHorFlip()==false 
 								&& stage.getiEnemigo().isHorFlip()==true) {
 							
-							personaje.DarGolpe(enemigo);
+							if(personaje.DarGolpe(enemigo)==1) {
 							
 							if(enemigo instanceof Enemigo) {
 								stage.getJpbVida2().setValue((int)enemigo.getVida());
@@ -131,7 +131,7 @@ public class ControlAnimaciones {
 							if(enemigo instanceof PersonajeJugable) {
 								ceEnemigo.setGolpeado(true);
 							}
-							
+							}
 							if(personaje.equals(stage.getpPrincipal())) {
 								stage.getJpbVida2().setValue((int)enemigo.getVida());
 							}else {

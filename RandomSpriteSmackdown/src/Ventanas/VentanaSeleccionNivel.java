@@ -303,8 +303,8 @@ public class VentanaSeleccionNivel extends JFrame{
 		
 	}
 	 public void ComprobarNiveles(ArrayList<JButton> listaBotones) {
-		for(int contB=0;contB< listaBotones.size()-1;contB++) {
-			if(contB>=1 && contB+1>ch.getNivelesCompletados()) {
+		for(int contB=1;contB< listaBotones.size();contB++) {
+			if(contB>=ch.getNivelesCompletados()+1) {
 				listaBotones.get(contB).setEnabled(false);
 			}else {
 				listaBotones.get(contB).setEnabled(true);
@@ -313,6 +313,9 @@ public class VentanaSeleccionNivel extends JFrame{
 		revalidate();
 		repaint();
 		
+	}
+	public void resetNivel() {
+		Nivel.reset();
 	}
 	public static void main(String[] args) {
 		VentanaSeleccionNivel vs = new VentanaSeleccionNivel(null, new ControlHistoria(new PersonajeJugable("", new Point(0, 0), 10, 10, 10, "Ninja"), 0), 0);

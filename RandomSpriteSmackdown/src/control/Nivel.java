@@ -15,9 +15,9 @@ public class Nivel {
 	
 	private VentanaStage stage;
 	private int numNivel;
-	private PersonajeJugable pj;
+	private static PersonajeJugable pj;
 	private Enemigo enem;
-	private ControlHistoria ch;
+	private static ControlHistoria ch;
 	public Nivel(PersonajeJugable pj, Enemigo enem, int numNiv,ControlHistoria ch) {
 		this.pj=pj;
 		this.enem=enem;
@@ -60,7 +60,10 @@ public class Nivel {
 		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 20, 50, 20,"robot", 1), 7,ch));
 		listaNiveles.add(new Nivel(pj, new Enemigo(new Point(100, 0), 30, 60, 30,"ninja", 1), 8,ch));
 	}
-
+	public static void reset() {
+		listaNiveles.clear();
+		generarListaNiveles(pj, ch);
+	}
 	public VentanaStage getStage() {
 		return stage;
 	}

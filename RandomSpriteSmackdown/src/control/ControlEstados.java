@@ -699,19 +699,20 @@ public class ControlEstados implements Runnable{
 				if(pSecundario.getVida()<=0) {
 					if(pSecundario instanceof Enemigo) {
 						if(ch.getNivelesCompletados()<8) {
-							if(stage.getNivel()==ch.getNivelesCompletados()) {
+							if(stage.getNivel()==ch.getNivelesCompletados()+1) {
 							ch.setNivelesCompletados(ch.getNivelesCompletados()+1);
 							vNivel.ComprobarNiveles(vNivel.getArrayBotones());
+							pPrincipal.setPuntosMejora(pPrincipal.getPuntosMejora()+1);
 							}
 							stage.setContador(0);
 							StageCerrado=true;
-							pPrincipal.setPuntosMejora(pPrincipal.getPuntosMejora()+1);
+							
 							cIA.setStageCerrado(true);
 							stage.dispose();
 						}
 					}
 				}
-				
+				vNivel.resetNivel();
 				stage.setContador(0);
 				StageCerrado=true;
 				
