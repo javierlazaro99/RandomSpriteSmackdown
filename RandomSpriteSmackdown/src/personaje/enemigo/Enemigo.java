@@ -111,7 +111,7 @@ public class Enemigo extends Personaje {
 				case 8:
 					
 					try {
-						Thread.sleep(100);
+						Thread.sleep(200);
 						return 1;
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
