@@ -341,7 +341,7 @@ public class VentanaStage extends JFrame {
 			
 
 
-public int getNivel() {
+	public int getNivel() {
 		return nivel;
 	}
 

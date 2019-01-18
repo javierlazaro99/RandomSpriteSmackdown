@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 
 import Personalizados.JLabelGraficoAjustado;
 import Usuarios.UsuariosValidar;
+import Ventanas.VentanaPrincipal;
 import Ventanas.VentanaSeleccionNivel;
 import Ventanas.VentanaStage;
 import personaje.Personaje;
@@ -718,6 +719,9 @@ public class ControlEstados implements Runnable{
 				
 				if(pSecundario instanceof Enemigo && cIA!=null) {
 					cIA.setStageCerrado(true);
+				}
+				if(pSecundario instanceof PersonajeJugable) {
+					VentanaPrincipal.venPrincip.setEnabled(true);
 				}
 				stage.dispose();
 				
