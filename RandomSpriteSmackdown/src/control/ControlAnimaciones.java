@@ -129,7 +129,7 @@ public class ControlAnimaciones {
 							}
 							
 							if(enemigo instanceof PersonajeJugable) {
-								ceEnemigo.setGolpeado(true);
+								ceEnemigo.setGolpeado(true);//Se golpea el enemigo
 							}
 							}
 							if(personaje.equals(stage.getpPrincipal())) {
