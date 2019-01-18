@@ -40,6 +40,7 @@ public class VentanaSeleccionNivel extends JFrame{
 	private JButton bN1; private JButton bN2; private JButton bN3; private JButton bN4; private JButton bN5; private JButton bN6; private JButton bN7; private JButton bN8;
 	private ControlHistoria ch;
 	private ArrayList<JButton>arrayBotones;
+	public static VentanaSeleccionNivel venSelecNivel;
 	public VentanaSeleccionNivel(UsuariosValidar user, ControlHistoria ch, int victorias1v1) {
 		this.ch=ch;
 		//Temporal mientras las pruebas
@@ -248,8 +249,8 @@ public class VentanaSeleccionNivel extends JFrame{
 		bHome.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaPrincipal ventana = new VentanaPrincipal(0,user, ch.getPersonajePrincipal(), ch.getNivelesCompletados(), victorias1v1);
-				ventana.setVisible(true);
+				VentanaPrincipal.venPrincip = new VentanaPrincipal(0,user, ch.getPersonajePrincipal(), ch.getNivelesCompletados(), victorias1v1);
+				VentanaPrincipal.venPrincip.setVisible(true);
 				VentanaSeleccionNivel.this.dispose();	
 			}
 		});
@@ -259,7 +260,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				VentanaMejoras ventana= new VentanaMejoras(user, ch, victorias1v1);
 				ventana.setVisible(true);
-				VentanaSeleccionNivel.this.dispose();	
+				VentanaSeleccionNivel.this.setEnabled(false);	
 			}
 		});
 	}
