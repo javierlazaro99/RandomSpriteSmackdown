@@ -457,7 +457,7 @@ public class VentanaSeleccionOponente extends JFrame {
 				if(UnoVUno) {
 					VentanaStage vs = new VentanaStage(personajeSeleccionadoIzquierda, personajeSeleccionadoDerecha, 0, ch, false,null);
 					vs.setVisible(true);
-					dispose();
+					VentanaSeleccionOponente.this.dispose();
 				}else {
 					Enemigo enem = new Enemigo(new Point(100, 0), (int)personajeSeleccionadoDerecha.getFuerza(), 
 							(int)personajeSeleccionadoDerecha.getVida(), (int)personajeSeleccionadoDerecha.getVelocidad(), 
@@ -465,7 +465,7 @@ public class VentanaSeleccionOponente extends JFrame {
 					
 					VentanaStage vs = new VentanaStage(personajeSeleccionadoIzquierda, enem, 0, ch, false,null);
 					vs.setVisible(true);
-					dispose();
+					VentanaSeleccionOponente.this.dispose();
 				}
 			}
 		});
