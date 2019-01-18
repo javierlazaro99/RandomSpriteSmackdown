@@ -176,8 +176,8 @@ public class VentanaPrincipal extends JFrame{
 				ControlHistoria ch = new ControlHistoria(pPrincipal, nivelesCompletados); 
 				if(codigo==0) { 
 					///////// Mirar esto del código que da error si te has registrado pero no has creado personaje
-					VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(user, ch, victorias1v1);
-					ventana.setVisible(true);
+					VentanaSeleccionNivel.venSelecNivel = new VentanaSeleccionNivel(user, ch, victorias1v1);
+					VentanaSeleccionNivel.venSelecNivel.setVisible(true);
 					VentanaPrincipal.this.dispose();
 				}else {
 					VentanaCreacionPersonaje ventana = new VentanaCreacionPersonaje(codigo,user,pPrincipal,ch,victorias1v1,nivelesCompletados);

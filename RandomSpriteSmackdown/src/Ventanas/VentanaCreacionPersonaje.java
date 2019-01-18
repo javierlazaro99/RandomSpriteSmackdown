@@ -314,9 +314,9 @@ public class VentanaCreacionPersonaje extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				personajeSeleccionado.setNombre(tfNombre.getText());
 				ch.setPersonajePrincipal(personajeSeleccionado);
-				VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(user, ch, victorias1v1);
+				VentanaSeleccionNivel.venSelecNivel = new VentanaSeleccionNivel(user, ch, victorias1v1);
 				BaseDeDatos.guardarPartidaBD2(user, ch);
-				ventana.setVisible(true);
+				VentanaSeleccionNivel.venSelecNivel.setVisible(true);
 				setVisible(false);
 				VentanaCreacionPersonaje.this.dispose();
 				VentanaPrincipal.venPrincip.dispose();

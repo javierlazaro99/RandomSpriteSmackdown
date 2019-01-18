@@ -56,6 +56,7 @@ public class VentanaMejoras extends JFrame{
 		}
 		
 		setSize(800, 600);
+		setUndecorated(true);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
@@ -261,8 +262,7 @@ public class VentanaMejoras extends JFrame{
 		bHome.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaSeleccionNivel ventana = new VentanaSeleccionNivel(user, ch, victorias1v1);
-				ventana.setVisible(true);
+				VentanaSeleccionNivel.venSelecNivel.setEnabled(true);
 				VentanaMejoras.this.dispose();
 			}
 		});	
