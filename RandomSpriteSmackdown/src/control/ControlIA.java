@@ -18,6 +18,7 @@ public class ControlIA implements Runnable{
 	long diferenciaTimers = 0;
 	long timerEstado = 0;
 	private boolean stageCerrado;
+	private boolean stagePausado;
 	private PersonajeJugable pPrincipal;
 	private Enemigo pSecundario;
 	private VentanaStage stage;
@@ -49,6 +50,13 @@ public class ControlIA implements Runnable{
 
 	public void setStageCerrado(boolean stageCerrado) {
 		this.stageCerrado = stageCerrado;
+	}
+	public boolean isStagePausado() {
+		return stagePausado;
+	}
+
+	public void setStagePausado(boolean stagePausado) {
+		this.stagePausado = stagePausado;
 	}
 	public boolean isMoverse() {
 		return moverse;
@@ -97,6 +105,14 @@ public class ControlIA implements Runnable{
 	public void run() {
 		
 		while(!stageCerrado) {
+			
+			while (stagePausado) {
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 			
 			
 		if( pPrincipal.getVida()<=0) {//Comprobacion de vida enemigo

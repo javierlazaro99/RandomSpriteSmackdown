@@ -285,14 +285,20 @@ public class VentanaStage extends JFrame {
 				}
 				if(e.getKeyCode()==KeyEvent.VK_ESCAPE) {
 					controlEstados.setStagePausado(true);
+					
+					if(activaIA) {
+						controlIA.setStagePausado(true);
+					}
+					
 					if(JOptionPane.showInternalConfirmDialog(getContentPane(), "¿Quieres cerrar el juego?","Cierre de ventana",JOptionPane.YES_NO_OPTION)==0) {
 						controlEstados.setStagePausado(false);
 						controlEstados.setStageCerrado(true);
 						if(activaIA) {
 							controlIA.setStageCerrado(true);
+							controlIA.setStagePausado(false);
 						}if(pSecundario instanceof PersonajeJugable) {
-							controlEstadosP2.setStagePausado(false);
 							controlEstadosP2.setStageCerrado(true);
+							controlEstadosP2.setStagePausado(false);
 						}
 						contador=0;
 						
@@ -306,6 +312,7 @@ public class VentanaStage extends JFrame {
 						controlEstados.setAPulsado(false);
 						controlEstados.setDPulsado(false);
 						controlEstados.setStagePausado(false);
+						controlIA.setStagePausado(false);
 					}
 				}
 				
@@ -559,6 +566,21 @@ Thread tiempo = new Thread(new Runnable() {
 		elementoAnimacionPersonaje2.CrearAnimParado(p2);
 		elementoAnimacionPersonaje2.CrearAnimSaltando(p2);
 		elementoAnimacionPersonaje2.CrearAnimGolpeado(p2);
+	}
+	
+	private class AnimacionReadyFight implements Runnable{
+
+		@Override
+		public void run() {
+			boolean reproduciendo = true;
+			
+			while(reproduciendo) {
+				
+			}
+			
+			
+		}
+		
 	}
 
 	public static void main(String[] args) {
