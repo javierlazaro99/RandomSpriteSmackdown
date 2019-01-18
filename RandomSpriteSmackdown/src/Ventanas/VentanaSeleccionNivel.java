@@ -259,7 +259,7 @@ public class VentanaSeleccionNivel extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				VentanaMejoras ventana= new VentanaMejoras(user, ch, victorias1v1);
 				ventana.setVisible(true);
-				VentanaSeleccionNivel.this.dispose();	
+				VentanaSeleccionNivel.this.setEnabled(false);	
 			}
 		});
 	}

@@ -79,6 +79,7 @@ public class VentanaSeleccionOponente extends JFrame {
 		
 		setTitle("Seleccion de Srickmans");
 		setSize(1450, 600);
+		setUndecorated(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		

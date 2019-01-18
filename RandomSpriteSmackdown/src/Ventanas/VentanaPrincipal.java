@@ -197,7 +197,7 @@ public class VentanaPrincipal extends JFrame{
 				ControlHistoria ch = new ControlHistoria(pPrincipal, nivelesCompletados);
 				VentanaSeleccionOponente ventana = new VentanaSeleccionOponente(codigo, user, pPrincipal, nivelesCompletados, victorias1v1,ch, false);
 				ventana.setVisible(true);
-				VentanaPrincipal.this.dispose();
+				VentanaPrincipal.this.setEnabled(false);
 			}
 		});
 		botonPractica.addMouseListener(new MouseAdapterBotonesVentanaPrincipal(botonPractica));

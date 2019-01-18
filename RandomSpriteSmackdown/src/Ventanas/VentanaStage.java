@@ -286,7 +286,6 @@ public class VentanaStage extends JFrame {
 				if(e.getKeyCode()==KeyEvent.VK_ESCAPE) {
 					controlEstados.setStagePausado(true);
 					if(JOptionPane.showInternalConfirmDialog(getContentPane(), "¿Quieres cerrar el juego?","Cierre de ventana",JOptionPane.YES_NO_OPTION)==0) {
-						VentanaStage.this.dispose();
 						controlEstados.setStagePausado(false);
 						controlEstados.setStageCerrado(true);
 						if(activaIA) {
@@ -296,6 +295,12 @@ public class VentanaStage extends JFrame {
 							controlEstadosP2.setStageCerrado(true);
 						}
 						contador=0;
+						
+						if(VentanaPrincipal.venPrincip.isDisplayable() && !VentanaPrincipal.venPrincip.isEnabled()) {
+							VentanaPrincipal.venPrincip.setEnabled(true);
+						}
+						
+						VentanaStage.this.dispose();
 								
 					}else {
 						controlEstados.setAPulsado(false);
