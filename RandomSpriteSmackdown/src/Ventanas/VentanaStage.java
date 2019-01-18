@@ -112,6 +112,7 @@ public class VentanaStage extends JFrame {
 		elementoAnimacionPersonaje1 = new ElementoAnimacion("", 0);
 		elementoAnimacionPersonaje2 = new ElementoAnimacion("", 0);
 		
+		Thread animInicio = new Thread(new AnimacionReadyFight());
 		
 		initLabel(pPrincipal, pSecundario);
 		
@@ -231,6 +232,9 @@ public class VentanaStage extends JFrame {
 		pN2.add(lTiempo);
 		pN3.add(jpbVida2);
 		
+		//Lanzar los threads
+		
+		animInicio.start();
 		tiempo.start();
 		
 		addKeyListener(new KeyAdapter() {
@@ -574,11 +578,84 @@ Thread tiempo = new Thread(new Runnable() {
 		public void run() {
 			boolean reproduciendo = true;
 			
-			while(reproduciendo) {
-				
+			int contadorMilis = 0;
+			
+			//Paneles
+			JPanel pGlass = (JPanel) VentanaStage.this.getGlassPane();
+			pGlass.setVisible(true);
+			pGlass.setLayout(new BorderLayout());
+			JPanel pBase = new JPanel(new GridBagLayout());
+			pBase.setOpaque(false);
+			pBase.setPreferredSize(new Dimension(1000, 500));
+			JLabelGraficoAjustado label = new JLabelGraficoAjustado("animInicio/Ready.png", 800, 300);
+			label.setOpacidad(0.0f);
+			pGlass.add(pBase, BorderLayout.NORTH);
+			pBase.add(label);
+			
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
 			}
 			
-			
+			while(reproduciendo) {
+				controlEstados.setStagePausado(true);
+				if(activeIA) {
+					controlIA.setStagePausado(true);
+				}
+				
+				if(contadorMilis < 3000) {
+					
+					if(contadorMilis <= 1600) {
+						if(! (label.getOpacidad() >= 1.0f)) {
+							label.setOpacidad(label.getOpacidad() + 0.25f);
+						}
+						
+						if(contadorMilis == 200) {
+							Clip clipReady = Sonidos.readySonido.cargarSonido("animInicio/Ready.wav");
+							clipReady.start();
+						}
+					}else {
+						if(! (label.getOpacidad() <= 0.0f)) {
+							label.setOpacidad(label.getOpacidad() - 0.25f);
+						}
+					}
+				}else if(contadorMilis == 3000) {
+					label.setImagen("animInicio/Fight.png");
+					label.setOpacidad(0.0f);
+					
+				}else if(contadorMilis > 3000) {
+					
+					if(contadorMilis <= 4600) {
+						if(! (label.getOpacidad() >= 1.0f)) {
+							label.setOpacidad(label.getOpacidad() + 0.25f);
+						}
+						
+						if(contadorMilis == 3200) {
+							Clip clipReady = Sonidos.readySonido.cargarSonido("animInicio/Fight.wav");
+							clipReady.start();
+						}
+					}else {
+						if(! (label.getOpacidad() <= 0.0f)) {
+							label.setOpacidad(label.getOpacidad() - 0.25f);
+						}
+					}
+				}if(contadorMilis == 6000) {
+					pGlass.removeAll();
+					controlEstados.setStagePausado(false);
+					if(activeIA) {
+						controlIA.setStagePausado(false);
+					}
+					reproduciendo = false;
+				}
+				
+				try {
+					contadorMilis += 200;
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		
 	}

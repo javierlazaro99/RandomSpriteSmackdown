@@ -12,6 +12,8 @@ public class Sonidos {
 	private static Sonidos nivel4ThemeSonido = new Sonidos();
 	public static Sonidos punch1Sonido = new Sonidos();
 	public static Sonidos punch2Sonido = new Sonidos();
+	public static Sonidos readySonido = new Sonidos();
+	public static Sonidos fightSonido = new Sonidos();
 	
 	public static Clip mainTheme = mainThemeSonido.cargarSonido("sounds/MainTheme.wav");
 	public static Clip nivel1Theme = nivel1ThemeSonido.cargarSonido("sounds/Nivel1.wav");
