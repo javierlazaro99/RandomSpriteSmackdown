@@ -145,10 +145,12 @@ public class ControlAnimaciones {
 						}
 					}
 					if(personaje instanceof Enemigo) {
+						Clip punch= Sonidos.punch1Sonido.cargarSonido("sounds/punch_1.wav");
 						if(personaje.getPosicion().getX() >= (enemigo.getPosicion().getX()-200) && personaje.getPosicion().getX()<= enemigo.getPosicion().getX() && stage.getiEnemigo().isHorFlip()==false ) {
 							enemigo.setVida(enemigo.getVida()-personaje.getFuerza()*0.1);
 							stage.getJpbVida1().setValue((int)enemigo.getVida());
 							// Tu personaje recibe el estado de golpeado
+							punch.start();
 							ce.setGolpeado(true); // Antes el set se hacía al cIA
 						}
 						
@@ -157,6 +159,7 @@ public class ControlAnimaciones {
 							stage.getJpbVida1().setValue((int)enemigo.getVida());
 							// Tu personaje recibe el estado de golpeado
 							ce.setGolpeado(true); // Antes el set se hacía al cIA
+							punch.start();
 						}
 						
 					}
