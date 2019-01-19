@@ -307,7 +307,7 @@ public class VentanaSeleccionNivel extends JFrame{
 	 public void ComprobarNiveles(ArrayList<JButton> listaBotones) {
 		for(int contB=1;contB< listaBotones.size();contB++) {
 			if(contB>=ch.getNivelesCompletados()+1) {
-				listaBotones.get(contB).setEnabled(false);
+				listaBotones.get(contB).setEnabled(false); 
 			}else {
 				listaBotones.get(contB).setEnabled(true);
 			}
