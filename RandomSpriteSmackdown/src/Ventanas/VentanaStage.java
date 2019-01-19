@@ -144,7 +144,10 @@ public class VentanaStage extends JFrame {
 			controlIA= new ControlIA(p1, (Enemigo)p2, this, ch,controlEstados);
 			Thread enemt = new Thread(controlIA);
 			enemt.start();
-			controlEstados.setcIA(controlIA); 
+			
+			controlEstados.setcIA(controlIA);
+			iEnemigo.setHorFlip(true);//Para que el personaje salga mirando a la izquierda
+			controlIA.setStagePausado(true); 
 		}
 		
 		if(p2 instanceof PersonajeJugable && !activaIA) {
@@ -345,7 +348,7 @@ public class VentanaStage extends JFrame {
 				CerrarSonidoStage(nivel);
 				Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
 				FloatControl volume =(FloatControl)Sonidos.mainTheme.getControl(FloatControl.Type.MASTER_GAIN);
-				volume.setValue(40);
+				volume.setValue(4);
 				
 			}
 		});
@@ -521,47 +524,47 @@ Thread tiempo = new Thread(new Runnable() {
 		case 1:
 			Sonidos.nivel1Theme.stop();
 			FloatControl volume1 =(FloatControl)Sonidos.nivel1Theme.getControl(FloatControl.Type.MASTER_GAIN);
-			volume1.setValue(40);
+			volume1.setValue(4);
 			break;
 		case 2:
 			Sonidos.nivel2Theme.stop();
 			FloatControl volume2 =(FloatControl)Sonidos.nivel2Theme.getControl(FloatControl.Type.MASTER_GAIN);
-			volume2.setValue(40);
+			volume2.setValue(4);
 			break;
 		case 3:
 			Sonidos.nivel3Theme.stop();
 			FloatControl volume3 =(FloatControl)Sonidos.nivel3Theme.getControl(FloatControl.Type.MASTER_GAIN);
-			volume3.setValue(40);
+			volume3.setValue(4);
 			break;
 		case 4:
 			Sonidos.nivel4Theme.stop();
 			FloatControl volume4 =(FloatControl)Sonidos.nivel4Theme.getControl(FloatControl.Type.MASTER_GAIN);
-			volume4.setValue(40);
+			volume4.setValue(4);
 			break;
 		case 5:
 			Sonidos.nivel1Theme.stop();
 			FloatControl volume5 =(FloatControl)Sonidos.nivel1Theme.getControl(FloatControl.Type.MASTER_GAIN);
-			volume5.setValue(40);
+			volume5.setValue(4);
 			break;
 		case 6:
 			Sonidos.nivel2Theme.stop();
 			FloatControl volume6 =(FloatControl)Sonidos.nivel2Theme.getControl(FloatControl.Type.MASTER_GAIN);
-			volume6.setValue(40);
+			volume6.setValue(4);
 			break;
 		case 7:
 			Sonidos.nivel3Theme.stop();
 			FloatControl volume7 =(FloatControl)Sonidos.nivel3Theme.getControl(FloatControl.Type.MASTER_GAIN);
-			volume7.setValue(40);
+			volume7.setValue(4);
 			break;
 		case 8: 
 			Sonidos.nivel4Theme.stop();
 			FloatControl volume8 =(FloatControl)Sonidos.nivel4Theme.getControl(FloatControl.Type.MASTER_GAIN);
-			volume8.setValue(40);
+			volume8.setValue(4);
 			break;
 		default:
 			Sonidos.nivel1Theme.stop();
 			FloatControl volume =(FloatControl)Sonidos.nivel1Theme.getControl(FloatControl.Type.MASTER_GAIN);
-			volume.setValue(40);
+			volume.setValue(4);
 			break;
 		}
 	}

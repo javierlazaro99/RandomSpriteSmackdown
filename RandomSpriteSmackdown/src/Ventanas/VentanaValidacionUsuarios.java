@@ -246,7 +246,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 						//Sonidos
 						Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
 						FloatControl volume =(FloatControl)Sonidos.mainTheme.getControl(FloatControl.Type.MASTER_GAIN);
-						volume.setValue(40);
+						volume.setValue(4);
 					}
 				}else {
 					estado =usuario.leer(tfNombre, tfPassword);
@@ -264,7 +264,7 @@ public class VentanaValidacionUsuarios extends JFrame{
 					//Sonidos
 					Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
 					FloatControl volume =(FloatControl)Sonidos.mainTheme.getControl(FloatControl.Type.MASTER_GAIN);
-					volume.setValue(40);
+					volume.setValue(4);
 					
 					System.out.println(usuario.getNombre());
 					}else {
