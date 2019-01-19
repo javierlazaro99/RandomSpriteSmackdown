@@ -713,7 +713,9 @@ public class ControlEstados implements Runnable{
 						}
 					}
 				}
-				vNivel.resetNivel();
+				if(vNivel != null) {
+					vNivel.resetNivel();
+				}
 				stage.setContador(0);
 				StageCerrado=true;
 				
