@@ -26,6 +26,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -244,6 +245,8 @@ public class VentanaValidacionUsuarios extends JFrame{
 						
 						//Sonidos
 						Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
+						FloatControl volume =(FloatControl)Sonidos.mainTheme.getControl(FloatControl.Type.MASTER_GAIN);
+						volume.setValue(40);
 					}
 				}else {
 					estado =usuario.leer(tfNombre, tfPassword);
@@ -260,6 +263,8 @@ public class VentanaValidacionUsuarios extends JFrame{
 					
 					//Sonidos
 					Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
+					FloatControl volume =(FloatControl)Sonidos.mainTheme.getControl(FloatControl.Type.MASTER_GAIN);
+					volume.setValue(40);
 					
 					System.out.println(usuario.getNombre());
 					}else {

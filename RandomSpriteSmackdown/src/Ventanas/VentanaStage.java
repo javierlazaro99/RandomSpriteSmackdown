@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -279,8 +280,7 @@ public class VentanaStage extends JFrame {
 					controlEstados.setAPulsado(true);
 				}
 				if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-					punch1 = Sonidos.punch1Sonido.cargarSonido("sounds/punch_1.wav");
-					punch1.start();
+					
 					controlEstados.setSpacePulsado(true);
 				}
 				if(e.getKeyCode()==KeyEvent.VK_ESCAPE) {
@@ -320,8 +320,7 @@ public class VentanaStage extends JFrame {
 						controlEstadosP2.setAPulsado(true);
 					}
 					if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-						punch2 = Sonidos.punch2Sonido.cargarSonido("sounds/punch_2.wav");
-						punch2.start();
+						
 						controlEstadosP2.setSpacePulsado(true);
 					}
 				}
@@ -334,6 +333,8 @@ public class VentanaStage extends JFrame {
 			public void windowDeactivated(WindowEvent e) {
 				CerrarSonidoStage(nivel);
 				Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
+				FloatControl volume =(FloatControl)Sonidos.mainTheme.getControl(FloatControl.Type.MASTER_GAIN);
+				volume.setValue(40);
 				
 			}
 		});
@@ -471,6 +472,7 @@ Thread tiempo = new Thread(new Runnable() {
 		switch(nivel) {
 		case 1:
 			Sonidos.nivel1Theme.loop(Clip.LOOP_CONTINUOUSLY);
+			
 			break;
 		case 2:
 			Sonidos.nivel2Theme.loop(Clip.LOOP_CONTINUOUSLY);
@@ -507,30 +509,48 @@ Thread tiempo = new Thread(new Runnable() {
 		switch(nivel) {
 		case 1:
 			Sonidos.nivel1Theme.stop();
+			FloatControl volume1 =(FloatControl)Sonidos.nivel1Theme.getControl(FloatControl.Type.MASTER_GAIN);
+			volume1.setValue(40);
 			break;
 		case 2:
 			Sonidos.nivel2Theme.stop();
+			FloatControl volume2 =(FloatControl)Sonidos.nivel2Theme.getControl(FloatControl.Type.MASTER_GAIN);
+			volume2.setValue(40);
 			break;
 		case 3:
 			Sonidos.nivel3Theme.stop();
+			FloatControl volume3 =(FloatControl)Sonidos.nivel3Theme.getControl(FloatControl.Type.MASTER_GAIN);
+			volume3.setValue(40);
 			break;
 		case 4:
 			Sonidos.nivel4Theme.stop();
+			FloatControl volume4 =(FloatControl)Sonidos.nivel4Theme.getControl(FloatControl.Type.MASTER_GAIN);
+			volume4.setValue(40);
 			break;
 		case 5:
 			Sonidos.nivel1Theme.stop();
+			FloatControl volume5 =(FloatControl)Sonidos.nivel1Theme.getControl(FloatControl.Type.MASTER_GAIN);
+			volume5.setValue(40);
 			break;
 		case 6:
 			Sonidos.nivel2Theme.stop();
+			FloatControl volume6 =(FloatControl)Sonidos.nivel2Theme.getControl(FloatControl.Type.MASTER_GAIN);
+			volume6.setValue(40);
 			break;
 		case 7:
 			Sonidos.nivel3Theme.stop();
+			FloatControl volume7 =(FloatControl)Sonidos.nivel3Theme.getControl(FloatControl.Type.MASTER_GAIN);
+			volume7.setValue(40);
 			break;
 		case 8: 
 			Sonidos.nivel4Theme.stop();
+			FloatControl volume8 =(FloatControl)Sonidos.nivel4Theme.getControl(FloatControl.Type.MASTER_GAIN);
+			volume8.setValue(40);
 			break;
 		default:
 			Sonidos.nivel1Theme.stop();
+			FloatControl volume =(FloatControl)Sonidos.nivel1Theme.getControl(FloatControl.Type.MASTER_GAIN);
+			volume.setValue(40);
 			break;
 		}
 	}

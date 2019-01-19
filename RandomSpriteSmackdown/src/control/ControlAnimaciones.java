@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
 
 import Ventanas.VentanaStage;
@@ -124,12 +125,16 @@ public class ControlAnimaciones {
 							if(personaje.DarGolpe(enemigo)==1) {
 							
 							if(enemigo instanceof Enemigo) {
+								Clip punch1 = Sonidos.punch1Sonido.cargarSonido("sounds/punch_1.wav");
+								punch1.start();
 								stage.getJpbVida2().setValue((int)enemigo.getVida());
 								cIA.setGolpeado(true); // Antes se hacía set al ce
 							}
 							
 							if(enemigo instanceof PersonajeJugable) {
 								ceEnemigo.setGolpeado(true);//Se golpea el enemigo
+								Clip punch2 = Sonidos.punch2Sonido.cargarSonido("sounds/punch_2.wav");
+								punch2.start();
 							}
 							}
 							if(personaje.equals(stage.getpPrincipal())) {
