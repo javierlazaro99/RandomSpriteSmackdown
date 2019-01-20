@@ -31,8 +31,8 @@ import personaje.personajeJugable.PersonajeJugable;
 public class VentanaStage extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
-	private JLabelGraficoAjustado iProta = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
-	private JLabelGraficoAjustado iEnemigo = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
+	private JLabelGraficoAjustado iProta = new JLabelGraficoAjustado("", 50, 50);
+	private JLabelGraficoAjustado iEnemigo;
 	private ControlEstados controlEstados;
 	private ControlEstados controlEstadosP2;
 	private ControlIA controlIA;
@@ -100,7 +100,7 @@ public class VentanaStage extends JFrame {
 		return pPrincipal;
 	}
 
-	public Personaje getpSecundario() {
+	public Personaje getpSecundario() { 
 		return pSecundario;
 	}
 
@@ -109,6 +109,15 @@ public class VentanaStage extends JFrame {
 		pPrincipal=p1;
 		pSecundario=p2;
 		activeIA=activaIA;
+		
+		if(pSecundario.getTipoPersonaje().equals("robot")) {
+			iEnemigo = new JLabelGraficoAjustado("png/Idle (1).png", 50, 50);
+		}else if (pSecundario.getTipoPersonaje().equals("ninja")) {
+			iEnemigo = new JLabelGraficoAjustado("pngEnem/Idle__001.png", 50, 50);
+		}else {
+			iEnemigo = new JLabelGraficoAjustado("pngEnem2/Idle (1).png", 50,50);
+		}
+		
 		
 		elementoAnimacionPersonaje1 = new ElementoAnimacion("", 0);
 		elementoAnimacionPersonaje2 = new ElementoAnimacion("", 0);
@@ -217,9 +226,13 @@ public class VentanaStage extends JFrame {
 		pCentral.add(iProta);
 		pCentral.add(iEnemigo);
 		iProta.setLocation(p1.getPosicion().x, p1.getPosicion().y);
-		iProta.setSize(new Dimension(width, height));
+		iProta.setSize(width, height);
 		iEnemigo.setLocation(p2.getPosicion().x,p2.getPosicion().y);
-		iEnemigo.setSize(new Dimension(width, height));
+		if(pSecundario.getTipoPersonaje().equals("ninja")) {
+			iEnemigo.setSize(200, 250);
+		}else {
+			iEnemigo.setSize(width, height);
+		}
 		pNorte.add(pNs);
 		pNorte.add(pNi);
 		
@@ -691,7 +704,7 @@ Thread tiempo = new Thread(new Runnable() {
 	public static void main(String[] args) {
 		ControlHistoria ch = new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "ninja"), 0);
 		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "ninja"), 
-				new Enemigo(new Point(100, 0), 10, 10, 10, "ninja" , 8) ,1,
+				new Enemigo(new Point(100, 0), 10, 10, 10, "caballero" , 8) ,1,
 				new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 0), true,new VentanaSeleccionNivel(new UsuariosValidar("", ""), ch, 0));
 		vs.setVisible(true);
 	}
