@@ -5,20 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.PrintStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.FileHandler;
@@ -234,10 +223,9 @@ public class VentanaValidacionUsuarios extends JFrame{
 						int victorias1v1 = (int) listaObjetos.get(1);
 						int puntosMejora = (int)listaObjetos.get(2);
 						PersonajeJugable pj = (PersonajeJugable) listaObjetos.get(3);
-						System.out.println("		"+pj.getTipoPersonaje());
 						pj.setPuntosMejora(puntosMejora);
 						
-						VentanaPrincipal.venPrincip = new VentanaPrincipal(0, usuario, pj, nivelesCompletados, victorias1v1);
+						VentanaPrincipal.venPrincip = new VentanaPrincipal(0, estado, pj, nivelesCompletados, victorias1v1);
 						VentanaPrincipal.venPrincip.setVisible(true);
 						logger.log(Level.INFO, "Usuario:"+estado.getNombre()+" Se ha loggueado");
 						
@@ -266,7 +254,6 @@ public class VentanaValidacionUsuarios extends JFrame{
 					FloatControl volume =(FloatControl)Sonidos.mainTheme.getControl(FloatControl.Type.MASTER_GAIN);
 					volume.setValue(4);
 					
-					System.out.println(usuario.getNombre());
 					}else {
 						JOptionPane.showMessageDialog(null,"Ya existe un usuario con ese nombre");
 						tfNombre.setText("");
