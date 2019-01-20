@@ -204,6 +204,40 @@ public class BaseDeDatos {
 		}
 	}
 	
+	public static void updatePartidaBD2(UsuariosValidar user, ControlHistoria ch) {
+		String query = "";
+		
+		try {
+			//Se busca el código de partida por usuario
+			int codigo = 0;
+			
+			query = "SELECT cod_partida FROM Partida WHERE nick='" + user.getNombre() + "'";
+			rs = s.executeQuery(query);
+			if(rs.next()) { // Recogemos el resultado
+				codigo = rs.getInt(1);
+			}
+			VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
+			
+			//Se hace Update a la partida
+			query = "UPDATE Partida SET niveles_comp =" + ch.getNivelesCompletados() + 
+					",victorias1v1 = 0 WHERE cod_partida=" + codigo;	
+			s.executeUpdate(query);
+			VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
+			
+			// Se hace el Update al personaje
+			query = "UPDATE Personaje SET fuerza ="+ ch.getPersonajePrincipal().getFuerza() + ",vida =" 
+					+ ch.getPersonajePrincipal().getVida() + ",velocidad =" + ch.getPersonajePrincipal().getVelocidad() +
+					",puntos_mejora =" + ch.getPersonajePrincipal().getPuntosMejora() + " WHERE cod_partida ='" + codigo + "'";
+			
+			s.executeUpdate(query);
+			VentanaValidacionUsuarios.logger.log(Level.INFO, "Comando: " + query + " ejecutado correctamente");
+			
+		}catch (SQLException e) {
+			VentanaValidacionUsuarios.logger.log(Level.SEVERE, "Error de ejecución en: " + query);
+		}
+		
+	}
+	
 	public static void cerrarBD() {
 		try {
 			if(s!= null) {

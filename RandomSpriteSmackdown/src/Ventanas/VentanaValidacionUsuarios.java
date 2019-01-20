@@ -237,7 +237,14 @@ public class VentanaValidacionUsuarios extends JFrame{
 						System.out.println("		"+pj.getTipoPersonaje());
 						pj.setPuntosMejora(puntosMejora);
 						
-						VentanaPrincipal.venPrincip = new VentanaPrincipal(0, usuario, pj, nivelesCompletados, victorias1v1);
+						System.out.println("Puntos mejora " + puntosMejora);
+						System.out.println("Niveles completados " + nivelesCompletados);
+						System.out.println(pj.getNombre());
+						System.out.println("Fuerza "+pj.getFuerza());
+						System.out.println("Vida "+pj.getVida());
+						System.out.println("Velo "+pj.getVelocidad());
+						
+						VentanaPrincipal.venPrincip = new VentanaPrincipal(0, estado, pj, nivelesCompletados, victorias1v1);
 						VentanaPrincipal.venPrincip.setVisible(true);
 						logger.log(Level.INFO, "Usuario:"+estado.getNombre()+" Se ha loggueado");
 						

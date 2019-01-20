@@ -235,7 +235,7 @@ public class VentanaPrincipal extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(pPrincipal != null) {
 					ControlHistoria ch = new ControlHistoria(pPrincipal, nivelesCompletados);
-					BaseDeDatos.guardarPartidaBD2(user, ch);
+					BaseDeDatos.updatePartidaBD2(user, ch);
 				}
 				
 				BaseDeDatos.cerrarBD();
