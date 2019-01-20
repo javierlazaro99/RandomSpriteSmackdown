@@ -113,12 +113,7 @@ public class VentanaStage extends JFrame {
 		elementoAnimacionPersonaje1 = new ElementoAnimacion("", 0);
 		elementoAnimacionPersonaje2 = new ElementoAnimacion("", 0);
 		
-		Thread animInicio = new Thread(new AnimacionReadyFight());
-		
 		initLabel(pPrincipal, pSecundario);
-		
-		System.out.println(elementoAnimacionPersonaje1.getAnimParado().get(0).getLabel());
-		System.out.println(elementoAnimacionPersonaje2.getAnimParado().get(0).getLabel());
 		
 		p1.crearlPersonaje(50, 50);
 		
@@ -158,6 +153,8 @@ public class VentanaStage extends JFrame {
 			t2.start();
 			controlEstados.setCeEnem(controlEstadosP2);
 		}
+		
+		Thread animInicio = new Thread(new AnimacionReadyFight());
 		
 		int width = (int) (d.getWidth()*0.2);
 		int height = (int) (d.getHeight()*0.25);	
@@ -296,6 +293,9 @@ public class VentanaStage extends JFrame {
 					if(activaIA) {
 						controlIA.setStagePausado(true);
 					}
+					if(pSecundario instanceof PersonajeJugable) {
+						controlEstadosP2.setStagePausado(true);
+					}
 					
 					if(JOptionPane.showInternalConfirmDialog(getContentPane(), "¿Quieres cerrar el juego?","Cierre de ventana",JOptionPane.YES_NO_OPTION)==0) {
 						controlEstados.setStagePausado(false);
@@ -319,7 +319,12 @@ public class VentanaStage extends JFrame {
 						controlEstados.setAPulsado(false);
 						controlEstados.setDPulsado(false);
 						controlEstados.setStagePausado(false);
-						controlIA.setStagePausado(false);
+						if(activaIA) {
+							controlIA.setStagePausado(false);
+						}
+						if(pSecundario instanceof PersonajeJugable) {
+							controlEstadosP2.setStagePausado(false);
+						}
 					}
 				}
 				
@@ -353,9 +358,7 @@ public class VentanaStage extends JFrame {
 			}
 		});
 	}				
-			
-
-
+	
 	public int getNivel() {
 		return nivel;
 	}
@@ -364,7 +367,7 @@ public class VentanaStage extends JFrame {
 		this.nivel = nivel;
 	}
 
-public void setControlEstados(ControlEstados controlEstados) {
+	public void setControlEstados(ControlEstados controlEstados) {
 		this.controlEstados = controlEstados;
 	}
 
@@ -569,10 +572,6 @@ Thread tiempo = new Thread(new Runnable() {
 		}
 	}
 	
-	
-	
-	
-
 	public JLabelGraficoAjustado getiProta() {
 		return iProta;
 	}
@@ -626,6 +625,9 @@ Thread tiempo = new Thread(new Runnable() {
 				if(activeIA) {
 					controlIA.setStagePausado(true);
 				}
+				if(pSecundario instanceof PersonajeJugable) {
+					controlEstadosP2.setStagePausado(true);
+				}
 				
 				if(contadorMilis < 3000) {
 					
@@ -663,11 +665,14 @@ Thread tiempo = new Thread(new Runnable() {
 							label.setOpacidad(label.getOpacidad() - 0.25f);
 						}
 					}
-				}if(contadorMilis == 6000) {
+				}if(contadorMilis == 5600) {
 					pGlass.removeAll();
 					controlEstados.setStagePausado(false);
 					if(activeIA) {
 						controlIA.setStagePausado(false);
+					}
+					if(pSecundario instanceof PersonajeJugable) {
+						controlEstadosP2.setStagePausado(false);
 					}
 					reproduciendo = false;
 				}
@@ -684,8 +689,8 @@ Thread tiempo = new Thread(new Runnable() {
 	}
 
 	public static void main(String[] args) {
-		ControlHistoria ch = new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 0);
-		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 
+		ControlHistoria ch = new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "ninja"), 0);
+		VentanaStage vs = new VentanaStage(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "ninja"), 
 				new Enemigo(new Point(100, 0), 10, 10, 10, "ninja" , 8) ,1,
 				new ControlHistoria(new PersonajeJugable(null, new Point(0, 0), 10, 10, 10, "robot"), 0), true,new VentanaSeleccionNivel(new UsuariosValidar("", ""), ch, 0));
 		vs.setVisible(true);
