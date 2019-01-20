@@ -2,8 +2,6 @@ package personaje;
 
 import java.awt.Point;
 
-import javax.swing.JFrame;
-
 import Personalizados.JLabelGraficoAjustado;
 import Ventanas.VentanaStage;
 import control.ControlEstados;

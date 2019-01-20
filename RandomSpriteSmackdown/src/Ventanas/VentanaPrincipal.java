@@ -222,7 +222,9 @@ public class VentanaPrincipal extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VentanaAyuda va = new VentanaAyuda();
+				va.setVisible(true);
+				VentanaPrincipal.this.setEnabled(false);
 				
 			}
 		});

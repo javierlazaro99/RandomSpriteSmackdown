@@ -1,13 +1,9 @@
 package personaje.enemigo;
 
 import java.awt.Point;
-import java.util.Random;
-
-import javax.swing.JFrame;
 
 import Ventanas.VentanaStage;
 import control.ControlEstados;
-import control.ControlIA;
 import personaje.Personaje;
 import personaje.personajeJugable.PersonajeJugable;
 

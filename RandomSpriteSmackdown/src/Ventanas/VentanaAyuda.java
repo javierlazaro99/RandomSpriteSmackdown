@@ -4,17 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -25,7 +20,6 @@ import javax.swing.JPanel;
 import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
 import control.MouseAdapters.MouseAdapterBotonesMenus;
-import personaje.personajeJugable.PersonajeJugable;
 
 public class VentanaAyuda extends JFrame {
 	
@@ -34,20 +28,8 @@ public class VentanaAyuda extends JFrame {
 	private JLabelGraficoAjustado lPersonaje;
 	
 	public VentanaAyuda() {
-		
-		//Creacion de font
-		
-				try {
-				     GraphicsEnvironment ge = 
-				         GraphicsEnvironment.getLocalGraphicsEnvironment();
-				     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("fonts/SoulCalibur.ttf")));
-				     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("fonts/UnrealT.ttf")));
-				     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("fonts/Play Pretend.otf")));
-				} catch (IOException|FontFormatException e) {
-				     //Handle exception
-				}
 	
-		setSize(600, 500);
+		setSize(700, 500);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setUndecorated(true);
@@ -67,6 +49,7 @@ public class VentanaAyuda extends JFrame {
 				JButton bHome = new JButton("Home");
 				
 		///////////////////////////////
+		pB.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
 		lTitulo.setFont(new Font("Unreal Tournament", Font.PLAIN, 60));
 		lTitulo.setForeground(Color.ORANGE);
 		lDerecha.setFont(new Font("Play Pretend", Font.PLAIN, 20));
@@ -115,7 +98,8 @@ public class VentanaAyuda extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VentanaPrincipal.venPrincip.setEnabled(true);
+				VentanaAyuda.this.dispose();
 			}
 		});
 		
