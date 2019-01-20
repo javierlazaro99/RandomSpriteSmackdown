@@ -1,11 +1,8 @@
 package control;
 
-import java.awt.Dimension;
-import java.awt.Point;
 import java.util.ArrayList;
 
 import javax.sound.sampled.Clip;
-import javax.swing.JFrame;
 
 import Ventanas.VentanaStage;
 import personaje.Personaje;
@@ -13,8 +10,6 @@ import personaje.enemigo.Enemigo;
 import personaje.personajeJugable.PersonajeJugable;
 
 public class ControlAnimaciones {
-	private ArrayList<String> label;
-	private ArrayList<Integer> tiempos;
 
 	
 	/** Control de animacion Parado

@@ -1,14 +1,7 @@
 package control;
 
 import java.awt.Point;
-import java.sql.Time;
-import java.util.ArrayList;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-import Personalizados.JLabelGraficoAjustado;
-import Usuarios.UsuariosValidar;
 import Ventanas.VentanaPrincipal;
 import Ventanas.VentanaSeleccionNivel;
 import Ventanas.VentanaStage;
@@ -74,7 +67,6 @@ public class ControlEstados implements Runnable{
 		
 		this.cIA=cIA;
 		this.ceEnem = ceEnem;
-		
 	}
 	
 	public ControlEstados getCeEnem() {

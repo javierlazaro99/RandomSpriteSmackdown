@@ -1,20 +1,30 @@
 package Ventanas;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 import javax.sound.sampled.Clip;
-import javax.swing.*;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-import Personalizados.JLabelGraficoAjustado;
 import Personalizados.JPanelBackground;
-import control.BaseDeDatos;
-import control.Sonidos;
 import control.MouseAdapters.MouseAdapterBotonesVentanaPrincipal;
+import control.Sonidos;
 
 public class VentanaValidacion extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 	int codigo;
 	
 	public static VentanaValidacion ventanaVal;

@@ -1,8 +1,5 @@
 package control;
 
-import java.util.ArrayList;
-
-import Ventanas.VentanaCreacionPersonaje;
 import personaje.personajeJugable.PersonajeJugable;
 
 public class ControlHistoria {
