@@ -62,7 +62,7 @@ public class VentanaSeleccionNivel extends JFrame{
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
-		JPanelBackground pbFondo = new JPanelBackground("src/FondoMadera.png");
+		JPanelBackground pbFondo = new JPanelBackground("src/FondoMadera.png"); 
 		pbFondo.setLayout(new BorderLayout());
 		
 		JPanel pSuperior = new JPanel();
