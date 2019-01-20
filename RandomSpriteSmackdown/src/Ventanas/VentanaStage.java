@@ -23,6 +23,7 @@ import control.ControlEstados;
 import control.ControlHistoria;
 import control.ControlIA;
 import control.ElementoAnimacion;
+import control.Nivel;
 import control.Sonidos;
 import personaje.Personaje;
 import personaje.enemigo.Enemigo;
@@ -346,6 +347,7 @@ public class VentanaStage extends JFrame {
 			@Override
 			public void windowDeactivated(WindowEvent e) {
 				CerrarSonidoStage(nivel);
+				Nivel.reset();
 				Sonidos.mainTheme.loop(Clip.LOOP_CONTINUOUSLY);
 				FloatControl volume =(FloatControl)Sonidos.mainTheme.getControl(FloatControl.Type.MASTER_GAIN);
 				volume.setValue(4);
