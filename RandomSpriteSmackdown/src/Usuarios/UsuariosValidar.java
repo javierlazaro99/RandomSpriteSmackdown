@@ -31,8 +31,9 @@ public class UsuariosValidar {
 	private String path = "Usuario.txt";
 	private Logger logger=VentanaValidacionUsuarios.getLogger();
 	ArrayList<String> datos = new ArrayList<>();
+	
 	public UsuariosValidar(String nombre,String passwod) {
-		// TODO Auto-generated constructor stub
+		
 		this.nombre = nombre;
 		this.password = password;
 	}
@@ -57,57 +58,16 @@ public class UsuariosValidar {
 	public void guardar(UsuariosValidar usuario) {
 		BaseDeDatos.guardarUsuarioBD(usuario);
 		
-//		try {
-//			con= DriverManager.getConnection( "jdbc:sqlite:randomspritesmackdown.db") ;
-//			s=con.createStatement();
-//			String query= "INSERT INTO USUARIO VALUES('" + usuario.getNombre() + "','"+usuario.getPassword()+"')";
-//			s.executeUpdate(query);
-//			logger.log(Level.INFO, "Usuario guardado correctamente en la BD");
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			logger.log(Level.SEVERE, "Error usuario no se ha guardado");
-//		}
-		
-	
 	}
 	public UsuariosValidar leer(JTextField usuarioTexto,JPasswordField passwordTexto) {
 		return BaseDeDatos.leerUsuarioBD(usuarioTexto, passwordTexto);
 		
 		
-//		try {
-//			con= DriverManager.getConnection( "jdbc:sqlite:randomspritesmackdown.db") ;
-//			s=con.createStatement();
-//			String query= "SELECT NICK,PASSWORD FROM USUARIO";
-//			ResultSet str =s.executeQuery(query);
-//			while(str.next()) {
-//				String nick=str.getString("NICK");
-//				String password = str.getString("PASSWORD");
-//				if(usuarioTexto.getText().equals(nick) && passwordTexto.getText().equals(password)) {
-//					UsuariosValidar usuario = new UsuariosValidar(nick, password);
-//					logger.log(Level.INFO, "Usuario cargado");
-//					return usuario;
-//				}
-//			}
-//			logger.log(Level.INFO, "Usuario no existia");
-//			return null;
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			logger.log(Level.SEVERE, "Usuario cargado erroneamente");
-//		}
-//		return null;
-		
+	
 		
 	}
 	
 		
+
 	
-	//Falta por hacer 
-	public void guardarDatos() {
-		 
-	 }
-	 public void cargarDatos() {
-		 
-	 }
 }

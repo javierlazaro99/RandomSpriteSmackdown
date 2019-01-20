@@ -27,6 +27,9 @@ public class BaseDeDatos {
 	public BaseDeDatos() {
 	}
 	
+	/**Creamos una conexion a BD
+	 * @return La connect de la BD
+	 */
 	public static Connection crearConexion() {
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -40,6 +43,9 @@ public class BaseDeDatos {
 		}
 	}
 	
+	/**Crear tablas basicas
+	 * Las tablas son Usuario,Partida y Personaje
+	 */
 	public static void crearBD() {
 		//Si la tabla ya se ha creado no hace nada, trabaja con la existente
 		String comando = "";
@@ -98,6 +104,11 @@ public class BaseDeDatos {
 		}
 	}
 	
+	/** Comprobacion de existencia de usuario
+	 * @param usuarioTexto Valor del JTextfield
+	 * @param passwordTexto Valor del JPasswordField
+	 * @return
+	 */
 	public static UsuariosValidar leerUsuarioBD(JTextField usuarioTexto,JPasswordField passwordTexto) {
 		try {
 			String query= "SELECT NICK,PASSWORD FROM USUARIO";
@@ -171,6 +182,10 @@ public class BaseDeDatos {
 		return listaRespuestas;	
 	}
 	
+	/**Guardado inicial de Partida
+	 * @param user Usuario del programa
+	 * @param ch Control de historia
+	 */
 	public static void guardarPartidaBD2(UsuariosValidar user, ControlHistoria ch) {
 		String query = "";
 		int maxCod = 0;
@@ -204,6 +219,10 @@ public class BaseDeDatos {
 		}
 	}
 	
+	/** Metodo para la actalizacion de la partida
+	 * @param user
+	 * @param ch
+	 */
 	public static void updatePartidaBD2(UsuariosValidar user, ControlHistoria ch) {
 		String query = "";
 		

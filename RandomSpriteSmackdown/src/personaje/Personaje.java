@@ -92,7 +92,7 @@ public abstract class Personaje {
 	public void Moverse(double movX, double movY,VentanaStage stage,ControlEstados ce) {//Preguntar
 		if((posicion.getX() + movX * getVelocidad())>=-100 && (posicion.getX() + movX * getVelocidad())<= stage.getWidth()-150) {
 		ce.setChoque(false);
-		//System.out.println(stage.getWidth()+"-"+posicion.getX());
+		
 		posicion.setLocation(posicion.getX() + movX * getVelocidad(), posicion.getY() + movY * getVelocidad());
 		}else {
 			posicion.setLocation(posicion.getX(), posicion.getY());

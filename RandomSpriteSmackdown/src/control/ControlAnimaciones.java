@@ -17,6 +17,13 @@ public class ControlAnimaciones {
 	private ArrayList<Integer> tiempos;
 
 	
+	/** Control de animacion Parado
+	 * @param milis milisegundo en el que esta
+	 * @param personaje personaje al que se le cambia el label
+	 * @param stage Ventana de partida
+	 * @param x Paramentro de elementoAnimacion 
+	 * @return devuelve 1 si funciona, 0 si no entra dentro
+	 */
 	public int AnimacionParado(long milis, Personaje personaje, VentanaStage stage,ElementoAnimacion x) {
 		
 		ArrayList<ElementoAnimacion> animParado = new ArrayList<>();
@@ -43,6 +50,13 @@ public class ControlAnimaciones {
 	}
 	
 	
+	/**Control de Animacion Saltando
+	 *@param milis milisegundo en el que esta
+	 * @param personaje personaje al que se le cambia el label
+	 * @param stage Ventana de partida
+	 * @param x Paramentro de elementoAnimacion 
+	 * @return devuelve 1 si funciona, 0 si no entra dentro
+	 */
 	public int AnimacionSaltando(long milis, Personaje personaje, VentanaStage stage,ElementoAnimacion x) {
 		
 		ArrayList<ElementoAnimacion> animSaltando = new ArrayList<>();
@@ -65,6 +79,13 @@ public class ControlAnimaciones {
 	}
 
 	
+	/**Control de Anim moverse
+	 *@param milis milisegundo en el que esta
+	 * @param personaje personaje al que se le cambia el label
+	 * @param stage Ventana de partida
+	 * @param x Paramentro de elementoAnimacion 
+	 * @return devuelve 1 si funciona, 0 si no entra dentro
+	 */
 	public int AnimacionMoverse(long milis,Personaje personaje, VentanaStage stage,ElementoAnimacion x) {
 		
 		ArrayList<ElementoAnimacion>animMoverse = new ArrayList<>();
@@ -94,6 +115,17 @@ public class ControlAnimaciones {
 		
 	}
 	
+	/** Anim golpeado
+	 *@param milis milisegundo en el que esta
+	 * @param personaje personaje al que se le cambia el label
+	 * @param stage Ventana de partida
+	 * @param x Paramentro de elementoAnimacion 
+	 * @return devuelve 1 si funciona, 0 si no entra dentro
+	 * @param cIA ControlIA
+	 * @param ce Control Estado
+	 * @param ceEnemigo Control Estados si es un jugador
+	 * @return devuelve 1 si funciona, 0 si no entra dentro
+	 */
 	public int AnimacionGolpear(long milis,Personaje personaje,VentanaStage stage,Personaje enemigo,ElementoAnimacion x,ControlIA cIA,
 			ControlEstados ce, ControlEstados ceEnemigo) {
 		
@@ -172,6 +204,17 @@ public class ControlAnimaciones {
 		return 0;	
 	}
 	
+	/** Control de Anim golpeado
+	 * @param milis milisegundo en el que esta la anim
+	 * @param golpeado personaje que ha sido golpeado
+	 * @param golpeador personaje que ha golpeado
+	 * @param stage Ventana de partida
+	 * @param x Elemento de animacion 
+	 * @param cIA Control de IA
+	 * @param ce Control de Estados
+	 * @param ceEnemigo Control Estados enemigo
+	 * @return
+	 */
 	public int AnimacionGolpeado(long milis, Personaje golpeado, Personaje golpeador, VentanaStage stage,
 			ElementoAnimacion x, ControlIA cIA, ControlEstados ce, ControlEstados ceEnemigo) {
 
@@ -193,14 +236,14 @@ public class ControlAnimaciones {
 						return 1; 
 					}
 				} else { // Parte para cunado no hay IA (Práctica o 1v1)
-					System.out.println(golpeado);
+					
 						
 					if(golpeado.equals(stage.getpPrincipal())) {
 						stage.getiEnemigo().setImagen(elementoAnimacion.getLabel());
 					}
 					
 					if(golpeado.equals(stage.getpSecundario())) {
-						System.out.println("Enemigo");
+						
 						stage.getiProta().setImagen(elementoAnimacion.getLabel());
 					}
 					

@@ -44,6 +44,15 @@ public class ControlEstados implements Runnable{
 		this.choque = choque;
 	}
 
+	/** Constructor Principal de estados de nuestro personaje
+	 * @param pPrincipal
+	 * @param pSecundario
+	 * @param stage
+	 * @param ch
+	 * @param cIA
+	 * @param ceEnem
+	 * @param vNIvel
+	 */
 	public ControlEstados(PersonajeJugable pPrincipal,Personaje pSecundario, VentanaStage stage,ControlHistoria ch,ControlIA cIA, ControlEstados ceEnem,VentanaSeleccionNivel vNIvel) {//Personaje de la izquierda y de la derecha
 		this.pPrincipal=pPrincipal;
 		this.pSecundario=pSecundario;
@@ -140,6 +149,9 @@ public class ControlEstados implements Runnable{
 		StagePausado = stagePausado;
 	}
 
+	/** Controlador de Parado,direccionamiento
+	 * @param diferenciaTimers tiempo de ejecucion
+	 */
 	private void EstadoParado(long diferenciaTimers) { //Puede haber parado mirando a derecha o izquierda pero eso lo voy a arreglar de otra forma
 		
 		if((pPrincipal.getPosicion().getX()-pSecundario.getPosicion().getX())<0) {//Comprobacion de direccion de vista
@@ -155,7 +167,10 @@ public class ControlEstados implements Runnable{
 			controlAnimacion.AnimacionParado(diferenciaTimers, pPrincipal, stage, elementoAnimacionPersonaje);
 		}
 	}
-	
+	 
+	/** Controlador de Moverse
+	 * @param diferenciaTimers tiempo de ejecucion
+	 */
 	private void EstadoMoverseDerecha(long diferenciaTimers) {
 		if(pPrincipal.equals(stage.getpPrincipal())) {
 			stage.getiProta().setHorFlip(false);
@@ -316,7 +331,7 @@ public class ControlEstados implements Runnable{
 				boolean corriendoDerecha = true;
 				
 				int posActual = (int) pPrincipal.getPosicion().getX();
-				System.out.println(pPrincipal.getPosicion().getX());
+				
 				int posObjetivo = posActual + 20; //Este +20 se puede cambiar a lo que quieras que valga el ciclo, múltiplo de 10 tiene que ser
 				//Cambiar el + 20 la relacionarlo con la velocidad del personaje
 				while(corriendoDerecha) {

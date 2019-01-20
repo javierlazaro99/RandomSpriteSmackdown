@@ -37,13 +37,6 @@ public class PersonajeJugable extends Personaje {
 		this.puntosMejora = puntosMejora;
 	}
 	
-//	public void setlPersonaje(String path, int width, int height) {
-//		this.lPersonaje = new JLabelGraficoAjustado(path, width, height);
-//	}
-//	
-//	public JLabelGraficoAjustado getlPersonaje() {
-//		return lPersonaje;
-//	}
 
 	public JProgressBar getPbFuerza() {
 		if(pbFuerza == null) {

@@ -20,8 +20,7 @@ public class Sonidos {
 	public static Clip nivel2Theme = nivel2ThemeSonido.cargarSonido("sounds/Nivel2.wav");
 	public static Clip nivel3Theme = nivel3ThemeSonido.cargarSonido("sounds/Nivel3.wav");
 	public static Clip nivel4Theme = nivel4ThemeSonido.cargarSonido("sounds/Nivel4.wav");
-//	public static Clip punch1 = punch1Sonido.cargarSonido("sounds/punch_1.wav");
-//	public static Clip punch2 = punch2Sonido.cargarSonido("sounds/punch_2.wav");
+
 	
 	public Sonidos() {		
 	}

@@ -440,7 +440,7 @@ public class VentanaSeleccionOponente extends JFrame {
 		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
 				VentanaPrincipal ventana = new VentanaPrincipal(codigo, user, pPrincipal, nivelesCompletados,
 						victorias1v1);
 				ventana.setVisible(true);

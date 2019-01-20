@@ -30,6 +30,8 @@ public class ControlIA implements Runnable{
 	private ElementoAnimacion elementoAnimacionP2;
 	private boolean golpeado;
 	private boolean espera;
+	
+	
 	public ControlIA(PersonajeJugable pPrincipal,Enemigo pSecundario,VentanaStage stage,ControlHistoria ch,ControlEstados ce) {
 		this.pPrincipal=pPrincipal;
 		this.pSecundario=pSecundario;
@@ -136,7 +138,7 @@ public class ControlIA implements Runnable{
 			ReajusteLabel();
 			
 			diferenciaTimers=timerEstado-timerJuego;
-			System.out.println(diferenciaTimers);
+			
 			if((pPrincipal.getPosicion().getX()+200)<=pSecundario.getPosicion().getX()) {
 			pSecundario.IAMovimiento(pPrincipal, stage, ce);
 			stage.getiEnemigo().setLocation(pSecundario.getPosicion());
