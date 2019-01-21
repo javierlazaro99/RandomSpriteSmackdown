@@ -12,6 +12,5 @@ public class Partida {
 		BaseDeDatos.crearConexion();
 		BaseDeDatos.crearBD();
 	}
-
 }
 

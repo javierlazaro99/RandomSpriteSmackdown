@@ -127,7 +127,7 @@ public class VentanaStage extends JFrame {
 		
 		p1.crearlPersonaje(50, 50);
 		
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setSize(1920, 1080);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setUndecorated(true);
 		
