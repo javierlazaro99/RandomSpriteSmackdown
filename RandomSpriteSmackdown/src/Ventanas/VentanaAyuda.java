@@ -33,7 +33,7 @@ public class VentanaAyuda extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setUndecorated(true);
-
+		
 		JPanelBackground pB = new JPanelBackground("src/FondoMadera.png");
 		pB.setLayout(new BorderLayout());
 			JPanel pPrincipal = new JPanel(new GridLayout(1, 2));
@@ -119,7 +119,7 @@ public class VentanaAyuda extends JFrame {
 					lPersonaje.setImagen("png/Jump (3).png");
 					lgaBoton.setSize(200, 200);
 					lgaBoton.setVisible(true);
-					lgaBoton.setImagen("src/letter_w.png"); 
+					lgaBoton.setImagen("png.png"); 
 				}
 				if(e.getKeyCode() == KeyEvent.VK_D) {
 					lPersonaje.setHorFlip(false);

@@ -87,7 +87,7 @@ public abstract class Personaje {
 	 */
 	public abstract int DarGolpe(Personaje enemigo);
 	
-	public void Moverse(double movX, double movY,VentanaStage stage,ControlEstados ce) {//Preguntar
+	public void Moverse(double movX, double movY,VentanaStage stage,ControlEstados ce) {
 		if((posicion.getX() + movX * getVelocidad())>=-100 && (posicion.getX() + movX * getVelocidad())<= stage.getWidth()-150) {
 		ce.setChoque(false);
 		
